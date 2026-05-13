@@ -83,7 +83,7 @@ export default function UploadPage() {
             <div
               {...getRootProps()}
               className={`border-2 border-dashed rounded-xl p-12 text-center cursor-pointer transition-colors ${
-                isDragActive ? 'border-gold bg-gold/5' : 'border-border hover:border-gold/50'
+                isDragActive ? 'border-primary bg-primary/5' : 'border-border hover:border-primary/50'
               }`}
             >
               <input {...getInputProps()} />
@@ -177,7 +177,7 @@ export default function UploadPage() {
 
           <Button
             type="submit"
-            className="w-full bg-gold text-zinc-950 hover:bg-gold-light"
+            className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
             disabled={!file || !form.title || !form.neighborhood || upload.isPending}
           >
             {upload.isPending ? 'Uploading…' : 'Submit for Review'}

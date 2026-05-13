@@ -82,4 +82,33 @@ export class PrismaForumRepository implements IForumRepository {
     ])
     return { data: replies as unknown as ForumReplyWithAuthor[], total }
   }
+
+  async listAllThreads(options: { page: number; limit: number }): Promise<{ data: ForumThreadWithAuthor[]; total: number }> {
+    const skip = (options.page - 1) * options.limit
+    const [threads, total] = await Promise.all([
+      this.db.forumThread.findMany({
+        include: THREAD_INCLUDE,
+        orderBy: { lastReplyAt: 'desc' },
+        skip,
+        take: options.limit,
+      }),
+      this.db.forumThread.count(),
+    ])
+    return { data: threads as unknown as ForumThreadWithAuthor[], total }
+  }
+
+  async deleteThread(id: string): Promise<void> {
+    await this.db.forumThread.delete({ where: { id } })
+  }
+
+  async deleteReply(id: string): Promise<void> {
+    const reply = await this.db.forumReply.findUnique({ where: { id }, select: { threadId: true } })
+    if (reply) {
+      await this.db.forumReply.delete({ where: { id } })
+      await this.db.forumThread.update({
+        where: { id: reply.threadId },
+        data: { replyCount: { decrement: 1 } },
+      })
+    }
+  }
 }

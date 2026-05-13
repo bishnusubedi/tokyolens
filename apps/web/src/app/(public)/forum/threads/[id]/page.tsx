@@ -36,7 +36,7 @@ export default function ThreadPage() {
       <>
         <Header />
         <div className="min-h-screen flex items-center justify-center">
-          <div className="h-8 w-8 rounded-full border-2 border-gold border-t-transparent animate-spin" />
+          <div className="h-8 w-8 rounded-full border-2 border-primary border-t-transparent animate-spin" />
         </div>
       </>
     )
@@ -72,7 +72,7 @@ export default function ThreadPage() {
           </div>
           <p className="text-sm leading-relaxed whitespace-pre-wrap text-foreground/90">{thread.body}</p>
           <div className="flex items-center gap-2 mt-4 text-xs text-muted-foreground">
-            <Link href={`/users/${thread.author.username}`} className="hover:text-gold transition-colors">
+            <Link href={`/users/${thread.author.username}`} className="hover:text-primary transition-colors">
               @{thread.author.username}
             </Link>
             <span>·</span>
@@ -90,7 +90,7 @@ export default function ThreadPage() {
               </div>
               <div className="flex-1 bg-card border border-border rounded-lg p-4">
                 <div className="flex items-center gap-2 mb-2">
-                  <Link href={`/users/${reply.author.username}`} className="text-sm font-medium hover:text-gold transition-colors">
+                  <Link href={`/users/${reply.author.username}`} className="text-sm font-medium hover:text-primary transition-colors">
                     @{reply.author.username}
                   </Link>
                   <span className="text-xs text-muted-foreground">{format(new Date(reply.createdAt), 'MMM d')}</span>
@@ -125,7 +125,7 @@ export default function ThreadPage() {
               className="w-full bg-transparent text-sm placeholder:text-muted-foreground focus:outline-none resize-none"
             />
             <div className="flex justify-end mt-3">
-              <Button type="submit" size="sm" className="bg-gold text-zinc-950 hover:bg-gold-light" disabled={createReply.isPending || !body.trim()}>
+              <Button type="submit" size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90" disabled={createReply.isPending || !body.trim()}>
                 <Send className="h-3.5 w-3.5 mr-1.5" />
                 Reply
               </Button>
@@ -133,7 +133,7 @@ export default function ThreadPage() {
           </form>
         ) : !user ? (
           <p className="text-sm text-center text-muted-foreground py-4">
-            <Link href="/login" className="text-gold hover:underline">Sign in</Link> to reply
+            <Link href="/login" className="text-primary hover:underline">Sign in</Link> to reply
           </p>
         ) : null}
       </div>

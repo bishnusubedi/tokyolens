@@ -79,7 +79,10 @@ export interface IForumRepository {
   findCategoryBySlug(slug: string): Promise<ForumCategory | null>
   createThread(data: { title: string; body: string; authorId: string; categoryId: string }): Promise<ForumThreadWithAuthor>
   listThreads(categoryId: string, options: { page: number; limit: number }): Promise<{ data: ForumThreadWithAuthor[]; total: number }>
+  listAllThreads(options: { page: number; limit: number }): Promise<{ data: ForumThreadWithAuthor[]; total: number }>
   findThread(id: string): Promise<ForumThreadWithAuthor | null>
   createReply(data: { body: string; authorId: string; threadId: string; embeddedPhotoId?: string | undefined }): Promise<ForumReplyWithAuthor>
   listReplies(threadId: string, options: { page: number; limit: number }): Promise<{ data: ForumReplyWithAuthor[]; total: number }>
+  deleteThread(id: string): Promise<void>
+  deleteReply(id: string): Promise<void>
 }

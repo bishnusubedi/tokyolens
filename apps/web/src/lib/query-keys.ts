@@ -32,6 +32,9 @@ export const queryKeys = {
     pending: () => ['admin', 'pending'] as const,
     users: (params?: Record<string, unknown>) => ['admin', 'users', params] as const,
     analytics: () => ['admin', 'analytics'] as const,
+    photos: (params?: Record<string, unknown>) => ['admin', 'photos', params] as const,
+    threads: (params?: Record<string, unknown>) => ['admin', 'threads', params] as const,
+    activity: () => ['admin', 'activity'] as const,
   },
   collections: {
     all: () => ['collections'] as const,

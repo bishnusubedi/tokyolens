@@ -4,48 +4,27 @@
 
 @layer base {
   :root {
-    --background: 240 10% 98%;
-    --foreground: 240 10% 4%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 4%;
+    /* Pinterest surface palette */
+    --background: 60 20% 98%;        /* surface-soft #fbfbf9 */
+    --foreground: 0 0% 0%;           /* ink #000000 */
+    --card: 0 0% 100%;               /* canvas #ffffff */
+    --card-foreground: 0 0% 0%;
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 4%;
-    --primary: 43 62% 52%;
-    --primary-foreground: 240 10% 4%;
-    --secondary: 240 5% 96%;
-    --secondary-foreground: 240 6% 10%;
-    --muted: 240 5% 92%;
-    --muted-foreground: 240 4% 46%;
-    --accent: 43 62% 52%;
-    --accent-foreground: 240 10% 4%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 6% 90%;
-    --input: 240 6% 90%;
-    --ring: 43 62% 52%;
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 240 10% 4%;
-    --foreground: 0 0% 98%;
-    --card: 240 6% 7%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 6% 7%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 43 62% 52%;
-    --primary-foreground: 240 10% 4%;
-    --secondary: 240 4% 12%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 4% 12%;
-    --muted-foreground: 240 5% 55%;
-    --accent: 43 62% 52%;
-    --accent-foreground: 240 10% 4%;
-    --destructive: 0 62% 40%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 4% 16%;
-    --input: 240 4% 16%;
-    --ring: 43 62% 52%;
+    --popover-foreground: 0 0% 0%;
+    --primary: 353 100% 45%;         /* Pinterest Red #e60023 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 60 5% 90%;          /* secondary-bg #e5e5e0 */
+    --secondary-foreground: 0 0% 0%;
+    --muted: 60 10% 96%;             /* surface-card #f6f6f3 */
+    --muted-foreground: 30 4% 38%;   /* mute #62625b */
+    --accent: 353 100% 45%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 83% 33%;        /* error #9e0a0a */
+    --destructive-foreground: 0 0% 100%;
+    --border: 60 4% 85%;             /* hairline #dadad3 */
+    --input: 0 0% 100%;              /* canvas for inputs */
+    --ring: 353 100% 45%;
+    --radius: 1rem;                  /* 16px — Pinterest's dominant radius */
   }
 }
 
@@ -55,13 +34,15 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
 @layer utilities {
+  /* Pinterest masonry: column-based with 8px gutters */
   .masonry {
     columns: 2;
-    column-gap: 1rem;
+    column-gap: 8px;
   }
   @media (min-width: 640px) {
     .masonry { columns: 3; }
@@ -72,8 +53,16 @@
   @media (min-width: 1280px) {
     .masonry { columns: 5; }
   }
+  @media (min-width: 1536px) {
+    .masonry { columns: 6; }
+  }
   .masonry-item {
     break-inside: avoid;
-    margin-bottom: 1rem;
+    margin-bottom: 8px;
+  }
+
+  /* Display heading tight tracking (Pin Sans -1.2px substitute) */
+  .tracking-display {
+    letter-spacing: -0.075rem;
   }
 }

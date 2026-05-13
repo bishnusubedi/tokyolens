@@ -29,7 +29,7 @@ export default function RegisterPage() {
     <div className="min-h-screen flex items-center justify-center bg-background px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <Link href="/" className="inline-flex items-center gap-2 text-gold font-bold text-xl">
+          <Link href="/" className="inline-flex items-center gap-2 text-primary font-bold text-xl">
             <Camera className="h-6 w-6" />
             TokyoLens
           </Link>
@@ -63,12 +63,12 @@ export default function RegisterPage() {
               </div>
             </CardContent>
             <CardFooter className="flex flex-col gap-4">
-              <Button type="submit" className="w-full bg-gold text-zinc-950 hover:bg-gold-light" disabled={register.isPending}>
+              <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90" disabled={register.isPending}>
                 {register.isPending ? 'Creating account…' : 'Join TokyoLens'}
               </Button>
               <p className="text-sm text-muted-foreground">
                 Already a member?{' '}
-                <Link href="/login" className="text-gold hover:underline">Sign in</Link>
+                <Link href="/login" className="text-primary hover:underline">Sign in</Link>
               </p>
             </CardFooter>
           </form>

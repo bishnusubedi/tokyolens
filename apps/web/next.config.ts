@@ -1,6 +1,11 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      { source: '/users/admin', destination: '/admin', permanent: true },
+    ]
+  },
   output: 'standalone',
   transpilePackages: ['@repo/ui', '@repo/shared'],
   experimental: {
@@ -18,6 +23,14 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: '*.tokyolens.jp',
         pathname: '/uploads/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'picsum.photos',
+      },
+      {
+        protocol: 'https',
+        hostname: 'fastly.picsum.photos',
       },
     ],
   },

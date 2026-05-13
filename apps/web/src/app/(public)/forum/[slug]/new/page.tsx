@@ -60,7 +60,7 @@ export default function NewThreadPage() {
               className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 resize-y"
             />
           </div>
-          <Button type="submit" className="bg-gold text-zinc-950 hover:bg-gold-light" disabled={create.isPending}>
+          <Button type="submit" className="bg-primary text-primary-foreground hover:bg-primary/90" disabled={create.isPending}>
             {create.isPending ? 'Posting…' : 'Post Thread'}
           </Button>
         </form>

@@ -29,7 +29,7 @@ export default function ForumCategoryPage() {
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-2xl font-bold capitalize">{slug.replace(/_/g, ' ')}</h1>
           {user && (
-            <Button size="sm" className="bg-gold text-zinc-950 hover:bg-gold-light" asChild>
+            <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90" asChild>
               <Link href={`/forum/${slug}/new`}>
                 <Plus className="h-4 w-4 mr-1" />
                 New Thread
@@ -55,10 +55,10 @@ export default function ForumCategoryPage() {
               <Link
                 key={thread.id}
                 href={`/forum/threads/${thread.id}`}
-                className="flex items-start gap-4 p-4 rounded-lg border border-border bg-card hover:border-gold/30 transition-all group"
+                className="flex items-start gap-4 p-4 rounded-lg border border-border bg-card hover:border-primary/30 transition-all group"
               >
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-medium group-hover:text-gold transition-colors truncate">{thread.title}</h3>
+                  <h3 className="font-medium group-hover:text-primary transition-colors truncate">{thread.title}</h3>
                   <div className="flex items-center gap-3 text-xs text-muted-foreground mt-1.5">
                     <span>by @{thread.author.username}</span>
                     <span className="flex items-center gap-1">

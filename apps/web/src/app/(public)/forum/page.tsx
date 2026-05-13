@@ -22,7 +22,7 @@ export default function ForumPage() {
       <div className="container mx-auto px-4 py-8 max-w-3xl">
         <div className="mb-8">
           <h1 className="text-3xl font-bold flex items-center gap-3">
-            <MessageCircle className="h-8 w-8 text-gold" />
+            <MessageCircle className="h-8 w-8 text-primary" />
             Forum
           </h1>
           <p className="text-muted-foreground mt-2">Discuss photography with the Tokyo community.</p>
@@ -40,15 +40,15 @@ export default function ForumPage() {
               <Link
                 key={cat.id}
                 href={`/forum/${cat.slug}`}
-                className="flex items-center justify-between p-5 rounded-xl border border-border bg-card hover:border-gold/30 hover:bg-card/80 transition-all group"
+                className="flex items-center justify-between p-5 rounded-xl border border-border bg-card hover:border-primary/30 hover:bg-card/80 transition-all group"
               >
                 <div>
-                  <h2 className="font-semibold text-base group-hover:text-gold transition-colors">
+                  <h2 className="font-semibold text-base group-hover:text-primary transition-colors">
                     {SLUG_LABELS[cat.slug] ?? cat.name}
                   </h2>
                   <p className="text-sm text-muted-foreground mt-1">{cat.description}</p>
                 </div>
-                <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-gold transition-colors flex-shrink-0" />
+                <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0" />
               </Link>
             ))}
           </div>

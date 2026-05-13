@@ -54,7 +54,7 @@ export function Header() {
                 </Link>
               </Button>
               <Button variant="ghost" size="sm" asChild className="rounded-full">
-                <Link href="/dashboard/collections" className="flex items-center gap-1.5">
+                <Link href="/collections" className="flex items-center gap-1.5">
                   <BookmarkCheck className="h-3.5 w-3.5" />
                   <span className="hidden sm:inline">Boards</span>
                 </Link>

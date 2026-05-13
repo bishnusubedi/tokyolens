@@ -90,6 +90,30 @@ export class PrismaUserRepository implements IUserRepository {
     return { data, total }
   }
 
+  async changeRole(id: string, role: 'USER' | 'MODERATOR'): Promise<void> {
+    await this.db.user.update({ where: { id }, data: { role: role as any } })
+  }
+
+  async listWithSearch(options: { page: number; limit: number; search?: string; role?: string; status?: string }): Promise<{ data: UserPublic[]; total: number }> {
+    const skip = (options.page - 1) * options.limit
+    const where: any = {}
+    if (options.search) {
+      where.OR = [
+        { username: { contains: options.search, mode: 'insensitive' } },
+        { email: { contains: options.search, mode: 'insensitive' } },
+        { name: { contains: options.search, mode: 'insensitive' } },
+      ]
+    }
+    if (options.role) where.role = options.role
+    if (options.status) where.status = options.status
+    const [users, total] = await Promise.all([
+      this.db.user.findMany({ where, skip, take: options.limit, orderBy: { createdAt: 'desc' } }),
+      this.db.user.count({ where }),
+    ])
+    const data = users.map((user: any) => { const { password: _, ...u } = user; return u as UserPublic })
+    return { data, total }
+  }
+
   async listFollowing(userId: string, page: number, limit: number): Promise<{ data: UserPublic[]; total: number }> {
     const skip = (page - 1) * limit
     const [rows, total] = await Promise.all([
