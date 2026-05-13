@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { Heart, MapPin } from 'lucide-react'
+import { Heart } from 'lucide-react'
 import { cn } from '@repo/ui'
 import { SaveButton } from './SaveButton'
 
@@ -27,47 +27,67 @@ interface PhotoCardProps {
 export function PhotoCard({ photo, priority }: PhotoCardProps) {
   const src = photo.thumbnailUrl ?? photo.imageUrl
   const apiBase = process.env['NEXT_PUBLIC_API_URL'] ?? 'http://localhost:3001'
-
   const imgSrc = src.startsWith('http') ? src : `${apiBase}${src}`
 
+  const initials = photo.author.name[0]?.toUpperCase() ?? '?'
+
   return (
-    <Link href={`/photos/${photo.id}`} className="group block">
-      <div className="relative overflow-hidden rounded-[16px] bg-[#f6f6f3]">
-        {/* Full-bleed pin image — no internal padding */}
+    <div className="group">
+      {/* Image card */}
+      <Link href={`/photos/${photo.id}`} className="block relative overflow-hidden rounded-[16px] bg-[#efefef]">
         <Image
           src={imgSrc}
           alt={photo.title}
-          width={photo.width}
-          height={photo.height}
-          className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+          width={photo.width || 600}
+          height={photo.height || 400}
+          className="w-full h-auto object-cover block"
           priority={priority}
           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
         />
-        {/* Hover overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-        {/* Save button top right on hover */}
-        <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+
+        {/* Dark gradient on hover — bottom only */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none rounded-[16px]" />
+
+        {/* Save button — top right on hover */}
+        <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-150 pointer-events-none group-hover:pointer-events-auto">
           <SaveButton photoId={photo.id} />
         </div>
-        {/* Neighborhood overlay pill top left on hover */}
-        <div className="absolute top-2 left-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-          <span className="flex items-center gap-1 bg-white text-black text-xs font-bold px-2.5 py-1 rounded-full">
-            <MapPin className="h-3 w-3" />
+
+        {/* Neighborhood tag — bottom left on hover */}
+        <div className="absolute bottom-3 left-3 opacity-0 group-hover:opacity-100 transition-opacity duration-150 pointer-events-none">
+          <span className="inline-block bg-white text-[#111] text-[11px] font-bold px-2.5 py-1 rounded-full leading-none">
             {photo.neighborhood}
           </span>
         </div>
-        {/* Bottom meta on hover */}
-        <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-1 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-          <p className="text-white text-sm font-semibold line-clamp-1">{photo.title}</p>
-          <div className="flex items-center justify-between mt-1.5">
-            <span className="text-white/70 text-xs">@{photo.author.username}</span>
-            <span className={cn('text-xs flex items-center gap-1', photo.hasVoted ? 'text-[#e60023]' : 'text-white/70')}>
-              <Heart className={cn('h-3 w-3', photo.hasVoted && 'fill-[#e60023]')} />
-              {photo.voteCount}
+      </Link>
+
+      {/* Below-image metadata — always visible */}
+      <div className="px-1 pt-2 pb-3">
+        <p className="text-[13px] font-bold text-[#111] leading-snug line-clamp-2 mb-1.5">
+          {photo.title}
+        </p>
+        <div className="flex items-center justify-between">
+          <Link href={`/users/${photo.author.username}`}
+            className="flex items-center gap-1.5 min-w-0"
+            onClick={(e) => e.stopPropagation()}>
+            <div className="w-6 h-6 rounded-full bg-[#e60023] flex-shrink-0 flex items-center justify-center text-white text-[10px] font-bold overflow-hidden">
+              {photo.author.avatarUrl ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={photo.author.avatarUrl.startsWith('http') ? photo.author.avatarUrl : `${apiBase}${photo.author.avatarUrl}`}
+                  alt={photo.author.name} className="w-full h-full object-cover" />
+              ) : initials}
+            </div>
+            <span className="text-[12px] text-[#767676] font-semibold truncate hover:text-[#111] transition-colors">
+              {photo.author.name}
             </span>
-          </div>
+          </Link>
+          <span className={cn('flex items-center gap-0.5 text-[12px] font-semibold flex-shrink-0',
+            photo.hasVoted ? 'text-[#e60023]' : 'text-[#767676]')}>
+            <Heart className={cn('h-3 w-3', photo.hasVoted && 'fill-[#e60023]')} />
+            {photo.voteCount}
+          </span>
         </div>
       </div>
-    </Link>
+    </div>
   )
 }

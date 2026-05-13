@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { Bookmark, Plus, Check, Lock } from 'lucide-react'
+import { Plus, Check, Lock } from 'lucide-react'
 import { cn } from '@repo/ui'
 import { useMyCollections, useSavedCollections, useSaveToCollection, useRemoveFromCollection, useCreateCollection } from '@/hooks/use-collections'
 import { useMe } from '@/hooks/use-auth'
@@ -70,30 +70,31 @@ export function SaveButton({ photoId, className }: SaveButtonProps) {
 
   return (
     <div ref={ref} className={cn('relative', className)}>
+      {/* Pinterest-style red "Save" pill */}
       <button
         onClick={handleToggle}
         className={cn(
-          'flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all',
+          'flex items-center gap-1.5 h-9 px-4 rounded-full text-sm font-bold transition-all shadow-sm',
           isSavedAnywhere
-            ? 'bg-primary text-primary-foreground hover:bg-primary/90'
-            : 'bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm',
+            ? 'bg-[#ad081b] text-white hover:bg-[#8d0617]'
+            : 'bg-[#e60023] text-white hover:bg-[#ad081b]',
         )}
-        title="Save to collection"
+        title="Save to board"
       >
-        <Bookmark className={cn('h-3.5 w-3.5', isSavedAnywhere && 'fill-current')} />
-        Save
+        {isSavedAnywhere && <Check className="h-3.5 w-3.5" />}
+        {isSavedAnywhere ? 'Saved' : 'Save'}
       </button>
 
       {open && (
         <div
-          className="absolute right-0 top-full mt-1.5 z-50 w-56 rounded-xl bg-popover border border-border shadow-xl py-1.5"
+          className="absolute right-0 top-full mt-2 z-50 w-60 rounded-2xl bg-white border border-[#efefef] shadow-[0_4px_24px_rgba(0,0,0,0.16)] py-2"
           onClick={(e) => { e.preventDefault(); e.stopPropagation() }}
         >
-          <p className="px-3 py-1 text-xs font-semibold text-muted-foreground uppercase tracking-wider">Save to board</p>
+          <p className="px-4 py-1.5 text-xs font-bold text-[#767676] uppercase tracking-wider">Save to board</p>
 
           <div className="max-h-52 overflow-y-auto">
             {collections.length === 0 && !creating && (
-              <p className="px-3 py-2 text-sm text-muted-foreground">No boards yet</p>
+              <p className="px-4 py-2 text-sm text-[#767676]">No boards yet</p>
             )}
             {collections.map((col) => {
               const saved = savedIn.includes(col.id)
@@ -101,36 +102,36 @@ export function SaveButton({ photoId, className }: SaveButtonProps) {
                 <button
                   key={col.id}
                   onClick={(e) => handleSave(e, col.id)}
-                  className="flex items-center justify-between w-full px-3 py-2 text-sm hover:bg-muted transition-colors"
+                  className="flex items-center justify-between w-full px-4 py-2.5 text-sm font-semibold text-[#111] hover:bg-[#f6f6f3] transition-colors"
                 >
                   <span className="flex items-center gap-2 truncate">
-                    {col.isPrivate && <Lock className="h-3 w-3 text-muted-foreground flex-shrink-0" />}
+                    {col.isPrivate && <Lock className="h-3 w-3 text-[#767676] flex-shrink-0" />}
                     <span className="truncate">{col.name}</span>
                   </span>
-                  {saved && <Check className="h-4 w-4 text-primary flex-shrink-0" />}
+                  {saved && <Check className="h-4 w-4 text-[#e60023] flex-shrink-0" />}
                 </button>
               )
             })}
           </div>
 
-          <div className="border-t border-border mt-1 pt-1">
+          <div className="border-t border-[#efefef] mt-1 pt-1">
             {creating ? (
-              <form onSubmit={handleCreate} className="px-3 py-1.5 flex gap-1.5">
+              <form onSubmit={handleCreate} className="px-4 py-2 flex gap-2">
                 <input
                   autoFocus
                   value={newName}
                   onChange={(e) => setNewName(e.target.value)}
                   placeholder="Board name…"
-                  className="flex-1 h-7 rounded border border-border bg-background px-2 text-xs focus:outline-none focus:border-primary"
+                  className="flex-1 h-8 rounded-full border border-[#efefef] bg-[#f6f6f3] px-3 text-xs focus:outline-none focus:border-[#767676]"
                 />
-                <button type="submit" className="h-7 px-2 rounded bg-primary text-primary-foreground text-xs font-medium">
+                <button type="submit" className="h-8 px-3 rounded-full bg-[#e60023] text-white text-xs font-bold">
                   Create
                 </button>
               </form>
             ) : (
               <button
                 onClick={() => setCreating(true)}
-                className="flex items-center gap-2 w-full px-3 py-2 text-sm text-primary hover:bg-muted transition-colors"
+                className="flex items-center gap-2 w-full px-4 py-2.5 text-sm font-semibold text-[#111] hover:bg-[#f6f6f3] transition-colors"
               >
                 <Plus className="h-4 w-4" />
                 New board

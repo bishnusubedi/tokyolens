@@ -3,7 +3,7 @@
 import { useState, useRef } from 'react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
-import { Search, Upload, BookmarkCheck, LayoutDashboard, LogOut, User, Camera, X } from 'lucide-react'
+import { Search, Bell, ChevronDown, Camera, X, Plus } from 'lucide-react'
 import { cn } from '@repo/ui'
 import { useMe, useLogout } from '@/hooks/use-auth'
 
@@ -14,168 +14,188 @@ export function Header() {
   const logout = useLogout()
   const user = data?.data
   const [query, setQuery] = useState('')
-  const [searchOpen, setSearchOpen] = useState(false)
+  const [dropdownOpen, setDropdownOpen] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
     const q = query.trim()
-    if (q) {
-      router.push(`/?q=${encodeURIComponent(q)}`)
-    }
+    if (q) router.push(`/search?q=${encodeURIComponent(q)}`)
   }
 
-  const navLinks = [
-    { href: '/', label: 'Gallery' },
-    { href: '/forum', label: 'Forum' },
-  ]
-
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-[#dadad3]">
-      <div className="max-w-[1280px] mx-auto flex items-center h-16 px-4 gap-4">
-        {/* Logo */}
-        <Link
-          href="/"
-          className="flex items-center gap-2 text-[#e60023] font-bold text-lg tracking-tight flex-shrink-0"
-        >
-          <Camera className="h-5 w-5" />
-          <span className="hidden sm:inline">TokyoLens</span>
-        </Link>
+    <header className="sticky top-0 z-50 bg-white shadow-sm">
+      {/* Three-column flex: left (fixed) | center (grows) | right (fixed) */}
+      <div className="flex items-center h-16 px-4 gap-3">
 
-        {/* Desktop nav links */}
-        <nav className="hidden md:flex items-center gap-1 flex-shrink-0">
-          {navLinks.map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              className={cn(
-                'px-3 py-2 rounded-full text-sm font-semibold transition-colors',
-                pathname === href
-                  ? 'bg-black text-white'
-                  : 'text-[#62625b] hover:text-black hover:bg-[#f6f6f3]',
-              )}
-            >
-              {label}
-            </Link>
-          ))}
-        </nav>
+        {/* ── Left: logo + nav tabs ── */}
+        <div className="flex items-center gap-1 flex-shrink-0">
+          <Link
+            href="/"
+            aria-label="TokyoLens home"
+            className="w-10 h-10 flex items-center justify-center rounded-full text-[#e60023] hover:bg-[#f6f6f3] transition-colors flex-shrink-0"
+          >
+            <Camera className="h-6 w-6" />
+          </Link>
 
-        {/* Search bar — centered, grows to fill space */}
-        <form
-          onSubmit={handleSearch}
-          className={cn(
-            'flex-1 max-w-[480px] mx-auto',
-            searchOpen ? 'flex' : 'hidden sm:flex',
-          )}
-        >
-          <div className="relative w-full">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-[#62625b] pointer-events-none" />
-            <input
-              ref={inputRef}
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search photos, neighborhoods…"
-              className="w-full h-12 pl-11 pr-10 bg-[#f6f6f3] rounded-full text-sm text-black placeholder:text-[#91918c] border border-transparent focus:border-[#91918c] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#435ee5] focus:ring-offset-1 transition-all"
-            />
-            {query && (
-              <button
-                type="button"
-                onClick={() => setQuery('')}
-                className="absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-[#91918c] hover:text-black"
+          {user ? (
+            <nav className="hidden md:flex items-center gap-1">
+              <Link
+                href="/"
+                className={cn(
+                  'px-4 py-2 rounded-full text-sm font-bold whitespace-nowrap transition-colors',
+                  pathname === '/'
+                    ? 'bg-[#111] text-white'
+                    : 'text-[#767676] hover:bg-[#f6f6f3] hover:text-[#111]',
+                )}
               >
-                <X className="h-4 w-4" />
-              </button>
-            )}
-          </div>
-        </form>
+                Today
+              </Link>
+              <Link
+                href="/feed"
+                className={cn(
+                  'px-4 py-2 rounded-full text-sm font-bold whitespace-nowrap transition-colors',
+                  pathname === '/feed'
+                    ? 'bg-[#111] text-white'
+                    : 'text-[#767676] hover:bg-[#f6f6f3] hover:text-[#111]',
+                )}
+              >
+                Following
+              </Link>
+            </nav>
+          ) : (
+            <nav className="hidden md:flex items-center gap-1">
+              <Link
+                href="/forum"
+                className={cn(
+                  'px-4 py-2 rounded-full text-sm font-bold whitespace-nowrap transition-colors',
+                  pathname === '/forum'
+                    ? 'bg-[#111] text-white'
+                    : 'text-[#767676] hover:bg-[#f6f6f3] hover:text-[#111]',
+                )}
+              >
+                Forum
+              </Link>
+            </nav>
+          )}
+        </div>
 
-        {/* Mobile search toggle */}
-        <button
-          className="sm:hidden p-2 text-[#62625b] hover:text-black"
-          onClick={() => {
-            setSearchOpen((v) => !v)
-            setTimeout(() => inputRef.current?.focus(), 50)
-          }}
-        >
-          <Search className="h-5 w-5" />
-        </button>
+        {/* ── Center: search bar (fills remaining space, search centered within) ── */}
+        <div className="flex-1 flex justify-center min-w-0 px-2">
+          <form onSubmit={handleSearch} className="w-full max-w-[560px]">
+            <div className="relative">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-[#767676] pointer-events-none" />
+              <input
+                ref={inputRef}
+                type="text"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Search"
+                className="w-full h-12 pl-11 pr-10 bg-[#efefef] rounded-full text-sm text-[#111] placeholder:text-[#767676] border-2 border-transparent focus:border-[#0076d3] focus:bg-white focus:outline-none transition-all"
+              />
+              {query && (
+                <button
+                  type="button"
+                  onClick={() => setQuery('')}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-[#767676] hover:text-[#111]"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              )}
+            </div>
+          </form>
+        </div>
 
-        {/* Right actions */}
-        <div className="flex items-center gap-2 flex-shrink-0 ml-auto">
+        {/* ── Right: action buttons ── */}
+        <div className="flex items-center gap-1 flex-shrink-0">
           {user ? (
             <>
               <Link
                 href="/upload"
-                className="hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-full text-sm font-semibold text-[#62625b] hover:text-black hover:bg-[#f6f6f3] transition-colors"
+                className="hidden sm:flex items-center gap-1.5 h-10 px-4 rounded-full text-sm font-bold text-[#111] hover:bg-[#f6f6f3] transition-colors whitespace-nowrap"
               >
-                <Upload className="h-4 w-4" />
-                <span>Upload</span>
+                <Plus className="h-4 w-4" />
+                Create
               </Link>
-              <Link
-                href="/collections"
-                className="hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-full text-sm font-semibold text-[#62625b] hover:text-black hover:bg-[#f6f6f3] transition-colors"
-              >
-                <BookmarkCheck className="h-4 w-4" />
-                <span>Boards</span>
-              </Link>
-              {(user.role === 'ADMIN' || user.role === 'MODERATOR') && (
-                <Link
-                  href="/admin"
-                  className="p-2 rounded-full text-[#62625b] hover:text-black hover:bg-[#f6f6f3] transition-colors"
-                >
-                  <LayoutDashboard className="h-4 w-4" />
-                </Link>
-              )}
-              <Link
-                href={`/users/${user.username}`}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-full text-sm font-semibold bg-[#f6f6f3] hover:bg-[#e5e5e0] text-black transition-colors"
-              >
-                <User className="h-4 w-4" />
-                <span className="hidden sm:inline">{user.username}</span>
-              </Link>
-              <button
-                onClick={() => { logout(); window.location.href = '/' }}
-                className="p-2 rounded-full text-[#62625b] hover:text-black hover:bg-[#f6f6f3] transition-colors"
-              >
-                <LogOut className="h-4 w-4" />
+
+              <button className="w-10 h-10 hidden sm:flex items-center justify-center rounded-full text-[#111] hover:bg-[#f6f6f3] transition-colors">
+                <Bell className="h-5 w-5" />
               </button>
+
+              {/* Avatar + dropdown */}
+              <div className="relative">
+                <button
+                  onClick={() => setDropdownOpen((v) => !v)}
+                  className="flex items-center gap-1 h-10 pl-1 pr-2 rounded-full hover:bg-[#f6f6f3] transition-colors"
+                >
+                  <div className="w-8 h-8 rounded-full bg-[#e60023] flex items-center justify-center text-white text-xs font-bold overflow-hidden flex-shrink-0">
+                    {user.avatarUrl ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={user.avatarUrl} alt={user.username} className="w-full h-full object-cover" />
+                    ) : (
+                      user.username[0]?.toUpperCase()
+                    )}
+                  </div>
+                  <ChevronDown className="h-3.5 w-3.5 text-[#767676]" />
+                </button>
+
+                {dropdownOpen && (
+                  <>
+                    <div className="fixed inset-0 z-40" onClick={() => setDropdownOpen(false)} />
+                    <div className="absolute right-0 top-full mt-1 w-56 bg-white rounded-2xl shadow-[0_4px_24px_rgba(0,0,0,0.15)] border border-[#efefef] z-50 py-2">
+                      <Link
+                        href={`/users/${user.username}`}
+                        onClick={() => setDropdownOpen(false)}
+                        className="flex items-center gap-3 px-4 py-3 text-sm font-semibold text-[#111] hover:bg-[#f6f6f3] transition-colors"
+                      >
+                        <div className="w-8 h-8 rounded-full bg-[#e60023] flex items-center justify-center text-white text-xs font-bold overflow-hidden flex-shrink-0">
+                          {user.avatarUrl ? (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img src={user.avatarUrl} alt={user.username} className="w-full h-full object-cover" />
+                          ) : (
+                            user.username[0]?.toUpperCase()
+                          )}
+                        </div>
+                        <span>{user.name}</span>
+                      </Link>
+                      <div className="h-px bg-[#efefef] my-1" />
+                      <Link href="/collections" onClick={() => setDropdownOpen(false)} className="block px-4 py-2.5 text-sm text-[#111] hover:bg-[#f6f6f3] transition-colors">Boards</Link>
+                      <Link href="/upload" onClick={() => setDropdownOpen(false)} className="block px-4 py-2.5 text-sm text-[#111] hover:bg-[#f6f6f3] transition-colors">Upload</Link>
+                      <Link href="/forum" onClick={() => setDropdownOpen(false)} className="block px-4 py-2.5 text-sm text-[#111] hover:bg-[#f6f6f3] transition-colors">Forum</Link>
+                      {(user.role === 'ADMIN' || user.role === 'MODERATOR') && (
+                        <Link href="/admin" onClick={() => setDropdownOpen(false)} className="block px-4 py-2.5 text-sm text-[#111] hover:bg-[#f6f6f3] transition-colors">Admin</Link>
+                      )}
+                      <div className="h-px bg-[#efefef] my-1" />
+                      <button
+                        onClick={() => { setDropdownOpen(false); logout(); window.location.href = '/' }}
+                        className="w-full text-left px-4 py-2.5 text-sm text-[#111] hover:bg-[#f6f6f3] transition-colors"
+                      >
+                        Log out
+                      </button>
+                    </div>
+                  </>
+                )}
+              </div>
             </>
           ) : (
             <>
               <Link
                 href="/login"
-                className="px-4 py-2 rounded-full text-sm font-semibold text-black hover:bg-[#f6f6f3] transition-colors"
+                className="hidden sm:block px-4 py-2.5 rounded-full text-sm font-bold text-[#111] hover:bg-[#f6f6f3] transition-colors"
               >
                 Log in
               </Link>
               <Link
                 href="/register"
-                className="px-4 py-2 rounded-[16px] text-sm font-bold bg-[#e60023] text-white hover:bg-[#cc001f] transition-colors"
+                className="px-4 py-2.5 rounded-full text-sm font-bold bg-[#e60023] text-white hover:bg-[#ad081b] transition-colors"
               >
                 Sign up
               </Link>
             </>
           )}
         </div>
-      </div>
 
-      {/* Mobile search bar (full-width when open) */}
-      {searchOpen && (
-        <div className="sm:hidden px-4 pb-3">
-          <form onSubmit={handleSearch} className="relative">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-[#62625b] pointer-events-none" />
-            <input
-              ref={inputRef}
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search photos, neighborhoods…"
-              className="w-full h-12 pl-11 pr-4 bg-[#f6f6f3] rounded-full text-sm text-black placeholder:text-[#91918c] border border-transparent focus:border-[#91918c] focus:bg-white focus:outline-none transition-all"
-            />
-          </form>
-        </div>
-      )}
+      </div>
     </header>
   )
 }

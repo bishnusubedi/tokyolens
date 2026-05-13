@@ -20,7 +20,9 @@ type ForumThread = {
   body: string
   createdAt: string
   locked: boolean
+  pinned: boolean
   author: { id: string; username: string; name: string; avatarUrl: string | null }
+  category?: { id: string; name: string; slug: string }
   _count?: { replies: number }
 }
 

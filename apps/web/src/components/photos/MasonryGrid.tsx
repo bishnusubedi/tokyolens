@@ -23,7 +23,7 @@ export function MasonryGrid({ params }: MasonryGridProps) {
           fetchNextPage()
         }
       },
-      { rootMargin: '400px' },
+      { rootMargin: '600px' },
     )
     observer.observe(el)
     return () => observer.disconnect()
@@ -35,25 +35,29 @@ export function MasonryGrid({ params }: MasonryGridProps) {
 
   if (photos.length === 0) {
     return (
-      <div className="text-center py-20 text-muted-foreground">
-        No photos yet. Be the first to share!
+      <div className="flex flex-col items-center justify-center py-32 text-[#767676]">
+        <p className="text-xl font-bold mb-2">Nothing here yet</p>
+        <p className="text-sm">Be the first to share a photo!</p>
       </div>
     )
   }
 
   return (
     <>
-      <div className="columns-2 sm:columns-3 lg:columns-4 xl:columns-5 gap-2">
+      {/* Pinterest-style columns masonry */}
+      <div className="columns-2 sm:columns-3 md:columns-4 lg:columns-5 xl:columns-6 gap-x-4">
         {photos.map((photo, i) => (
-          <div key={photo.id} className="break-inside-avoid mb-2">
-            <PhotoCard photo={photo} priority={i < 6} />
+          <div key={photo.id} className="break-inside-avoid mb-4">
+            <PhotoCard photo={photo} priority={i < 10} />
           </div>
         ))}
       </div>
-      <div ref={sentinel} className="h-8 mt-4" />
+
+      <div ref={sentinel} className="h-8 mt-2" />
+
       {isFetchingNextPage && (
-        <div className="flex justify-center py-4">
-          <div className="h-6 w-6 rounded-full border-2 border-[#e60023] border-t-transparent animate-spin" />
+        <div className="flex justify-center py-6">
+          <div className="h-7 w-7 rounded-full border-[3px] border-[#e60023] border-t-transparent animate-spin" />
         </div>
       )}
     </>
