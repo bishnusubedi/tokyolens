@@ -1,0 +1,22895 @@
+
+/**
+ * Client
+**/
+
+import * as runtime from './runtime/client.js';
+import $Types = runtime.Types // general types
+import $Public = runtime.Types.Public
+import $Utils = runtime.Types.Utils
+import $Extensions = runtime.Types.Extensions
+import $Result = runtime.Types.Result
+
+export type PrismaPromise<T> = $Public.PrismaPromise<T>
+
+
+/**
+ * Model User
+ * 
+ */
+export type User = $Result.DefaultSelection<Prisma.$UserPayload>
+/**
+ * Model Photo
+ * 
+ */
+export type Photo = $Result.DefaultSelection<Prisma.$PhotoPayload>
+/**
+ * Model Vote
+ * 
+ */
+export type Vote = $Result.DefaultSelection<Prisma.$VotePayload>
+/**
+ * Model Comment
+ * 
+ */
+export type Comment = $Result.DefaultSelection<Prisma.$CommentPayload>
+/**
+ * Model Award
+ * 
+ */
+export type Award = $Result.DefaultSelection<Prisma.$AwardPayload>
+/**
+ * Model ForumCategory
+ * 
+ */
+export type ForumCategory = $Result.DefaultSelection<Prisma.$ForumCategoryPayload>
+/**
+ * Model ForumThread
+ * 
+ */
+export type ForumThread = $Result.DefaultSelection<Prisma.$ForumThreadPayload>
+/**
+ * Model ForumReply
+ * 
+ */
+export type ForumReply = $Result.DefaultSelection<Prisma.$ForumReplyPayload>
+/**
+ * Model Collection
+ * 
+ */
+export type Collection = $Result.DefaultSelection<Prisma.$CollectionPayload>
+/**
+ * Model CollectionItem
+ * 
+ */
+export type CollectionItem = $Result.DefaultSelection<Prisma.$CollectionItemPayload>
+/**
+ * Model Follow
+ * 
+ */
+export type Follow = $Result.DefaultSelection<Prisma.$FollowPayload>
+
+/**
+ * Enums
+ */
+export namespace $Enums {
+  export const UserRole: {
+  USER: 'USER',
+  MODERATOR: 'MODERATOR',
+  ADMIN: 'ADMIN'
+};
+
+export type UserRole = (typeof UserRole)[keyof typeof UserRole]
+
+
+export const UserStatus: {
+  ACTIVE: 'ACTIVE',
+  BANNED: 'BANNED'
+};
+
+export type UserStatus = (typeof UserStatus)[keyof typeof UserStatus]
+
+
+export const PhotoStatus: {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  HIDDEN: 'HIDDEN',
+  DELETED: 'DELETED'
+};
+
+export type PhotoStatus = (typeof PhotoStatus)[keyof typeof PhotoStatus]
+
+
+export const PhotoCategory: {
+  STREET: 'STREET',
+  PORTRAIT: 'PORTRAIT',
+  LANDSCAPE: 'LANDSCAPE',
+  ARCHITECTURE: 'ARCHITECTURE',
+  NIGHT: 'NIGHT',
+  MACRO: 'MACRO',
+  WILDLIFE: 'WILDLIFE',
+  TRAVEL: 'TRAVEL',
+  ABSTRACT: 'ABSTRACT',
+  OTHER: 'OTHER'
+};
+
+export type PhotoCategory = (typeof PhotoCategory)[keyof typeof PhotoCategory]
+
+
+export const AwardType: {
+  WEEKLY_WINNER: 'WEEKLY_WINNER',
+  MONTHLY_WINNER: 'MONTHLY_WINNER'
+};
+
+export type AwardType = (typeof AwardType)[keyof typeof AwardType]
+
+
+export const ForumCategorySlug: {
+  EQUIPMENT_REVIEWS: 'EQUIPMENT_REVIEWS',
+  TOKYO_PHOTO_SPOTS: 'TOKYO_PHOTO_SPOTS',
+  CRITIQUE_MY_WORK: 'CRITIQUE_MY_WORK',
+  GENERAL: 'GENERAL'
+};
+
+export type ForumCategorySlug = (typeof ForumCategorySlug)[keyof typeof ForumCategorySlug]
+
+}
+
+export type UserRole = $Enums.UserRole
+
+export const UserRole: typeof $Enums.UserRole
+
+export type UserStatus = $Enums.UserStatus
+
+export const UserStatus: typeof $Enums.UserStatus
+
+export type PhotoStatus = $Enums.PhotoStatus
+
+export const PhotoStatus: typeof $Enums.PhotoStatus
+
+export type PhotoCategory = $Enums.PhotoCategory
+
+export const PhotoCategory: typeof $Enums.PhotoCategory
+
+export type AwardType = $Enums.AwardType
+
+export const AwardType: typeof $Enums.AwardType
+
+export type ForumCategorySlug = $Enums.ForumCategorySlug
+
+export const ForumCategorySlug: typeof $Enums.ForumCategorySlug
+
+/**
+ * ##  Prisma Client ʲˢ
+ *
+ * Type-safe database client for TypeScript & Node.js
+ * @example
+ * ```
+ * const prisma = new PrismaClient({
+ *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
+ * })
+ * // Fetch zero or more Users
+ * const users = await prisma.user.findMany()
+ * ```
+ *
+ *
+ * Read more in our [docs](https://pris.ly/d/client).
+ */
+export class PrismaClient<
+  ClientOptions extends Prisma.PrismaClientOptions = Prisma.PrismaClientOptions,
+  const U = 'log' extends keyof ClientOptions ? ClientOptions['log'] extends Array<Prisma.LogLevel | Prisma.LogDefinition> ? Prisma.GetEvents<ClientOptions['log']> : never : never,
+  ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+> {
+  [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['other'] }
+
+    /**
+   * ##  Prisma Client ʲˢ
+   *
+   * Type-safe database client for TypeScript & Node.js
+   * @example
+   * ```
+   * const prisma = new PrismaClient({
+   *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
+   * })
+   * // Fetch zero or more Users
+   * const users = await prisma.user.findMany()
+   * ```
+   *
+   *
+   * Read more in our [docs](https://pris.ly/d/client).
+   */
+
+  constructor(optionsArg ?: Prisma.Subset<ClientOptions, Prisma.PrismaClientOptions>);
+  $on<V extends U>(eventType: V, callback: (event: V extends 'query' ? Prisma.QueryEvent : Prisma.LogEvent) => void): PrismaClient;
+
+  /**
+   * Connect with the database
+   */
+  $connect(): $Utils.JsPromise<void>;
+
+  /**
+   * Disconnect from the database
+   */
+  $disconnect(): $Utils.JsPromise<void>;
+
+/**
+   * Executes a prepared raw query and returns the number of affected rows.
+   * @example
+   * ```
+   * const result = await prisma.$executeRaw`UPDATE User SET cool = ${true} WHERE email = ${'user@email.com'};`
+   * ```
+   *
+   * Read more in our [docs](https://pris.ly/d/raw-queries).
+   */
+  $executeRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<number>;
+
+  /**
+   * Executes a raw query and returns the number of affected rows.
+   * Susceptible to SQL injections, see documentation.
+   * @example
+   * ```
+   * const result = await prisma.$executeRawUnsafe('UPDATE User SET cool = $1 WHERE email = $2 ;', true, 'user@email.com')
+   * ```
+   *
+   * Read more in our [docs](https://pris.ly/d/raw-queries).
+   */
+  $executeRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<number>;
+
+  /**
+   * Performs a prepared raw query and returns the `SELECT` data.
+   * @example
+   * ```
+   * const result = await prisma.$queryRaw`SELECT * FROM User WHERE id = ${1} OR email = ${'user@email.com'};`
+   * ```
+   *
+   * Read more in our [docs](https://pris.ly/d/raw-queries).
+   */
+  $queryRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<T>;
+
+  /**
+   * Performs a raw query and returns the `SELECT` data.
+   * Susceptible to SQL injections, see documentation.
+   * @example
+   * ```
+   * const result = await prisma.$queryRawUnsafe('SELECT * FROM User WHERE id = $1 OR email = $2;', 1, 'user@email.com')
+   * ```
+   *
+   * Read more in our [docs](https://pris.ly/d/raw-queries).
+   */
+  $queryRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<T>;
+
+
+  /**
+   * Allows the running of a sequence of read/write operations that are guaranteed to either succeed or fail as a whole.
+   * @example
+   * ```
+   * const [george, bob, alice] = await prisma.$transaction([
+   *   prisma.user.create({ data: { name: 'George' } }),
+   *   prisma.user.create({ data: { name: 'Bob' } }),
+   *   prisma.user.create({ data: { name: 'Alice' } }),
+   * ])
+   * ```
+   * 
+   * Read more in our [docs](https://www.prisma.io/docs/orm/prisma-client/queries/transactions).
+   */
+  $transaction<P extends Prisma.PrismaPromise<any>[]>(arg: [...P], options?: { maxWait?: number, timeout?: number, isolationLevel?: Prisma.TransactionIsolationLevel }): $Utils.JsPromise<runtime.Types.Utils.UnwrapTuple<P>>
+
+  $transaction<R>(fn: (prisma: Omit<PrismaClient, runtime.ITXClientDenyList>) => $Utils.JsPromise<R>, options?: { maxWait?: number, timeout?: number, isolationLevel?: Prisma.TransactionIsolationLevel }): $Utils.JsPromise<R>
+
+  $extends: $Extensions.ExtendsHook<"extends", Prisma.TypeMapCb<ClientOptions>, ExtArgs, $Utils.Call<Prisma.TypeMapCb<ClientOptions>, {
+    extArgs: ExtArgs
+  }>>
+
+      /**
+   * `prisma.user`: Exposes CRUD operations for the **User** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Users
+    * const users = await prisma.user.findMany()
+    * ```
+    */
+  get user(): Prisma.UserDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.photo`: Exposes CRUD operations for the **Photo** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Photos
+    * const photos = await prisma.photo.findMany()
+    * ```
+    */
+  get photo(): Prisma.PhotoDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.vote`: Exposes CRUD operations for the **Vote** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Votes
+    * const votes = await prisma.vote.findMany()
+    * ```
+    */
+  get vote(): Prisma.VoteDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.comment`: Exposes CRUD operations for the **Comment** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Comments
+    * const comments = await prisma.comment.findMany()
+    * ```
+    */
+  get comment(): Prisma.CommentDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.award`: Exposes CRUD operations for the **Award** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Awards
+    * const awards = await prisma.award.findMany()
+    * ```
+    */
+  get award(): Prisma.AwardDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.forumCategory`: Exposes CRUD operations for the **ForumCategory** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ForumCategories
+    * const forumCategories = await prisma.forumCategory.findMany()
+    * ```
+    */
+  get forumCategory(): Prisma.ForumCategoryDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.forumThread`: Exposes CRUD operations for the **ForumThread** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ForumThreads
+    * const forumThreads = await prisma.forumThread.findMany()
+    * ```
+    */
+  get forumThread(): Prisma.ForumThreadDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.forumReply`: Exposes CRUD operations for the **ForumReply** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ForumReplies
+    * const forumReplies = await prisma.forumReply.findMany()
+    * ```
+    */
+  get forumReply(): Prisma.ForumReplyDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.collection`: Exposes CRUD operations for the **Collection** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Collections
+    * const collections = await prisma.collection.findMany()
+    * ```
+    */
+  get collection(): Prisma.CollectionDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.collectionItem`: Exposes CRUD operations for the **CollectionItem** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CollectionItems
+    * const collectionItems = await prisma.collectionItem.findMany()
+    * ```
+    */
+  get collectionItem(): Prisma.CollectionItemDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.follow`: Exposes CRUD operations for the **Follow** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Follows
+    * const follows = await prisma.follow.findMany()
+    * ```
+    */
+  get follow(): Prisma.FollowDelegate<ExtArgs, ClientOptions>;
+}
+
+export namespace Prisma {
+  export import DMMF = runtime.DMMF
+
+  export type PrismaPromise<T> = $Public.PrismaPromise<T>
+
+  /**
+   * Validator
+   */
+  export import validator = runtime.Public.validator
+
+  /**
+   * Prisma Errors
+   */
+  export import PrismaClientKnownRequestError = runtime.PrismaClientKnownRequestError
+  export import PrismaClientUnknownRequestError = runtime.PrismaClientUnknownRequestError
+  export import PrismaClientRustPanicError = runtime.PrismaClientRustPanicError
+  export import PrismaClientInitializationError = runtime.PrismaClientInitializationError
+  export import PrismaClientValidationError = runtime.PrismaClientValidationError
+
+  /**
+   * Re-export of sql-template-tag
+   */
+  export import sql = runtime.sqltag
+  export import empty = runtime.empty
+  export import join = runtime.join
+  export import raw = runtime.raw
+  export import Sql = runtime.Sql
+
+
+
+  /**
+   * Decimal.js
+   */
+  export import Decimal = runtime.Decimal
+
+  export type DecimalJsLike = runtime.DecimalJsLike
+
+  /**
+  * Extensions
+  */
+  export import Extension = $Extensions.UserArgs
+  export import getExtensionContext = runtime.Extensions.getExtensionContext
+  export import Args = $Public.Args
+  export import Payload = $Public.Payload
+  export import Result = $Public.Result
+  export import Exact = $Public.Exact
+
+  /**
+   * Prisma Client JS version: 7.8.0
+   * Query Engine version: 3c6e192761c0362d496ed980de936e2f3cebcd3a
+   */
+  export type PrismaVersion = {
+    client: string
+    engine: string
+  }
+
+  export const prismaVersion: PrismaVersion
+
+  /**
+   * Utility Types
+   */
+
+
+  export import Bytes = runtime.Bytes
+  export import JsonObject = runtime.JsonObject
+  export import JsonArray = runtime.JsonArray
+  export import JsonValue = runtime.JsonValue
+  export import InputJsonObject = runtime.InputJsonObject
+  export import InputJsonArray = runtime.InputJsonArray
+  export import InputJsonValue = runtime.InputJsonValue
+
+  /**
+   * Types of the values used to represent different kinds of `null` values when working with JSON fields.
+   *
+   * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
+   */
+  namespace NullTypes {
+    /**
+    * Type of `Prisma.DbNull`.
+    *
+    * You cannot use other instances of this class. Please use the `Prisma.DbNull` value.
+    *
+    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
+    */
+    class DbNull {
+      private DbNull: never
+      private constructor()
+    }
+
+    /**
+    * Type of `Prisma.JsonNull`.
+    *
+    * You cannot use other instances of this class. Please use the `Prisma.JsonNull` value.
+    *
+    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
+    */
+    class JsonNull {
+      private JsonNull: never
+      private constructor()
+    }
+
+    /**
+    * Type of `Prisma.AnyNull`.
+    *
+    * You cannot use other instances of this class. Please use the `Prisma.AnyNull` value.
+    *
+    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
+    */
+    class AnyNull {
+      private AnyNull: never
+      private constructor()
+    }
+  }
+
+  /**
+   * Helper for filtering JSON entries that have `null` on the database (empty on the db)
+   *
+   * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
+   */
+  export const DbNull: NullTypes.DbNull
+
+  /**
+   * Helper for filtering JSON entries that have JSON `null` values (not empty on the db)
+   *
+   * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
+   */
+  export const JsonNull: NullTypes.JsonNull
+
+  /**
+   * Helper for filtering JSON entries that are `Prisma.DbNull` or `Prisma.JsonNull`
+   *
+   * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
+   */
+  export const AnyNull: NullTypes.AnyNull
+
+  type SelectAndInclude = {
+    select: any
+    include: any
+  }
+
+  type SelectAndOmit = {
+    select: any
+    omit: any
+  }
+
+  /**
+   * Get the type of the value, that the Promise holds.
+   */
+  export type PromiseType<T extends PromiseLike<any>> = T extends PromiseLike<infer U> ? U : T;
+
+  /**
+   * Get the return type of a function which returns a Promise.
+   */
+  export type PromiseReturnType<T extends (...args: any) => $Utils.JsPromise<any>> = PromiseType<ReturnType<T>>
+
+  /**
+   * From T, pick a set of properties whose keys are in the union K
+   */
+  type Prisma__Pick<T, K extends keyof T> = {
+      [P in K]: T[P];
+  };
+
+
+  export type Enumerable<T> = T | Array<T>;
+
+  export type RequiredKeys<T> = {
+    [K in keyof T]-?: {} extends Prisma__Pick<T, K> ? never : K
+  }[keyof T]
+
+  export type TruthyKeys<T> = keyof {
+    [K in keyof T as T[K] extends false | undefined | null ? never : K]: K
+  }
+
+  export type TrueKeys<T> = TruthyKeys<Prisma__Pick<T, RequiredKeys<T>>>
+
+  /**
+   * Subset
+   * @desc From `T` pick properties that exist in `U`. Simple version of Intersection
+   */
+  export type Subset<T, U> = {
+    [key in keyof T]: key extends keyof U ? T[key] : never;
+  };
+
+  /**
+   * SelectSubset
+   * @desc From `T` pick properties that exist in `U`. Simple version of Intersection.
+   * Additionally, it validates, if both select and include are present. If the case, it errors.
+   */
+  export type SelectSubset<T, U> = {
+    [key in keyof T]: key extends keyof U ? T[key] : never
+  } &
+    (T extends SelectAndInclude
+      ? 'Please either choose `select` or `include`.'
+      : T extends SelectAndOmit
+        ? 'Please either choose `select` or `omit`.'
+        : {})
+
+  /**
+   * Subset + Intersection
+   * @desc From `T` pick properties that exist in `U` and intersect `K`
+   */
+  export type SubsetIntersection<T, U, K> = {
+    [key in keyof T]: key extends keyof U ? T[key] : never
+  } &
+    K
+
+  type Without<T, U> = { [P in Exclude<keyof T, keyof U>]?: never };
+
+  /**
+   * XOR is needed to have a real mutually exclusive union type
+   * https://stackoverflow.com/questions/42123407/does-typescript-support-mutually-exclusive-types
+   */
+  type XOR<T, U> =
+    T extends object ?
+    U extends object ?
+      (Without<T, U> & U) | (Without<U, T> & T)
+    : U : T
+
+
+  /**
+   * Is T a Record?
+   */
+  type IsObject<T extends any> = T extends Array<any>
+  ? False
+  : T extends Date
+  ? False
+  : T extends Uint8Array
+  ? False
+  : T extends BigInt
+  ? False
+  : T extends object
+  ? True
+  : False
+
+
+  /**
+   * If it's T[], return T
+   */
+  export type UnEnumerate<T extends unknown> = T extends Array<infer U> ? U : T
+
+  /**
+   * From ts-toolbelt
+   */
+
+  type __Either<O extends object, K extends Key> = Omit<O, K> &
+    {
+      // Merge all but K
+      [P in K]: Prisma__Pick<O, P & keyof O> // With K possibilities
+    }[K]
+
+  type EitherStrict<O extends object, K extends Key> = Strict<__Either<O, K>>
+
+  type EitherLoose<O extends object, K extends Key> = ComputeRaw<__Either<O, K>>
+
+  type _Either<
+    O extends object,
+    K extends Key,
+    strict extends Boolean
+  > = {
+    1: EitherStrict<O, K>
+    0: EitherLoose<O, K>
+  }[strict]
+
+  type Either<
+    O extends object,
+    K extends Key,
+    strict extends Boolean = 1
+  > = O extends unknown ? _Either<O, K, strict> : never
+
+  export type Union = any
+
+  type PatchUndefined<O extends object, O1 extends object> = {
+    [K in keyof O]: O[K] extends undefined ? At<O1, K> : O[K]
+  } & {}
+
+  /** Helper Types for "Merge" **/
+  export type IntersectOf<U extends Union> = (
+    U extends unknown ? (k: U) => void : never
+  ) extends (k: infer I) => void
+    ? I
+    : never
+
+  export type Overwrite<O extends object, O1 extends object> = {
+      [K in keyof O]: K extends keyof O1 ? O1[K] : O[K];
+  } & {};
+
+  type _Merge<U extends object> = IntersectOf<Overwrite<U, {
+      [K in keyof U]-?: At<U, K>;
+  }>>;
+
+  type Key = string | number | symbol;
+  type AtBasic<O extends object, K extends Key> = K extends keyof O ? O[K] : never;
+  type AtStrict<O extends object, K extends Key> = O[K & keyof O];
+  type AtLoose<O extends object, K extends Key> = O extends unknown ? AtStrict<O, K> : never;
+  export type At<O extends object, K extends Key, strict extends Boolean = 1> = {
+      1: AtStrict<O, K>;
+      0: AtLoose<O, K>;
+  }[strict];
+
+  export type ComputeRaw<A extends any> = A extends Function ? A : {
+    [K in keyof A]: A[K];
+  } & {};
+
+  export type OptionalFlat<O> = {
+    [K in keyof O]?: O[K];
+  } & {};
+
+  type _Record<K extends keyof any, T> = {
+    [P in K]: T;
+  };
+
+  // cause typescript not to expand types and preserve names
+  type NoExpand<T> = T extends unknown ? T : never;
+
+  // this type assumes the passed object is entirely optional
+  type AtLeast<O extends object, K extends string> = NoExpand<
+    O extends unknown
+    ? | (K extends keyof O ? { [P in K]: O[P] } & O : O)
+      | {[P in keyof O as P extends K ? P : never]-?: O[P]} & O
+    : never>;
+
+  type _Strict<U, _U = U> = U extends unknown ? U & OptionalFlat<_Record<Exclude<Keys<_U>, keyof U>, never>> : never;
+
+  export type Strict<U extends object> = ComputeRaw<_Strict<U>>;
+  /** End Helper Types for "Merge" **/
+
+  export type Merge<U extends object> = ComputeRaw<_Merge<Strict<U>>>;
+
+  /**
+  A [[Boolean]]
+  */
+  export type Boolean = True | False
+
+  // /**
+  // 1
+  // */
+  export type True = 1
+
+  /**
+  0
+  */
+  export type False = 0
+
+  export type Not<B extends Boolean> = {
+    0: 1
+    1: 0
+  }[B]
+
+  export type Extends<A1 extends any, A2 extends any> = [A1] extends [never]
+    ? 0 // anything `never` is false
+    : A1 extends A2
+    ? 1
+    : 0
+
+  export type Has<U extends Union, U1 extends Union> = Not<
+    Extends<Exclude<U1, U>, U1>
+  >
+
+  export type Or<B1 extends Boolean, B2 extends Boolean> = {
+    0: {
+      0: 0
+      1: 1
+    }
+    1: {
+      0: 1
+      1: 1
+    }
+  }[B1][B2]
+
+  export type Keys<U extends Union> = U extends unknown ? keyof U : never
+
+  type Cast<A, B> = A extends B ? A : B;
+
+  export const type: unique symbol;
+
+
+
+  /**
+   * Used by group by
+   */
+
+  export type GetScalarType<T, O> = O extends object ? {
+    [P in keyof T]: P extends keyof O
+      ? O[P]
+      : never
+  } : never
+
+  type FieldPaths<
+    T,
+    U = Omit<T, '_avg' | '_sum' | '_count' | '_min' | '_max'>
+  > = IsObject<T> extends True ? U : T
+
+  type GetHavingFields<T> = {
+    [K in keyof T]: Or<
+      Or<Extends<'OR', K>, Extends<'AND', K>>,
+      Extends<'NOT', K>
+    > extends True
+      ? // infer is only needed to not hit TS limit
+        // based on the brilliant idea of Pierre-Antoine Mills
+        // https://github.com/microsoft/TypeScript/issues/30188#issuecomment-478938437
+        T[K] extends infer TK
+        ? GetHavingFields<UnEnumerate<TK> extends object ? Merge<UnEnumerate<TK>> : never>
+        : never
+      : {} extends FieldPaths<T[K]>
+      ? never
+      : K
+  }[keyof T]
+
+  /**
+   * Convert tuple to union
+   */
+  type _TupleToUnion<T> = T extends (infer E)[] ? E : never
+  type TupleToUnion<K extends readonly any[]> = _TupleToUnion<K>
+  type MaybeTupleToUnion<T> = T extends any[] ? TupleToUnion<T> : T
+
+  /**
+   * Like `Pick`, but additionally can also accept an array of keys
+   */
+  type PickEnumerable<T, K extends Enumerable<keyof T> | keyof T> = Prisma__Pick<T, MaybeTupleToUnion<K>>
+
+  /**
+   * Exclude all keys with underscores
+   */
+  type ExcludeUnderscoreKeys<T extends string> = T extends `_${string}` ? never : T
+
+
+  export type FieldRef<Model, FieldType> = runtime.FieldRef<Model, FieldType>
+
+  type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRef<Model, FieldType>
+
+
+  export const ModelName: {
+    User: 'User',
+    Photo: 'Photo',
+    Vote: 'Vote',
+    Comment: 'Comment',
+    Award: 'Award',
+    ForumCategory: 'ForumCategory',
+    ForumThread: 'ForumThread',
+    ForumReply: 'ForumReply',
+    Collection: 'Collection',
+    CollectionItem: 'CollectionItem',
+    Follow: 'Follow'
+  };
+
+  export type ModelName = (typeof ModelName)[keyof typeof ModelName]
+
+
+
+  interface TypeMapCb<ClientOptions = {}> extends $Utils.Fn<{extArgs: $Extensions.InternalArgs }, $Utils.Record<string, any>> {
+    returns: Prisma.TypeMap<this['params']['extArgs'], ClientOptions extends { omit: infer OmitOptions } ? OmitOptions : {}>
+  }
+
+  export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> = {
+    globalOmitOptions: {
+      omit: GlobalOmitOptions
+    }
+    meta: {
+      modelProps: "user" | "photo" | "vote" | "comment" | "award" | "forumCategory" | "forumThread" | "forumReply" | "collection" | "collectionItem" | "follow"
+      txIsolationLevel: Prisma.TransactionIsolationLevel
+    }
+    model: {
+      User: {
+        payload: Prisma.$UserPayload<ExtArgs>
+        fields: Prisma.UserFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.UserFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.UserFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+          }
+          findFirst: {
+            args: Prisma.UserFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.UserFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+          }
+          findMany: {
+            args: Prisma.UserFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload>[]
+          }
+          create: {
+            args: Prisma.UserCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+          }
+          createMany: {
+            args: Prisma.UserCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.UserCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload>[]
+          }
+          delete: {
+            args: Prisma.UserDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+          }
+          update: {
+            args: Prisma.UserUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+          }
+          deleteMany: {
+            args: Prisma.UserDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.UserUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.UserUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload>[]
+          }
+          upsert: {
+            args: Prisma.UserUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+          }
+          aggregate: {
+            args: Prisma.UserAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUser>
+          }
+          groupBy: {
+            args: Prisma.UserGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UserGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.UserCountArgs<ExtArgs>
+            result: $Utils.Optional<UserCountAggregateOutputType> | number
+          }
+        }
+      }
+      Photo: {
+        payload: Prisma.$PhotoPayload<ExtArgs>
+        fields: Prisma.PhotoFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PhotoFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PhotoPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PhotoFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PhotoPayload>
+          }
+          findFirst: {
+            args: Prisma.PhotoFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PhotoPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PhotoFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PhotoPayload>
+          }
+          findMany: {
+            args: Prisma.PhotoFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PhotoPayload>[]
+          }
+          create: {
+            args: Prisma.PhotoCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PhotoPayload>
+          }
+          createMany: {
+            args: Prisma.PhotoCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PhotoCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PhotoPayload>[]
+          }
+          delete: {
+            args: Prisma.PhotoDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PhotoPayload>
+          }
+          update: {
+            args: Prisma.PhotoUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PhotoPayload>
+          }
+          deleteMany: {
+            args: Prisma.PhotoDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PhotoUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.PhotoUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PhotoPayload>[]
+          }
+          upsert: {
+            args: Prisma.PhotoUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PhotoPayload>
+          }
+          aggregate: {
+            args: Prisma.PhotoAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePhoto>
+          }
+          groupBy: {
+            args: Prisma.PhotoGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PhotoGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PhotoCountArgs<ExtArgs>
+            result: $Utils.Optional<PhotoCountAggregateOutputType> | number
+          }
+        }
+      }
+      Vote: {
+        payload: Prisma.$VotePayload<ExtArgs>
+        fields: Prisma.VoteFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.VoteFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VotePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.VoteFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VotePayload>
+          }
+          findFirst: {
+            args: Prisma.VoteFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VotePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.VoteFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VotePayload>
+          }
+          findMany: {
+            args: Prisma.VoteFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VotePayload>[]
+          }
+          create: {
+            args: Prisma.VoteCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VotePayload>
+          }
+          createMany: {
+            args: Prisma.VoteCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.VoteCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VotePayload>[]
+          }
+          delete: {
+            args: Prisma.VoteDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VotePayload>
+          }
+          update: {
+            args: Prisma.VoteUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VotePayload>
+          }
+          deleteMany: {
+            args: Prisma.VoteDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.VoteUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.VoteUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VotePayload>[]
+          }
+          upsert: {
+            args: Prisma.VoteUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VotePayload>
+          }
+          aggregate: {
+            args: Prisma.VoteAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateVote>
+          }
+          groupBy: {
+            args: Prisma.VoteGroupByArgs<ExtArgs>
+            result: $Utils.Optional<VoteGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.VoteCountArgs<ExtArgs>
+            result: $Utils.Optional<VoteCountAggregateOutputType> | number
+          }
+        }
+      }
+      Comment: {
+        payload: Prisma.$CommentPayload<ExtArgs>
+        fields: Prisma.CommentFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CommentFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CommentFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentPayload>
+          }
+          findFirst: {
+            args: Prisma.CommentFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CommentFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentPayload>
+          }
+          findMany: {
+            args: Prisma.CommentFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentPayload>[]
+          }
+          create: {
+            args: Prisma.CommentCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentPayload>
+          }
+          createMany: {
+            args: Prisma.CommentCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CommentCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentPayload>[]
+          }
+          delete: {
+            args: Prisma.CommentDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentPayload>
+          }
+          update: {
+            args: Prisma.CommentUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentPayload>
+          }
+          deleteMany: {
+            args: Prisma.CommentDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CommentUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CommentUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentPayload>[]
+          }
+          upsert: {
+            args: Prisma.CommentUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentPayload>
+          }
+          aggregate: {
+            args: Prisma.CommentAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateComment>
+          }
+          groupBy: {
+            args: Prisma.CommentGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CommentGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CommentCountArgs<ExtArgs>
+            result: $Utils.Optional<CommentCountAggregateOutputType> | number
+          }
+        }
+      }
+      Award: {
+        payload: Prisma.$AwardPayload<ExtArgs>
+        fields: Prisma.AwardFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AwardFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AwardPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AwardFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AwardPayload>
+          }
+          findFirst: {
+            args: Prisma.AwardFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AwardPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AwardFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AwardPayload>
+          }
+          findMany: {
+            args: Prisma.AwardFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AwardPayload>[]
+          }
+          create: {
+            args: Prisma.AwardCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AwardPayload>
+          }
+          createMany: {
+            args: Prisma.AwardCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.AwardCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AwardPayload>[]
+          }
+          delete: {
+            args: Prisma.AwardDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AwardPayload>
+          }
+          update: {
+            args: Prisma.AwardUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AwardPayload>
+          }
+          deleteMany: {
+            args: Prisma.AwardDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AwardUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.AwardUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AwardPayload>[]
+          }
+          upsert: {
+            args: Prisma.AwardUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AwardPayload>
+          }
+          aggregate: {
+            args: Prisma.AwardAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAward>
+          }
+          groupBy: {
+            args: Prisma.AwardGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AwardGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AwardCountArgs<ExtArgs>
+            result: $Utils.Optional<AwardCountAggregateOutputType> | number
+          }
+        }
+      }
+      ForumCategory: {
+        payload: Prisma.$ForumCategoryPayload<ExtArgs>
+        fields: Prisma.ForumCategoryFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ForumCategoryFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumCategoryPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ForumCategoryFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumCategoryPayload>
+          }
+          findFirst: {
+            args: Prisma.ForumCategoryFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumCategoryPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ForumCategoryFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumCategoryPayload>
+          }
+          findMany: {
+            args: Prisma.ForumCategoryFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumCategoryPayload>[]
+          }
+          create: {
+            args: Prisma.ForumCategoryCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumCategoryPayload>
+          }
+          createMany: {
+            args: Prisma.ForumCategoryCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ForumCategoryCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumCategoryPayload>[]
+          }
+          delete: {
+            args: Prisma.ForumCategoryDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumCategoryPayload>
+          }
+          update: {
+            args: Prisma.ForumCategoryUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumCategoryPayload>
+          }
+          deleteMany: {
+            args: Prisma.ForumCategoryDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ForumCategoryUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ForumCategoryUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumCategoryPayload>[]
+          }
+          upsert: {
+            args: Prisma.ForumCategoryUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumCategoryPayload>
+          }
+          aggregate: {
+            args: Prisma.ForumCategoryAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateForumCategory>
+          }
+          groupBy: {
+            args: Prisma.ForumCategoryGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ForumCategoryGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ForumCategoryCountArgs<ExtArgs>
+            result: $Utils.Optional<ForumCategoryCountAggregateOutputType> | number
+          }
+        }
+      }
+      ForumThread: {
+        payload: Prisma.$ForumThreadPayload<ExtArgs>
+        fields: Prisma.ForumThreadFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ForumThreadFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumThreadPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ForumThreadFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumThreadPayload>
+          }
+          findFirst: {
+            args: Prisma.ForumThreadFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumThreadPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ForumThreadFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumThreadPayload>
+          }
+          findMany: {
+            args: Prisma.ForumThreadFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumThreadPayload>[]
+          }
+          create: {
+            args: Prisma.ForumThreadCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumThreadPayload>
+          }
+          createMany: {
+            args: Prisma.ForumThreadCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ForumThreadCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumThreadPayload>[]
+          }
+          delete: {
+            args: Prisma.ForumThreadDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumThreadPayload>
+          }
+          update: {
+            args: Prisma.ForumThreadUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumThreadPayload>
+          }
+          deleteMany: {
+            args: Prisma.ForumThreadDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ForumThreadUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ForumThreadUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumThreadPayload>[]
+          }
+          upsert: {
+            args: Prisma.ForumThreadUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumThreadPayload>
+          }
+          aggregate: {
+            args: Prisma.ForumThreadAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateForumThread>
+          }
+          groupBy: {
+            args: Prisma.ForumThreadGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ForumThreadGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ForumThreadCountArgs<ExtArgs>
+            result: $Utils.Optional<ForumThreadCountAggregateOutputType> | number
+          }
+        }
+      }
+      ForumReply: {
+        payload: Prisma.$ForumReplyPayload<ExtArgs>
+        fields: Prisma.ForumReplyFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ForumReplyFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumReplyPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ForumReplyFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumReplyPayload>
+          }
+          findFirst: {
+            args: Prisma.ForumReplyFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumReplyPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ForumReplyFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumReplyPayload>
+          }
+          findMany: {
+            args: Prisma.ForumReplyFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumReplyPayload>[]
+          }
+          create: {
+            args: Prisma.ForumReplyCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumReplyPayload>
+          }
+          createMany: {
+            args: Prisma.ForumReplyCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ForumReplyCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumReplyPayload>[]
+          }
+          delete: {
+            args: Prisma.ForumReplyDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumReplyPayload>
+          }
+          update: {
+            args: Prisma.ForumReplyUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumReplyPayload>
+          }
+          deleteMany: {
+            args: Prisma.ForumReplyDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ForumReplyUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ForumReplyUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumReplyPayload>[]
+          }
+          upsert: {
+            args: Prisma.ForumReplyUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumReplyPayload>
+          }
+          aggregate: {
+            args: Prisma.ForumReplyAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateForumReply>
+          }
+          groupBy: {
+            args: Prisma.ForumReplyGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ForumReplyGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ForumReplyCountArgs<ExtArgs>
+            result: $Utils.Optional<ForumReplyCountAggregateOutputType> | number
+          }
+        }
+      }
+      Collection: {
+        payload: Prisma.$CollectionPayload<ExtArgs>
+        fields: Prisma.CollectionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CollectionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CollectionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionPayload>
+          }
+          findFirst: {
+            args: Prisma.CollectionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CollectionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionPayload>
+          }
+          findMany: {
+            args: Prisma.CollectionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionPayload>[]
+          }
+          create: {
+            args: Prisma.CollectionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionPayload>
+          }
+          createMany: {
+            args: Prisma.CollectionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CollectionCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionPayload>[]
+          }
+          delete: {
+            args: Prisma.CollectionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionPayload>
+          }
+          update: {
+            args: Prisma.CollectionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionPayload>
+          }
+          deleteMany: {
+            args: Prisma.CollectionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CollectionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CollectionUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionPayload>[]
+          }
+          upsert: {
+            args: Prisma.CollectionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionPayload>
+          }
+          aggregate: {
+            args: Prisma.CollectionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCollection>
+          }
+          groupBy: {
+            args: Prisma.CollectionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CollectionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CollectionCountArgs<ExtArgs>
+            result: $Utils.Optional<CollectionCountAggregateOutputType> | number
+          }
+        }
+      }
+      CollectionItem: {
+        payload: Prisma.$CollectionItemPayload<ExtArgs>
+        fields: Prisma.CollectionItemFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CollectionItemFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionItemPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CollectionItemFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionItemPayload>
+          }
+          findFirst: {
+            args: Prisma.CollectionItemFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionItemPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CollectionItemFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionItemPayload>
+          }
+          findMany: {
+            args: Prisma.CollectionItemFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionItemPayload>[]
+          }
+          create: {
+            args: Prisma.CollectionItemCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionItemPayload>
+          }
+          createMany: {
+            args: Prisma.CollectionItemCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CollectionItemCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionItemPayload>[]
+          }
+          delete: {
+            args: Prisma.CollectionItemDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionItemPayload>
+          }
+          update: {
+            args: Prisma.CollectionItemUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionItemPayload>
+          }
+          deleteMany: {
+            args: Prisma.CollectionItemDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CollectionItemUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CollectionItemUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionItemPayload>[]
+          }
+          upsert: {
+            args: Prisma.CollectionItemUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionItemPayload>
+          }
+          aggregate: {
+            args: Prisma.CollectionItemAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCollectionItem>
+          }
+          groupBy: {
+            args: Prisma.CollectionItemGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CollectionItemGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CollectionItemCountArgs<ExtArgs>
+            result: $Utils.Optional<CollectionItemCountAggregateOutputType> | number
+          }
+        }
+      }
+      Follow: {
+        payload: Prisma.$FollowPayload<ExtArgs>
+        fields: Prisma.FollowFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.FollowFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FollowPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.FollowFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FollowPayload>
+          }
+          findFirst: {
+            args: Prisma.FollowFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FollowPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.FollowFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FollowPayload>
+          }
+          findMany: {
+            args: Prisma.FollowFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FollowPayload>[]
+          }
+          create: {
+            args: Prisma.FollowCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FollowPayload>
+          }
+          createMany: {
+            args: Prisma.FollowCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.FollowCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FollowPayload>[]
+          }
+          delete: {
+            args: Prisma.FollowDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FollowPayload>
+          }
+          update: {
+            args: Prisma.FollowUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FollowPayload>
+          }
+          deleteMany: {
+            args: Prisma.FollowDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.FollowUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.FollowUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FollowPayload>[]
+          }
+          upsert: {
+            args: Prisma.FollowUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FollowPayload>
+          }
+          aggregate: {
+            args: Prisma.FollowAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFollow>
+          }
+          groupBy: {
+            args: Prisma.FollowGroupByArgs<ExtArgs>
+            result: $Utils.Optional<FollowGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.FollowCountArgs<ExtArgs>
+            result: $Utils.Optional<FollowCountAggregateOutputType> | number
+          }
+        }
+      }
+    }
+  } & {
+    other: {
+      payload: any
+      operations: {
+        $executeRaw: {
+          args: [query: TemplateStringsArray | Prisma.Sql, ...values: any[]],
+          result: any
+        }
+        $executeRawUnsafe: {
+          args: [query: string, ...values: any[]],
+          result: any
+        }
+        $queryRaw: {
+          args: [query: TemplateStringsArray | Prisma.Sql, ...values: any[]],
+          result: any
+        }
+        $queryRawUnsafe: {
+          args: [query: string, ...values: any[]],
+          result: any
+        }
+      }
+    }
+  }
+  export const defineExtension: $Extensions.ExtendsHook<"define", Prisma.TypeMapCb, $Extensions.DefaultArgs>
+  export type DefaultPrismaClient = PrismaClient
+  export type ErrorFormat = 'pretty' | 'colorless' | 'minimal'
+  export interface PrismaClientOptions {
+    /**
+     * @default "colorless"
+     */
+    errorFormat?: ErrorFormat
+    /**
+     * @example
+     * ```
+     * // Shorthand for `emit: 'stdout'`
+     * log: ['query', 'info', 'warn', 'error']
+     * 
+     * // Emit as events only
+     * log: [
+     *   { emit: 'event', level: 'query' },
+     *   { emit: 'event', level: 'info' },
+     *   { emit: 'event', level: 'warn' }
+     *   { emit: 'event', level: 'error' }
+     * ]
+     * 
+     * / Emit as events and log to stdout
+     * og: [
+     *  { emit: 'stdout', level: 'query' },
+     *  { emit: 'stdout', level: 'info' },
+     *  { emit: 'stdout', level: 'warn' }
+     *  { emit: 'stdout', level: 'error' }
+     * 
+     * ```
+     * Read more in our [docs](https://pris.ly/d/logging).
+     */
+    log?: (LogLevel | LogDefinition)[]
+    /**
+     * The default values for transactionOptions
+     * maxWait ?= 2000
+     * timeout ?= 5000
+     */
+    transactionOptions?: {
+      maxWait?: number
+      timeout?: number
+      isolationLevel?: Prisma.TransactionIsolationLevel
+    }
+    /**
+     * Instance of a Driver Adapter, e.g., like one provided by `@prisma/adapter-planetscale`
+     */
+    adapter?: runtime.SqlDriverAdapterFactory
+    /**
+     * Prisma Accelerate URL allowing the client to connect through Accelerate instead of a direct database.
+     */
+    accelerateUrl?: string
+    /**
+     * Global configuration for omitting model fields by default.
+     * 
+     * @example
+     * ```
+     * const prisma = new PrismaClient({
+     *   omit: {
+     *     user: {
+     *       password: true
+     *     }
+     *   }
+     * })
+     * ```
+     */
+    omit?: Prisma.GlobalOmitConfig
+    /**
+     * SQL commenter plugins that add metadata to SQL queries as comments.
+     * Comments follow the sqlcommenter format: https://google.github.io/sqlcommenter/
+     * 
+     * @example
+     * ```
+     * const prisma = new PrismaClient({
+     *   adapter,
+     *   comments: [
+     *     traceContext(),
+     *     queryInsights(),
+     *   ],
+     * })
+     * ```
+     */
+    comments?: runtime.SqlCommenterPlugin[]
+  }
+  export type GlobalOmitConfig = {
+    user?: UserOmit
+    photo?: PhotoOmit
+    vote?: VoteOmit
+    comment?: CommentOmit
+    award?: AwardOmit
+    forumCategory?: ForumCategoryOmit
+    forumThread?: ForumThreadOmit
+    forumReply?: ForumReplyOmit
+    collection?: CollectionOmit
+    collectionItem?: CollectionItemOmit
+    follow?: FollowOmit
+  }
+
+  /* Types for Logging */
+  export type LogLevel = 'info' | 'query' | 'warn' | 'error'
+  export type LogDefinition = {
+    level: LogLevel
+    emit: 'stdout' | 'event'
+  }
+
+  export type CheckIsLogLevel<T> = T extends LogLevel ? T : never;
+
+  export type GetLogType<T> = CheckIsLogLevel<
+    T extends LogDefinition ? T['level'] : T
+  >;
+
+  export type GetEvents<T extends any[]> = T extends Array<LogLevel | LogDefinition>
+    ? GetLogType<T[number]>
+    : never;
+
+  export type QueryEvent = {
+    timestamp: Date
+    query: string
+    params: string
+    duration: number
+    target: string
+  }
+
+  export type LogEvent = {
+    timestamp: Date
+    message: string
+    target: string
+  }
+  /* End Types for Logging */
+
+
+  export type PrismaAction =
+    | 'findUnique'
+    | 'findUniqueOrThrow'
+    | 'findMany'
+    | 'findFirst'
+    | 'findFirstOrThrow'
+    | 'create'
+    | 'createMany'
+    | 'createManyAndReturn'
+    | 'update'
+    | 'updateMany'
+    | 'updateManyAndReturn'
+    | 'upsert'
+    | 'delete'
+    | 'deleteMany'
+    | 'executeRaw'
+    | 'queryRaw'
+    | 'aggregate'
+    | 'count'
+    | 'runCommandRaw'
+    | 'findRaw'
+    | 'groupBy'
+
+  // tested in getLogLevel.test.ts
+  export function getLogLevel(log: Array<LogLevel | LogDefinition>): LogLevel | undefined;
+
+  /**
+   * `PrismaClient` proxy available in interactive transactions.
+   */
+  export type TransactionClient = Omit<Prisma.DefaultPrismaClient, runtime.ITXClientDenyList>
+
+  export type Datasource = {
+    url?: string
+  }
+
+  /**
+   * Count Types
+   */
+
+
+  /**
+   * Count Type UserCountOutputType
+   */
+
+  export type UserCountOutputType = {
+    photos: number
+    votes: number
+    comments: number
+    awards: number
+    forumThreads: number
+    forumReplies: number
+    collections: number
+    followers: number
+    following: number
+  }
+
+  export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    photos?: boolean | UserCountOutputTypeCountPhotosArgs
+    votes?: boolean | UserCountOutputTypeCountVotesArgs
+    comments?: boolean | UserCountOutputTypeCountCommentsArgs
+    awards?: boolean | UserCountOutputTypeCountAwardsArgs
+    forumThreads?: boolean | UserCountOutputTypeCountForumThreadsArgs
+    forumReplies?: boolean | UserCountOutputTypeCountForumRepliesArgs
+    collections?: boolean | UserCountOutputTypeCountCollectionsArgs
+    followers?: boolean | UserCountOutputTypeCountFollowersArgs
+    following?: boolean | UserCountOutputTypeCountFollowingArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCountOutputType
+     */
+    select?: UserCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountPhotosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PhotoWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountVotesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VoteWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountCommentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CommentWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountAwardsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AwardWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountForumThreadsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ForumThreadWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountForumRepliesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ForumReplyWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountCollectionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CollectionWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountFollowersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FollowWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountFollowingArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FollowWhereInput
+  }
+
+
+  /**
+   * Count Type PhotoCountOutputType
+   */
+
+  export type PhotoCountOutputType = {
+    votes: number
+    comments: number
+    awards: number
+    forumReplies: number
+    collectionItems: number
+  }
+
+  export type PhotoCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    votes?: boolean | PhotoCountOutputTypeCountVotesArgs
+    comments?: boolean | PhotoCountOutputTypeCountCommentsArgs
+    awards?: boolean | PhotoCountOutputTypeCountAwardsArgs
+    forumReplies?: boolean | PhotoCountOutputTypeCountForumRepliesArgs
+    collectionItems?: boolean | PhotoCountOutputTypeCountCollectionItemsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * PhotoCountOutputType without action
+   */
+  export type PhotoCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PhotoCountOutputType
+     */
+    select?: PhotoCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * PhotoCountOutputType without action
+   */
+  export type PhotoCountOutputTypeCountVotesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VoteWhereInput
+  }
+
+  /**
+   * PhotoCountOutputType without action
+   */
+  export type PhotoCountOutputTypeCountCommentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CommentWhereInput
+  }
+
+  /**
+   * PhotoCountOutputType without action
+   */
+  export type PhotoCountOutputTypeCountAwardsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AwardWhereInput
+  }
+
+  /**
+   * PhotoCountOutputType without action
+   */
+  export type PhotoCountOutputTypeCountForumRepliesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ForumReplyWhereInput
+  }
+
+  /**
+   * PhotoCountOutputType without action
+   */
+  export type PhotoCountOutputTypeCountCollectionItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CollectionItemWhereInput
+  }
+
+
+  /**
+   * Count Type ForumCategoryCountOutputType
+   */
+
+  export type ForumCategoryCountOutputType = {
+    threads: number
+  }
+
+  export type ForumCategoryCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    threads?: boolean | ForumCategoryCountOutputTypeCountThreadsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ForumCategoryCountOutputType without action
+   */
+  export type ForumCategoryCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumCategoryCountOutputType
+     */
+    select?: ForumCategoryCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ForumCategoryCountOutputType without action
+   */
+  export type ForumCategoryCountOutputTypeCountThreadsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ForumThreadWhereInput
+  }
+
+
+  /**
+   * Count Type ForumThreadCountOutputType
+   */
+
+  export type ForumThreadCountOutputType = {
+    replies: number
+  }
+
+  export type ForumThreadCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    replies?: boolean | ForumThreadCountOutputTypeCountRepliesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ForumThreadCountOutputType without action
+   */
+  export type ForumThreadCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumThreadCountOutputType
+     */
+    select?: ForumThreadCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ForumThreadCountOutputType without action
+   */
+  export type ForumThreadCountOutputTypeCountRepliesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ForumReplyWhereInput
+  }
+
+
+  /**
+   * Count Type CollectionCountOutputType
+   */
+
+  export type CollectionCountOutputType = {
+    items: number
+  }
+
+  export type CollectionCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    items?: boolean | CollectionCountOutputTypeCountItemsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CollectionCountOutputType without action
+   */
+  export type CollectionCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionCountOutputType
+     */
+    select?: CollectionCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CollectionCountOutputType without action
+   */
+  export type CollectionCountOutputTypeCountItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CollectionItemWhereInput
+  }
+
+
+  /**
+   * Models
+   */
+
+  /**
+   * Model User
+   */
+
+  export type AggregateUser = {
+    _count: UserCountAggregateOutputType | null
+    _min: UserMinAggregateOutputType | null
+    _max: UserMaxAggregateOutputType | null
+  }
+
+  export type UserMinAggregateOutputType = {
+    id: string | null
+    email: string | null
+    username: string | null
+    name: string | null
+    password: string | null
+    role: $Enums.UserRole | null
+    status: $Enums.UserStatus | null
+    avatarUrl: string | null
+    bio: string | null
+    location: string | null
+    websiteUrl: string | null
+    instagramUrl: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type UserMaxAggregateOutputType = {
+    id: string | null
+    email: string | null
+    username: string | null
+    name: string | null
+    password: string | null
+    role: $Enums.UserRole | null
+    status: $Enums.UserStatus | null
+    avatarUrl: string | null
+    bio: string | null
+    location: string | null
+    websiteUrl: string | null
+    instagramUrl: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type UserCountAggregateOutputType = {
+    id: number
+    email: number
+    username: number
+    name: number
+    password: number
+    role: number
+    status: number
+    avatarUrl: number
+    bio: number
+    location: number
+    websiteUrl: number
+    instagramUrl: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type UserMinAggregateInputType = {
+    id?: true
+    email?: true
+    username?: true
+    name?: true
+    password?: true
+    role?: true
+    status?: true
+    avatarUrl?: true
+    bio?: true
+    location?: true
+    websiteUrl?: true
+    instagramUrl?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type UserMaxAggregateInputType = {
+    id?: true
+    email?: true
+    username?: true
+    name?: true
+    password?: true
+    role?: true
+    status?: true
+    avatarUrl?: true
+    bio?: true
+    location?: true
+    websiteUrl?: true
+    instagramUrl?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type UserCountAggregateInputType = {
+    id?: true
+    email?: true
+    username?: true
+    name?: true
+    password?: true
+    role?: true
+    status?: true
+    avatarUrl?: true
+    bio?: true
+    location?: true
+    websiteUrl?: true
+    instagramUrl?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type UserAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which User to aggregate.
+     */
+    where?: UserWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Users to fetch.
+     */
+    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: UserWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Users from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Users.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Users
+    **/
+    _count?: true | UserCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: UserMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: UserMaxAggregateInputType
+  }
+
+  export type GetUserAggregateType<T extends UserAggregateArgs> = {
+        [P in keyof T & keyof AggregateUser]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUser[P]>
+      : GetScalarType<T[P], AggregateUser[P]>
+  }
+
+
+
+
+  export type UserGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserWhereInput
+    orderBy?: UserOrderByWithAggregationInput | UserOrderByWithAggregationInput[]
+    by: UserScalarFieldEnum[] | UserScalarFieldEnum
+    having?: UserScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: UserCountAggregateInputType | true
+    _min?: UserMinAggregateInputType
+    _max?: UserMaxAggregateInputType
+  }
+
+  export type UserGroupByOutputType = {
+    id: string
+    email: string
+    username: string
+    name: string
+    password: string
+    role: $Enums.UserRole
+    status: $Enums.UserStatus
+    avatarUrl: string | null
+    bio: string | null
+    location: string | null
+    websiteUrl: string | null
+    instagramUrl: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: UserCountAggregateOutputType | null
+    _min: UserMinAggregateOutputType | null
+    _max: UserMaxAggregateOutputType | null
+  }
+
+  type GetUserGroupByPayload<T extends UserGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<UserGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof UserGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], UserGroupByOutputType[P]>
+            : GetScalarType<T[P], UserGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    email?: boolean
+    username?: boolean
+    name?: boolean
+    password?: boolean
+    role?: boolean
+    status?: boolean
+    avatarUrl?: boolean
+    bio?: boolean
+    location?: boolean
+    websiteUrl?: boolean
+    instagramUrl?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    photos?: boolean | User$photosArgs<ExtArgs>
+    votes?: boolean | User$votesArgs<ExtArgs>
+    comments?: boolean | User$commentsArgs<ExtArgs>
+    awards?: boolean | User$awardsArgs<ExtArgs>
+    forumThreads?: boolean | User$forumThreadsArgs<ExtArgs>
+    forumReplies?: boolean | User$forumRepliesArgs<ExtArgs>
+    collections?: boolean | User$collectionsArgs<ExtArgs>
+    followers?: boolean | User$followersArgs<ExtArgs>
+    following?: boolean | User$followingArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["user"]>
+
+  export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    email?: boolean
+    username?: boolean
+    name?: boolean
+    password?: boolean
+    role?: boolean
+    status?: boolean
+    avatarUrl?: boolean
+    bio?: boolean
+    location?: boolean
+    websiteUrl?: boolean
+    instagramUrl?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["user"]>
+
+  export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    email?: boolean
+    username?: boolean
+    name?: boolean
+    password?: boolean
+    role?: boolean
+    status?: boolean
+    avatarUrl?: boolean
+    bio?: boolean
+    location?: boolean
+    websiteUrl?: boolean
+    instagramUrl?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["user"]>
+
+  export type UserSelectScalar = {
+    id?: boolean
+    email?: boolean
+    username?: boolean
+    name?: boolean
+    password?: boolean
+    role?: boolean
+    status?: boolean
+    avatarUrl?: boolean
+    bio?: boolean
+    location?: boolean
+    websiteUrl?: boolean
+    instagramUrl?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "username" | "name" | "password" | "role" | "status" | "avatarUrl" | "bio" | "location" | "websiteUrl" | "instagramUrl" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    photos?: boolean | User$photosArgs<ExtArgs>
+    votes?: boolean | User$votesArgs<ExtArgs>
+    comments?: boolean | User$commentsArgs<ExtArgs>
+    awards?: boolean | User$awardsArgs<ExtArgs>
+    forumThreads?: boolean | User$forumThreadsArgs<ExtArgs>
+    forumReplies?: boolean | User$forumRepliesArgs<ExtArgs>
+    collections?: boolean | User$collectionsArgs<ExtArgs>
+    followers?: boolean | User$followersArgs<ExtArgs>
+    following?: boolean | User$followingArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type UserIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "User"
+    objects: {
+      photos: Prisma.$PhotoPayload<ExtArgs>[]
+      votes: Prisma.$VotePayload<ExtArgs>[]
+      comments: Prisma.$CommentPayload<ExtArgs>[]
+      awards: Prisma.$AwardPayload<ExtArgs>[]
+      forumThreads: Prisma.$ForumThreadPayload<ExtArgs>[]
+      forumReplies: Prisma.$ForumReplyPayload<ExtArgs>[]
+      collections: Prisma.$CollectionPayload<ExtArgs>[]
+      followers: Prisma.$FollowPayload<ExtArgs>[]
+      following: Prisma.$FollowPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      email: string
+      username: string
+      name: string
+      password: string
+      role: $Enums.UserRole
+      status: $Enums.UserStatus
+      avatarUrl: string | null
+      bio: string | null
+      location: string | null
+      websiteUrl: string | null
+      instagramUrl: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["user"]>
+    composites: {}
+  }
+
+  type UserGetPayload<S extends boolean | null | undefined | UserDefaultArgs> = $Result.GetResult<Prisma.$UserPayload, S>
+
+  type UserCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<UserFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: UserCountAggregateInputType | true
+    }
+
+  export interface UserDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['User'], meta: { name: 'User' } }
+    /**
+     * Find zero or one User that matches the filter.
+     * @param {UserFindUniqueArgs} args - Arguments to find a User
+     * @example
+     * // Get one User
+     * const user = await prisma.user.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends UserFindUniqueArgs>(args: SelectSubset<T, UserFindUniqueArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one User that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {UserFindUniqueOrThrowArgs} args - Arguments to find a User
+     * @example
+     * // Get one User
+     * const user = await prisma.user.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends UserFindUniqueOrThrowArgs>(args: SelectSubset<T, UserFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first User that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserFindFirstArgs} args - Arguments to find a User
+     * @example
+     * // Get one User
+     * const user = await prisma.user.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends UserFindFirstArgs>(args?: SelectSubset<T, UserFindFirstArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first User that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserFindFirstOrThrowArgs} args - Arguments to find a User
+     * @example
+     * // Get one User
+     * const user = await prisma.user.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends UserFindFirstOrThrowArgs>(args?: SelectSubset<T, UserFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Users that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Users
+     * const users = await prisma.user.findMany()
+     * 
+     * // Get first 10 Users
+     * const users = await prisma.user.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const userWithIdOnly = await prisma.user.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends UserFindManyArgs>(args?: SelectSubset<T, UserFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a User.
+     * @param {UserCreateArgs} args - Arguments to create a User.
+     * @example
+     * // Create one User
+     * const User = await prisma.user.create({
+     *   data: {
+     *     // ... data to create a User
+     *   }
+     * })
+     * 
+     */
+    create<T extends UserCreateArgs>(args: SelectSubset<T, UserCreateArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Users.
+     * @param {UserCreateManyArgs} args - Arguments to create many Users.
+     * @example
+     * // Create many Users
+     * const user = await prisma.user.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends UserCreateManyArgs>(args?: SelectSubset<T, UserCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Users and returns the data saved in the database.
+     * @param {UserCreateManyAndReturnArgs} args - Arguments to create many Users.
+     * @example
+     * // Create many Users
+     * const user = await prisma.user.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Users and only return the `id`
+     * const userWithIdOnly = await prisma.user.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends UserCreateManyAndReturnArgs>(args?: SelectSubset<T, UserCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a User.
+     * @param {UserDeleteArgs} args - Arguments to delete one User.
+     * @example
+     * // Delete one User
+     * const User = await prisma.user.delete({
+     *   where: {
+     *     // ... filter to delete one User
+     *   }
+     * })
+     * 
+     */
+    delete<T extends UserDeleteArgs>(args: SelectSubset<T, UserDeleteArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one User.
+     * @param {UserUpdateArgs} args - Arguments to update one User.
+     * @example
+     * // Update one User
+     * const user = await prisma.user.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends UserUpdateArgs>(args: SelectSubset<T, UserUpdateArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Users.
+     * @param {UserDeleteManyArgs} args - Arguments to filter Users to delete.
+     * @example
+     * // Delete a few Users
+     * const { count } = await prisma.user.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends UserDeleteManyArgs>(args?: SelectSubset<T, UserDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Users.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Users
+     * const user = await prisma.user.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends UserUpdateManyArgs>(args: SelectSubset<T, UserUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Users and returns the data updated in the database.
+     * @param {UserUpdateManyAndReturnArgs} args - Arguments to update many Users.
+     * @example
+     * // Update many Users
+     * const user = await prisma.user.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Users and only return the `id`
+     * const userWithIdOnly = await prisma.user.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends UserUpdateManyAndReturnArgs>(args: SelectSubset<T, UserUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one User.
+     * @param {UserUpsertArgs} args - Arguments to update or create a User.
+     * @example
+     * // Update or create a User
+     * const user = await prisma.user.upsert({
+     *   create: {
+     *     // ... data to create a User
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the User we want to update
+     *   }
+     * })
+     */
+    upsert<T extends UserUpsertArgs>(args: SelectSubset<T, UserUpsertArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Users.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserCountArgs} args - Arguments to filter Users to count.
+     * @example
+     * // Count the number of Users
+     * const count = await prisma.user.count({
+     *   where: {
+     *     // ... the filter for the Users we want to count
+     *   }
+     * })
+    **/
+    count<T extends UserCountArgs>(
+      args?: Subset<T, UserCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], UserCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a User.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends UserAggregateArgs>(args: Subset<T, UserAggregateArgs>): Prisma.PrismaPromise<GetUserAggregateType<T>>
+
+    /**
+     * Group by User.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends UserGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: UserGroupByArgs['orderBy'] }
+        : { orderBy?: UserGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, UserGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the User model
+   */
+  readonly fields: UserFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for User.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    photos<T extends User$photosArgs<ExtArgs> = {}>(args?: Subset<T, User$photosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PhotoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    votes<T extends User$votesArgs<ExtArgs> = {}>(args?: Subset<T, User$votesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    comments<T extends User$commentsArgs<ExtArgs> = {}>(args?: Subset<T, User$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    awards<T extends User$awardsArgs<ExtArgs> = {}>(args?: Subset<T, User$awardsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AwardPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    forumThreads<T extends User$forumThreadsArgs<ExtArgs> = {}>(args?: Subset<T, User$forumThreadsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumThreadPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    forumReplies<T extends User$forumRepliesArgs<ExtArgs> = {}>(args?: Subset<T, User$forumRepliesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumReplyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    collections<T extends User$collectionsArgs<ExtArgs> = {}>(args?: Subset<T, User$collectionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CollectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    followers<T extends User$followersArgs<ExtArgs> = {}>(args?: Subset<T, User$followersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FollowPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    following<T extends User$followingArgs<ExtArgs> = {}>(args?: Subset<T, User$followingArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FollowPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the User model
+   */
+  interface UserFieldRefs {
+    readonly id: FieldRef<"User", 'String'>
+    readonly email: FieldRef<"User", 'String'>
+    readonly username: FieldRef<"User", 'String'>
+    readonly name: FieldRef<"User", 'String'>
+    readonly password: FieldRef<"User", 'String'>
+    readonly role: FieldRef<"User", 'UserRole'>
+    readonly status: FieldRef<"User", 'UserStatus'>
+    readonly avatarUrl: FieldRef<"User", 'String'>
+    readonly bio: FieldRef<"User", 'String'>
+    readonly location: FieldRef<"User", 'String'>
+    readonly websiteUrl: FieldRef<"User", 'String'>
+    readonly instagramUrl: FieldRef<"User", 'String'>
+    readonly createdAt: FieldRef<"User", 'DateTime'>
+    readonly updatedAt: FieldRef<"User", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * User findUnique
+   */
+  export type UserFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
+     * Filter, which User to fetch.
+     */
+    where: UserWhereUniqueInput
+  }
+
+  /**
+   * User findUniqueOrThrow
+   */
+  export type UserFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
+     * Filter, which User to fetch.
+     */
+    where: UserWhereUniqueInput
+  }
+
+  /**
+   * User findFirst
+   */
+  export type UserFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
+     * Filter, which User to fetch.
+     */
+    where?: UserWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Users to fetch.
+     */
+    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Users.
+     */
+    cursor?: UserWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Users from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Users.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Users.
+     */
+    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
+  }
+
+  /**
+   * User findFirstOrThrow
+   */
+  export type UserFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
+     * Filter, which User to fetch.
+     */
+    where?: UserWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Users to fetch.
+     */
+    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Users.
+     */
+    cursor?: UserWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Users from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Users.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Users.
+     */
+    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
+  }
+
+  /**
+   * User findMany
+   */
+  export type UserFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
+     * Filter, which Users to fetch.
+     */
+    where?: UserWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Users to fetch.
+     */
+    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Users.
+     */
+    cursor?: UserWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Users from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Users.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Users.
+     */
+    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
+  }
+
+  /**
+   * User create
+   */
+  export type UserCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
+     * The data needed to create a User.
+     */
+    data: XOR<UserCreateInput, UserUncheckedCreateInput>
+  }
+
+  /**
+   * User createMany
+   */
+  export type UserCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Users.
+     */
+    data: UserCreateManyInput | UserCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * User createManyAndReturn
+   */
+  export type UserCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * The data used to create many Users.
+     */
+    data: UserCreateManyInput | UserCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * User update
+   */
+  export type UserUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
+     * The data needed to update a User.
+     */
+    data: XOR<UserUpdateInput, UserUncheckedUpdateInput>
+    /**
+     * Choose, which User to update.
+     */
+    where: UserWhereUniqueInput
+  }
+
+  /**
+   * User updateMany
+   */
+  export type UserUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Users.
+     */
+    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyInput>
+    /**
+     * Filter which Users to update
+     */
+    where?: UserWhereInput
+    /**
+     * Limit how many Users to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * User updateManyAndReturn
+   */
+  export type UserUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * The data used to update Users.
+     */
+    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyInput>
+    /**
+     * Filter which Users to update
+     */
+    where?: UserWhereInput
+    /**
+     * Limit how many Users to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * User upsert
+   */
+  export type UserUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
+     * The filter to search for the User to update in case it exists.
+     */
+    where: UserWhereUniqueInput
+    /**
+     * In case the User found by the `where` argument doesn't exist, create a new User with this data.
+     */
+    create: XOR<UserCreateInput, UserUncheckedCreateInput>
+    /**
+     * In case the User was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<UserUpdateInput, UserUncheckedUpdateInput>
+  }
+
+  /**
+   * User delete
+   */
+  export type UserDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
+     * Filter which User to delete.
+     */
+    where: UserWhereUniqueInput
+  }
+
+  /**
+   * User deleteMany
+   */
+  export type UserDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Users to delete
+     */
+    where?: UserWhereInput
+    /**
+     * Limit how many Users to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * User.photos
+   */
+  export type User$photosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Photo
+     */
+    select?: PhotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Photo
+     */
+    omit?: PhotoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PhotoInclude<ExtArgs> | null
+    where?: PhotoWhereInput
+    orderBy?: PhotoOrderByWithRelationInput | PhotoOrderByWithRelationInput[]
+    cursor?: PhotoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PhotoScalarFieldEnum | PhotoScalarFieldEnum[]
+  }
+
+  /**
+   * User.votes
+   */
+  export type User$votesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Vote
+     */
+    select?: VoteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Vote
+     */
+    omit?: VoteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VoteInclude<ExtArgs> | null
+    where?: VoteWhereInput
+    orderBy?: VoteOrderByWithRelationInput | VoteOrderByWithRelationInput[]
+    cursor?: VoteWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: VoteScalarFieldEnum | VoteScalarFieldEnum[]
+  }
+
+  /**
+   * User.comments
+   */
+  export type User$commentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comment
+     */
+    select?: CommentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comment
+     */
+    omit?: CommentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommentInclude<ExtArgs> | null
+    where?: CommentWhereInput
+    orderBy?: CommentOrderByWithRelationInput | CommentOrderByWithRelationInput[]
+    cursor?: CommentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CommentScalarFieldEnum | CommentScalarFieldEnum[]
+  }
+
+  /**
+   * User.awards
+   */
+  export type User$awardsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Award
+     */
+    select?: AwardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Award
+     */
+    omit?: AwardOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AwardInclude<ExtArgs> | null
+    where?: AwardWhereInput
+    orderBy?: AwardOrderByWithRelationInput | AwardOrderByWithRelationInput[]
+    cursor?: AwardWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AwardScalarFieldEnum | AwardScalarFieldEnum[]
+  }
+
+  /**
+   * User.forumThreads
+   */
+  export type User$forumThreadsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumThread
+     */
+    select?: ForumThreadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumThread
+     */
+    omit?: ForumThreadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumThreadInclude<ExtArgs> | null
+    where?: ForumThreadWhereInput
+    orderBy?: ForumThreadOrderByWithRelationInput | ForumThreadOrderByWithRelationInput[]
+    cursor?: ForumThreadWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ForumThreadScalarFieldEnum | ForumThreadScalarFieldEnum[]
+  }
+
+  /**
+   * User.forumReplies
+   */
+  export type User$forumRepliesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumReply
+     */
+    select?: ForumReplySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumReply
+     */
+    omit?: ForumReplyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumReplyInclude<ExtArgs> | null
+    where?: ForumReplyWhereInput
+    orderBy?: ForumReplyOrderByWithRelationInput | ForumReplyOrderByWithRelationInput[]
+    cursor?: ForumReplyWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ForumReplyScalarFieldEnum | ForumReplyScalarFieldEnum[]
+  }
+
+  /**
+   * User.collections
+   */
+  export type User$collectionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Collection
+     */
+    select?: CollectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Collection
+     */
+    omit?: CollectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionInclude<ExtArgs> | null
+    where?: CollectionWhereInput
+    orderBy?: CollectionOrderByWithRelationInput | CollectionOrderByWithRelationInput[]
+    cursor?: CollectionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CollectionScalarFieldEnum | CollectionScalarFieldEnum[]
+  }
+
+  /**
+   * User.followers
+   */
+  export type User$followersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Follow
+     */
+    select?: FollowSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Follow
+     */
+    omit?: FollowOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FollowInclude<ExtArgs> | null
+    where?: FollowWhereInput
+    orderBy?: FollowOrderByWithRelationInput | FollowOrderByWithRelationInput[]
+    cursor?: FollowWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FollowScalarFieldEnum | FollowScalarFieldEnum[]
+  }
+
+  /**
+   * User.following
+   */
+  export type User$followingArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Follow
+     */
+    select?: FollowSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Follow
+     */
+    omit?: FollowOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FollowInclude<ExtArgs> | null
+    where?: FollowWhereInput
+    orderBy?: FollowOrderByWithRelationInput | FollowOrderByWithRelationInput[]
+    cursor?: FollowWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FollowScalarFieldEnum | FollowScalarFieldEnum[]
+  }
+
+  /**
+   * User without action
+   */
+  export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Photo
+   */
+
+  export type AggregatePhoto = {
+    _count: PhotoCountAggregateOutputType | null
+    _avg: PhotoAvgAggregateOutputType | null
+    _sum: PhotoSumAggregateOutputType | null
+    _min: PhotoMinAggregateOutputType | null
+    _max: PhotoMaxAggregateOutputType | null
+  }
+
+  export type PhotoAvgAggregateOutputType = {
+    width: number | null
+    height: number | null
+    fileSize: number | null
+    iso: number | null
+    voteCount: number | null
+  }
+
+  export type PhotoSumAggregateOutputType = {
+    width: number | null
+    height: number | null
+    fileSize: number | null
+    iso: number | null
+    voteCount: number | null
+  }
+
+  export type PhotoMinAggregateOutputType = {
+    id: string | null
+    title: string | null
+    description: string | null
+    imageUrl: string | null
+    thumbnailUrl: string | null
+    width: number | null
+    height: number | null
+    fileSize: number | null
+    neighborhood: string | null
+    category: $Enums.PhotoCategory | null
+    status: $Enums.PhotoStatus | null
+    cameraMake: string | null
+    cameraModel: string | null
+    lens: string | null
+    iso: number | null
+    aperture: string | null
+    shutterSpeed: string | null
+    focalLength: string | null
+    takenAt: Date | null
+    authorId: string | null
+    voteCount: number | null
+    approvedAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PhotoMaxAggregateOutputType = {
+    id: string | null
+    title: string | null
+    description: string | null
+    imageUrl: string | null
+    thumbnailUrl: string | null
+    width: number | null
+    height: number | null
+    fileSize: number | null
+    neighborhood: string | null
+    category: $Enums.PhotoCategory | null
+    status: $Enums.PhotoStatus | null
+    cameraMake: string | null
+    cameraModel: string | null
+    lens: string | null
+    iso: number | null
+    aperture: string | null
+    shutterSpeed: string | null
+    focalLength: string | null
+    takenAt: Date | null
+    authorId: string | null
+    voteCount: number | null
+    approvedAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PhotoCountAggregateOutputType = {
+    id: number
+    title: number
+    description: number
+    imageUrl: number
+    thumbnailUrl: number
+    width: number
+    height: number
+    fileSize: number
+    neighborhood: number
+    category: number
+    status: number
+    cameraMake: number
+    cameraModel: number
+    lens: number
+    iso: number
+    aperture: number
+    shutterSpeed: number
+    focalLength: number
+    takenAt: number
+    authorId: number
+    voteCount: number
+    approvedAt: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type PhotoAvgAggregateInputType = {
+    width?: true
+    height?: true
+    fileSize?: true
+    iso?: true
+    voteCount?: true
+  }
+
+  export type PhotoSumAggregateInputType = {
+    width?: true
+    height?: true
+    fileSize?: true
+    iso?: true
+    voteCount?: true
+  }
+
+  export type PhotoMinAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    imageUrl?: true
+    thumbnailUrl?: true
+    width?: true
+    height?: true
+    fileSize?: true
+    neighborhood?: true
+    category?: true
+    status?: true
+    cameraMake?: true
+    cameraModel?: true
+    lens?: true
+    iso?: true
+    aperture?: true
+    shutterSpeed?: true
+    focalLength?: true
+    takenAt?: true
+    authorId?: true
+    voteCount?: true
+    approvedAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PhotoMaxAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    imageUrl?: true
+    thumbnailUrl?: true
+    width?: true
+    height?: true
+    fileSize?: true
+    neighborhood?: true
+    category?: true
+    status?: true
+    cameraMake?: true
+    cameraModel?: true
+    lens?: true
+    iso?: true
+    aperture?: true
+    shutterSpeed?: true
+    focalLength?: true
+    takenAt?: true
+    authorId?: true
+    voteCount?: true
+    approvedAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PhotoCountAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    imageUrl?: true
+    thumbnailUrl?: true
+    width?: true
+    height?: true
+    fileSize?: true
+    neighborhood?: true
+    category?: true
+    status?: true
+    cameraMake?: true
+    cameraModel?: true
+    lens?: true
+    iso?: true
+    aperture?: true
+    shutterSpeed?: true
+    focalLength?: true
+    takenAt?: true
+    authorId?: true
+    voteCount?: true
+    approvedAt?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type PhotoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Photo to aggregate.
+     */
+    where?: PhotoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Photos to fetch.
+     */
+    orderBy?: PhotoOrderByWithRelationInput | PhotoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PhotoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Photos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Photos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Photos
+    **/
+    _count?: true | PhotoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PhotoAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PhotoSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PhotoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PhotoMaxAggregateInputType
+  }
+
+  export type GetPhotoAggregateType<T extends PhotoAggregateArgs> = {
+        [P in keyof T & keyof AggregatePhoto]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePhoto[P]>
+      : GetScalarType<T[P], AggregatePhoto[P]>
+  }
+
+
+
+
+  export type PhotoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PhotoWhereInput
+    orderBy?: PhotoOrderByWithAggregationInput | PhotoOrderByWithAggregationInput[]
+    by: PhotoScalarFieldEnum[] | PhotoScalarFieldEnum
+    having?: PhotoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PhotoCountAggregateInputType | true
+    _avg?: PhotoAvgAggregateInputType
+    _sum?: PhotoSumAggregateInputType
+    _min?: PhotoMinAggregateInputType
+    _max?: PhotoMaxAggregateInputType
+  }
+
+  export type PhotoGroupByOutputType = {
+    id: string
+    title: string
+    description: string | null
+    imageUrl: string
+    thumbnailUrl: string | null
+    width: number
+    height: number
+    fileSize: number
+    neighborhood: string
+    category: $Enums.PhotoCategory
+    status: $Enums.PhotoStatus
+    cameraMake: string | null
+    cameraModel: string | null
+    lens: string | null
+    iso: number | null
+    aperture: string | null
+    shutterSpeed: string | null
+    focalLength: string | null
+    takenAt: Date | null
+    authorId: string
+    voteCount: number
+    approvedAt: Date | null
+    createdAt: Date
+    updatedAt: Date
+    _count: PhotoCountAggregateOutputType | null
+    _avg: PhotoAvgAggregateOutputType | null
+    _sum: PhotoSumAggregateOutputType | null
+    _min: PhotoMinAggregateOutputType | null
+    _max: PhotoMaxAggregateOutputType | null
+  }
+
+  type GetPhotoGroupByPayload<T extends PhotoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PhotoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PhotoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PhotoGroupByOutputType[P]>
+            : GetScalarType<T[P], PhotoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PhotoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    imageUrl?: boolean
+    thumbnailUrl?: boolean
+    width?: boolean
+    height?: boolean
+    fileSize?: boolean
+    neighborhood?: boolean
+    category?: boolean
+    status?: boolean
+    cameraMake?: boolean
+    cameraModel?: boolean
+    lens?: boolean
+    iso?: boolean
+    aperture?: boolean
+    shutterSpeed?: boolean
+    focalLength?: boolean
+    takenAt?: boolean
+    authorId?: boolean
+    voteCount?: boolean
+    approvedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    votes?: boolean | Photo$votesArgs<ExtArgs>
+    comments?: boolean | Photo$commentsArgs<ExtArgs>
+    awards?: boolean | Photo$awardsArgs<ExtArgs>
+    forumReplies?: boolean | Photo$forumRepliesArgs<ExtArgs>
+    collectionItems?: boolean | Photo$collectionItemsArgs<ExtArgs>
+    _count?: boolean | PhotoCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["photo"]>
+
+  export type PhotoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    imageUrl?: boolean
+    thumbnailUrl?: boolean
+    width?: boolean
+    height?: boolean
+    fileSize?: boolean
+    neighborhood?: boolean
+    category?: boolean
+    status?: boolean
+    cameraMake?: boolean
+    cameraModel?: boolean
+    lens?: boolean
+    iso?: boolean
+    aperture?: boolean
+    shutterSpeed?: boolean
+    focalLength?: boolean
+    takenAt?: boolean
+    authorId?: boolean
+    voteCount?: boolean
+    approvedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    author?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["photo"]>
+
+  export type PhotoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    imageUrl?: boolean
+    thumbnailUrl?: boolean
+    width?: boolean
+    height?: boolean
+    fileSize?: boolean
+    neighborhood?: boolean
+    category?: boolean
+    status?: boolean
+    cameraMake?: boolean
+    cameraModel?: boolean
+    lens?: boolean
+    iso?: boolean
+    aperture?: boolean
+    shutterSpeed?: boolean
+    focalLength?: boolean
+    takenAt?: boolean
+    authorId?: boolean
+    voteCount?: boolean
+    approvedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    author?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["photo"]>
+
+  export type PhotoSelectScalar = {
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    imageUrl?: boolean
+    thumbnailUrl?: boolean
+    width?: boolean
+    height?: boolean
+    fileSize?: boolean
+    neighborhood?: boolean
+    category?: boolean
+    status?: boolean
+    cameraMake?: boolean
+    cameraModel?: boolean
+    lens?: boolean
+    iso?: boolean
+    aperture?: boolean
+    shutterSpeed?: boolean
+    focalLength?: boolean
+    takenAt?: boolean
+    authorId?: boolean
+    voteCount?: boolean
+    approvedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type PhotoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "imageUrl" | "thumbnailUrl" | "width" | "height" | "fileSize" | "neighborhood" | "category" | "status" | "cameraMake" | "cameraModel" | "lens" | "iso" | "aperture" | "shutterSpeed" | "focalLength" | "takenAt" | "authorId" | "voteCount" | "approvedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["photo"]>
+  export type PhotoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    votes?: boolean | Photo$votesArgs<ExtArgs>
+    comments?: boolean | Photo$commentsArgs<ExtArgs>
+    awards?: boolean | Photo$awardsArgs<ExtArgs>
+    forumReplies?: boolean | Photo$forumRepliesArgs<ExtArgs>
+    collectionItems?: boolean | Photo$collectionItemsArgs<ExtArgs>
+    _count?: boolean | PhotoCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type PhotoIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    author?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type PhotoIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    author?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $PhotoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Photo"
+    objects: {
+      author: Prisma.$UserPayload<ExtArgs>
+      votes: Prisma.$VotePayload<ExtArgs>[]
+      comments: Prisma.$CommentPayload<ExtArgs>[]
+      awards: Prisma.$AwardPayload<ExtArgs>[]
+      forumReplies: Prisma.$ForumReplyPayload<ExtArgs>[]
+      collectionItems: Prisma.$CollectionItemPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      title: string
+      description: string | null
+      imageUrl: string
+      thumbnailUrl: string | null
+      width: number
+      height: number
+      fileSize: number
+      neighborhood: string
+      category: $Enums.PhotoCategory
+      status: $Enums.PhotoStatus
+      cameraMake: string | null
+      cameraModel: string | null
+      lens: string | null
+      iso: number | null
+      aperture: string | null
+      shutterSpeed: string | null
+      focalLength: string | null
+      takenAt: Date | null
+      authorId: string
+      voteCount: number
+      approvedAt: Date | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["photo"]>
+    composites: {}
+  }
+
+  type PhotoGetPayload<S extends boolean | null | undefined | PhotoDefaultArgs> = $Result.GetResult<Prisma.$PhotoPayload, S>
+
+  type PhotoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PhotoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PhotoCountAggregateInputType | true
+    }
+
+  export interface PhotoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Photo'], meta: { name: 'Photo' } }
+    /**
+     * Find zero or one Photo that matches the filter.
+     * @param {PhotoFindUniqueArgs} args - Arguments to find a Photo
+     * @example
+     * // Get one Photo
+     * const photo = await prisma.photo.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PhotoFindUniqueArgs>(args: SelectSubset<T, PhotoFindUniqueArgs<ExtArgs>>): Prisma__PhotoClient<$Result.GetResult<Prisma.$PhotoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Photo that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PhotoFindUniqueOrThrowArgs} args - Arguments to find a Photo
+     * @example
+     * // Get one Photo
+     * const photo = await prisma.photo.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PhotoFindUniqueOrThrowArgs>(args: SelectSubset<T, PhotoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PhotoClient<$Result.GetResult<Prisma.$PhotoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Photo that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PhotoFindFirstArgs} args - Arguments to find a Photo
+     * @example
+     * // Get one Photo
+     * const photo = await prisma.photo.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PhotoFindFirstArgs>(args?: SelectSubset<T, PhotoFindFirstArgs<ExtArgs>>): Prisma__PhotoClient<$Result.GetResult<Prisma.$PhotoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Photo that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PhotoFindFirstOrThrowArgs} args - Arguments to find a Photo
+     * @example
+     * // Get one Photo
+     * const photo = await prisma.photo.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PhotoFindFirstOrThrowArgs>(args?: SelectSubset<T, PhotoFindFirstOrThrowArgs<ExtArgs>>): Prisma__PhotoClient<$Result.GetResult<Prisma.$PhotoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Photos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PhotoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Photos
+     * const photos = await prisma.photo.findMany()
+     * 
+     * // Get first 10 Photos
+     * const photos = await prisma.photo.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const photoWithIdOnly = await prisma.photo.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PhotoFindManyArgs>(args?: SelectSubset<T, PhotoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PhotoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Photo.
+     * @param {PhotoCreateArgs} args - Arguments to create a Photo.
+     * @example
+     * // Create one Photo
+     * const Photo = await prisma.photo.create({
+     *   data: {
+     *     // ... data to create a Photo
+     *   }
+     * })
+     * 
+     */
+    create<T extends PhotoCreateArgs>(args: SelectSubset<T, PhotoCreateArgs<ExtArgs>>): Prisma__PhotoClient<$Result.GetResult<Prisma.$PhotoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Photos.
+     * @param {PhotoCreateManyArgs} args - Arguments to create many Photos.
+     * @example
+     * // Create many Photos
+     * const photo = await prisma.photo.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PhotoCreateManyArgs>(args?: SelectSubset<T, PhotoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Photos and returns the data saved in the database.
+     * @param {PhotoCreateManyAndReturnArgs} args - Arguments to create many Photos.
+     * @example
+     * // Create many Photos
+     * const photo = await prisma.photo.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Photos and only return the `id`
+     * const photoWithIdOnly = await prisma.photo.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PhotoCreateManyAndReturnArgs>(args?: SelectSubset<T, PhotoCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PhotoPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Photo.
+     * @param {PhotoDeleteArgs} args - Arguments to delete one Photo.
+     * @example
+     * // Delete one Photo
+     * const Photo = await prisma.photo.delete({
+     *   where: {
+     *     // ... filter to delete one Photo
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PhotoDeleteArgs>(args: SelectSubset<T, PhotoDeleteArgs<ExtArgs>>): Prisma__PhotoClient<$Result.GetResult<Prisma.$PhotoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Photo.
+     * @param {PhotoUpdateArgs} args - Arguments to update one Photo.
+     * @example
+     * // Update one Photo
+     * const photo = await prisma.photo.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PhotoUpdateArgs>(args: SelectSubset<T, PhotoUpdateArgs<ExtArgs>>): Prisma__PhotoClient<$Result.GetResult<Prisma.$PhotoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Photos.
+     * @param {PhotoDeleteManyArgs} args - Arguments to filter Photos to delete.
+     * @example
+     * // Delete a few Photos
+     * const { count } = await prisma.photo.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PhotoDeleteManyArgs>(args?: SelectSubset<T, PhotoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Photos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PhotoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Photos
+     * const photo = await prisma.photo.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PhotoUpdateManyArgs>(args: SelectSubset<T, PhotoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Photos and returns the data updated in the database.
+     * @param {PhotoUpdateManyAndReturnArgs} args - Arguments to update many Photos.
+     * @example
+     * // Update many Photos
+     * const photo = await prisma.photo.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Photos and only return the `id`
+     * const photoWithIdOnly = await prisma.photo.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends PhotoUpdateManyAndReturnArgs>(args: SelectSubset<T, PhotoUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PhotoPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Photo.
+     * @param {PhotoUpsertArgs} args - Arguments to update or create a Photo.
+     * @example
+     * // Update or create a Photo
+     * const photo = await prisma.photo.upsert({
+     *   create: {
+     *     // ... data to create a Photo
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Photo we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PhotoUpsertArgs>(args: SelectSubset<T, PhotoUpsertArgs<ExtArgs>>): Prisma__PhotoClient<$Result.GetResult<Prisma.$PhotoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Photos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PhotoCountArgs} args - Arguments to filter Photos to count.
+     * @example
+     * // Count the number of Photos
+     * const count = await prisma.photo.count({
+     *   where: {
+     *     // ... the filter for the Photos we want to count
+     *   }
+     * })
+    **/
+    count<T extends PhotoCountArgs>(
+      args?: Subset<T, PhotoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PhotoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Photo.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PhotoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PhotoAggregateArgs>(args: Subset<T, PhotoAggregateArgs>): Prisma.PrismaPromise<GetPhotoAggregateType<T>>
+
+    /**
+     * Group by Photo.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PhotoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PhotoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PhotoGroupByArgs['orderBy'] }
+        : { orderBy?: PhotoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PhotoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPhotoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Photo model
+   */
+  readonly fields: PhotoFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Photo.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PhotoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    author<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    votes<T extends Photo$votesArgs<ExtArgs> = {}>(args?: Subset<T, Photo$votesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    comments<T extends Photo$commentsArgs<ExtArgs> = {}>(args?: Subset<T, Photo$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    awards<T extends Photo$awardsArgs<ExtArgs> = {}>(args?: Subset<T, Photo$awardsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AwardPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    forumReplies<T extends Photo$forumRepliesArgs<ExtArgs> = {}>(args?: Subset<T, Photo$forumRepliesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumReplyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    collectionItems<T extends Photo$collectionItemsArgs<ExtArgs> = {}>(args?: Subset<T, Photo$collectionItemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CollectionItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Photo model
+   */
+  interface PhotoFieldRefs {
+    readonly id: FieldRef<"Photo", 'String'>
+    readonly title: FieldRef<"Photo", 'String'>
+    readonly description: FieldRef<"Photo", 'String'>
+    readonly imageUrl: FieldRef<"Photo", 'String'>
+    readonly thumbnailUrl: FieldRef<"Photo", 'String'>
+    readonly width: FieldRef<"Photo", 'Int'>
+    readonly height: FieldRef<"Photo", 'Int'>
+    readonly fileSize: FieldRef<"Photo", 'Int'>
+    readonly neighborhood: FieldRef<"Photo", 'String'>
+    readonly category: FieldRef<"Photo", 'PhotoCategory'>
+    readonly status: FieldRef<"Photo", 'PhotoStatus'>
+    readonly cameraMake: FieldRef<"Photo", 'String'>
+    readonly cameraModel: FieldRef<"Photo", 'String'>
+    readonly lens: FieldRef<"Photo", 'String'>
+    readonly iso: FieldRef<"Photo", 'Int'>
+    readonly aperture: FieldRef<"Photo", 'String'>
+    readonly shutterSpeed: FieldRef<"Photo", 'String'>
+    readonly focalLength: FieldRef<"Photo", 'String'>
+    readonly takenAt: FieldRef<"Photo", 'DateTime'>
+    readonly authorId: FieldRef<"Photo", 'String'>
+    readonly voteCount: FieldRef<"Photo", 'Int'>
+    readonly approvedAt: FieldRef<"Photo", 'DateTime'>
+    readonly createdAt: FieldRef<"Photo", 'DateTime'>
+    readonly updatedAt: FieldRef<"Photo", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Photo findUnique
+   */
+  export type PhotoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Photo
+     */
+    select?: PhotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Photo
+     */
+    omit?: PhotoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PhotoInclude<ExtArgs> | null
+    /**
+     * Filter, which Photo to fetch.
+     */
+    where: PhotoWhereUniqueInput
+  }
+
+  /**
+   * Photo findUniqueOrThrow
+   */
+  export type PhotoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Photo
+     */
+    select?: PhotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Photo
+     */
+    omit?: PhotoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PhotoInclude<ExtArgs> | null
+    /**
+     * Filter, which Photo to fetch.
+     */
+    where: PhotoWhereUniqueInput
+  }
+
+  /**
+   * Photo findFirst
+   */
+  export type PhotoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Photo
+     */
+    select?: PhotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Photo
+     */
+    omit?: PhotoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PhotoInclude<ExtArgs> | null
+    /**
+     * Filter, which Photo to fetch.
+     */
+    where?: PhotoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Photos to fetch.
+     */
+    orderBy?: PhotoOrderByWithRelationInput | PhotoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Photos.
+     */
+    cursor?: PhotoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Photos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Photos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Photos.
+     */
+    distinct?: PhotoScalarFieldEnum | PhotoScalarFieldEnum[]
+  }
+
+  /**
+   * Photo findFirstOrThrow
+   */
+  export type PhotoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Photo
+     */
+    select?: PhotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Photo
+     */
+    omit?: PhotoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PhotoInclude<ExtArgs> | null
+    /**
+     * Filter, which Photo to fetch.
+     */
+    where?: PhotoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Photos to fetch.
+     */
+    orderBy?: PhotoOrderByWithRelationInput | PhotoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Photos.
+     */
+    cursor?: PhotoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Photos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Photos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Photos.
+     */
+    distinct?: PhotoScalarFieldEnum | PhotoScalarFieldEnum[]
+  }
+
+  /**
+   * Photo findMany
+   */
+  export type PhotoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Photo
+     */
+    select?: PhotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Photo
+     */
+    omit?: PhotoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PhotoInclude<ExtArgs> | null
+    /**
+     * Filter, which Photos to fetch.
+     */
+    where?: PhotoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Photos to fetch.
+     */
+    orderBy?: PhotoOrderByWithRelationInput | PhotoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Photos.
+     */
+    cursor?: PhotoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Photos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Photos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Photos.
+     */
+    distinct?: PhotoScalarFieldEnum | PhotoScalarFieldEnum[]
+  }
+
+  /**
+   * Photo create
+   */
+  export type PhotoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Photo
+     */
+    select?: PhotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Photo
+     */
+    omit?: PhotoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PhotoInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Photo.
+     */
+    data: XOR<PhotoCreateInput, PhotoUncheckedCreateInput>
+  }
+
+  /**
+   * Photo createMany
+   */
+  export type PhotoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Photos.
+     */
+    data: PhotoCreateManyInput | PhotoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Photo createManyAndReturn
+   */
+  export type PhotoCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Photo
+     */
+    select?: PhotoSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Photo
+     */
+    omit?: PhotoOmit<ExtArgs> | null
+    /**
+     * The data used to create many Photos.
+     */
+    data: PhotoCreateManyInput | PhotoCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PhotoIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Photo update
+   */
+  export type PhotoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Photo
+     */
+    select?: PhotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Photo
+     */
+    omit?: PhotoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PhotoInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Photo.
+     */
+    data: XOR<PhotoUpdateInput, PhotoUncheckedUpdateInput>
+    /**
+     * Choose, which Photo to update.
+     */
+    where: PhotoWhereUniqueInput
+  }
+
+  /**
+   * Photo updateMany
+   */
+  export type PhotoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Photos.
+     */
+    data: XOR<PhotoUpdateManyMutationInput, PhotoUncheckedUpdateManyInput>
+    /**
+     * Filter which Photos to update
+     */
+    where?: PhotoWhereInput
+    /**
+     * Limit how many Photos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Photo updateManyAndReturn
+   */
+  export type PhotoUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Photo
+     */
+    select?: PhotoSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Photo
+     */
+    omit?: PhotoOmit<ExtArgs> | null
+    /**
+     * The data used to update Photos.
+     */
+    data: XOR<PhotoUpdateManyMutationInput, PhotoUncheckedUpdateManyInput>
+    /**
+     * Filter which Photos to update
+     */
+    where?: PhotoWhereInput
+    /**
+     * Limit how many Photos to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PhotoIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Photo upsert
+   */
+  export type PhotoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Photo
+     */
+    select?: PhotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Photo
+     */
+    omit?: PhotoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PhotoInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Photo to update in case it exists.
+     */
+    where: PhotoWhereUniqueInput
+    /**
+     * In case the Photo found by the `where` argument doesn't exist, create a new Photo with this data.
+     */
+    create: XOR<PhotoCreateInput, PhotoUncheckedCreateInput>
+    /**
+     * In case the Photo was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PhotoUpdateInput, PhotoUncheckedUpdateInput>
+  }
+
+  /**
+   * Photo delete
+   */
+  export type PhotoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Photo
+     */
+    select?: PhotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Photo
+     */
+    omit?: PhotoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PhotoInclude<ExtArgs> | null
+    /**
+     * Filter which Photo to delete.
+     */
+    where: PhotoWhereUniqueInput
+  }
+
+  /**
+   * Photo deleteMany
+   */
+  export type PhotoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Photos to delete
+     */
+    where?: PhotoWhereInput
+    /**
+     * Limit how many Photos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Photo.votes
+   */
+  export type Photo$votesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Vote
+     */
+    select?: VoteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Vote
+     */
+    omit?: VoteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VoteInclude<ExtArgs> | null
+    where?: VoteWhereInput
+    orderBy?: VoteOrderByWithRelationInput | VoteOrderByWithRelationInput[]
+    cursor?: VoteWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: VoteScalarFieldEnum | VoteScalarFieldEnum[]
+  }
+
+  /**
+   * Photo.comments
+   */
+  export type Photo$commentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comment
+     */
+    select?: CommentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comment
+     */
+    omit?: CommentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommentInclude<ExtArgs> | null
+    where?: CommentWhereInput
+    orderBy?: CommentOrderByWithRelationInput | CommentOrderByWithRelationInput[]
+    cursor?: CommentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CommentScalarFieldEnum | CommentScalarFieldEnum[]
+  }
+
+  /**
+   * Photo.awards
+   */
+  export type Photo$awardsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Award
+     */
+    select?: AwardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Award
+     */
+    omit?: AwardOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AwardInclude<ExtArgs> | null
+    where?: AwardWhereInput
+    orderBy?: AwardOrderByWithRelationInput | AwardOrderByWithRelationInput[]
+    cursor?: AwardWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AwardScalarFieldEnum | AwardScalarFieldEnum[]
+  }
+
+  /**
+   * Photo.forumReplies
+   */
+  export type Photo$forumRepliesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumReply
+     */
+    select?: ForumReplySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumReply
+     */
+    omit?: ForumReplyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumReplyInclude<ExtArgs> | null
+    where?: ForumReplyWhereInput
+    orderBy?: ForumReplyOrderByWithRelationInput | ForumReplyOrderByWithRelationInput[]
+    cursor?: ForumReplyWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ForumReplyScalarFieldEnum | ForumReplyScalarFieldEnum[]
+  }
+
+  /**
+   * Photo.collectionItems
+   */
+  export type Photo$collectionItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionItem
+     */
+    select?: CollectionItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionItem
+     */
+    omit?: CollectionItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionItemInclude<ExtArgs> | null
+    where?: CollectionItemWhereInput
+    orderBy?: CollectionItemOrderByWithRelationInput | CollectionItemOrderByWithRelationInput[]
+    cursor?: CollectionItemWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CollectionItemScalarFieldEnum | CollectionItemScalarFieldEnum[]
+  }
+
+  /**
+   * Photo without action
+   */
+  export type PhotoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Photo
+     */
+    select?: PhotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Photo
+     */
+    omit?: PhotoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PhotoInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Vote
+   */
+
+  export type AggregateVote = {
+    _count: VoteCountAggregateOutputType | null
+    _min: VoteMinAggregateOutputType | null
+    _max: VoteMaxAggregateOutputType | null
+  }
+
+  export type VoteMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    photoId: string | null
+    createdAt: Date | null
+  }
+
+  export type VoteMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    photoId: string | null
+    createdAt: Date | null
+  }
+
+  export type VoteCountAggregateOutputType = {
+    id: number
+    userId: number
+    photoId: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type VoteMinAggregateInputType = {
+    id?: true
+    userId?: true
+    photoId?: true
+    createdAt?: true
+  }
+
+  export type VoteMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    photoId?: true
+    createdAt?: true
+  }
+
+  export type VoteCountAggregateInputType = {
+    id?: true
+    userId?: true
+    photoId?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type VoteAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Vote to aggregate.
+     */
+    where?: VoteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Votes to fetch.
+     */
+    orderBy?: VoteOrderByWithRelationInput | VoteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: VoteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Votes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Votes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Votes
+    **/
+    _count?: true | VoteCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: VoteMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: VoteMaxAggregateInputType
+  }
+
+  export type GetVoteAggregateType<T extends VoteAggregateArgs> = {
+        [P in keyof T & keyof AggregateVote]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateVote[P]>
+      : GetScalarType<T[P], AggregateVote[P]>
+  }
+
+
+
+
+  export type VoteGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VoteWhereInput
+    orderBy?: VoteOrderByWithAggregationInput | VoteOrderByWithAggregationInput[]
+    by: VoteScalarFieldEnum[] | VoteScalarFieldEnum
+    having?: VoteScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: VoteCountAggregateInputType | true
+    _min?: VoteMinAggregateInputType
+    _max?: VoteMaxAggregateInputType
+  }
+
+  export type VoteGroupByOutputType = {
+    id: string
+    userId: string
+    photoId: string
+    createdAt: Date
+    _count: VoteCountAggregateOutputType | null
+    _min: VoteMinAggregateOutputType | null
+    _max: VoteMaxAggregateOutputType | null
+  }
+
+  type GetVoteGroupByPayload<T extends VoteGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<VoteGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof VoteGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], VoteGroupByOutputType[P]>
+            : GetScalarType<T[P], VoteGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type VoteSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    photoId?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    photo?: boolean | PhotoDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["vote"]>
+
+  export type VoteSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    photoId?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    photo?: boolean | PhotoDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["vote"]>
+
+  export type VoteSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    photoId?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    photo?: boolean | PhotoDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["vote"]>
+
+  export type VoteSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    photoId?: boolean
+    createdAt?: boolean
+  }
+
+  export type VoteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "photoId" | "createdAt", ExtArgs["result"]["vote"]>
+  export type VoteInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    photo?: boolean | PhotoDefaultArgs<ExtArgs>
+  }
+  export type VoteIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    photo?: boolean | PhotoDefaultArgs<ExtArgs>
+  }
+  export type VoteIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    photo?: boolean | PhotoDefaultArgs<ExtArgs>
+  }
+
+  export type $VotePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Vote"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      photo: Prisma.$PhotoPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      photoId: string
+      createdAt: Date
+    }, ExtArgs["result"]["vote"]>
+    composites: {}
+  }
+
+  type VoteGetPayload<S extends boolean | null | undefined | VoteDefaultArgs> = $Result.GetResult<Prisma.$VotePayload, S>
+
+  type VoteCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<VoteFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: VoteCountAggregateInputType | true
+    }
+
+  export interface VoteDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Vote'], meta: { name: 'Vote' } }
+    /**
+     * Find zero or one Vote that matches the filter.
+     * @param {VoteFindUniqueArgs} args - Arguments to find a Vote
+     * @example
+     * // Get one Vote
+     * const vote = await prisma.vote.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends VoteFindUniqueArgs>(args: SelectSubset<T, VoteFindUniqueArgs<ExtArgs>>): Prisma__VoteClient<$Result.GetResult<Prisma.$VotePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Vote that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {VoteFindUniqueOrThrowArgs} args - Arguments to find a Vote
+     * @example
+     * // Get one Vote
+     * const vote = await prisma.vote.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends VoteFindUniqueOrThrowArgs>(args: SelectSubset<T, VoteFindUniqueOrThrowArgs<ExtArgs>>): Prisma__VoteClient<$Result.GetResult<Prisma.$VotePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Vote that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VoteFindFirstArgs} args - Arguments to find a Vote
+     * @example
+     * // Get one Vote
+     * const vote = await prisma.vote.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends VoteFindFirstArgs>(args?: SelectSubset<T, VoteFindFirstArgs<ExtArgs>>): Prisma__VoteClient<$Result.GetResult<Prisma.$VotePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Vote that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VoteFindFirstOrThrowArgs} args - Arguments to find a Vote
+     * @example
+     * // Get one Vote
+     * const vote = await prisma.vote.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends VoteFindFirstOrThrowArgs>(args?: SelectSubset<T, VoteFindFirstOrThrowArgs<ExtArgs>>): Prisma__VoteClient<$Result.GetResult<Prisma.$VotePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Votes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VoteFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Votes
+     * const votes = await prisma.vote.findMany()
+     * 
+     * // Get first 10 Votes
+     * const votes = await prisma.vote.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const voteWithIdOnly = await prisma.vote.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends VoteFindManyArgs>(args?: SelectSubset<T, VoteFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Vote.
+     * @param {VoteCreateArgs} args - Arguments to create a Vote.
+     * @example
+     * // Create one Vote
+     * const Vote = await prisma.vote.create({
+     *   data: {
+     *     // ... data to create a Vote
+     *   }
+     * })
+     * 
+     */
+    create<T extends VoteCreateArgs>(args: SelectSubset<T, VoteCreateArgs<ExtArgs>>): Prisma__VoteClient<$Result.GetResult<Prisma.$VotePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Votes.
+     * @param {VoteCreateManyArgs} args - Arguments to create many Votes.
+     * @example
+     * // Create many Votes
+     * const vote = await prisma.vote.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends VoteCreateManyArgs>(args?: SelectSubset<T, VoteCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Votes and returns the data saved in the database.
+     * @param {VoteCreateManyAndReturnArgs} args - Arguments to create many Votes.
+     * @example
+     * // Create many Votes
+     * const vote = await prisma.vote.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Votes and only return the `id`
+     * const voteWithIdOnly = await prisma.vote.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends VoteCreateManyAndReturnArgs>(args?: SelectSubset<T, VoteCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VotePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Vote.
+     * @param {VoteDeleteArgs} args - Arguments to delete one Vote.
+     * @example
+     * // Delete one Vote
+     * const Vote = await prisma.vote.delete({
+     *   where: {
+     *     // ... filter to delete one Vote
+     *   }
+     * })
+     * 
+     */
+    delete<T extends VoteDeleteArgs>(args: SelectSubset<T, VoteDeleteArgs<ExtArgs>>): Prisma__VoteClient<$Result.GetResult<Prisma.$VotePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Vote.
+     * @param {VoteUpdateArgs} args - Arguments to update one Vote.
+     * @example
+     * // Update one Vote
+     * const vote = await prisma.vote.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends VoteUpdateArgs>(args: SelectSubset<T, VoteUpdateArgs<ExtArgs>>): Prisma__VoteClient<$Result.GetResult<Prisma.$VotePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Votes.
+     * @param {VoteDeleteManyArgs} args - Arguments to filter Votes to delete.
+     * @example
+     * // Delete a few Votes
+     * const { count } = await prisma.vote.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends VoteDeleteManyArgs>(args?: SelectSubset<T, VoteDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Votes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VoteUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Votes
+     * const vote = await prisma.vote.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends VoteUpdateManyArgs>(args: SelectSubset<T, VoteUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Votes and returns the data updated in the database.
+     * @param {VoteUpdateManyAndReturnArgs} args - Arguments to update many Votes.
+     * @example
+     * // Update many Votes
+     * const vote = await prisma.vote.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Votes and only return the `id`
+     * const voteWithIdOnly = await prisma.vote.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends VoteUpdateManyAndReturnArgs>(args: SelectSubset<T, VoteUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VotePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Vote.
+     * @param {VoteUpsertArgs} args - Arguments to update or create a Vote.
+     * @example
+     * // Update or create a Vote
+     * const vote = await prisma.vote.upsert({
+     *   create: {
+     *     // ... data to create a Vote
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Vote we want to update
+     *   }
+     * })
+     */
+    upsert<T extends VoteUpsertArgs>(args: SelectSubset<T, VoteUpsertArgs<ExtArgs>>): Prisma__VoteClient<$Result.GetResult<Prisma.$VotePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Votes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VoteCountArgs} args - Arguments to filter Votes to count.
+     * @example
+     * // Count the number of Votes
+     * const count = await prisma.vote.count({
+     *   where: {
+     *     // ... the filter for the Votes we want to count
+     *   }
+     * })
+    **/
+    count<T extends VoteCountArgs>(
+      args?: Subset<T, VoteCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], VoteCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Vote.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VoteAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends VoteAggregateArgs>(args: Subset<T, VoteAggregateArgs>): Prisma.PrismaPromise<GetVoteAggregateType<T>>
+
+    /**
+     * Group by Vote.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VoteGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends VoteGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: VoteGroupByArgs['orderBy'] }
+        : { orderBy?: VoteGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, VoteGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetVoteGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Vote model
+   */
+  readonly fields: VoteFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Vote.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__VoteClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    photo<T extends PhotoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PhotoDefaultArgs<ExtArgs>>): Prisma__PhotoClient<$Result.GetResult<Prisma.$PhotoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Vote model
+   */
+  interface VoteFieldRefs {
+    readonly id: FieldRef<"Vote", 'String'>
+    readonly userId: FieldRef<"Vote", 'String'>
+    readonly photoId: FieldRef<"Vote", 'String'>
+    readonly createdAt: FieldRef<"Vote", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Vote findUnique
+   */
+  export type VoteFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Vote
+     */
+    select?: VoteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Vote
+     */
+    omit?: VoteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VoteInclude<ExtArgs> | null
+    /**
+     * Filter, which Vote to fetch.
+     */
+    where: VoteWhereUniqueInput
+  }
+
+  /**
+   * Vote findUniqueOrThrow
+   */
+  export type VoteFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Vote
+     */
+    select?: VoteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Vote
+     */
+    omit?: VoteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VoteInclude<ExtArgs> | null
+    /**
+     * Filter, which Vote to fetch.
+     */
+    where: VoteWhereUniqueInput
+  }
+
+  /**
+   * Vote findFirst
+   */
+  export type VoteFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Vote
+     */
+    select?: VoteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Vote
+     */
+    omit?: VoteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VoteInclude<ExtArgs> | null
+    /**
+     * Filter, which Vote to fetch.
+     */
+    where?: VoteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Votes to fetch.
+     */
+    orderBy?: VoteOrderByWithRelationInput | VoteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Votes.
+     */
+    cursor?: VoteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Votes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Votes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Votes.
+     */
+    distinct?: VoteScalarFieldEnum | VoteScalarFieldEnum[]
+  }
+
+  /**
+   * Vote findFirstOrThrow
+   */
+  export type VoteFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Vote
+     */
+    select?: VoteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Vote
+     */
+    omit?: VoteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VoteInclude<ExtArgs> | null
+    /**
+     * Filter, which Vote to fetch.
+     */
+    where?: VoteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Votes to fetch.
+     */
+    orderBy?: VoteOrderByWithRelationInput | VoteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Votes.
+     */
+    cursor?: VoteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Votes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Votes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Votes.
+     */
+    distinct?: VoteScalarFieldEnum | VoteScalarFieldEnum[]
+  }
+
+  /**
+   * Vote findMany
+   */
+  export type VoteFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Vote
+     */
+    select?: VoteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Vote
+     */
+    omit?: VoteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VoteInclude<ExtArgs> | null
+    /**
+     * Filter, which Votes to fetch.
+     */
+    where?: VoteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Votes to fetch.
+     */
+    orderBy?: VoteOrderByWithRelationInput | VoteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Votes.
+     */
+    cursor?: VoteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Votes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Votes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Votes.
+     */
+    distinct?: VoteScalarFieldEnum | VoteScalarFieldEnum[]
+  }
+
+  /**
+   * Vote create
+   */
+  export type VoteCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Vote
+     */
+    select?: VoteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Vote
+     */
+    omit?: VoteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VoteInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Vote.
+     */
+    data: XOR<VoteCreateInput, VoteUncheckedCreateInput>
+  }
+
+  /**
+   * Vote createMany
+   */
+  export type VoteCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Votes.
+     */
+    data: VoteCreateManyInput | VoteCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Vote createManyAndReturn
+   */
+  export type VoteCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Vote
+     */
+    select?: VoteSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Vote
+     */
+    omit?: VoteOmit<ExtArgs> | null
+    /**
+     * The data used to create many Votes.
+     */
+    data: VoteCreateManyInput | VoteCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VoteIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Vote update
+   */
+  export type VoteUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Vote
+     */
+    select?: VoteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Vote
+     */
+    omit?: VoteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VoteInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Vote.
+     */
+    data: XOR<VoteUpdateInput, VoteUncheckedUpdateInput>
+    /**
+     * Choose, which Vote to update.
+     */
+    where: VoteWhereUniqueInput
+  }
+
+  /**
+   * Vote updateMany
+   */
+  export type VoteUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Votes.
+     */
+    data: XOR<VoteUpdateManyMutationInput, VoteUncheckedUpdateManyInput>
+    /**
+     * Filter which Votes to update
+     */
+    where?: VoteWhereInput
+    /**
+     * Limit how many Votes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Vote updateManyAndReturn
+   */
+  export type VoteUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Vote
+     */
+    select?: VoteSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Vote
+     */
+    omit?: VoteOmit<ExtArgs> | null
+    /**
+     * The data used to update Votes.
+     */
+    data: XOR<VoteUpdateManyMutationInput, VoteUncheckedUpdateManyInput>
+    /**
+     * Filter which Votes to update
+     */
+    where?: VoteWhereInput
+    /**
+     * Limit how many Votes to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VoteIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Vote upsert
+   */
+  export type VoteUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Vote
+     */
+    select?: VoteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Vote
+     */
+    omit?: VoteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VoteInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Vote to update in case it exists.
+     */
+    where: VoteWhereUniqueInput
+    /**
+     * In case the Vote found by the `where` argument doesn't exist, create a new Vote with this data.
+     */
+    create: XOR<VoteCreateInput, VoteUncheckedCreateInput>
+    /**
+     * In case the Vote was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<VoteUpdateInput, VoteUncheckedUpdateInput>
+  }
+
+  /**
+   * Vote delete
+   */
+  export type VoteDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Vote
+     */
+    select?: VoteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Vote
+     */
+    omit?: VoteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VoteInclude<ExtArgs> | null
+    /**
+     * Filter which Vote to delete.
+     */
+    where: VoteWhereUniqueInput
+  }
+
+  /**
+   * Vote deleteMany
+   */
+  export type VoteDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Votes to delete
+     */
+    where?: VoteWhereInput
+    /**
+     * Limit how many Votes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Vote without action
+   */
+  export type VoteDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Vote
+     */
+    select?: VoteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Vote
+     */
+    omit?: VoteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VoteInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Comment
+   */
+
+  export type AggregateComment = {
+    _count: CommentCountAggregateOutputType | null
+    _min: CommentMinAggregateOutputType | null
+    _max: CommentMaxAggregateOutputType | null
+  }
+
+  export type CommentMinAggregateOutputType = {
+    id: string | null
+    body: string | null
+    authorId: string | null
+    photoId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CommentMaxAggregateOutputType = {
+    id: string | null
+    body: string | null
+    authorId: string | null
+    photoId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CommentCountAggregateOutputType = {
+    id: number
+    body: number
+    authorId: number
+    photoId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type CommentMinAggregateInputType = {
+    id?: true
+    body?: true
+    authorId?: true
+    photoId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CommentMaxAggregateInputType = {
+    id?: true
+    body?: true
+    authorId?: true
+    photoId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CommentCountAggregateInputType = {
+    id?: true
+    body?: true
+    authorId?: true
+    photoId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type CommentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Comment to aggregate.
+     */
+    where?: CommentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Comments to fetch.
+     */
+    orderBy?: CommentOrderByWithRelationInput | CommentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CommentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Comments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Comments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Comments
+    **/
+    _count?: true | CommentCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CommentMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CommentMaxAggregateInputType
+  }
+
+  export type GetCommentAggregateType<T extends CommentAggregateArgs> = {
+        [P in keyof T & keyof AggregateComment]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateComment[P]>
+      : GetScalarType<T[P], AggregateComment[P]>
+  }
+
+
+
+
+  export type CommentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CommentWhereInput
+    orderBy?: CommentOrderByWithAggregationInput | CommentOrderByWithAggregationInput[]
+    by: CommentScalarFieldEnum[] | CommentScalarFieldEnum
+    having?: CommentScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CommentCountAggregateInputType | true
+    _min?: CommentMinAggregateInputType
+    _max?: CommentMaxAggregateInputType
+  }
+
+  export type CommentGroupByOutputType = {
+    id: string
+    body: string
+    authorId: string
+    photoId: string
+    createdAt: Date
+    updatedAt: Date
+    _count: CommentCountAggregateOutputType | null
+    _min: CommentMinAggregateOutputType | null
+    _max: CommentMaxAggregateOutputType | null
+  }
+
+  type GetCommentGroupByPayload<T extends CommentGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CommentGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CommentGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CommentGroupByOutputType[P]>
+            : GetScalarType<T[P], CommentGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CommentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    body?: boolean
+    authorId?: boolean
+    photoId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    photo?: boolean | PhotoDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["comment"]>
+
+  export type CommentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    body?: boolean
+    authorId?: boolean
+    photoId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    photo?: boolean | PhotoDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["comment"]>
+
+  export type CommentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    body?: boolean
+    authorId?: boolean
+    photoId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    photo?: boolean | PhotoDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["comment"]>
+
+  export type CommentSelectScalar = {
+    id?: boolean
+    body?: boolean
+    authorId?: boolean
+    photoId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type CommentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "body" | "authorId" | "photoId" | "createdAt" | "updatedAt", ExtArgs["result"]["comment"]>
+  export type CommentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    photo?: boolean | PhotoDefaultArgs<ExtArgs>
+  }
+  export type CommentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    photo?: boolean | PhotoDefaultArgs<ExtArgs>
+  }
+  export type CommentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    photo?: boolean | PhotoDefaultArgs<ExtArgs>
+  }
+
+  export type $CommentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Comment"
+    objects: {
+      author: Prisma.$UserPayload<ExtArgs>
+      photo: Prisma.$PhotoPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      body: string
+      authorId: string
+      photoId: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["comment"]>
+    composites: {}
+  }
+
+  type CommentGetPayload<S extends boolean | null | undefined | CommentDefaultArgs> = $Result.GetResult<Prisma.$CommentPayload, S>
+
+  type CommentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CommentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CommentCountAggregateInputType | true
+    }
+
+  export interface CommentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Comment'], meta: { name: 'Comment' } }
+    /**
+     * Find zero or one Comment that matches the filter.
+     * @param {CommentFindUniqueArgs} args - Arguments to find a Comment
+     * @example
+     * // Get one Comment
+     * const comment = await prisma.comment.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CommentFindUniqueArgs>(args: SelectSubset<T, CommentFindUniqueArgs<ExtArgs>>): Prisma__CommentClient<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Comment that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CommentFindUniqueOrThrowArgs} args - Arguments to find a Comment
+     * @example
+     * // Get one Comment
+     * const comment = await prisma.comment.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CommentFindUniqueOrThrowArgs>(args: SelectSubset<T, CommentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CommentClient<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Comment that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentFindFirstArgs} args - Arguments to find a Comment
+     * @example
+     * // Get one Comment
+     * const comment = await prisma.comment.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CommentFindFirstArgs>(args?: SelectSubset<T, CommentFindFirstArgs<ExtArgs>>): Prisma__CommentClient<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Comment that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentFindFirstOrThrowArgs} args - Arguments to find a Comment
+     * @example
+     * // Get one Comment
+     * const comment = await prisma.comment.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CommentFindFirstOrThrowArgs>(args?: SelectSubset<T, CommentFindFirstOrThrowArgs<ExtArgs>>): Prisma__CommentClient<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Comments that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Comments
+     * const comments = await prisma.comment.findMany()
+     * 
+     * // Get first 10 Comments
+     * const comments = await prisma.comment.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const commentWithIdOnly = await prisma.comment.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CommentFindManyArgs>(args?: SelectSubset<T, CommentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Comment.
+     * @param {CommentCreateArgs} args - Arguments to create a Comment.
+     * @example
+     * // Create one Comment
+     * const Comment = await prisma.comment.create({
+     *   data: {
+     *     // ... data to create a Comment
+     *   }
+     * })
+     * 
+     */
+    create<T extends CommentCreateArgs>(args: SelectSubset<T, CommentCreateArgs<ExtArgs>>): Prisma__CommentClient<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Comments.
+     * @param {CommentCreateManyArgs} args - Arguments to create many Comments.
+     * @example
+     * // Create many Comments
+     * const comment = await prisma.comment.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CommentCreateManyArgs>(args?: SelectSubset<T, CommentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Comments and returns the data saved in the database.
+     * @param {CommentCreateManyAndReturnArgs} args - Arguments to create many Comments.
+     * @example
+     * // Create many Comments
+     * const comment = await prisma.comment.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Comments and only return the `id`
+     * const commentWithIdOnly = await prisma.comment.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CommentCreateManyAndReturnArgs>(args?: SelectSubset<T, CommentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Comment.
+     * @param {CommentDeleteArgs} args - Arguments to delete one Comment.
+     * @example
+     * // Delete one Comment
+     * const Comment = await prisma.comment.delete({
+     *   where: {
+     *     // ... filter to delete one Comment
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CommentDeleteArgs>(args: SelectSubset<T, CommentDeleteArgs<ExtArgs>>): Prisma__CommentClient<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Comment.
+     * @param {CommentUpdateArgs} args - Arguments to update one Comment.
+     * @example
+     * // Update one Comment
+     * const comment = await prisma.comment.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CommentUpdateArgs>(args: SelectSubset<T, CommentUpdateArgs<ExtArgs>>): Prisma__CommentClient<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Comments.
+     * @param {CommentDeleteManyArgs} args - Arguments to filter Comments to delete.
+     * @example
+     * // Delete a few Comments
+     * const { count } = await prisma.comment.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CommentDeleteManyArgs>(args?: SelectSubset<T, CommentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Comments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Comments
+     * const comment = await prisma.comment.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CommentUpdateManyArgs>(args: SelectSubset<T, CommentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Comments and returns the data updated in the database.
+     * @param {CommentUpdateManyAndReturnArgs} args - Arguments to update many Comments.
+     * @example
+     * // Update many Comments
+     * const comment = await prisma.comment.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Comments and only return the `id`
+     * const commentWithIdOnly = await prisma.comment.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CommentUpdateManyAndReturnArgs>(args: SelectSubset<T, CommentUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Comment.
+     * @param {CommentUpsertArgs} args - Arguments to update or create a Comment.
+     * @example
+     * // Update or create a Comment
+     * const comment = await prisma.comment.upsert({
+     *   create: {
+     *     // ... data to create a Comment
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Comment we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CommentUpsertArgs>(args: SelectSubset<T, CommentUpsertArgs<ExtArgs>>): Prisma__CommentClient<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Comments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentCountArgs} args - Arguments to filter Comments to count.
+     * @example
+     * // Count the number of Comments
+     * const count = await prisma.comment.count({
+     *   where: {
+     *     // ... the filter for the Comments we want to count
+     *   }
+     * })
+    **/
+    count<T extends CommentCountArgs>(
+      args?: Subset<T, CommentCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CommentCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Comment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CommentAggregateArgs>(args: Subset<T, CommentAggregateArgs>): Prisma.PrismaPromise<GetCommentAggregateType<T>>
+
+    /**
+     * Group by Comment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CommentGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CommentGroupByArgs['orderBy'] }
+        : { orderBy?: CommentGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CommentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCommentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Comment model
+   */
+  readonly fields: CommentFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Comment.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CommentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    author<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    photo<T extends PhotoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PhotoDefaultArgs<ExtArgs>>): Prisma__PhotoClient<$Result.GetResult<Prisma.$PhotoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Comment model
+   */
+  interface CommentFieldRefs {
+    readonly id: FieldRef<"Comment", 'String'>
+    readonly body: FieldRef<"Comment", 'String'>
+    readonly authorId: FieldRef<"Comment", 'String'>
+    readonly photoId: FieldRef<"Comment", 'String'>
+    readonly createdAt: FieldRef<"Comment", 'DateTime'>
+    readonly updatedAt: FieldRef<"Comment", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Comment findUnique
+   */
+  export type CommentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comment
+     */
+    select?: CommentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comment
+     */
+    omit?: CommentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommentInclude<ExtArgs> | null
+    /**
+     * Filter, which Comment to fetch.
+     */
+    where: CommentWhereUniqueInput
+  }
+
+  /**
+   * Comment findUniqueOrThrow
+   */
+  export type CommentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comment
+     */
+    select?: CommentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comment
+     */
+    omit?: CommentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommentInclude<ExtArgs> | null
+    /**
+     * Filter, which Comment to fetch.
+     */
+    where: CommentWhereUniqueInput
+  }
+
+  /**
+   * Comment findFirst
+   */
+  export type CommentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comment
+     */
+    select?: CommentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comment
+     */
+    omit?: CommentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommentInclude<ExtArgs> | null
+    /**
+     * Filter, which Comment to fetch.
+     */
+    where?: CommentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Comments to fetch.
+     */
+    orderBy?: CommentOrderByWithRelationInput | CommentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Comments.
+     */
+    cursor?: CommentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Comments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Comments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Comments.
+     */
+    distinct?: CommentScalarFieldEnum | CommentScalarFieldEnum[]
+  }
+
+  /**
+   * Comment findFirstOrThrow
+   */
+  export type CommentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comment
+     */
+    select?: CommentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comment
+     */
+    omit?: CommentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommentInclude<ExtArgs> | null
+    /**
+     * Filter, which Comment to fetch.
+     */
+    where?: CommentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Comments to fetch.
+     */
+    orderBy?: CommentOrderByWithRelationInput | CommentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Comments.
+     */
+    cursor?: CommentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Comments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Comments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Comments.
+     */
+    distinct?: CommentScalarFieldEnum | CommentScalarFieldEnum[]
+  }
+
+  /**
+   * Comment findMany
+   */
+  export type CommentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comment
+     */
+    select?: CommentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comment
+     */
+    omit?: CommentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommentInclude<ExtArgs> | null
+    /**
+     * Filter, which Comments to fetch.
+     */
+    where?: CommentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Comments to fetch.
+     */
+    orderBy?: CommentOrderByWithRelationInput | CommentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Comments.
+     */
+    cursor?: CommentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Comments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Comments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Comments.
+     */
+    distinct?: CommentScalarFieldEnum | CommentScalarFieldEnum[]
+  }
+
+  /**
+   * Comment create
+   */
+  export type CommentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comment
+     */
+    select?: CommentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comment
+     */
+    omit?: CommentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommentInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Comment.
+     */
+    data: XOR<CommentCreateInput, CommentUncheckedCreateInput>
+  }
+
+  /**
+   * Comment createMany
+   */
+  export type CommentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Comments.
+     */
+    data: CommentCreateManyInput | CommentCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Comment createManyAndReturn
+   */
+  export type CommentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comment
+     */
+    select?: CommentSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comment
+     */
+    omit?: CommentOmit<ExtArgs> | null
+    /**
+     * The data used to create many Comments.
+     */
+    data: CommentCreateManyInput | CommentCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommentIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Comment update
+   */
+  export type CommentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comment
+     */
+    select?: CommentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comment
+     */
+    omit?: CommentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommentInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Comment.
+     */
+    data: XOR<CommentUpdateInput, CommentUncheckedUpdateInput>
+    /**
+     * Choose, which Comment to update.
+     */
+    where: CommentWhereUniqueInput
+  }
+
+  /**
+   * Comment updateMany
+   */
+  export type CommentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Comments.
+     */
+    data: XOR<CommentUpdateManyMutationInput, CommentUncheckedUpdateManyInput>
+    /**
+     * Filter which Comments to update
+     */
+    where?: CommentWhereInput
+    /**
+     * Limit how many Comments to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Comment updateManyAndReturn
+   */
+  export type CommentUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comment
+     */
+    select?: CommentSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comment
+     */
+    omit?: CommentOmit<ExtArgs> | null
+    /**
+     * The data used to update Comments.
+     */
+    data: XOR<CommentUpdateManyMutationInput, CommentUncheckedUpdateManyInput>
+    /**
+     * Filter which Comments to update
+     */
+    where?: CommentWhereInput
+    /**
+     * Limit how many Comments to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommentIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Comment upsert
+   */
+  export type CommentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comment
+     */
+    select?: CommentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comment
+     */
+    omit?: CommentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommentInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Comment to update in case it exists.
+     */
+    where: CommentWhereUniqueInput
+    /**
+     * In case the Comment found by the `where` argument doesn't exist, create a new Comment with this data.
+     */
+    create: XOR<CommentCreateInput, CommentUncheckedCreateInput>
+    /**
+     * In case the Comment was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CommentUpdateInput, CommentUncheckedUpdateInput>
+  }
+
+  /**
+   * Comment delete
+   */
+  export type CommentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comment
+     */
+    select?: CommentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comment
+     */
+    omit?: CommentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommentInclude<ExtArgs> | null
+    /**
+     * Filter which Comment to delete.
+     */
+    where: CommentWhereUniqueInput
+  }
+
+  /**
+   * Comment deleteMany
+   */
+  export type CommentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Comments to delete
+     */
+    where?: CommentWhereInput
+    /**
+     * Limit how many Comments to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Comment without action
+   */
+  export type CommentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comment
+     */
+    select?: CommentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comment
+     */
+    omit?: CommentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommentInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Award
+   */
+
+  export type AggregateAward = {
+    _count: AwardCountAggregateOutputType | null
+    _avg: AwardAvgAggregateOutputType | null
+    _sum: AwardSumAggregateOutputType | null
+    _min: AwardMinAggregateOutputType | null
+    _max: AwardMaxAggregateOutputType | null
+  }
+
+  export type AwardAvgAggregateOutputType = {
+    voteCount: number | null
+  }
+
+  export type AwardSumAggregateOutputType = {
+    voteCount: number | null
+  }
+
+  export type AwardMinAggregateOutputType = {
+    id: string | null
+    type: $Enums.AwardType | null
+    photoId: string | null
+    userId: string | null
+    periodStart: Date | null
+    periodEnd: Date | null
+    voteCount: number | null
+    awardedAt: Date | null
+  }
+
+  export type AwardMaxAggregateOutputType = {
+    id: string | null
+    type: $Enums.AwardType | null
+    photoId: string | null
+    userId: string | null
+    periodStart: Date | null
+    periodEnd: Date | null
+    voteCount: number | null
+    awardedAt: Date | null
+  }
+
+  export type AwardCountAggregateOutputType = {
+    id: number
+    type: number
+    photoId: number
+    userId: number
+    periodStart: number
+    periodEnd: number
+    voteCount: number
+    awardedAt: number
+    _all: number
+  }
+
+
+  export type AwardAvgAggregateInputType = {
+    voteCount?: true
+  }
+
+  export type AwardSumAggregateInputType = {
+    voteCount?: true
+  }
+
+  export type AwardMinAggregateInputType = {
+    id?: true
+    type?: true
+    photoId?: true
+    userId?: true
+    periodStart?: true
+    periodEnd?: true
+    voteCount?: true
+    awardedAt?: true
+  }
+
+  export type AwardMaxAggregateInputType = {
+    id?: true
+    type?: true
+    photoId?: true
+    userId?: true
+    periodStart?: true
+    periodEnd?: true
+    voteCount?: true
+    awardedAt?: true
+  }
+
+  export type AwardCountAggregateInputType = {
+    id?: true
+    type?: true
+    photoId?: true
+    userId?: true
+    periodStart?: true
+    periodEnd?: true
+    voteCount?: true
+    awardedAt?: true
+    _all?: true
+  }
+
+  export type AwardAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Award to aggregate.
+     */
+    where?: AwardWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Awards to fetch.
+     */
+    orderBy?: AwardOrderByWithRelationInput | AwardOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AwardWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Awards from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Awards.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Awards
+    **/
+    _count?: true | AwardCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: AwardAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: AwardSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AwardMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AwardMaxAggregateInputType
+  }
+
+  export type GetAwardAggregateType<T extends AwardAggregateArgs> = {
+        [P in keyof T & keyof AggregateAward]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAward[P]>
+      : GetScalarType<T[P], AggregateAward[P]>
+  }
+
+
+
+
+  export type AwardGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AwardWhereInput
+    orderBy?: AwardOrderByWithAggregationInput | AwardOrderByWithAggregationInput[]
+    by: AwardScalarFieldEnum[] | AwardScalarFieldEnum
+    having?: AwardScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AwardCountAggregateInputType | true
+    _avg?: AwardAvgAggregateInputType
+    _sum?: AwardSumAggregateInputType
+    _min?: AwardMinAggregateInputType
+    _max?: AwardMaxAggregateInputType
+  }
+
+  export type AwardGroupByOutputType = {
+    id: string
+    type: $Enums.AwardType
+    photoId: string
+    userId: string
+    periodStart: Date
+    periodEnd: Date
+    voteCount: number
+    awardedAt: Date
+    _count: AwardCountAggregateOutputType | null
+    _avg: AwardAvgAggregateOutputType | null
+    _sum: AwardSumAggregateOutputType | null
+    _min: AwardMinAggregateOutputType | null
+    _max: AwardMaxAggregateOutputType | null
+  }
+
+  type GetAwardGroupByPayload<T extends AwardGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AwardGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AwardGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AwardGroupByOutputType[P]>
+            : GetScalarType<T[P], AwardGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AwardSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    type?: boolean
+    photoId?: boolean
+    userId?: boolean
+    periodStart?: boolean
+    periodEnd?: boolean
+    voteCount?: boolean
+    awardedAt?: boolean
+    photo?: boolean | PhotoDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["award"]>
+
+  export type AwardSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    type?: boolean
+    photoId?: boolean
+    userId?: boolean
+    periodStart?: boolean
+    periodEnd?: boolean
+    voteCount?: boolean
+    awardedAt?: boolean
+    photo?: boolean | PhotoDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["award"]>
+
+  export type AwardSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    type?: boolean
+    photoId?: boolean
+    userId?: boolean
+    periodStart?: boolean
+    periodEnd?: boolean
+    voteCount?: boolean
+    awardedAt?: boolean
+    photo?: boolean | PhotoDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["award"]>
+
+  export type AwardSelectScalar = {
+    id?: boolean
+    type?: boolean
+    photoId?: boolean
+    userId?: boolean
+    periodStart?: boolean
+    periodEnd?: boolean
+    voteCount?: boolean
+    awardedAt?: boolean
+  }
+
+  export type AwardOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "type" | "photoId" | "userId" | "periodStart" | "periodEnd" | "voteCount" | "awardedAt", ExtArgs["result"]["award"]>
+  export type AwardInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    photo?: boolean | PhotoDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type AwardIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    photo?: boolean | PhotoDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type AwardIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    photo?: boolean | PhotoDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $AwardPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Award"
+    objects: {
+      photo: Prisma.$PhotoPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      type: $Enums.AwardType
+      photoId: string
+      userId: string
+      periodStart: Date
+      periodEnd: Date
+      voteCount: number
+      awardedAt: Date
+    }, ExtArgs["result"]["award"]>
+    composites: {}
+  }
+
+  type AwardGetPayload<S extends boolean | null | undefined | AwardDefaultArgs> = $Result.GetResult<Prisma.$AwardPayload, S>
+
+  type AwardCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AwardFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AwardCountAggregateInputType | true
+    }
+
+  export interface AwardDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Award'], meta: { name: 'Award' } }
+    /**
+     * Find zero or one Award that matches the filter.
+     * @param {AwardFindUniqueArgs} args - Arguments to find a Award
+     * @example
+     * // Get one Award
+     * const award = await prisma.award.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AwardFindUniqueArgs>(args: SelectSubset<T, AwardFindUniqueArgs<ExtArgs>>): Prisma__AwardClient<$Result.GetResult<Prisma.$AwardPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Award that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {AwardFindUniqueOrThrowArgs} args - Arguments to find a Award
+     * @example
+     * // Get one Award
+     * const award = await prisma.award.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AwardFindUniqueOrThrowArgs>(args: SelectSubset<T, AwardFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AwardClient<$Result.GetResult<Prisma.$AwardPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Award that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AwardFindFirstArgs} args - Arguments to find a Award
+     * @example
+     * // Get one Award
+     * const award = await prisma.award.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AwardFindFirstArgs>(args?: SelectSubset<T, AwardFindFirstArgs<ExtArgs>>): Prisma__AwardClient<$Result.GetResult<Prisma.$AwardPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Award that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AwardFindFirstOrThrowArgs} args - Arguments to find a Award
+     * @example
+     * // Get one Award
+     * const award = await prisma.award.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AwardFindFirstOrThrowArgs>(args?: SelectSubset<T, AwardFindFirstOrThrowArgs<ExtArgs>>): Prisma__AwardClient<$Result.GetResult<Prisma.$AwardPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Awards that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AwardFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Awards
+     * const awards = await prisma.award.findMany()
+     * 
+     * // Get first 10 Awards
+     * const awards = await prisma.award.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const awardWithIdOnly = await prisma.award.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends AwardFindManyArgs>(args?: SelectSubset<T, AwardFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AwardPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Award.
+     * @param {AwardCreateArgs} args - Arguments to create a Award.
+     * @example
+     * // Create one Award
+     * const Award = await prisma.award.create({
+     *   data: {
+     *     // ... data to create a Award
+     *   }
+     * })
+     * 
+     */
+    create<T extends AwardCreateArgs>(args: SelectSubset<T, AwardCreateArgs<ExtArgs>>): Prisma__AwardClient<$Result.GetResult<Prisma.$AwardPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Awards.
+     * @param {AwardCreateManyArgs} args - Arguments to create many Awards.
+     * @example
+     * // Create many Awards
+     * const award = await prisma.award.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AwardCreateManyArgs>(args?: SelectSubset<T, AwardCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Awards and returns the data saved in the database.
+     * @param {AwardCreateManyAndReturnArgs} args - Arguments to create many Awards.
+     * @example
+     * // Create many Awards
+     * const award = await prisma.award.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Awards and only return the `id`
+     * const awardWithIdOnly = await prisma.award.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends AwardCreateManyAndReturnArgs>(args?: SelectSubset<T, AwardCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AwardPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Award.
+     * @param {AwardDeleteArgs} args - Arguments to delete one Award.
+     * @example
+     * // Delete one Award
+     * const Award = await prisma.award.delete({
+     *   where: {
+     *     // ... filter to delete one Award
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AwardDeleteArgs>(args: SelectSubset<T, AwardDeleteArgs<ExtArgs>>): Prisma__AwardClient<$Result.GetResult<Prisma.$AwardPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Award.
+     * @param {AwardUpdateArgs} args - Arguments to update one Award.
+     * @example
+     * // Update one Award
+     * const award = await prisma.award.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AwardUpdateArgs>(args: SelectSubset<T, AwardUpdateArgs<ExtArgs>>): Prisma__AwardClient<$Result.GetResult<Prisma.$AwardPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Awards.
+     * @param {AwardDeleteManyArgs} args - Arguments to filter Awards to delete.
+     * @example
+     * // Delete a few Awards
+     * const { count } = await prisma.award.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AwardDeleteManyArgs>(args?: SelectSubset<T, AwardDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Awards.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AwardUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Awards
+     * const award = await prisma.award.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AwardUpdateManyArgs>(args: SelectSubset<T, AwardUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Awards and returns the data updated in the database.
+     * @param {AwardUpdateManyAndReturnArgs} args - Arguments to update many Awards.
+     * @example
+     * // Update many Awards
+     * const award = await prisma.award.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Awards and only return the `id`
+     * const awardWithIdOnly = await prisma.award.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends AwardUpdateManyAndReturnArgs>(args: SelectSubset<T, AwardUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AwardPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Award.
+     * @param {AwardUpsertArgs} args - Arguments to update or create a Award.
+     * @example
+     * // Update or create a Award
+     * const award = await prisma.award.upsert({
+     *   create: {
+     *     // ... data to create a Award
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Award we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AwardUpsertArgs>(args: SelectSubset<T, AwardUpsertArgs<ExtArgs>>): Prisma__AwardClient<$Result.GetResult<Prisma.$AwardPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Awards.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AwardCountArgs} args - Arguments to filter Awards to count.
+     * @example
+     * // Count the number of Awards
+     * const count = await prisma.award.count({
+     *   where: {
+     *     // ... the filter for the Awards we want to count
+     *   }
+     * })
+    **/
+    count<T extends AwardCountArgs>(
+      args?: Subset<T, AwardCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AwardCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Award.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AwardAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AwardAggregateArgs>(args: Subset<T, AwardAggregateArgs>): Prisma.PrismaPromise<GetAwardAggregateType<T>>
+
+    /**
+     * Group by Award.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AwardGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AwardGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AwardGroupByArgs['orderBy'] }
+        : { orderBy?: AwardGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AwardGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAwardGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Award model
+   */
+  readonly fields: AwardFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Award.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AwardClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    photo<T extends PhotoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PhotoDefaultArgs<ExtArgs>>): Prisma__PhotoClient<$Result.GetResult<Prisma.$PhotoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Award model
+   */
+  interface AwardFieldRefs {
+    readonly id: FieldRef<"Award", 'String'>
+    readonly type: FieldRef<"Award", 'AwardType'>
+    readonly photoId: FieldRef<"Award", 'String'>
+    readonly userId: FieldRef<"Award", 'String'>
+    readonly periodStart: FieldRef<"Award", 'DateTime'>
+    readonly periodEnd: FieldRef<"Award", 'DateTime'>
+    readonly voteCount: FieldRef<"Award", 'Int'>
+    readonly awardedAt: FieldRef<"Award", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Award findUnique
+   */
+  export type AwardFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Award
+     */
+    select?: AwardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Award
+     */
+    omit?: AwardOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AwardInclude<ExtArgs> | null
+    /**
+     * Filter, which Award to fetch.
+     */
+    where: AwardWhereUniqueInput
+  }
+
+  /**
+   * Award findUniqueOrThrow
+   */
+  export type AwardFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Award
+     */
+    select?: AwardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Award
+     */
+    omit?: AwardOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AwardInclude<ExtArgs> | null
+    /**
+     * Filter, which Award to fetch.
+     */
+    where: AwardWhereUniqueInput
+  }
+
+  /**
+   * Award findFirst
+   */
+  export type AwardFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Award
+     */
+    select?: AwardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Award
+     */
+    omit?: AwardOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AwardInclude<ExtArgs> | null
+    /**
+     * Filter, which Award to fetch.
+     */
+    where?: AwardWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Awards to fetch.
+     */
+    orderBy?: AwardOrderByWithRelationInput | AwardOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Awards.
+     */
+    cursor?: AwardWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Awards from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Awards.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Awards.
+     */
+    distinct?: AwardScalarFieldEnum | AwardScalarFieldEnum[]
+  }
+
+  /**
+   * Award findFirstOrThrow
+   */
+  export type AwardFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Award
+     */
+    select?: AwardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Award
+     */
+    omit?: AwardOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AwardInclude<ExtArgs> | null
+    /**
+     * Filter, which Award to fetch.
+     */
+    where?: AwardWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Awards to fetch.
+     */
+    orderBy?: AwardOrderByWithRelationInput | AwardOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Awards.
+     */
+    cursor?: AwardWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Awards from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Awards.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Awards.
+     */
+    distinct?: AwardScalarFieldEnum | AwardScalarFieldEnum[]
+  }
+
+  /**
+   * Award findMany
+   */
+  export type AwardFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Award
+     */
+    select?: AwardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Award
+     */
+    omit?: AwardOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AwardInclude<ExtArgs> | null
+    /**
+     * Filter, which Awards to fetch.
+     */
+    where?: AwardWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Awards to fetch.
+     */
+    orderBy?: AwardOrderByWithRelationInput | AwardOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Awards.
+     */
+    cursor?: AwardWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Awards from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Awards.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Awards.
+     */
+    distinct?: AwardScalarFieldEnum | AwardScalarFieldEnum[]
+  }
+
+  /**
+   * Award create
+   */
+  export type AwardCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Award
+     */
+    select?: AwardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Award
+     */
+    omit?: AwardOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AwardInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Award.
+     */
+    data: XOR<AwardCreateInput, AwardUncheckedCreateInput>
+  }
+
+  /**
+   * Award createMany
+   */
+  export type AwardCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Awards.
+     */
+    data: AwardCreateManyInput | AwardCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Award createManyAndReturn
+   */
+  export type AwardCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Award
+     */
+    select?: AwardSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Award
+     */
+    omit?: AwardOmit<ExtArgs> | null
+    /**
+     * The data used to create many Awards.
+     */
+    data: AwardCreateManyInput | AwardCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AwardIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Award update
+   */
+  export type AwardUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Award
+     */
+    select?: AwardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Award
+     */
+    omit?: AwardOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AwardInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Award.
+     */
+    data: XOR<AwardUpdateInput, AwardUncheckedUpdateInput>
+    /**
+     * Choose, which Award to update.
+     */
+    where: AwardWhereUniqueInput
+  }
+
+  /**
+   * Award updateMany
+   */
+  export type AwardUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Awards.
+     */
+    data: XOR<AwardUpdateManyMutationInput, AwardUncheckedUpdateManyInput>
+    /**
+     * Filter which Awards to update
+     */
+    where?: AwardWhereInput
+    /**
+     * Limit how many Awards to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Award updateManyAndReturn
+   */
+  export type AwardUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Award
+     */
+    select?: AwardSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Award
+     */
+    omit?: AwardOmit<ExtArgs> | null
+    /**
+     * The data used to update Awards.
+     */
+    data: XOR<AwardUpdateManyMutationInput, AwardUncheckedUpdateManyInput>
+    /**
+     * Filter which Awards to update
+     */
+    where?: AwardWhereInput
+    /**
+     * Limit how many Awards to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AwardIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Award upsert
+   */
+  export type AwardUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Award
+     */
+    select?: AwardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Award
+     */
+    omit?: AwardOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AwardInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Award to update in case it exists.
+     */
+    where: AwardWhereUniqueInput
+    /**
+     * In case the Award found by the `where` argument doesn't exist, create a new Award with this data.
+     */
+    create: XOR<AwardCreateInput, AwardUncheckedCreateInput>
+    /**
+     * In case the Award was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AwardUpdateInput, AwardUncheckedUpdateInput>
+  }
+
+  /**
+   * Award delete
+   */
+  export type AwardDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Award
+     */
+    select?: AwardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Award
+     */
+    omit?: AwardOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AwardInclude<ExtArgs> | null
+    /**
+     * Filter which Award to delete.
+     */
+    where: AwardWhereUniqueInput
+  }
+
+  /**
+   * Award deleteMany
+   */
+  export type AwardDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Awards to delete
+     */
+    where?: AwardWhereInput
+    /**
+     * Limit how many Awards to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Award without action
+   */
+  export type AwardDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Award
+     */
+    select?: AwardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Award
+     */
+    omit?: AwardOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AwardInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ForumCategory
+   */
+
+  export type AggregateForumCategory = {
+    _count: ForumCategoryCountAggregateOutputType | null
+    _avg: ForumCategoryAvgAggregateOutputType | null
+    _sum: ForumCategorySumAggregateOutputType | null
+    _min: ForumCategoryMinAggregateOutputType | null
+    _max: ForumCategoryMaxAggregateOutputType | null
+  }
+
+  export type ForumCategoryAvgAggregateOutputType = {
+    sortOrder: number | null
+  }
+
+  export type ForumCategorySumAggregateOutputType = {
+    sortOrder: number | null
+  }
+
+  export type ForumCategoryMinAggregateOutputType = {
+    id: string | null
+    slug: $Enums.ForumCategorySlug | null
+    name: string | null
+    description: string | null
+    sortOrder: number | null
+  }
+
+  export type ForumCategoryMaxAggregateOutputType = {
+    id: string | null
+    slug: $Enums.ForumCategorySlug | null
+    name: string | null
+    description: string | null
+    sortOrder: number | null
+  }
+
+  export type ForumCategoryCountAggregateOutputType = {
+    id: number
+    slug: number
+    name: number
+    description: number
+    sortOrder: number
+    _all: number
+  }
+
+
+  export type ForumCategoryAvgAggregateInputType = {
+    sortOrder?: true
+  }
+
+  export type ForumCategorySumAggregateInputType = {
+    sortOrder?: true
+  }
+
+  export type ForumCategoryMinAggregateInputType = {
+    id?: true
+    slug?: true
+    name?: true
+    description?: true
+    sortOrder?: true
+  }
+
+  export type ForumCategoryMaxAggregateInputType = {
+    id?: true
+    slug?: true
+    name?: true
+    description?: true
+    sortOrder?: true
+  }
+
+  export type ForumCategoryCountAggregateInputType = {
+    id?: true
+    slug?: true
+    name?: true
+    description?: true
+    sortOrder?: true
+    _all?: true
+  }
+
+  export type ForumCategoryAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ForumCategory to aggregate.
+     */
+    where?: ForumCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ForumCategories to fetch.
+     */
+    orderBy?: ForumCategoryOrderByWithRelationInput | ForumCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ForumCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ForumCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ForumCategories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ForumCategories
+    **/
+    _count?: true | ForumCategoryCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ForumCategoryAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ForumCategorySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ForumCategoryMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ForumCategoryMaxAggregateInputType
+  }
+
+  export type GetForumCategoryAggregateType<T extends ForumCategoryAggregateArgs> = {
+        [P in keyof T & keyof AggregateForumCategory]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateForumCategory[P]>
+      : GetScalarType<T[P], AggregateForumCategory[P]>
+  }
+
+
+
+
+  export type ForumCategoryGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ForumCategoryWhereInput
+    orderBy?: ForumCategoryOrderByWithAggregationInput | ForumCategoryOrderByWithAggregationInput[]
+    by: ForumCategoryScalarFieldEnum[] | ForumCategoryScalarFieldEnum
+    having?: ForumCategoryScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ForumCategoryCountAggregateInputType | true
+    _avg?: ForumCategoryAvgAggregateInputType
+    _sum?: ForumCategorySumAggregateInputType
+    _min?: ForumCategoryMinAggregateInputType
+    _max?: ForumCategoryMaxAggregateInputType
+  }
+
+  export type ForumCategoryGroupByOutputType = {
+    id: string
+    slug: $Enums.ForumCategorySlug
+    name: string
+    description: string
+    sortOrder: number
+    _count: ForumCategoryCountAggregateOutputType | null
+    _avg: ForumCategoryAvgAggregateOutputType | null
+    _sum: ForumCategorySumAggregateOutputType | null
+    _min: ForumCategoryMinAggregateOutputType | null
+    _max: ForumCategoryMaxAggregateOutputType | null
+  }
+
+  type GetForumCategoryGroupByPayload<T extends ForumCategoryGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ForumCategoryGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ForumCategoryGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ForumCategoryGroupByOutputType[P]>
+            : GetScalarType<T[P], ForumCategoryGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ForumCategorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    slug?: boolean
+    name?: boolean
+    description?: boolean
+    sortOrder?: boolean
+    threads?: boolean | ForumCategory$threadsArgs<ExtArgs>
+    _count?: boolean | ForumCategoryCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["forumCategory"]>
+
+  export type ForumCategorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    slug?: boolean
+    name?: boolean
+    description?: boolean
+    sortOrder?: boolean
+  }, ExtArgs["result"]["forumCategory"]>
+
+  export type ForumCategorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    slug?: boolean
+    name?: boolean
+    description?: boolean
+    sortOrder?: boolean
+  }, ExtArgs["result"]["forumCategory"]>
+
+  export type ForumCategorySelectScalar = {
+    id?: boolean
+    slug?: boolean
+    name?: boolean
+    description?: boolean
+    sortOrder?: boolean
+  }
+
+  export type ForumCategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "slug" | "name" | "description" | "sortOrder", ExtArgs["result"]["forumCategory"]>
+  export type ForumCategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    threads?: boolean | ForumCategory$threadsArgs<ExtArgs>
+    _count?: boolean | ForumCategoryCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ForumCategoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type ForumCategoryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $ForumCategoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ForumCategory"
+    objects: {
+      threads: Prisma.$ForumThreadPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      slug: $Enums.ForumCategorySlug
+      name: string
+      description: string
+      sortOrder: number
+    }, ExtArgs["result"]["forumCategory"]>
+    composites: {}
+  }
+
+  type ForumCategoryGetPayload<S extends boolean | null | undefined | ForumCategoryDefaultArgs> = $Result.GetResult<Prisma.$ForumCategoryPayload, S>
+
+  type ForumCategoryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ForumCategoryFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ForumCategoryCountAggregateInputType | true
+    }
+
+  export interface ForumCategoryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ForumCategory'], meta: { name: 'ForumCategory' } }
+    /**
+     * Find zero or one ForumCategory that matches the filter.
+     * @param {ForumCategoryFindUniqueArgs} args - Arguments to find a ForumCategory
+     * @example
+     * // Get one ForumCategory
+     * const forumCategory = await prisma.forumCategory.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ForumCategoryFindUniqueArgs>(args: SelectSubset<T, ForumCategoryFindUniqueArgs<ExtArgs>>): Prisma__ForumCategoryClient<$Result.GetResult<Prisma.$ForumCategoryPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ForumCategory that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ForumCategoryFindUniqueOrThrowArgs} args - Arguments to find a ForumCategory
+     * @example
+     * // Get one ForumCategory
+     * const forumCategory = await prisma.forumCategory.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ForumCategoryFindUniqueOrThrowArgs>(args: SelectSubset<T, ForumCategoryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ForumCategoryClient<$Result.GetResult<Prisma.$ForumCategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ForumCategory that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumCategoryFindFirstArgs} args - Arguments to find a ForumCategory
+     * @example
+     * // Get one ForumCategory
+     * const forumCategory = await prisma.forumCategory.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ForumCategoryFindFirstArgs>(args?: SelectSubset<T, ForumCategoryFindFirstArgs<ExtArgs>>): Prisma__ForumCategoryClient<$Result.GetResult<Prisma.$ForumCategoryPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ForumCategory that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumCategoryFindFirstOrThrowArgs} args - Arguments to find a ForumCategory
+     * @example
+     * // Get one ForumCategory
+     * const forumCategory = await prisma.forumCategory.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ForumCategoryFindFirstOrThrowArgs>(args?: SelectSubset<T, ForumCategoryFindFirstOrThrowArgs<ExtArgs>>): Prisma__ForumCategoryClient<$Result.GetResult<Prisma.$ForumCategoryPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ForumCategories that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumCategoryFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ForumCategories
+     * const forumCategories = await prisma.forumCategory.findMany()
+     * 
+     * // Get first 10 ForumCategories
+     * const forumCategories = await prisma.forumCategory.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const forumCategoryWithIdOnly = await prisma.forumCategory.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ForumCategoryFindManyArgs>(args?: SelectSubset<T, ForumCategoryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ForumCategory.
+     * @param {ForumCategoryCreateArgs} args - Arguments to create a ForumCategory.
+     * @example
+     * // Create one ForumCategory
+     * const ForumCategory = await prisma.forumCategory.create({
+     *   data: {
+     *     // ... data to create a ForumCategory
+     *   }
+     * })
+     * 
+     */
+    create<T extends ForumCategoryCreateArgs>(args: SelectSubset<T, ForumCategoryCreateArgs<ExtArgs>>): Prisma__ForumCategoryClient<$Result.GetResult<Prisma.$ForumCategoryPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ForumCategories.
+     * @param {ForumCategoryCreateManyArgs} args - Arguments to create many ForumCategories.
+     * @example
+     * // Create many ForumCategories
+     * const forumCategory = await prisma.forumCategory.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ForumCategoryCreateManyArgs>(args?: SelectSubset<T, ForumCategoryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ForumCategories and returns the data saved in the database.
+     * @param {ForumCategoryCreateManyAndReturnArgs} args - Arguments to create many ForumCategories.
+     * @example
+     * // Create many ForumCategories
+     * const forumCategory = await prisma.forumCategory.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ForumCategories and only return the `id`
+     * const forumCategoryWithIdOnly = await prisma.forumCategory.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ForumCategoryCreateManyAndReturnArgs>(args?: SelectSubset<T, ForumCategoryCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumCategoryPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ForumCategory.
+     * @param {ForumCategoryDeleteArgs} args - Arguments to delete one ForumCategory.
+     * @example
+     * // Delete one ForumCategory
+     * const ForumCategory = await prisma.forumCategory.delete({
+     *   where: {
+     *     // ... filter to delete one ForumCategory
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ForumCategoryDeleteArgs>(args: SelectSubset<T, ForumCategoryDeleteArgs<ExtArgs>>): Prisma__ForumCategoryClient<$Result.GetResult<Prisma.$ForumCategoryPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ForumCategory.
+     * @param {ForumCategoryUpdateArgs} args - Arguments to update one ForumCategory.
+     * @example
+     * // Update one ForumCategory
+     * const forumCategory = await prisma.forumCategory.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ForumCategoryUpdateArgs>(args: SelectSubset<T, ForumCategoryUpdateArgs<ExtArgs>>): Prisma__ForumCategoryClient<$Result.GetResult<Prisma.$ForumCategoryPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ForumCategories.
+     * @param {ForumCategoryDeleteManyArgs} args - Arguments to filter ForumCategories to delete.
+     * @example
+     * // Delete a few ForumCategories
+     * const { count } = await prisma.forumCategory.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ForumCategoryDeleteManyArgs>(args?: SelectSubset<T, ForumCategoryDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ForumCategories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumCategoryUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ForumCategories
+     * const forumCategory = await prisma.forumCategory.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ForumCategoryUpdateManyArgs>(args: SelectSubset<T, ForumCategoryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ForumCategories and returns the data updated in the database.
+     * @param {ForumCategoryUpdateManyAndReturnArgs} args - Arguments to update many ForumCategories.
+     * @example
+     * // Update many ForumCategories
+     * const forumCategory = await prisma.forumCategory.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ForumCategories and only return the `id`
+     * const forumCategoryWithIdOnly = await prisma.forumCategory.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ForumCategoryUpdateManyAndReturnArgs>(args: SelectSubset<T, ForumCategoryUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumCategoryPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ForumCategory.
+     * @param {ForumCategoryUpsertArgs} args - Arguments to update or create a ForumCategory.
+     * @example
+     * // Update or create a ForumCategory
+     * const forumCategory = await prisma.forumCategory.upsert({
+     *   create: {
+     *     // ... data to create a ForumCategory
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ForumCategory we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ForumCategoryUpsertArgs>(args: SelectSubset<T, ForumCategoryUpsertArgs<ExtArgs>>): Prisma__ForumCategoryClient<$Result.GetResult<Prisma.$ForumCategoryPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ForumCategories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumCategoryCountArgs} args - Arguments to filter ForumCategories to count.
+     * @example
+     * // Count the number of ForumCategories
+     * const count = await prisma.forumCategory.count({
+     *   where: {
+     *     // ... the filter for the ForumCategories we want to count
+     *   }
+     * })
+    **/
+    count<T extends ForumCategoryCountArgs>(
+      args?: Subset<T, ForumCategoryCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ForumCategoryCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ForumCategory.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumCategoryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ForumCategoryAggregateArgs>(args: Subset<T, ForumCategoryAggregateArgs>): Prisma.PrismaPromise<GetForumCategoryAggregateType<T>>
+
+    /**
+     * Group by ForumCategory.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumCategoryGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ForumCategoryGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ForumCategoryGroupByArgs['orderBy'] }
+        : { orderBy?: ForumCategoryGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ForumCategoryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetForumCategoryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ForumCategory model
+   */
+  readonly fields: ForumCategoryFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ForumCategory.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ForumCategoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    threads<T extends ForumCategory$threadsArgs<ExtArgs> = {}>(args?: Subset<T, ForumCategory$threadsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumThreadPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ForumCategory model
+   */
+  interface ForumCategoryFieldRefs {
+    readonly id: FieldRef<"ForumCategory", 'String'>
+    readonly slug: FieldRef<"ForumCategory", 'ForumCategorySlug'>
+    readonly name: FieldRef<"ForumCategory", 'String'>
+    readonly description: FieldRef<"ForumCategory", 'String'>
+    readonly sortOrder: FieldRef<"ForumCategory", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ForumCategory findUnique
+   */
+  export type ForumCategoryFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumCategory
+     */
+    select?: ForumCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumCategory
+     */
+    omit?: ForumCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which ForumCategory to fetch.
+     */
+    where: ForumCategoryWhereUniqueInput
+  }
+
+  /**
+   * ForumCategory findUniqueOrThrow
+   */
+  export type ForumCategoryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumCategory
+     */
+    select?: ForumCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumCategory
+     */
+    omit?: ForumCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which ForumCategory to fetch.
+     */
+    where: ForumCategoryWhereUniqueInput
+  }
+
+  /**
+   * ForumCategory findFirst
+   */
+  export type ForumCategoryFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumCategory
+     */
+    select?: ForumCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumCategory
+     */
+    omit?: ForumCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which ForumCategory to fetch.
+     */
+    where?: ForumCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ForumCategories to fetch.
+     */
+    orderBy?: ForumCategoryOrderByWithRelationInput | ForumCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ForumCategories.
+     */
+    cursor?: ForumCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ForumCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ForumCategories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ForumCategories.
+     */
+    distinct?: ForumCategoryScalarFieldEnum | ForumCategoryScalarFieldEnum[]
+  }
+
+  /**
+   * ForumCategory findFirstOrThrow
+   */
+  export type ForumCategoryFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumCategory
+     */
+    select?: ForumCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumCategory
+     */
+    omit?: ForumCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which ForumCategory to fetch.
+     */
+    where?: ForumCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ForumCategories to fetch.
+     */
+    orderBy?: ForumCategoryOrderByWithRelationInput | ForumCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ForumCategories.
+     */
+    cursor?: ForumCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ForumCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ForumCategories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ForumCategories.
+     */
+    distinct?: ForumCategoryScalarFieldEnum | ForumCategoryScalarFieldEnum[]
+  }
+
+  /**
+   * ForumCategory findMany
+   */
+  export type ForumCategoryFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumCategory
+     */
+    select?: ForumCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumCategory
+     */
+    omit?: ForumCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which ForumCategories to fetch.
+     */
+    where?: ForumCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ForumCategories to fetch.
+     */
+    orderBy?: ForumCategoryOrderByWithRelationInput | ForumCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ForumCategories.
+     */
+    cursor?: ForumCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ForumCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ForumCategories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ForumCategories.
+     */
+    distinct?: ForumCategoryScalarFieldEnum | ForumCategoryScalarFieldEnum[]
+  }
+
+  /**
+   * ForumCategory create
+   */
+  export type ForumCategoryCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumCategory
+     */
+    select?: ForumCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumCategory
+     */
+    omit?: ForumCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumCategoryInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ForumCategory.
+     */
+    data: XOR<ForumCategoryCreateInput, ForumCategoryUncheckedCreateInput>
+  }
+
+  /**
+   * ForumCategory createMany
+   */
+  export type ForumCategoryCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ForumCategories.
+     */
+    data: ForumCategoryCreateManyInput | ForumCategoryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ForumCategory createManyAndReturn
+   */
+  export type ForumCategoryCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumCategory
+     */
+    select?: ForumCategorySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumCategory
+     */
+    omit?: ForumCategoryOmit<ExtArgs> | null
+    /**
+     * The data used to create many ForumCategories.
+     */
+    data: ForumCategoryCreateManyInput | ForumCategoryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ForumCategory update
+   */
+  export type ForumCategoryUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumCategory
+     */
+    select?: ForumCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumCategory
+     */
+    omit?: ForumCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumCategoryInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ForumCategory.
+     */
+    data: XOR<ForumCategoryUpdateInput, ForumCategoryUncheckedUpdateInput>
+    /**
+     * Choose, which ForumCategory to update.
+     */
+    where: ForumCategoryWhereUniqueInput
+  }
+
+  /**
+   * ForumCategory updateMany
+   */
+  export type ForumCategoryUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ForumCategories.
+     */
+    data: XOR<ForumCategoryUpdateManyMutationInput, ForumCategoryUncheckedUpdateManyInput>
+    /**
+     * Filter which ForumCategories to update
+     */
+    where?: ForumCategoryWhereInput
+    /**
+     * Limit how many ForumCategories to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ForumCategory updateManyAndReturn
+   */
+  export type ForumCategoryUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumCategory
+     */
+    select?: ForumCategorySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumCategory
+     */
+    omit?: ForumCategoryOmit<ExtArgs> | null
+    /**
+     * The data used to update ForumCategories.
+     */
+    data: XOR<ForumCategoryUpdateManyMutationInput, ForumCategoryUncheckedUpdateManyInput>
+    /**
+     * Filter which ForumCategories to update
+     */
+    where?: ForumCategoryWhereInput
+    /**
+     * Limit how many ForumCategories to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ForumCategory upsert
+   */
+  export type ForumCategoryUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumCategory
+     */
+    select?: ForumCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumCategory
+     */
+    omit?: ForumCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumCategoryInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ForumCategory to update in case it exists.
+     */
+    where: ForumCategoryWhereUniqueInput
+    /**
+     * In case the ForumCategory found by the `where` argument doesn't exist, create a new ForumCategory with this data.
+     */
+    create: XOR<ForumCategoryCreateInput, ForumCategoryUncheckedCreateInput>
+    /**
+     * In case the ForumCategory was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ForumCategoryUpdateInput, ForumCategoryUncheckedUpdateInput>
+  }
+
+  /**
+   * ForumCategory delete
+   */
+  export type ForumCategoryDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumCategory
+     */
+    select?: ForumCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumCategory
+     */
+    omit?: ForumCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumCategoryInclude<ExtArgs> | null
+    /**
+     * Filter which ForumCategory to delete.
+     */
+    where: ForumCategoryWhereUniqueInput
+  }
+
+  /**
+   * ForumCategory deleteMany
+   */
+  export type ForumCategoryDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ForumCategories to delete
+     */
+    where?: ForumCategoryWhereInput
+    /**
+     * Limit how many ForumCategories to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ForumCategory.threads
+   */
+  export type ForumCategory$threadsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumThread
+     */
+    select?: ForumThreadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumThread
+     */
+    omit?: ForumThreadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumThreadInclude<ExtArgs> | null
+    where?: ForumThreadWhereInput
+    orderBy?: ForumThreadOrderByWithRelationInput | ForumThreadOrderByWithRelationInput[]
+    cursor?: ForumThreadWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ForumThreadScalarFieldEnum | ForumThreadScalarFieldEnum[]
+  }
+
+  /**
+   * ForumCategory without action
+   */
+  export type ForumCategoryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumCategory
+     */
+    select?: ForumCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumCategory
+     */
+    omit?: ForumCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumCategoryInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ForumThread
+   */
+
+  export type AggregateForumThread = {
+    _count: ForumThreadCountAggregateOutputType | null
+    _avg: ForumThreadAvgAggregateOutputType | null
+    _sum: ForumThreadSumAggregateOutputType | null
+    _min: ForumThreadMinAggregateOutputType | null
+    _max: ForumThreadMaxAggregateOutputType | null
+  }
+
+  export type ForumThreadAvgAggregateOutputType = {
+    replyCount: number | null
+  }
+
+  export type ForumThreadSumAggregateOutputType = {
+    replyCount: number | null
+  }
+
+  export type ForumThreadMinAggregateOutputType = {
+    id: string | null
+    title: string | null
+    body: string | null
+    authorId: string | null
+    categoryId: string | null
+    pinned: boolean | null
+    locked: boolean | null
+    replyCount: number | null
+    lastReplyAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ForumThreadMaxAggregateOutputType = {
+    id: string | null
+    title: string | null
+    body: string | null
+    authorId: string | null
+    categoryId: string | null
+    pinned: boolean | null
+    locked: boolean | null
+    replyCount: number | null
+    lastReplyAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ForumThreadCountAggregateOutputType = {
+    id: number
+    title: number
+    body: number
+    authorId: number
+    categoryId: number
+    pinned: number
+    locked: number
+    replyCount: number
+    lastReplyAt: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ForumThreadAvgAggregateInputType = {
+    replyCount?: true
+  }
+
+  export type ForumThreadSumAggregateInputType = {
+    replyCount?: true
+  }
+
+  export type ForumThreadMinAggregateInputType = {
+    id?: true
+    title?: true
+    body?: true
+    authorId?: true
+    categoryId?: true
+    pinned?: true
+    locked?: true
+    replyCount?: true
+    lastReplyAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ForumThreadMaxAggregateInputType = {
+    id?: true
+    title?: true
+    body?: true
+    authorId?: true
+    categoryId?: true
+    pinned?: true
+    locked?: true
+    replyCount?: true
+    lastReplyAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ForumThreadCountAggregateInputType = {
+    id?: true
+    title?: true
+    body?: true
+    authorId?: true
+    categoryId?: true
+    pinned?: true
+    locked?: true
+    replyCount?: true
+    lastReplyAt?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ForumThreadAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ForumThread to aggregate.
+     */
+    where?: ForumThreadWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ForumThreads to fetch.
+     */
+    orderBy?: ForumThreadOrderByWithRelationInput | ForumThreadOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ForumThreadWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ForumThreads from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ForumThreads.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ForumThreads
+    **/
+    _count?: true | ForumThreadCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ForumThreadAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ForumThreadSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ForumThreadMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ForumThreadMaxAggregateInputType
+  }
+
+  export type GetForumThreadAggregateType<T extends ForumThreadAggregateArgs> = {
+        [P in keyof T & keyof AggregateForumThread]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateForumThread[P]>
+      : GetScalarType<T[P], AggregateForumThread[P]>
+  }
+
+
+
+
+  export type ForumThreadGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ForumThreadWhereInput
+    orderBy?: ForumThreadOrderByWithAggregationInput | ForumThreadOrderByWithAggregationInput[]
+    by: ForumThreadScalarFieldEnum[] | ForumThreadScalarFieldEnum
+    having?: ForumThreadScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ForumThreadCountAggregateInputType | true
+    _avg?: ForumThreadAvgAggregateInputType
+    _sum?: ForumThreadSumAggregateInputType
+    _min?: ForumThreadMinAggregateInputType
+    _max?: ForumThreadMaxAggregateInputType
+  }
+
+  export type ForumThreadGroupByOutputType = {
+    id: string
+    title: string
+    body: string
+    authorId: string
+    categoryId: string
+    pinned: boolean
+    locked: boolean
+    replyCount: number
+    lastReplyAt: Date
+    createdAt: Date
+    updatedAt: Date
+    _count: ForumThreadCountAggregateOutputType | null
+    _avg: ForumThreadAvgAggregateOutputType | null
+    _sum: ForumThreadSumAggregateOutputType | null
+    _min: ForumThreadMinAggregateOutputType | null
+    _max: ForumThreadMaxAggregateOutputType | null
+  }
+
+  type GetForumThreadGroupByPayload<T extends ForumThreadGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ForumThreadGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ForumThreadGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ForumThreadGroupByOutputType[P]>
+            : GetScalarType<T[P], ForumThreadGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ForumThreadSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    body?: boolean
+    authorId?: boolean
+    categoryId?: boolean
+    pinned?: boolean
+    locked?: boolean
+    replyCount?: boolean
+    lastReplyAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    category?: boolean | ForumCategoryDefaultArgs<ExtArgs>
+    replies?: boolean | ForumThread$repliesArgs<ExtArgs>
+    _count?: boolean | ForumThreadCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["forumThread"]>
+
+  export type ForumThreadSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    body?: boolean
+    authorId?: boolean
+    categoryId?: boolean
+    pinned?: boolean
+    locked?: boolean
+    replyCount?: boolean
+    lastReplyAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    category?: boolean | ForumCategoryDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["forumThread"]>
+
+  export type ForumThreadSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    body?: boolean
+    authorId?: boolean
+    categoryId?: boolean
+    pinned?: boolean
+    locked?: boolean
+    replyCount?: boolean
+    lastReplyAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    category?: boolean | ForumCategoryDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["forumThread"]>
+
+  export type ForumThreadSelectScalar = {
+    id?: boolean
+    title?: boolean
+    body?: boolean
+    authorId?: boolean
+    categoryId?: boolean
+    pinned?: boolean
+    locked?: boolean
+    replyCount?: boolean
+    lastReplyAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type ForumThreadOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "body" | "authorId" | "categoryId" | "pinned" | "locked" | "replyCount" | "lastReplyAt" | "createdAt" | "updatedAt", ExtArgs["result"]["forumThread"]>
+  export type ForumThreadInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    category?: boolean | ForumCategoryDefaultArgs<ExtArgs>
+    replies?: boolean | ForumThread$repliesArgs<ExtArgs>
+    _count?: boolean | ForumThreadCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ForumThreadIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    category?: boolean | ForumCategoryDefaultArgs<ExtArgs>
+  }
+  export type ForumThreadIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    category?: boolean | ForumCategoryDefaultArgs<ExtArgs>
+  }
+
+  export type $ForumThreadPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ForumThread"
+    objects: {
+      author: Prisma.$UserPayload<ExtArgs>
+      category: Prisma.$ForumCategoryPayload<ExtArgs>
+      replies: Prisma.$ForumReplyPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      title: string
+      body: string
+      authorId: string
+      categoryId: string
+      pinned: boolean
+      locked: boolean
+      replyCount: number
+      lastReplyAt: Date
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["forumThread"]>
+    composites: {}
+  }
+
+  type ForumThreadGetPayload<S extends boolean | null | undefined | ForumThreadDefaultArgs> = $Result.GetResult<Prisma.$ForumThreadPayload, S>
+
+  type ForumThreadCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ForumThreadFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ForumThreadCountAggregateInputType | true
+    }
+
+  export interface ForumThreadDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ForumThread'], meta: { name: 'ForumThread' } }
+    /**
+     * Find zero or one ForumThread that matches the filter.
+     * @param {ForumThreadFindUniqueArgs} args - Arguments to find a ForumThread
+     * @example
+     * // Get one ForumThread
+     * const forumThread = await prisma.forumThread.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ForumThreadFindUniqueArgs>(args: SelectSubset<T, ForumThreadFindUniqueArgs<ExtArgs>>): Prisma__ForumThreadClient<$Result.GetResult<Prisma.$ForumThreadPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ForumThread that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ForumThreadFindUniqueOrThrowArgs} args - Arguments to find a ForumThread
+     * @example
+     * // Get one ForumThread
+     * const forumThread = await prisma.forumThread.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ForumThreadFindUniqueOrThrowArgs>(args: SelectSubset<T, ForumThreadFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ForumThreadClient<$Result.GetResult<Prisma.$ForumThreadPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ForumThread that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumThreadFindFirstArgs} args - Arguments to find a ForumThread
+     * @example
+     * // Get one ForumThread
+     * const forumThread = await prisma.forumThread.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ForumThreadFindFirstArgs>(args?: SelectSubset<T, ForumThreadFindFirstArgs<ExtArgs>>): Prisma__ForumThreadClient<$Result.GetResult<Prisma.$ForumThreadPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ForumThread that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumThreadFindFirstOrThrowArgs} args - Arguments to find a ForumThread
+     * @example
+     * // Get one ForumThread
+     * const forumThread = await prisma.forumThread.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ForumThreadFindFirstOrThrowArgs>(args?: SelectSubset<T, ForumThreadFindFirstOrThrowArgs<ExtArgs>>): Prisma__ForumThreadClient<$Result.GetResult<Prisma.$ForumThreadPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ForumThreads that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumThreadFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ForumThreads
+     * const forumThreads = await prisma.forumThread.findMany()
+     * 
+     * // Get first 10 ForumThreads
+     * const forumThreads = await prisma.forumThread.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const forumThreadWithIdOnly = await prisma.forumThread.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ForumThreadFindManyArgs>(args?: SelectSubset<T, ForumThreadFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumThreadPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ForumThread.
+     * @param {ForumThreadCreateArgs} args - Arguments to create a ForumThread.
+     * @example
+     * // Create one ForumThread
+     * const ForumThread = await prisma.forumThread.create({
+     *   data: {
+     *     // ... data to create a ForumThread
+     *   }
+     * })
+     * 
+     */
+    create<T extends ForumThreadCreateArgs>(args: SelectSubset<T, ForumThreadCreateArgs<ExtArgs>>): Prisma__ForumThreadClient<$Result.GetResult<Prisma.$ForumThreadPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ForumThreads.
+     * @param {ForumThreadCreateManyArgs} args - Arguments to create many ForumThreads.
+     * @example
+     * // Create many ForumThreads
+     * const forumThread = await prisma.forumThread.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ForumThreadCreateManyArgs>(args?: SelectSubset<T, ForumThreadCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ForumThreads and returns the data saved in the database.
+     * @param {ForumThreadCreateManyAndReturnArgs} args - Arguments to create many ForumThreads.
+     * @example
+     * // Create many ForumThreads
+     * const forumThread = await prisma.forumThread.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ForumThreads and only return the `id`
+     * const forumThreadWithIdOnly = await prisma.forumThread.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ForumThreadCreateManyAndReturnArgs>(args?: SelectSubset<T, ForumThreadCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumThreadPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ForumThread.
+     * @param {ForumThreadDeleteArgs} args - Arguments to delete one ForumThread.
+     * @example
+     * // Delete one ForumThread
+     * const ForumThread = await prisma.forumThread.delete({
+     *   where: {
+     *     // ... filter to delete one ForumThread
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ForumThreadDeleteArgs>(args: SelectSubset<T, ForumThreadDeleteArgs<ExtArgs>>): Prisma__ForumThreadClient<$Result.GetResult<Prisma.$ForumThreadPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ForumThread.
+     * @param {ForumThreadUpdateArgs} args - Arguments to update one ForumThread.
+     * @example
+     * // Update one ForumThread
+     * const forumThread = await prisma.forumThread.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ForumThreadUpdateArgs>(args: SelectSubset<T, ForumThreadUpdateArgs<ExtArgs>>): Prisma__ForumThreadClient<$Result.GetResult<Prisma.$ForumThreadPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ForumThreads.
+     * @param {ForumThreadDeleteManyArgs} args - Arguments to filter ForumThreads to delete.
+     * @example
+     * // Delete a few ForumThreads
+     * const { count } = await prisma.forumThread.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ForumThreadDeleteManyArgs>(args?: SelectSubset<T, ForumThreadDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ForumThreads.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumThreadUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ForumThreads
+     * const forumThread = await prisma.forumThread.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ForumThreadUpdateManyArgs>(args: SelectSubset<T, ForumThreadUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ForumThreads and returns the data updated in the database.
+     * @param {ForumThreadUpdateManyAndReturnArgs} args - Arguments to update many ForumThreads.
+     * @example
+     * // Update many ForumThreads
+     * const forumThread = await prisma.forumThread.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ForumThreads and only return the `id`
+     * const forumThreadWithIdOnly = await prisma.forumThread.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ForumThreadUpdateManyAndReturnArgs>(args: SelectSubset<T, ForumThreadUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumThreadPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ForumThread.
+     * @param {ForumThreadUpsertArgs} args - Arguments to update or create a ForumThread.
+     * @example
+     * // Update or create a ForumThread
+     * const forumThread = await prisma.forumThread.upsert({
+     *   create: {
+     *     // ... data to create a ForumThread
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ForumThread we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ForumThreadUpsertArgs>(args: SelectSubset<T, ForumThreadUpsertArgs<ExtArgs>>): Prisma__ForumThreadClient<$Result.GetResult<Prisma.$ForumThreadPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ForumThreads.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumThreadCountArgs} args - Arguments to filter ForumThreads to count.
+     * @example
+     * // Count the number of ForumThreads
+     * const count = await prisma.forumThread.count({
+     *   where: {
+     *     // ... the filter for the ForumThreads we want to count
+     *   }
+     * })
+    **/
+    count<T extends ForumThreadCountArgs>(
+      args?: Subset<T, ForumThreadCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ForumThreadCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ForumThread.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumThreadAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ForumThreadAggregateArgs>(args: Subset<T, ForumThreadAggregateArgs>): Prisma.PrismaPromise<GetForumThreadAggregateType<T>>
+
+    /**
+     * Group by ForumThread.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumThreadGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ForumThreadGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ForumThreadGroupByArgs['orderBy'] }
+        : { orderBy?: ForumThreadGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ForumThreadGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetForumThreadGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ForumThread model
+   */
+  readonly fields: ForumThreadFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ForumThread.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ForumThreadClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    author<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    category<T extends ForumCategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ForumCategoryDefaultArgs<ExtArgs>>): Prisma__ForumCategoryClient<$Result.GetResult<Prisma.$ForumCategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    replies<T extends ForumThread$repliesArgs<ExtArgs> = {}>(args?: Subset<T, ForumThread$repliesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumReplyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ForumThread model
+   */
+  interface ForumThreadFieldRefs {
+    readonly id: FieldRef<"ForumThread", 'String'>
+    readonly title: FieldRef<"ForumThread", 'String'>
+    readonly body: FieldRef<"ForumThread", 'String'>
+    readonly authorId: FieldRef<"ForumThread", 'String'>
+    readonly categoryId: FieldRef<"ForumThread", 'String'>
+    readonly pinned: FieldRef<"ForumThread", 'Boolean'>
+    readonly locked: FieldRef<"ForumThread", 'Boolean'>
+    readonly replyCount: FieldRef<"ForumThread", 'Int'>
+    readonly lastReplyAt: FieldRef<"ForumThread", 'DateTime'>
+    readonly createdAt: FieldRef<"ForumThread", 'DateTime'>
+    readonly updatedAt: FieldRef<"ForumThread", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ForumThread findUnique
+   */
+  export type ForumThreadFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumThread
+     */
+    select?: ForumThreadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumThread
+     */
+    omit?: ForumThreadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumThreadInclude<ExtArgs> | null
+    /**
+     * Filter, which ForumThread to fetch.
+     */
+    where: ForumThreadWhereUniqueInput
+  }
+
+  /**
+   * ForumThread findUniqueOrThrow
+   */
+  export type ForumThreadFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumThread
+     */
+    select?: ForumThreadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumThread
+     */
+    omit?: ForumThreadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumThreadInclude<ExtArgs> | null
+    /**
+     * Filter, which ForumThread to fetch.
+     */
+    where: ForumThreadWhereUniqueInput
+  }
+
+  /**
+   * ForumThread findFirst
+   */
+  export type ForumThreadFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumThread
+     */
+    select?: ForumThreadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumThread
+     */
+    omit?: ForumThreadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumThreadInclude<ExtArgs> | null
+    /**
+     * Filter, which ForumThread to fetch.
+     */
+    where?: ForumThreadWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ForumThreads to fetch.
+     */
+    orderBy?: ForumThreadOrderByWithRelationInput | ForumThreadOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ForumThreads.
+     */
+    cursor?: ForumThreadWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ForumThreads from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ForumThreads.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ForumThreads.
+     */
+    distinct?: ForumThreadScalarFieldEnum | ForumThreadScalarFieldEnum[]
+  }
+
+  /**
+   * ForumThread findFirstOrThrow
+   */
+  export type ForumThreadFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumThread
+     */
+    select?: ForumThreadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumThread
+     */
+    omit?: ForumThreadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumThreadInclude<ExtArgs> | null
+    /**
+     * Filter, which ForumThread to fetch.
+     */
+    where?: ForumThreadWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ForumThreads to fetch.
+     */
+    orderBy?: ForumThreadOrderByWithRelationInput | ForumThreadOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ForumThreads.
+     */
+    cursor?: ForumThreadWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ForumThreads from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ForumThreads.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ForumThreads.
+     */
+    distinct?: ForumThreadScalarFieldEnum | ForumThreadScalarFieldEnum[]
+  }
+
+  /**
+   * ForumThread findMany
+   */
+  export type ForumThreadFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumThread
+     */
+    select?: ForumThreadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumThread
+     */
+    omit?: ForumThreadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumThreadInclude<ExtArgs> | null
+    /**
+     * Filter, which ForumThreads to fetch.
+     */
+    where?: ForumThreadWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ForumThreads to fetch.
+     */
+    orderBy?: ForumThreadOrderByWithRelationInput | ForumThreadOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ForumThreads.
+     */
+    cursor?: ForumThreadWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ForumThreads from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ForumThreads.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ForumThreads.
+     */
+    distinct?: ForumThreadScalarFieldEnum | ForumThreadScalarFieldEnum[]
+  }
+
+  /**
+   * ForumThread create
+   */
+  export type ForumThreadCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumThread
+     */
+    select?: ForumThreadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumThread
+     */
+    omit?: ForumThreadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumThreadInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ForumThread.
+     */
+    data: XOR<ForumThreadCreateInput, ForumThreadUncheckedCreateInput>
+  }
+
+  /**
+   * ForumThread createMany
+   */
+  export type ForumThreadCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ForumThreads.
+     */
+    data: ForumThreadCreateManyInput | ForumThreadCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ForumThread createManyAndReturn
+   */
+  export type ForumThreadCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumThread
+     */
+    select?: ForumThreadSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumThread
+     */
+    omit?: ForumThreadOmit<ExtArgs> | null
+    /**
+     * The data used to create many ForumThreads.
+     */
+    data: ForumThreadCreateManyInput | ForumThreadCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumThreadIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ForumThread update
+   */
+  export type ForumThreadUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumThread
+     */
+    select?: ForumThreadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumThread
+     */
+    omit?: ForumThreadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumThreadInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ForumThread.
+     */
+    data: XOR<ForumThreadUpdateInput, ForumThreadUncheckedUpdateInput>
+    /**
+     * Choose, which ForumThread to update.
+     */
+    where: ForumThreadWhereUniqueInput
+  }
+
+  /**
+   * ForumThread updateMany
+   */
+  export type ForumThreadUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ForumThreads.
+     */
+    data: XOR<ForumThreadUpdateManyMutationInput, ForumThreadUncheckedUpdateManyInput>
+    /**
+     * Filter which ForumThreads to update
+     */
+    where?: ForumThreadWhereInput
+    /**
+     * Limit how many ForumThreads to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ForumThread updateManyAndReturn
+   */
+  export type ForumThreadUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumThread
+     */
+    select?: ForumThreadSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumThread
+     */
+    omit?: ForumThreadOmit<ExtArgs> | null
+    /**
+     * The data used to update ForumThreads.
+     */
+    data: XOR<ForumThreadUpdateManyMutationInput, ForumThreadUncheckedUpdateManyInput>
+    /**
+     * Filter which ForumThreads to update
+     */
+    where?: ForumThreadWhereInput
+    /**
+     * Limit how many ForumThreads to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumThreadIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ForumThread upsert
+   */
+  export type ForumThreadUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumThread
+     */
+    select?: ForumThreadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumThread
+     */
+    omit?: ForumThreadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumThreadInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ForumThread to update in case it exists.
+     */
+    where: ForumThreadWhereUniqueInput
+    /**
+     * In case the ForumThread found by the `where` argument doesn't exist, create a new ForumThread with this data.
+     */
+    create: XOR<ForumThreadCreateInput, ForumThreadUncheckedCreateInput>
+    /**
+     * In case the ForumThread was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ForumThreadUpdateInput, ForumThreadUncheckedUpdateInput>
+  }
+
+  /**
+   * ForumThread delete
+   */
+  export type ForumThreadDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumThread
+     */
+    select?: ForumThreadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumThread
+     */
+    omit?: ForumThreadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumThreadInclude<ExtArgs> | null
+    /**
+     * Filter which ForumThread to delete.
+     */
+    where: ForumThreadWhereUniqueInput
+  }
+
+  /**
+   * ForumThread deleteMany
+   */
+  export type ForumThreadDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ForumThreads to delete
+     */
+    where?: ForumThreadWhereInput
+    /**
+     * Limit how many ForumThreads to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ForumThread.replies
+   */
+  export type ForumThread$repliesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumReply
+     */
+    select?: ForumReplySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumReply
+     */
+    omit?: ForumReplyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumReplyInclude<ExtArgs> | null
+    where?: ForumReplyWhereInput
+    orderBy?: ForumReplyOrderByWithRelationInput | ForumReplyOrderByWithRelationInput[]
+    cursor?: ForumReplyWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ForumReplyScalarFieldEnum | ForumReplyScalarFieldEnum[]
+  }
+
+  /**
+   * ForumThread without action
+   */
+  export type ForumThreadDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumThread
+     */
+    select?: ForumThreadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumThread
+     */
+    omit?: ForumThreadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumThreadInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ForumReply
+   */
+
+  export type AggregateForumReply = {
+    _count: ForumReplyCountAggregateOutputType | null
+    _min: ForumReplyMinAggregateOutputType | null
+    _max: ForumReplyMaxAggregateOutputType | null
+  }
+
+  export type ForumReplyMinAggregateOutputType = {
+    id: string | null
+    body: string | null
+    authorId: string | null
+    threadId: string | null
+    embeddedPhotoId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ForumReplyMaxAggregateOutputType = {
+    id: string | null
+    body: string | null
+    authorId: string | null
+    threadId: string | null
+    embeddedPhotoId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ForumReplyCountAggregateOutputType = {
+    id: number
+    body: number
+    authorId: number
+    threadId: number
+    embeddedPhotoId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ForumReplyMinAggregateInputType = {
+    id?: true
+    body?: true
+    authorId?: true
+    threadId?: true
+    embeddedPhotoId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ForumReplyMaxAggregateInputType = {
+    id?: true
+    body?: true
+    authorId?: true
+    threadId?: true
+    embeddedPhotoId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ForumReplyCountAggregateInputType = {
+    id?: true
+    body?: true
+    authorId?: true
+    threadId?: true
+    embeddedPhotoId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ForumReplyAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ForumReply to aggregate.
+     */
+    where?: ForumReplyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ForumReplies to fetch.
+     */
+    orderBy?: ForumReplyOrderByWithRelationInput | ForumReplyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ForumReplyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ForumReplies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ForumReplies.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ForumReplies
+    **/
+    _count?: true | ForumReplyCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ForumReplyMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ForumReplyMaxAggregateInputType
+  }
+
+  export type GetForumReplyAggregateType<T extends ForumReplyAggregateArgs> = {
+        [P in keyof T & keyof AggregateForumReply]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateForumReply[P]>
+      : GetScalarType<T[P], AggregateForumReply[P]>
+  }
+
+
+
+
+  export type ForumReplyGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ForumReplyWhereInput
+    orderBy?: ForumReplyOrderByWithAggregationInput | ForumReplyOrderByWithAggregationInput[]
+    by: ForumReplyScalarFieldEnum[] | ForumReplyScalarFieldEnum
+    having?: ForumReplyScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ForumReplyCountAggregateInputType | true
+    _min?: ForumReplyMinAggregateInputType
+    _max?: ForumReplyMaxAggregateInputType
+  }
+
+  export type ForumReplyGroupByOutputType = {
+    id: string
+    body: string
+    authorId: string
+    threadId: string
+    embeddedPhotoId: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: ForumReplyCountAggregateOutputType | null
+    _min: ForumReplyMinAggregateOutputType | null
+    _max: ForumReplyMaxAggregateOutputType | null
+  }
+
+  type GetForumReplyGroupByPayload<T extends ForumReplyGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ForumReplyGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ForumReplyGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ForumReplyGroupByOutputType[P]>
+            : GetScalarType<T[P], ForumReplyGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ForumReplySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    body?: boolean
+    authorId?: boolean
+    threadId?: boolean
+    embeddedPhotoId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    thread?: boolean | ForumThreadDefaultArgs<ExtArgs>
+    embeddedPhoto?: boolean | ForumReply$embeddedPhotoArgs<ExtArgs>
+  }, ExtArgs["result"]["forumReply"]>
+
+  export type ForumReplySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    body?: boolean
+    authorId?: boolean
+    threadId?: boolean
+    embeddedPhotoId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    thread?: boolean | ForumThreadDefaultArgs<ExtArgs>
+    embeddedPhoto?: boolean | ForumReply$embeddedPhotoArgs<ExtArgs>
+  }, ExtArgs["result"]["forumReply"]>
+
+  export type ForumReplySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    body?: boolean
+    authorId?: boolean
+    threadId?: boolean
+    embeddedPhotoId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    thread?: boolean | ForumThreadDefaultArgs<ExtArgs>
+    embeddedPhoto?: boolean | ForumReply$embeddedPhotoArgs<ExtArgs>
+  }, ExtArgs["result"]["forumReply"]>
+
+  export type ForumReplySelectScalar = {
+    id?: boolean
+    body?: boolean
+    authorId?: boolean
+    threadId?: boolean
+    embeddedPhotoId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type ForumReplyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "body" | "authorId" | "threadId" | "embeddedPhotoId" | "createdAt" | "updatedAt", ExtArgs["result"]["forumReply"]>
+  export type ForumReplyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    thread?: boolean | ForumThreadDefaultArgs<ExtArgs>
+    embeddedPhoto?: boolean | ForumReply$embeddedPhotoArgs<ExtArgs>
+  }
+  export type ForumReplyIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    thread?: boolean | ForumThreadDefaultArgs<ExtArgs>
+    embeddedPhoto?: boolean | ForumReply$embeddedPhotoArgs<ExtArgs>
+  }
+  export type ForumReplyIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    thread?: boolean | ForumThreadDefaultArgs<ExtArgs>
+    embeddedPhoto?: boolean | ForumReply$embeddedPhotoArgs<ExtArgs>
+  }
+
+  export type $ForumReplyPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ForumReply"
+    objects: {
+      author: Prisma.$UserPayload<ExtArgs>
+      thread: Prisma.$ForumThreadPayload<ExtArgs>
+      embeddedPhoto: Prisma.$PhotoPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      body: string
+      authorId: string
+      threadId: string
+      embeddedPhotoId: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["forumReply"]>
+    composites: {}
+  }
+
+  type ForumReplyGetPayload<S extends boolean | null | undefined | ForumReplyDefaultArgs> = $Result.GetResult<Prisma.$ForumReplyPayload, S>
+
+  type ForumReplyCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ForumReplyFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ForumReplyCountAggregateInputType | true
+    }
+
+  export interface ForumReplyDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ForumReply'], meta: { name: 'ForumReply' } }
+    /**
+     * Find zero or one ForumReply that matches the filter.
+     * @param {ForumReplyFindUniqueArgs} args - Arguments to find a ForumReply
+     * @example
+     * // Get one ForumReply
+     * const forumReply = await prisma.forumReply.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ForumReplyFindUniqueArgs>(args: SelectSubset<T, ForumReplyFindUniqueArgs<ExtArgs>>): Prisma__ForumReplyClient<$Result.GetResult<Prisma.$ForumReplyPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ForumReply that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ForumReplyFindUniqueOrThrowArgs} args - Arguments to find a ForumReply
+     * @example
+     * // Get one ForumReply
+     * const forumReply = await prisma.forumReply.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ForumReplyFindUniqueOrThrowArgs>(args: SelectSubset<T, ForumReplyFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ForumReplyClient<$Result.GetResult<Prisma.$ForumReplyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ForumReply that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumReplyFindFirstArgs} args - Arguments to find a ForumReply
+     * @example
+     * // Get one ForumReply
+     * const forumReply = await prisma.forumReply.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ForumReplyFindFirstArgs>(args?: SelectSubset<T, ForumReplyFindFirstArgs<ExtArgs>>): Prisma__ForumReplyClient<$Result.GetResult<Prisma.$ForumReplyPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ForumReply that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumReplyFindFirstOrThrowArgs} args - Arguments to find a ForumReply
+     * @example
+     * // Get one ForumReply
+     * const forumReply = await prisma.forumReply.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ForumReplyFindFirstOrThrowArgs>(args?: SelectSubset<T, ForumReplyFindFirstOrThrowArgs<ExtArgs>>): Prisma__ForumReplyClient<$Result.GetResult<Prisma.$ForumReplyPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ForumReplies that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumReplyFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ForumReplies
+     * const forumReplies = await prisma.forumReply.findMany()
+     * 
+     * // Get first 10 ForumReplies
+     * const forumReplies = await prisma.forumReply.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const forumReplyWithIdOnly = await prisma.forumReply.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ForumReplyFindManyArgs>(args?: SelectSubset<T, ForumReplyFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumReplyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ForumReply.
+     * @param {ForumReplyCreateArgs} args - Arguments to create a ForumReply.
+     * @example
+     * // Create one ForumReply
+     * const ForumReply = await prisma.forumReply.create({
+     *   data: {
+     *     // ... data to create a ForumReply
+     *   }
+     * })
+     * 
+     */
+    create<T extends ForumReplyCreateArgs>(args: SelectSubset<T, ForumReplyCreateArgs<ExtArgs>>): Prisma__ForumReplyClient<$Result.GetResult<Prisma.$ForumReplyPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ForumReplies.
+     * @param {ForumReplyCreateManyArgs} args - Arguments to create many ForumReplies.
+     * @example
+     * // Create many ForumReplies
+     * const forumReply = await prisma.forumReply.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ForumReplyCreateManyArgs>(args?: SelectSubset<T, ForumReplyCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ForumReplies and returns the data saved in the database.
+     * @param {ForumReplyCreateManyAndReturnArgs} args - Arguments to create many ForumReplies.
+     * @example
+     * // Create many ForumReplies
+     * const forumReply = await prisma.forumReply.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ForumReplies and only return the `id`
+     * const forumReplyWithIdOnly = await prisma.forumReply.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ForumReplyCreateManyAndReturnArgs>(args?: SelectSubset<T, ForumReplyCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumReplyPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ForumReply.
+     * @param {ForumReplyDeleteArgs} args - Arguments to delete one ForumReply.
+     * @example
+     * // Delete one ForumReply
+     * const ForumReply = await prisma.forumReply.delete({
+     *   where: {
+     *     // ... filter to delete one ForumReply
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ForumReplyDeleteArgs>(args: SelectSubset<T, ForumReplyDeleteArgs<ExtArgs>>): Prisma__ForumReplyClient<$Result.GetResult<Prisma.$ForumReplyPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ForumReply.
+     * @param {ForumReplyUpdateArgs} args - Arguments to update one ForumReply.
+     * @example
+     * // Update one ForumReply
+     * const forumReply = await prisma.forumReply.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ForumReplyUpdateArgs>(args: SelectSubset<T, ForumReplyUpdateArgs<ExtArgs>>): Prisma__ForumReplyClient<$Result.GetResult<Prisma.$ForumReplyPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ForumReplies.
+     * @param {ForumReplyDeleteManyArgs} args - Arguments to filter ForumReplies to delete.
+     * @example
+     * // Delete a few ForumReplies
+     * const { count } = await prisma.forumReply.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ForumReplyDeleteManyArgs>(args?: SelectSubset<T, ForumReplyDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ForumReplies.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumReplyUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ForumReplies
+     * const forumReply = await prisma.forumReply.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ForumReplyUpdateManyArgs>(args: SelectSubset<T, ForumReplyUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ForumReplies and returns the data updated in the database.
+     * @param {ForumReplyUpdateManyAndReturnArgs} args - Arguments to update many ForumReplies.
+     * @example
+     * // Update many ForumReplies
+     * const forumReply = await prisma.forumReply.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ForumReplies and only return the `id`
+     * const forumReplyWithIdOnly = await prisma.forumReply.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ForumReplyUpdateManyAndReturnArgs>(args: SelectSubset<T, ForumReplyUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumReplyPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ForumReply.
+     * @param {ForumReplyUpsertArgs} args - Arguments to update or create a ForumReply.
+     * @example
+     * // Update or create a ForumReply
+     * const forumReply = await prisma.forumReply.upsert({
+     *   create: {
+     *     // ... data to create a ForumReply
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ForumReply we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ForumReplyUpsertArgs>(args: SelectSubset<T, ForumReplyUpsertArgs<ExtArgs>>): Prisma__ForumReplyClient<$Result.GetResult<Prisma.$ForumReplyPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ForumReplies.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumReplyCountArgs} args - Arguments to filter ForumReplies to count.
+     * @example
+     * // Count the number of ForumReplies
+     * const count = await prisma.forumReply.count({
+     *   where: {
+     *     // ... the filter for the ForumReplies we want to count
+     *   }
+     * })
+    **/
+    count<T extends ForumReplyCountArgs>(
+      args?: Subset<T, ForumReplyCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ForumReplyCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ForumReply.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumReplyAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ForumReplyAggregateArgs>(args: Subset<T, ForumReplyAggregateArgs>): Prisma.PrismaPromise<GetForumReplyAggregateType<T>>
+
+    /**
+     * Group by ForumReply.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumReplyGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ForumReplyGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ForumReplyGroupByArgs['orderBy'] }
+        : { orderBy?: ForumReplyGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ForumReplyGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetForumReplyGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ForumReply model
+   */
+  readonly fields: ForumReplyFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ForumReply.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ForumReplyClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    author<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    thread<T extends ForumThreadDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ForumThreadDefaultArgs<ExtArgs>>): Prisma__ForumThreadClient<$Result.GetResult<Prisma.$ForumThreadPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    embeddedPhoto<T extends ForumReply$embeddedPhotoArgs<ExtArgs> = {}>(args?: Subset<T, ForumReply$embeddedPhotoArgs<ExtArgs>>): Prisma__PhotoClient<$Result.GetResult<Prisma.$PhotoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ForumReply model
+   */
+  interface ForumReplyFieldRefs {
+    readonly id: FieldRef<"ForumReply", 'String'>
+    readonly body: FieldRef<"ForumReply", 'String'>
+    readonly authorId: FieldRef<"ForumReply", 'String'>
+    readonly threadId: FieldRef<"ForumReply", 'String'>
+    readonly embeddedPhotoId: FieldRef<"ForumReply", 'String'>
+    readonly createdAt: FieldRef<"ForumReply", 'DateTime'>
+    readonly updatedAt: FieldRef<"ForumReply", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ForumReply findUnique
+   */
+  export type ForumReplyFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumReply
+     */
+    select?: ForumReplySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumReply
+     */
+    omit?: ForumReplyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumReplyInclude<ExtArgs> | null
+    /**
+     * Filter, which ForumReply to fetch.
+     */
+    where: ForumReplyWhereUniqueInput
+  }
+
+  /**
+   * ForumReply findUniqueOrThrow
+   */
+  export type ForumReplyFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumReply
+     */
+    select?: ForumReplySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumReply
+     */
+    omit?: ForumReplyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumReplyInclude<ExtArgs> | null
+    /**
+     * Filter, which ForumReply to fetch.
+     */
+    where: ForumReplyWhereUniqueInput
+  }
+
+  /**
+   * ForumReply findFirst
+   */
+  export type ForumReplyFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumReply
+     */
+    select?: ForumReplySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumReply
+     */
+    omit?: ForumReplyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumReplyInclude<ExtArgs> | null
+    /**
+     * Filter, which ForumReply to fetch.
+     */
+    where?: ForumReplyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ForumReplies to fetch.
+     */
+    orderBy?: ForumReplyOrderByWithRelationInput | ForumReplyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ForumReplies.
+     */
+    cursor?: ForumReplyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ForumReplies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ForumReplies.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ForumReplies.
+     */
+    distinct?: ForumReplyScalarFieldEnum | ForumReplyScalarFieldEnum[]
+  }
+
+  /**
+   * ForumReply findFirstOrThrow
+   */
+  export type ForumReplyFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumReply
+     */
+    select?: ForumReplySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumReply
+     */
+    omit?: ForumReplyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumReplyInclude<ExtArgs> | null
+    /**
+     * Filter, which ForumReply to fetch.
+     */
+    where?: ForumReplyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ForumReplies to fetch.
+     */
+    orderBy?: ForumReplyOrderByWithRelationInput | ForumReplyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ForumReplies.
+     */
+    cursor?: ForumReplyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ForumReplies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ForumReplies.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ForumReplies.
+     */
+    distinct?: ForumReplyScalarFieldEnum | ForumReplyScalarFieldEnum[]
+  }
+
+  /**
+   * ForumReply findMany
+   */
+  export type ForumReplyFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumReply
+     */
+    select?: ForumReplySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumReply
+     */
+    omit?: ForumReplyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumReplyInclude<ExtArgs> | null
+    /**
+     * Filter, which ForumReplies to fetch.
+     */
+    where?: ForumReplyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ForumReplies to fetch.
+     */
+    orderBy?: ForumReplyOrderByWithRelationInput | ForumReplyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ForumReplies.
+     */
+    cursor?: ForumReplyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ForumReplies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ForumReplies.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ForumReplies.
+     */
+    distinct?: ForumReplyScalarFieldEnum | ForumReplyScalarFieldEnum[]
+  }
+
+  /**
+   * ForumReply create
+   */
+  export type ForumReplyCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumReply
+     */
+    select?: ForumReplySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumReply
+     */
+    omit?: ForumReplyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumReplyInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ForumReply.
+     */
+    data: XOR<ForumReplyCreateInput, ForumReplyUncheckedCreateInput>
+  }
+
+  /**
+   * ForumReply createMany
+   */
+  export type ForumReplyCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ForumReplies.
+     */
+    data: ForumReplyCreateManyInput | ForumReplyCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ForumReply createManyAndReturn
+   */
+  export type ForumReplyCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumReply
+     */
+    select?: ForumReplySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumReply
+     */
+    omit?: ForumReplyOmit<ExtArgs> | null
+    /**
+     * The data used to create many ForumReplies.
+     */
+    data: ForumReplyCreateManyInput | ForumReplyCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumReplyIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ForumReply update
+   */
+  export type ForumReplyUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumReply
+     */
+    select?: ForumReplySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumReply
+     */
+    omit?: ForumReplyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumReplyInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ForumReply.
+     */
+    data: XOR<ForumReplyUpdateInput, ForumReplyUncheckedUpdateInput>
+    /**
+     * Choose, which ForumReply to update.
+     */
+    where: ForumReplyWhereUniqueInput
+  }
+
+  /**
+   * ForumReply updateMany
+   */
+  export type ForumReplyUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ForumReplies.
+     */
+    data: XOR<ForumReplyUpdateManyMutationInput, ForumReplyUncheckedUpdateManyInput>
+    /**
+     * Filter which ForumReplies to update
+     */
+    where?: ForumReplyWhereInput
+    /**
+     * Limit how many ForumReplies to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ForumReply updateManyAndReturn
+   */
+  export type ForumReplyUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumReply
+     */
+    select?: ForumReplySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumReply
+     */
+    omit?: ForumReplyOmit<ExtArgs> | null
+    /**
+     * The data used to update ForumReplies.
+     */
+    data: XOR<ForumReplyUpdateManyMutationInput, ForumReplyUncheckedUpdateManyInput>
+    /**
+     * Filter which ForumReplies to update
+     */
+    where?: ForumReplyWhereInput
+    /**
+     * Limit how many ForumReplies to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumReplyIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ForumReply upsert
+   */
+  export type ForumReplyUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumReply
+     */
+    select?: ForumReplySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumReply
+     */
+    omit?: ForumReplyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumReplyInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ForumReply to update in case it exists.
+     */
+    where: ForumReplyWhereUniqueInput
+    /**
+     * In case the ForumReply found by the `where` argument doesn't exist, create a new ForumReply with this data.
+     */
+    create: XOR<ForumReplyCreateInput, ForumReplyUncheckedCreateInput>
+    /**
+     * In case the ForumReply was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ForumReplyUpdateInput, ForumReplyUncheckedUpdateInput>
+  }
+
+  /**
+   * ForumReply delete
+   */
+  export type ForumReplyDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumReply
+     */
+    select?: ForumReplySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumReply
+     */
+    omit?: ForumReplyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumReplyInclude<ExtArgs> | null
+    /**
+     * Filter which ForumReply to delete.
+     */
+    where: ForumReplyWhereUniqueInput
+  }
+
+  /**
+   * ForumReply deleteMany
+   */
+  export type ForumReplyDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ForumReplies to delete
+     */
+    where?: ForumReplyWhereInput
+    /**
+     * Limit how many ForumReplies to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ForumReply.embeddedPhoto
+   */
+  export type ForumReply$embeddedPhotoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Photo
+     */
+    select?: PhotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Photo
+     */
+    omit?: PhotoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PhotoInclude<ExtArgs> | null
+    where?: PhotoWhereInput
+  }
+
+  /**
+   * ForumReply without action
+   */
+  export type ForumReplyDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumReply
+     */
+    select?: ForumReplySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumReply
+     */
+    omit?: ForumReplyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumReplyInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Collection
+   */
+
+  export type AggregateCollection = {
+    _count: CollectionCountAggregateOutputType | null
+    _min: CollectionMinAggregateOutputType | null
+    _max: CollectionMaxAggregateOutputType | null
+  }
+
+  export type CollectionMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    description: string | null
+    isPrivate: boolean | null
+    coverUrl: string | null
+    userId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CollectionMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    description: string | null
+    isPrivate: boolean | null
+    coverUrl: string | null
+    userId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CollectionCountAggregateOutputType = {
+    id: number
+    name: number
+    description: number
+    isPrivate: number
+    coverUrl: number
+    userId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type CollectionMinAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    isPrivate?: true
+    coverUrl?: true
+    userId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CollectionMaxAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    isPrivate?: true
+    coverUrl?: true
+    userId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CollectionCountAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    isPrivate?: true
+    coverUrl?: true
+    userId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type CollectionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Collection to aggregate.
+     */
+    where?: CollectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Collections to fetch.
+     */
+    orderBy?: CollectionOrderByWithRelationInput | CollectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CollectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Collections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Collections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Collections
+    **/
+    _count?: true | CollectionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CollectionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CollectionMaxAggregateInputType
+  }
+
+  export type GetCollectionAggregateType<T extends CollectionAggregateArgs> = {
+        [P in keyof T & keyof AggregateCollection]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCollection[P]>
+      : GetScalarType<T[P], AggregateCollection[P]>
+  }
+
+
+
+
+  export type CollectionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CollectionWhereInput
+    orderBy?: CollectionOrderByWithAggregationInput | CollectionOrderByWithAggregationInput[]
+    by: CollectionScalarFieldEnum[] | CollectionScalarFieldEnum
+    having?: CollectionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CollectionCountAggregateInputType | true
+    _min?: CollectionMinAggregateInputType
+    _max?: CollectionMaxAggregateInputType
+  }
+
+  export type CollectionGroupByOutputType = {
+    id: string
+    name: string
+    description: string | null
+    isPrivate: boolean
+    coverUrl: string | null
+    userId: string
+    createdAt: Date
+    updatedAt: Date
+    _count: CollectionCountAggregateOutputType | null
+    _min: CollectionMinAggregateOutputType | null
+    _max: CollectionMaxAggregateOutputType | null
+  }
+
+  type GetCollectionGroupByPayload<T extends CollectionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CollectionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CollectionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CollectionGroupByOutputType[P]>
+            : GetScalarType<T[P], CollectionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CollectionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    isPrivate?: boolean
+    coverUrl?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    items?: boolean | Collection$itemsArgs<ExtArgs>
+    _count?: boolean | CollectionCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["collection"]>
+
+  export type CollectionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    isPrivate?: boolean
+    coverUrl?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["collection"]>
+
+  export type CollectionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    isPrivate?: boolean
+    coverUrl?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["collection"]>
+
+  export type CollectionSelectScalar = {
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    isPrivate?: boolean
+    coverUrl?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type CollectionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "isPrivate" | "coverUrl" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["collection"]>
+  export type CollectionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    items?: boolean | Collection$itemsArgs<ExtArgs>
+    _count?: boolean | CollectionCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type CollectionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type CollectionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $CollectionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Collection"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      items: Prisma.$CollectionItemPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      description: string | null
+      isPrivate: boolean
+      coverUrl: string | null
+      userId: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["collection"]>
+    composites: {}
+  }
+
+  type CollectionGetPayload<S extends boolean | null | undefined | CollectionDefaultArgs> = $Result.GetResult<Prisma.$CollectionPayload, S>
+
+  type CollectionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CollectionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CollectionCountAggregateInputType | true
+    }
+
+  export interface CollectionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Collection'], meta: { name: 'Collection' } }
+    /**
+     * Find zero or one Collection that matches the filter.
+     * @param {CollectionFindUniqueArgs} args - Arguments to find a Collection
+     * @example
+     * // Get one Collection
+     * const collection = await prisma.collection.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CollectionFindUniqueArgs>(args: SelectSubset<T, CollectionFindUniqueArgs<ExtArgs>>): Prisma__CollectionClient<$Result.GetResult<Prisma.$CollectionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Collection that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CollectionFindUniqueOrThrowArgs} args - Arguments to find a Collection
+     * @example
+     * // Get one Collection
+     * const collection = await prisma.collection.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CollectionFindUniqueOrThrowArgs>(args: SelectSubset<T, CollectionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CollectionClient<$Result.GetResult<Prisma.$CollectionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Collection that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CollectionFindFirstArgs} args - Arguments to find a Collection
+     * @example
+     * // Get one Collection
+     * const collection = await prisma.collection.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CollectionFindFirstArgs>(args?: SelectSubset<T, CollectionFindFirstArgs<ExtArgs>>): Prisma__CollectionClient<$Result.GetResult<Prisma.$CollectionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Collection that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CollectionFindFirstOrThrowArgs} args - Arguments to find a Collection
+     * @example
+     * // Get one Collection
+     * const collection = await prisma.collection.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CollectionFindFirstOrThrowArgs>(args?: SelectSubset<T, CollectionFindFirstOrThrowArgs<ExtArgs>>): Prisma__CollectionClient<$Result.GetResult<Prisma.$CollectionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Collections that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CollectionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Collections
+     * const collections = await prisma.collection.findMany()
+     * 
+     * // Get first 10 Collections
+     * const collections = await prisma.collection.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const collectionWithIdOnly = await prisma.collection.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CollectionFindManyArgs>(args?: SelectSubset<T, CollectionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CollectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Collection.
+     * @param {CollectionCreateArgs} args - Arguments to create a Collection.
+     * @example
+     * // Create one Collection
+     * const Collection = await prisma.collection.create({
+     *   data: {
+     *     // ... data to create a Collection
+     *   }
+     * })
+     * 
+     */
+    create<T extends CollectionCreateArgs>(args: SelectSubset<T, CollectionCreateArgs<ExtArgs>>): Prisma__CollectionClient<$Result.GetResult<Prisma.$CollectionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Collections.
+     * @param {CollectionCreateManyArgs} args - Arguments to create many Collections.
+     * @example
+     * // Create many Collections
+     * const collection = await prisma.collection.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CollectionCreateManyArgs>(args?: SelectSubset<T, CollectionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Collections and returns the data saved in the database.
+     * @param {CollectionCreateManyAndReturnArgs} args - Arguments to create many Collections.
+     * @example
+     * // Create many Collections
+     * const collection = await prisma.collection.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Collections and only return the `id`
+     * const collectionWithIdOnly = await prisma.collection.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CollectionCreateManyAndReturnArgs>(args?: SelectSubset<T, CollectionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CollectionPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Collection.
+     * @param {CollectionDeleteArgs} args - Arguments to delete one Collection.
+     * @example
+     * // Delete one Collection
+     * const Collection = await prisma.collection.delete({
+     *   where: {
+     *     // ... filter to delete one Collection
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CollectionDeleteArgs>(args: SelectSubset<T, CollectionDeleteArgs<ExtArgs>>): Prisma__CollectionClient<$Result.GetResult<Prisma.$CollectionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Collection.
+     * @param {CollectionUpdateArgs} args - Arguments to update one Collection.
+     * @example
+     * // Update one Collection
+     * const collection = await prisma.collection.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CollectionUpdateArgs>(args: SelectSubset<T, CollectionUpdateArgs<ExtArgs>>): Prisma__CollectionClient<$Result.GetResult<Prisma.$CollectionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Collections.
+     * @param {CollectionDeleteManyArgs} args - Arguments to filter Collections to delete.
+     * @example
+     * // Delete a few Collections
+     * const { count } = await prisma.collection.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CollectionDeleteManyArgs>(args?: SelectSubset<T, CollectionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Collections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CollectionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Collections
+     * const collection = await prisma.collection.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CollectionUpdateManyArgs>(args: SelectSubset<T, CollectionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Collections and returns the data updated in the database.
+     * @param {CollectionUpdateManyAndReturnArgs} args - Arguments to update many Collections.
+     * @example
+     * // Update many Collections
+     * const collection = await prisma.collection.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Collections and only return the `id`
+     * const collectionWithIdOnly = await prisma.collection.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CollectionUpdateManyAndReturnArgs>(args: SelectSubset<T, CollectionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CollectionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Collection.
+     * @param {CollectionUpsertArgs} args - Arguments to update or create a Collection.
+     * @example
+     * // Update or create a Collection
+     * const collection = await prisma.collection.upsert({
+     *   create: {
+     *     // ... data to create a Collection
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Collection we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CollectionUpsertArgs>(args: SelectSubset<T, CollectionUpsertArgs<ExtArgs>>): Prisma__CollectionClient<$Result.GetResult<Prisma.$CollectionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Collections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CollectionCountArgs} args - Arguments to filter Collections to count.
+     * @example
+     * // Count the number of Collections
+     * const count = await prisma.collection.count({
+     *   where: {
+     *     // ... the filter for the Collections we want to count
+     *   }
+     * })
+    **/
+    count<T extends CollectionCountArgs>(
+      args?: Subset<T, CollectionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CollectionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Collection.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CollectionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CollectionAggregateArgs>(args: Subset<T, CollectionAggregateArgs>): Prisma.PrismaPromise<GetCollectionAggregateType<T>>
+
+    /**
+     * Group by Collection.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CollectionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CollectionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CollectionGroupByArgs['orderBy'] }
+        : { orderBy?: CollectionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CollectionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCollectionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Collection model
+   */
+  readonly fields: CollectionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Collection.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CollectionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    items<T extends Collection$itemsArgs<ExtArgs> = {}>(args?: Subset<T, Collection$itemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CollectionItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Collection model
+   */
+  interface CollectionFieldRefs {
+    readonly id: FieldRef<"Collection", 'String'>
+    readonly name: FieldRef<"Collection", 'String'>
+    readonly description: FieldRef<"Collection", 'String'>
+    readonly isPrivate: FieldRef<"Collection", 'Boolean'>
+    readonly coverUrl: FieldRef<"Collection", 'String'>
+    readonly userId: FieldRef<"Collection", 'String'>
+    readonly createdAt: FieldRef<"Collection", 'DateTime'>
+    readonly updatedAt: FieldRef<"Collection", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Collection findUnique
+   */
+  export type CollectionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Collection
+     */
+    select?: CollectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Collection
+     */
+    omit?: CollectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionInclude<ExtArgs> | null
+    /**
+     * Filter, which Collection to fetch.
+     */
+    where: CollectionWhereUniqueInput
+  }
+
+  /**
+   * Collection findUniqueOrThrow
+   */
+  export type CollectionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Collection
+     */
+    select?: CollectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Collection
+     */
+    omit?: CollectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionInclude<ExtArgs> | null
+    /**
+     * Filter, which Collection to fetch.
+     */
+    where: CollectionWhereUniqueInput
+  }
+
+  /**
+   * Collection findFirst
+   */
+  export type CollectionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Collection
+     */
+    select?: CollectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Collection
+     */
+    omit?: CollectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionInclude<ExtArgs> | null
+    /**
+     * Filter, which Collection to fetch.
+     */
+    where?: CollectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Collections to fetch.
+     */
+    orderBy?: CollectionOrderByWithRelationInput | CollectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Collections.
+     */
+    cursor?: CollectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Collections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Collections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Collections.
+     */
+    distinct?: CollectionScalarFieldEnum | CollectionScalarFieldEnum[]
+  }
+
+  /**
+   * Collection findFirstOrThrow
+   */
+  export type CollectionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Collection
+     */
+    select?: CollectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Collection
+     */
+    omit?: CollectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionInclude<ExtArgs> | null
+    /**
+     * Filter, which Collection to fetch.
+     */
+    where?: CollectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Collections to fetch.
+     */
+    orderBy?: CollectionOrderByWithRelationInput | CollectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Collections.
+     */
+    cursor?: CollectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Collections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Collections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Collections.
+     */
+    distinct?: CollectionScalarFieldEnum | CollectionScalarFieldEnum[]
+  }
+
+  /**
+   * Collection findMany
+   */
+  export type CollectionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Collection
+     */
+    select?: CollectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Collection
+     */
+    omit?: CollectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionInclude<ExtArgs> | null
+    /**
+     * Filter, which Collections to fetch.
+     */
+    where?: CollectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Collections to fetch.
+     */
+    orderBy?: CollectionOrderByWithRelationInput | CollectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Collections.
+     */
+    cursor?: CollectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Collections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Collections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Collections.
+     */
+    distinct?: CollectionScalarFieldEnum | CollectionScalarFieldEnum[]
+  }
+
+  /**
+   * Collection create
+   */
+  export type CollectionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Collection
+     */
+    select?: CollectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Collection
+     */
+    omit?: CollectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Collection.
+     */
+    data: XOR<CollectionCreateInput, CollectionUncheckedCreateInput>
+  }
+
+  /**
+   * Collection createMany
+   */
+  export type CollectionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Collections.
+     */
+    data: CollectionCreateManyInput | CollectionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Collection createManyAndReturn
+   */
+  export type CollectionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Collection
+     */
+    select?: CollectionSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Collection
+     */
+    omit?: CollectionOmit<ExtArgs> | null
+    /**
+     * The data used to create many Collections.
+     */
+    data: CollectionCreateManyInput | CollectionCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Collection update
+   */
+  export type CollectionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Collection
+     */
+    select?: CollectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Collection
+     */
+    omit?: CollectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Collection.
+     */
+    data: XOR<CollectionUpdateInput, CollectionUncheckedUpdateInput>
+    /**
+     * Choose, which Collection to update.
+     */
+    where: CollectionWhereUniqueInput
+  }
+
+  /**
+   * Collection updateMany
+   */
+  export type CollectionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Collections.
+     */
+    data: XOR<CollectionUpdateManyMutationInput, CollectionUncheckedUpdateManyInput>
+    /**
+     * Filter which Collections to update
+     */
+    where?: CollectionWhereInput
+    /**
+     * Limit how many Collections to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Collection updateManyAndReturn
+   */
+  export type CollectionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Collection
+     */
+    select?: CollectionSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Collection
+     */
+    omit?: CollectionOmit<ExtArgs> | null
+    /**
+     * The data used to update Collections.
+     */
+    data: XOR<CollectionUpdateManyMutationInput, CollectionUncheckedUpdateManyInput>
+    /**
+     * Filter which Collections to update
+     */
+    where?: CollectionWhereInput
+    /**
+     * Limit how many Collections to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Collection upsert
+   */
+  export type CollectionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Collection
+     */
+    select?: CollectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Collection
+     */
+    omit?: CollectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Collection to update in case it exists.
+     */
+    where: CollectionWhereUniqueInput
+    /**
+     * In case the Collection found by the `where` argument doesn't exist, create a new Collection with this data.
+     */
+    create: XOR<CollectionCreateInput, CollectionUncheckedCreateInput>
+    /**
+     * In case the Collection was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CollectionUpdateInput, CollectionUncheckedUpdateInput>
+  }
+
+  /**
+   * Collection delete
+   */
+  export type CollectionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Collection
+     */
+    select?: CollectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Collection
+     */
+    omit?: CollectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionInclude<ExtArgs> | null
+    /**
+     * Filter which Collection to delete.
+     */
+    where: CollectionWhereUniqueInput
+  }
+
+  /**
+   * Collection deleteMany
+   */
+  export type CollectionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Collections to delete
+     */
+    where?: CollectionWhereInput
+    /**
+     * Limit how many Collections to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Collection.items
+   */
+  export type Collection$itemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionItem
+     */
+    select?: CollectionItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionItem
+     */
+    omit?: CollectionItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionItemInclude<ExtArgs> | null
+    where?: CollectionItemWhereInput
+    orderBy?: CollectionItemOrderByWithRelationInput | CollectionItemOrderByWithRelationInput[]
+    cursor?: CollectionItemWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CollectionItemScalarFieldEnum | CollectionItemScalarFieldEnum[]
+  }
+
+  /**
+   * Collection without action
+   */
+  export type CollectionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Collection
+     */
+    select?: CollectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Collection
+     */
+    omit?: CollectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CollectionItem
+   */
+
+  export type AggregateCollectionItem = {
+    _count: CollectionItemCountAggregateOutputType | null
+    _min: CollectionItemMinAggregateOutputType | null
+    _max: CollectionItemMaxAggregateOutputType | null
+  }
+
+  export type CollectionItemMinAggregateOutputType = {
+    id: string | null
+    collectionId: string | null
+    photoId: string | null
+    savedAt: Date | null
+  }
+
+  export type CollectionItemMaxAggregateOutputType = {
+    id: string | null
+    collectionId: string | null
+    photoId: string | null
+    savedAt: Date | null
+  }
+
+  export type CollectionItemCountAggregateOutputType = {
+    id: number
+    collectionId: number
+    photoId: number
+    savedAt: number
+    _all: number
+  }
+
+
+  export type CollectionItemMinAggregateInputType = {
+    id?: true
+    collectionId?: true
+    photoId?: true
+    savedAt?: true
+  }
+
+  export type CollectionItemMaxAggregateInputType = {
+    id?: true
+    collectionId?: true
+    photoId?: true
+    savedAt?: true
+  }
+
+  export type CollectionItemCountAggregateInputType = {
+    id?: true
+    collectionId?: true
+    photoId?: true
+    savedAt?: true
+    _all?: true
+  }
+
+  export type CollectionItemAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CollectionItem to aggregate.
+     */
+    where?: CollectionItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CollectionItems to fetch.
+     */
+    orderBy?: CollectionItemOrderByWithRelationInput | CollectionItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CollectionItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CollectionItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CollectionItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CollectionItems
+    **/
+    _count?: true | CollectionItemCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CollectionItemMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CollectionItemMaxAggregateInputType
+  }
+
+  export type GetCollectionItemAggregateType<T extends CollectionItemAggregateArgs> = {
+        [P in keyof T & keyof AggregateCollectionItem]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCollectionItem[P]>
+      : GetScalarType<T[P], AggregateCollectionItem[P]>
+  }
+
+
+
+
+  export type CollectionItemGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CollectionItemWhereInput
+    orderBy?: CollectionItemOrderByWithAggregationInput | CollectionItemOrderByWithAggregationInput[]
+    by: CollectionItemScalarFieldEnum[] | CollectionItemScalarFieldEnum
+    having?: CollectionItemScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CollectionItemCountAggregateInputType | true
+    _min?: CollectionItemMinAggregateInputType
+    _max?: CollectionItemMaxAggregateInputType
+  }
+
+  export type CollectionItemGroupByOutputType = {
+    id: string
+    collectionId: string
+    photoId: string
+    savedAt: Date
+    _count: CollectionItemCountAggregateOutputType | null
+    _min: CollectionItemMinAggregateOutputType | null
+    _max: CollectionItemMaxAggregateOutputType | null
+  }
+
+  type GetCollectionItemGroupByPayload<T extends CollectionItemGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CollectionItemGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CollectionItemGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CollectionItemGroupByOutputType[P]>
+            : GetScalarType<T[P], CollectionItemGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CollectionItemSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    collectionId?: boolean
+    photoId?: boolean
+    savedAt?: boolean
+    collection?: boolean | CollectionDefaultArgs<ExtArgs>
+    photo?: boolean | PhotoDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["collectionItem"]>
+
+  export type CollectionItemSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    collectionId?: boolean
+    photoId?: boolean
+    savedAt?: boolean
+    collection?: boolean | CollectionDefaultArgs<ExtArgs>
+    photo?: boolean | PhotoDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["collectionItem"]>
+
+  export type CollectionItemSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    collectionId?: boolean
+    photoId?: boolean
+    savedAt?: boolean
+    collection?: boolean | CollectionDefaultArgs<ExtArgs>
+    photo?: boolean | PhotoDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["collectionItem"]>
+
+  export type CollectionItemSelectScalar = {
+    id?: boolean
+    collectionId?: boolean
+    photoId?: boolean
+    savedAt?: boolean
+  }
+
+  export type CollectionItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "collectionId" | "photoId" | "savedAt", ExtArgs["result"]["collectionItem"]>
+  export type CollectionItemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    collection?: boolean | CollectionDefaultArgs<ExtArgs>
+    photo?: boolean | PhotoDefaultArgs<ExtArgs>
+  }
+  export type CollectionItemIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    collection?: boolean | CollectionDefaultArgs<ExtArgs>
+    photo?: boolean | PhotoDefaultArgs<ExtArgs>
+  }
+  export type CollectionItemIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    collection?: boolean | CollectionDefaultArgs<ExtArgs>
+    photo?: boolean | PhotoDefaultArgs<ExtArgs>
+  }
+
+  export type $CollectionItemPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CollectionItem"
+    objects: {
+      collection: Prisma.$CollectionPayload<ExtArgs>
+      photo: Prisma.$PhotoPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      collectionId: string
+      photoId: string
+      savedAt: Date
+    }, ExtArgs["result"]["collectionItem"]>
+    composites: {}
+  }
+
+  type CollectionItemGetPayload<S extends boolean | null | undefined | CollectionItemDefaultArgs> = $Result.GetResult<Prisma.$CollectionItemPayload, S>
+
+  type CollectionItemCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CollectionItemFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CollectionItemCountAggregateInputType | true
+    }
+
+  export interface CollectionItemDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CollectionItem'], meta: { name: 'CollectionItem' } }
+    /**
+     * Find zero or one CollectionItem that matches the filter.
+     * @param {CollectionItemFindUniqueArgs} args - Arguments to find a CollectionItem
+     * @example
+     * // Get one CollectionItem
+     * const collectionItem = await prisma.collectionItem.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CollectionItemFindUniqueArgs>(args: SelectSubset<T, CollectionItemFindUniqueArgs<ExtArgs>>): Prisma__CollectionItemClient<$Result.GetResult<Prisma.$CollectionItemPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CollectionItem that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CollectionItemFindUniqueOrThrowArgs} args - Arguments to find a CollectionItem
+     * @example
+     * // Get one CollectionItem
+     * const collectionItem = await prisma.collectionItem.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CollectionItemFindUniqueOrThrowArgs>(args: SelectSubset<T, CollectionItemFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CollectionItemClient<$Result.GetResult<Prisma.$CollectionItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CollectionItem that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CollectionItemFindFirstArgs} args - Arguments to find a CollectionItem
+     * @example
+     * // Get one CollectionItem
+     * const collectionItem = await prisma.collectionItem.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CollectionItemFindFirstArgs>(args?: SelectSubset<T, CollectionItemFindFirstArgs<ExtArgs>>): Prisma__CollectionItemClient<$Result.GetResult<Prisma.$CollectionItemPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CollectionItem that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CollectionItemFindFirstOrThrowArgs} args - Arguments to find a CollectionItem
+     * @example
+     * // Get one CollectionItem
+     * const collectionItem = await prisma.collectionItem.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CollectionItemFindFirstOrThrowArgs>(args?: SelectSubset<T, CollectionItemFindFirstOrThrowArgs<ExtArgs>>): Prisma__CollectionItemClient<$Result.GetResult<Prisma.$CollectionItemPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CollectionItems that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CollectionItemFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CollectionItems
+     * const collectionItems = await prisma.collectionItem.findMany()
+     * 
+     * // Get first 10 CollectionItems
+     * const collectionItems = await prisma.collectionItem.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const collectionItemWithIdOnly = await prisma.collectionItem.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CollectionItemFindManyArgs>(args?: SelectSubset<T, CollectionItemFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CollectionItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CollectionItem.
+     * @param {CollectionItemCreateArgs} args - Arguments to create a CollectionItem.
+     * @example
+     * // Create one CollectionItem
+     * const CollectionItem = await prisma.collectionItem.create({
+     *   data: {
+     *     // ... data to create a CollectionItem
+     *   }
+     * })
+     * 
+     */
+    create<T extends CollectionItemCreateArgs>(args: SelectSubset<T, CollectionItemCreateArgs<ExtArgs>>): Prisma__CollectionItemClient<$Result.GetResult<Prisma.$CollectionItemPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CollectionItems.
+     * @param {CollectionItemCreateManyArgs} args - Arguments to create many CollectionItems.
+     * @example
+     * // Create many CollectionItems
+     * const collectionItem = await prisma.collectionItem.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CollectionItemCreateManyArgs>(args?: SelectSubset<T, CollectionItemCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CollectionItems and returns the data saved in the database.
+     * @param {CollectionItemCreateManyAndReturnArgs} args - Arguments to create many CollectionItems.
+     * @example
+     * // Create many CollectionItems
+     * const collectionItem = await prisma.collectionItem.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CollectionItems and only return the `id`
+     * const collectionItemWithIdOnly = await prisma.collectionItem.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CollectionItemCreateManyAndReturnArgs>(args?: SelectSubset<T, CollectionItemCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CollectionItemPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CollectionItem.
+     * @param {CollectionItemDeleteArgs} args - Arguments to delete one CollectionItem.
+     * @example
+     * // Delete one CollectionItem
+     * const CollectionItem = await prisma.collectionItem.delete({
+     *   where: {
+     *     // ... filter to delete one CollectionItem
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CollectionItemDeleteArgs>(args: SelectSubset<T, CollectionItemDeleteArgs<ExtArgs>>): Prisma__CollectionItemClient<$Result.GetResult<Prisma.$CollectionItemPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CollectionItem.
+     * @param {CollectionItemUpdateArgs} args - Arguments to update one CollectionItem.
+     * @example
+     * // Update one CollectionItem
+     * const collectionItem = await prisma.collectionItem.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CollectionItemUpdateArgs>(args: SelectSubset<T, CollectionItemUpdateArgs<ExtArgs>>): Prisma__CollectionItemClient<$Result.GetResult<Prisma.$CollectionItemPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CollectionItems.
+     * @param {CollectionItemDeleteManyArgs} args - Arguments to filter CollectionItems to delete.
+     * @example
+     * // Delete a few CollectionItems
+     * const { count } = await prisma.collectionItem.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CollectionItemDeleteManyArgs>(args?: SelectSubset<T, CollectionItemDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CollectionItems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CollectionItemUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CollectionItems
+     * const collectionItem = await prisma.collectionItem.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CollectionItemUpdateManyArgs>(args: SelectSubset<T, CollectionItemUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CollectionItems and returns the data updated in the database.
+     * @param {CollectionItemUpdateManyAndReturnArgs} args - Arguments to update many CollectionItems.
+     * @example
+     * // Update many CollectionItems
+     * const collectionItem = await prisma.collectionItem.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CollectionItems and only return the `id`
+     * const collectionItemWithIdOnly = await prisma.collectionItem.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CollectionItemUpdateManyAndReturnArgs>(args: SelectSubset<T, CollectionItemUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CollectionItemPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CollectionItem.
+     * @param {CollectionItemUpsertArgs} args - Arguments to update or create a CollectionItem.
+     * @example
+     * // Update or create a CollectionItem
+     * const collectionItem = await prisma.collectionItem.upsert({
+     *   create: {
+     *     // ... data to create a CollectionItem
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CollectionItem we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CollectionItemUpsertArgs>(args: SelectSubset<T, CollectionItemUpsertArgs<ExtArgs>>): Prisma__CollectionItemClient<$Result.GetResult<Prisma.$CollectionItemPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CollectionItems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CollectionItemCountArgs} args - Arguments to filter CollectionItems to count.
+     * @example
+     * // Count the number of CollectionItems
+     * const count = await prisma.collectionItem.count({
+     *   where: {
+     *     // ... the filter for the CollectionItems we want to count
+     *   }
+     * })
+    **/
+    count<T extends CollectionItemCountArgs>(
+      args?: Subset<T, CollectionItemCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CollectionItemCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CollectionItem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CollectionItemAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CollectionItemAggregateArgs>(args: Subset<T, CollectionItemAggregateArgs>): Prisma.PrismaPromise<GetCollectionItemAggregateType<T>>
+
+    /**
+     * Group by CollectionItem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CollectionItemGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CollectionItemGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CollectionItemGroupByArgs['orderBy'] }
+        : { orderBy?: CollectionItemGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CollectionItemGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCollectionItemGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CollectionItem model
+   */
+  readonly fields: CollectionItemFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CollectionItem.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CollectionItemClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    collection<T extends CollectionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CollectionDefaultArgs<ExtArgs>>): Prisma__CollectionClient<$Result.GetResult<Prisma.$CollectionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    photo<T extends PhotoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PhotoDefaultArgs<ExtArgs>>): Prisma__PhotoClient<$Result.GetResult<Prisma.$PhotoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CollectionItem model
+   */
+  interface CollectionItemFieldRefs {
+    readonly id: FieldRef<"CollectionItem", 'String'>
+    readonly collectionId: FieldRef<"CollectionItem", 'String'>
+    readonly photoId: FieldRef<"CollectionItem", 'String'>
+    readonly savedAt: FieldRef<"CollectionItem", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CollectionItem findUnique
+   */
+  export type CollectionItemFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionItem
+     */
+    select?: CollectionItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionItem
+     */
+    omit?: CollectionItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionItemInclude<ExtArgs> | null
+    /**
+     * Filter, which CollectionItem to fetch.
+     */
+    where: CollectionItemWhereUniqueInput
+  }
+
+  /**
+   * CollectionItem findUniqueOrThrow
+   */
+  export type CollectionItemFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionItem
+     */
+    select?: CollectionItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionItem
+     */
+    omit?: CollectionItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionItemInclude<ExtArgs> | null
+    /**
+     * Filter, which CollectionItem to fetch.
+     */
+    where: CollectionItemWhereUniqueInput
+  }
+
+  /**
+   * CollectionItem findFirst
+   */
+  export type CollectionItemFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionItem
+     */
+    select?: CollectionItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionItem
+     */
+    omit?: CollectionItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionItemInclude<ExtArgs> | null
+    /**
+     * Filter, which CollectionItem to fetch.
+     */
+    where?: CollectionItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CollectionItems to fetch.
+     */
+    orderBy?: CollectionItemOrderByWithRelationInput | CollectionItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CollectionItems.
+     */
+    cursor?: CollectionItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CollectionItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CollectionItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CollectionItems.
+     */
+    distinct?: CollectionItemScalarFieldEnum | CollectionItemScalarFieldEnum[]
+  }
+
+  /**
+   * CollectionItem findFirstOrThrow
+   */
+  export type CollectionItemFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionItem
+     */
+    select?: CollectionItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionItem
+     */
+    omit?: CollectionItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionItemInclude<ExtArgs> | null
+    /**
+     * Filter, which CollectionItem to fetch.
+     */
+    where?: CollectionItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CollectionItems to fetch.
+     */
+    orderBy?: CollectionItemOrderByWithRelationInput | CollectionItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CollectionItems.
+     */
+    cursor?: CollectionItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CollectionItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CollectionItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CollectionItems.
+     */
+    distinct?: CollectionItemScalarFieldEnum | CollectionItemScalarFieldEnum[]
+  }
+
+  /**
+   * CollectionItem findMany
+   */
+  export type CollectionItemFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionItem
+     */
+    select?: CollectionItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionItem
+     */
+    omit?: CollectionItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionItemInclude<ExtArgs> | null
+    /**
+     * Filter, which CollectionItems to fetch.
+     */
+    where?: CollectionItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CollectionItems to fetch.
+     */
+    orderBy?: CollectionItemOrderByWithRelationInput | CollectionItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CollectionItems.
+     */
+    cursor?: CollectionItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CollectionItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CollectionItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CollectionItems.
+     */
+    distinct?: CollectionItemScalarFieldEnum | CollectionItemScalarFieldEnum[]
+  }
+
+  /**
+   * CollectionItem create
+   */
+  export type CollectionItemCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionItem
+     */
+    select?: CollectionItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionItem
+     */
+    omit?: CollectionItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionItemInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CollectionItem.
+     */
+    data: XOR<CollectionItemCreateInput, CollectionItemUncheckedCreateInput>
+  }
+
+  /**
+   * CollectionItem createMany
+   */
+  export type CollectionItemCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CollectionItems.
+     */
+    data: CollectionItemCreateManyInput | CollectionItemCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CollectionItem createManyAndReturn
+   */
+  export type CollectionItemCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionItem
+     */
+    select?: CollectionItemSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionItem
+     */
+    omit?: CollectionItemOmit<ExtArgs> | null
+    /**
+     * The data used to create many CollectionItems.
+     */
+    data: CollectionItemCreateManyInput | CollectionItemCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionItemIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CollectionItem update
+   */
+  export type CollectionItemUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionItem
+     */
+    select?: CollectionItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionItem
+     */
+    omit?: CollectionItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionItemInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CollectionItem.
+     */
+    data: XOR<CollectionItemUpdateInput, CollectionItemUncheckedUpdateInput>
+    /**
+     * Choose, which CollectionItem to update.
+     */
+    where: CollectionItemWhereUniqueInput
+  }
+
+  /**
+   * CollectionItem updateMany
+   */
+  export type CollectionItemUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CollectionItems.
+     */
+    data: XOR<CollectionItemUpdateManyMutationInput, CollectionItemUncheckedUpdateManyInput>
+    /**
+     * Filter which CollectionItems to update
+     */
+    where?: CollectionItemWhereInput
+    /**
+     * Limit how many CollectionItems to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CollectionItem updateManyAndReturn
+   */
+  export type CollectionItemUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionItem
+     */
+    select?: CollectionItemSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionItem
+     */
+    omit?: CollectionItemOmit<ExtArgs> | null
+    /**
+     * The data used to update CollectionItems.
+     */
+    data: XOR<CollectionItemUpdateManyMutationInput, CollectionItemUncheckedUpdateManyInput>
+    /**
+     * Filter which CollectionItems to update
+     */
+    where?: CollectionItemWhereInput
+    /**
+     * Limit how many CollectionItems to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionItemIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CollectionItem upsert
+   */
+  export type CollectionItemUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionItem
+     */
+    select?: CollectionItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionItem
+     */
+    omit?: CollectionItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionItemInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CollectionItem to update in case it exists.
+     */
+    where: CollectionItemWhereUniqueInput
+    /**
+     * In case the CollectionItem found by the `where` argument doesn't exist, create a new CollectionItem with this data.
+     */
+    create: XOR<CollectionItemCreateInput, CollectionItemUncheckedCreateInput>
+    /**
+     * In case the CollectionItem was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CollectionItemUpdateInput, CollectionItemUncheckedUpdateInput>
+  }
+
+  /**
+   * CollectionItem delete
+   */
+  export type CollectionItemDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionItem
+     */
+    select?: CollectionItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionItem
+     */
+    omit?: CollectionItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionItemInclude<ExtArgs> | null
+    /**
+     * Filter which CollectionItem to delete.
+     */
+    where: CollectionItemWhereUniqueInput
+  }
+
+  /**
+   * CollectionItem deleteMany
+   */
+  export type CollectionItemDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CollectionItems to delete
+     */
+    where?: CollectionItemWhereInput
+    /**
+     * Limit how many CollectionItems to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CollectionItem without action
+   */
+  export type CollectionItemDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionItem
+     */
+    select?: CollectionItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionItem
+     */
+    omit?: CollectionItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionItemInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Follow
+   */
+
+  export type AggregateFollow = {
+    _count: FollowCountAggregateOutputType | null
+    _min: FollowMinAggregateOutputType | null
+    _max: FollowMaxAggregateOutputType | null
+  }
+
+  export type FollowMinAggregateOutputType = {
+    id: string | null
+    followerId: string | null
+    followingId: string | null
+    createdAt: Date | null
+  }
+
+  export type FollowMaxAggregateOutputType = {
+    id: string | null
+    followerId: string | null
+    followingId: string | null
+    createdAt: Date | null
+  }
+
+  export type FollowCountAggregateOutputType = {
+    id: number
+    followerId: number
+    followingId: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type FollowMinAggregateInputType = {
+    id?: true
+    followerId?: true
+    followingId?: true
+    createdAt?: true
+  }
+
+  export type FollowMaxAggregateInputType = {
+    id?: true
+    followerId?: true
+    followingId?: true
+    createdAt?: true
+  }
+
+  export type FollowCountAggregateInputType = {
+    id?: true
+    followerId?: true
+    followingId?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type FollowAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Follow to aggregate.
+     */
+    where?: FollowWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Follows to fetch.
+     */
+    orderBy?: FollowOrderByWithRelationInput | FollowOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: FollowWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Follows from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Follows.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Follows
+    **/
+    _count?: true | FollowCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: FollowMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: FollowMaxAggregateInputType
+  }
+
+  export type GetFollowAggregateType<T extends FollowAggregateArgs> = {
+        [P in keyof T & keyof AggregateFollow]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateFollow[P]>
+      : GetScalarType<T[P], AggregateFollow[P]>
+  }
+
+
+
+
+  export type FollowGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FollowWhereInput
+    orderBy?: FollowOrderByWithAggregationInput | FollowOrderByWithAggregationInput[]
+    by: FollowScalarFieldEnum[] | FollowScalarFieldEnum
+    having?: FollowScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: FollowCountAggregateInputType | true
+    _min?: FollowMinAggregateInputType
+    _max?: FollowMaxAggregateInputType
+  }
+
+  export type FollowGroupByOutputType = {
+    id: string
+    followerId: string
+    followingId: string
+    createdAt: Date
+    _count: FollowCountAggregateOutputType | null
+    _min: FollowMinAggregateOutputType | null
+    _max: FollowMaxAggregateOutputType | null
+  }
+
+  type GetFollowGroupByPayload<T extends FollowGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<FollowGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof FollowGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], FollowGroupByOutputType[P]>
+            : GetScalarType<T[P], FollowGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type FollowSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    followerId?: boolean
+    followingId?: boolean
+    createdAt?: boolean
+    follower?: boolean | UserDefaultArgs<ExtArgs>
+    following?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["follow"]>
+
+  export type FollowSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    followerId?: boolean
+    followingId?: boolean
+    createdAt?: boolean
+    follower?: boolean | UserDefaultArgs<ExtArgs>
+    following?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["follow"]>
+
+  export type FollowSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    followerId?: boolean
+    followingId?: boolean
+    createdAt?: boolean
+    follower?: boolean | UserDefaultArgs<ExtArgs>
+    following?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["follow"]>
+
+  export type FollowSelectScalar = {
+    id?: boolean
+    followerId?: boolean
+    followingId?: boolean
+    createdAt?: boolean
+  }
+
+  export type FollowOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "followerId" | "followingId" | "createdAt", ExtArgs["result"]["follow"]>
+  export type FollowInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    follower?: boolean | UserDefaultArgs<ExtArgs>
+    following?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type FollowIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    follower?: boolean | UserDefaultArgs<ExtArgs>
+    following?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type FollowIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    follower?: boolean | UserDefaultArgs<ExtArgs>
+    following?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $FollowPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Follow"
+    objects: {
+      follower: Prisma.$UserPayload<ExtArgs>
+      following: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      followerId: string
+      followingId: string
+      createdAt: Date
+    }, ExtArgs["result"]["follow"]>
+    composites: {}
+  }
+
+  type FollowGetPayload<S extends boolean | null | undefined | FollowDefaultArgs> = $Result.GetResult<Prisma.$FollowPayload, S>
+
+  type FollowCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<FollowFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: FollowCountAggregateInputType | true
+    }
+
+  export interface FollowDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Follow'], meta: { name: 'Follow' } }
+    /**
+     * Find zero or one Follow that matches the filter.
+     * @param {FollowFindUniqueArgs} args - Arguments to find a Follow
+     * @example
+     * // Get one Follow
+     * const follow = await prisma.follow.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends FollowFindUniqueArgs>(args: SelectSubset<T, FollowFindUniqueArgs<ExtArgs>>): Prisma__FollowClient<$Result.GetResult<Prisma.$FollowPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Follow that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {FollowFindUniqueOrThrowArgs} args - Arguments to find a Follow
+     * @example
+     * // Get one Follow
+     * const follow = await prisma.follow.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends FollowFindUniqueOrThrowArgs>(args: SelectSubset<T, FollowFindUniqueOrThrowArgs<ExtArgs>>): Prisma__FollowClient<$Result.GetResult<Prisma.$FollowPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Follow that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FollowFindFirstArgs} args - Arguments to find a Follow
+     * @example
+     * // Get one Follow
+     * const follow = await prisma.follow.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends FollowFindFirstArgs>(args?: SelectSubset<T, FollowFindFirstArgs<ExtArgs>>): Prisma__FollowClient<$Result.GetResult<Prisma.$FollowPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Follow that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FollowFindFirstOrThrowArgs} args - Arguments to find a Follow
+     * @example
+     * // Get one Follow
+     * const follow = await prisma.follow.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends FollowFindFirstOrThrowArgs>(args?: SelectSubset<T, FollowFindFirstOrThrowArgs<ExtArgs>>): Prisma__FollowClient<$Result.GetResult<Prisma.$FollowPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Follows that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FollowFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Follows
+     * const follows = await prisma.follow.findMany()
+     * 
+     * // Get first 10 Follows
+     * const follows = await prisma.follow.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const followWithIdOnly = await prisma.follow.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends FollowFindManyArgs>(args?: SelectSubset<T, FollowFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FollowPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Follow.
+     * @param {FollowCreateArgs} args - Arguments to create a Follow.
+     * @example
+     * // Create one Follow
+     * const Follow = await prisma.follow.create({
+     *   data: {
+     *     // ... data to create a Follow
+     *   }
+     * })
+     * 
+     */
+    create<T extends FollowCreateArgs>(args: SelectSubset<T, FollowCreateArgs<ExtArgs>>): Prisma__FollowClient<$Result.GetResult<Prisma.$FollowPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Follows.
+     * @param {FollowCreateManyArgs} args - Arguments to create many Follows.
+     * @example
+     * // Create many Follows
+     * const follow = await prisma.follow.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends FollowCreateManyArgs>(args?: SelectSubset<T, FollowCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Follows and returns the data saved in the database.
+     * @param {FollowCreateManyAndReturnArgs} args - Arguments to create many Follows.
+     * @example
+     * // Create many Follows
+     * const follow = await prisma.follow.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Follows and only return the `id`
+     * const followWithIdOnly = await prisma.follow.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends FollowCreateManyAndReturnArgs>(args?: SelectSubset<T, FollowCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FollowPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Follow.
+     * @param {FollowDeleteArgs} args - Arguments to delete one Follow.
+     * @example
+     * // Delete one Follow
+     * const Follow = await prisma.follow.delete({
+     *   where: {
+     *     // ... filter to delete one Follow
+     *   }
+     * })
+     * 
+     */
+    delete<T extends FollowDeleteArgs>(args: SelectSubset<T, FollowDeleteArgs<ExtArgs>>): Prisma__FollowClient<$Result.GetResult<Prisma.$FollowPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Follow.
+     * @param {FollowUpdateArgs} args - Arguments to update one Follow.
+     * @example
+     * // Update one Follow
+     * const follow = await prisma.follow.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends FollowUpdateArgs>(args: SelectSubset<T, FollowUpdateArgs<ExtArgs>>): Prisma__FollowClient<$Result.GetResult<Prisma.$FollowPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Follows.
+     * @param {FollowDeleteManyArgs} args - Arguments to filter Follows to delete.
+     * @example
+     * // Delete a few Follows
+     * const { count } = await prisma.follow.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends FollowDeleteManyArgs>(args?: SelectSubset<T, FollowDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Follows.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FollowUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Follows
+     * const follow = await prisma.follow.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends FollowUpdateManyArgs>(args: SelectSubset<T, FollowUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Follows and returns the data updated in the database.
+     * @param {FollowUpdateManyAndReturnArgs} args - Arguments to update many Follows.
+     * @example
+     * // Update many Follows
+     * const follow = await prisma.follow.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Follows and only return the `id`
+     * const followWithIdOnly = await prisma.follow.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends FollowUpdateManyAndReturnArgs>(args: SelectSubset<T, FollowUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FollowPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Follow.
+     * @param {FollowUpsertArgs} args - Arguments to update or create a Follow.
+     * @example
+     * // Update or create a Follow
+     * const follow = await prisma.follow.upsert({
+     *   create: {
+     *     // ... data to create a Follow
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Follow we want to update
+     *   }
+     * })
+     */
+    upsert<T extends FollowUpsertArgs>(args: SelectSubset<T, FollowUpsertArgs<ExtArgs>>): Prisma__FollowClient<$Result.GetResult<Prisma.$FollowPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Follows.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FollowCountArgs} args - Arguments to filter Follows to count.
+     * @example
+     * // Count the number of Follows
+     * const count = await prisma.follow.count({
+     *   where: {
+     *     // ... the filter for the Follows we want to count
+     *   }
+     * })
+    **/
+    count<T extends FollowCountArgs>(
+      args?: Subset<T, FollowCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], FollowCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Follow.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FollowAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends FollowAggregateArgs>(args: Subset<T, FollowAggregateArgs>): Prisma.PrismaPromise<GetFollowAggregateType<T>>
+
+    /**
+     * Group by Follow.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FollowGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends FollowGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: FollowGroupByArgs['orderBy'] }
+        : { orderBy?: FollowGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, FollowGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFollowGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Follow model
+   */
+  readonly fields: FollowFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Follow.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__FollowClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    follower<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    following<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Follow model
+   */
+  interface FollowFieldRefs {
+    readonly id: FieldRef<"Follow", 'String'>
+    readonly followerId: FieldRef<"Follow", 'String'>
+    readonly followingId: FieldRef<"Follow", 'String'>
+    readonly createdAt: FieldRef<"Follow", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Follow findUnique
+   */
+  export type FollowFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Follow
+     */
+    select?: FollowSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Follow
+     */
+    omit?: FollowOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FollowInclude<ExtArgs> | null
+    /**
+     * Filter, which Follow to fetch.
+     */
+    where: FollowWhereUniqueInput
+  }
+
+  /**
+   * Follow findUniqueOrThrow
+   */
+  export type FollowFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Follow
+     */
+    select?: FollowSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Follow
+     */
+    omit?: FollowOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FollowInclude<ExtArgs> | null
+    /**
+     * Filter, which Follow to fetch.
+     */
+    where: FollowWhereUniqueInput
+  }
+
+  /**
+   * Follow findFirst
+   */
+  export type FollowFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Follow
+     */
+    select?: FollowSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Follow
+     */
+    omit?: FollowOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FollowInclude<ExtArgs> | null
+    /**
+     * Filter, which Follow to fetch.
+     */
+    where?: FollowWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Follows to fetch.
+     */
+    orderBy?: FollowOrderByWithRelationInput | FollowOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Follows.
+     */
+    cursor?: FollowWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Follows from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Follows.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Follows.
+     */
+    distinct?: FollowScalarFieldEnum | FollowScalarFieldEnum[]
+  }
+
+  /**
+   * Follow findFirstOrThrow
+   */
+  export type FollowFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Follow
+     */
+    select?: FollowSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Follow
+     */
+    omit?: FollowOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FollowInclude<ExtArgs> | null
+    /**
+     * Filter, which Follow to fetch.
+     */
+    where?: FollowWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Follows to fetch.
+     */
+    orderBy?: FollowOrderByWithRelationInput | FollowOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Follows.
+     */
+    cursor?: FollowWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Follows from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Follows.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Follows.
+     */
+    distinct?: FollowScalarFieldEnum | FollowScalarFieldEnum[]
+  }
+
+  /**
+   * Follow findMany
+   */
+  export type FollowFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Follow
+     */
+    select?: FollowSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Follow
+     */
+    omit?: FollowOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FollowInclude<ExtArgs> | null
+    /**
+     * Filter, which Follows to fetch.
+     */
+    where?: FollowWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Follows to fetch.
+     */
+    orderBy?: FollowOrderByWithRelationInput | FollowOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Follows.
+     */
+    cursor?: FollowWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Follows from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Follows.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Follows.
+     */
+    distinct?: FollowScalarFieldEnum | FollowScalarFieldEnum[]
+  }
+
+  /**
+   * Follow create
+   */
+  export type FollowCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Follow
+     */
+    select?: FollowSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Follow
+     */
+    omit?: FollowOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FollowInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Follow.
+     */
+    data: XOR<FollowCreateInput, FollowUncheckedCreateInput>
+  }
+
+  /**
+   * Follow createMany
+   */
+  export type FollowCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Follows.
+     */
+    data: FollowCreateManyInput | FollowCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Follow createManyAndReturn
+   */
+  export type FollowCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Follow
+     */
+    select?: FollowSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Follow
+     */
+    omit?: FollowOmit<ExtArgs> | null
+    /**
+     * The data used to create many Follows.
+     */
+    data: FollowCreateManyInput | FollowCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FollowIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Follow update
+   */
+  export type FollowUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Follow
+     */
+    select?: FollowSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Follow
+     */
+    omit?: FollowOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FollowInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Follow.
+     */
+    data: XOR<FollowUpdateInput, FollowUncheckedUpdateInput>
+    /**
+     * Choose, which Follow to update.
+     */
+    where: FollowWhereUniqueInput
+  }
+
+  /**
+   * Follow updateMany
+   */
+  export type FollowUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Follows.
+     */
+    data: XOR<FollowUpdateManyMutationInput, FollowUncheckedUpdateManyInput>
+    /**
+     * Filter which Follows to update
+     */
+    where?: FollowWhereInput
+    /**
+     * Limit how many Follows to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Follow updateManyAndReturn
+   */
+  export type FollowUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Follow
+     */
+    select?: FollowSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Follow
+     */
+    omit?: FollowOmit<ExtArgs> | null
+    /**
+     * The data used to update Follows.
+     */
+    data: XOR<FollowUpdateManyMutationInput, FollowUncheckedUpdateManyInput>
+    /**
+     * Filter which Follows to update
+     */
+    where?: FollowWhereInput
+    /**
+     * Limit how many Follows to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FollowIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Follow upsert
+   */
+  export type FollowUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Follow
+     */
+    select?: FollowSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Follow
+     */
+    omit?: FollowOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FollowInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Follow to update in case it exists.
+     */
+    where: FollowWhereUniqueInput
+    /**
+     * In case the Follow found by the `where` argument doesn't exist, create a new Follow with this data.
+     */
+    create: XOR<FollowCreateInput, FollowUncheckedCreateInput>
+    /**
+     * In case the Follow was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<FollowUpdateInput, FollowUncheckedUpdateInput>
+  }
+
+  /**
+   * Follow delete
+   */
+  export type FollowDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Follow
+     */
+    select?: FollowSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Follow
+     */
+    omit?: FollowOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FollowInclude<ExtArgs> | null
+    /**
+     * Filter which Follow to delete.
+     */
+    where: FollowWhereUniqueInput
+  }
+
+  /**
+   * Follow deleteMany
+   */
+  export type FollowDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Follows to delete
+     */
+    where?: FollowWhereInput
+    /**
+     * Limit how many Follows to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Follow without action
+   */
+  export type FollowDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Follow
+     */
+    select?: FollowSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Follow
+     */
+    omit?: FollowOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FollowInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Enums
+   */
+
+  export const TransactionIsolationLevel: {
+    ReadUncommitted: 'ReadUncommitted',
+    ReadCommitted: 'ReadCommitted',
+    RepeatableRead: 'RepeatableRead',
+    Serializable: 'Serializable'
+  };
+
+  export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
+
+
+  export const UserScalarFieldEnum: {
+    id: 'id',
+    email: 'email',
+    username: 'username',
+    name: 'name',
+    password: 'password',
+    role: 'role',
+    status: 'status',
+    avatarUrl: 'avatarUrl',
+    bio: 'bio',
+    location: 'location',
+    websiteUrl: 'websiteUrl',
+    instagramUrl: 'instagramUrl',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+  export const PhotoScalarFieldEnum: {
+    id: 'id',
+    title: 'title',
+    description: 'description',
+    imageUrl: 'imageUrl',
+    thumbnailUrl: 'thumbnailUrl',
+    width: 'width',
+    height: 'height',
+    fileSize: 'fileSize',
+    neighborhood: 'neighborhood',
+    category: 'category',
+    status: 'status',
+    cameraMake: 'cameraMake',
+    cameraModel: 'cameraModel',
+    lens: 'lens',
+    iso: 'iso',
+    aperture: 'aperture',
+    shutterSpeed: 'shutterSpeed',
+    focalLength: 'focalLength',
+    takenAt: 'takenAt',
+    authorId: 'authorId',
+    voteCount: 'voteCount',
+    approvedAt: 'approvedAt',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type PhotoScalarFieldEnum = (typeof PhotoScalarFieldEnum)[keyof typeof PhotoScalarFieldEnum]
+
+
+  export const VoteScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    photoId: 'photoId',
+    createdAt: 'createdAt'
+  };
+
+  export type VoteScalarFieldEnum = (typeof VoteScalarFieldEnum)[keyof typeof VoteScalarFieldEnum]
+
+
+  export const CommentScalarFieldEnum: {
+    id: 'id',
+    body: 'body',
+    authorId: 'authorId',
+    photoId: 'photoId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type CommentScalarFieldEnum = (typeof CommentScalarFieldEnum)[keyof typeof CommentScalarFieldEnum]
+
+
+  export const AwardScalarFieldEnum: {
+    id: 'id',
+    type: 'type',
+    photoId: 'photoId',
+    userId: 'userId',
+    periodStart: 'periodStart',
+    periodEnd: 'periodEnd',
+    voteCount: 'voteCount',
+    awardedAt: 'awardedAt'
+  };
+
+  export type AwardScalarFieldEnum = (typeof AwardScalarFieldEnum)[keyof typeof AwardScalarFieldEnum]
+
+
+  export const ForumCategoryScalarFieldEnum: {
+    id: 'id',
+    slug: 'slug',
+    name: 'name',
+    description: 'description',
+    sortOrder: 'sortOrder'
+  };
+
+  export type ForumCategoryScalarFieldEnum = (typeof ForumCategoryScalarFieldEnum)[keyof typeof ForumCategoryScalarFieldEnum]
+
+
+  export const ForumThreadScalarFieldEnum: {
+    id: 'id',
+    title: 'title',
+    body: 'body',
+    authorId: 'authorId',
+    categoryId: 'categoryId',
+    pinned: 'pinned',
+    locked: 'locked',
+    replyCount: 'replyCount',
+    lastReplyAt: 'lastReplyAt',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ForumThreadScalarFieldEnum = (typeof ForumThreadScalarFieldEnum)[keyof typeof ForumThreadScalarFieldEnum]
+
+
+  export const ForumReplyScalarFieldEnum: {
+    id: 'id',
+    body: 'body',
+    authorId: 'authorId',
+    threadId: 'threadId',
+    embeddedPhotoId: 'embeddedPhotoId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ForumReplyScalarFieldEnum = (typeof ForumReplyScalarFieldEnum)[keyof typeof ForumReplyScalarFieldEnum]
+
+
+  export const CollectionScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    description: 'description',
+    isPrivate: 'isPrivate',
+    coverUrl: 'coverUrl',
+    userId: 'userId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type CollectionScalarFieldEnum = (typeof CollectionScalarFieldEnum)[keyof typeof CollectionScalarFieldEnum]
+
+
+  export const CollectionItemScalarFieldEnum: {
+    id: 'id',
+    collectionId: 'collectionId',
+    photoId: 'photoId',
+    savedAt: 'savedAt'
+  };
+
+  export type CollectionItemScalarFieldEnum = (typeof CollectionItemScalarFieldEnum)[keyof typeof CollectionItemScalarFieldEnum]
+
+
+  export const FollowScalarFieldEnum: {
+    id: 'id',
+    followerId: 'followerId',
+    followingId: 'followingId',
+    createdAt: 'createdAt'
+  };
+
+  export type FollowScalarFieldEnum = (typeof FollowScalarFieldEnum)[keyof typeof FollowScalarFieldEnum]
+
+
+  export const SortOrder: {
+    asc: 'asc',
+    desc: 'desc'
+  };
+
+  export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+  export const QueryMode: {
+    default: 'default',
+    insensitive: 'insensitive'
+  };
+
+  export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+  /**
+   * Field references
+   */
+
+
+  /**
+   * Reference to a field of type 'String'
+   */
+  export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
+    
+
+
+  /**
+   * Reference to a field of type 'String[]'
+   */
+  export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'UserRole'
+   */
+  export type EnumUserRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserRole'>
+    
+
+
+  /**
+   * Reference to a field of type 'UserRole[]'
+   */
+  export type ListEnumUserRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserRole[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'UserStatus'
+   */
+  export type EnumUserStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'UserStatus[]'
+   */
+  export type ListEnumUserStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserStatus[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime[]'
+   */
+  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'PhotoCategory'
+   */
+  export type EnumPhotoCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PhotoCategory'>
+    
+
+
+  /**
+   * Reference to a field of type 'PhotoCategory[]'
+   */
+  export type ListEnumPhotoCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PhotoCategory[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'PhotoStatus'
+   */
+  export type EnumPhotoStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PhotoStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'PhotoStatus[]'
+   */
+  export type ListEnumPhotoStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PhotoStatus[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'AwardType'
+   */
+  export type EnumAwardTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AwardType'>
+    
+
+
+  /**
+   * Reference to a field of type 'AwardType[]'
+   */
+  export type ListEnumAwardTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AwardType[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'ForumCategorySlug'
+   */
+  export type EnumForumCategorySlugFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ForumCategorySlug'>
+    
+
+
+  /**
+   * Reference to a field of type 'ForumCategorySlug[]'
+   */
+  export type ListEnumForumCategorySlugFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ForumCategorySlug[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
+  /**
+   * Deep Input Types
+   */
+
+
+  export type UserWhereInput = {
+    AND?: UserWhereInput | UserWhereInput[]
+    OR?: UserWhereInput[]
+    NOT?: UserWhereInput | UserWhereInput[]
+    id?: StringFilter<"User"> | string
+    email?: StringFilter<"User"> | string
+    username?: StringFilter<"User"> | string
+    name?: StringFilter<"User"> | string
+    password?: StringFilter<"User"> | string
+    role?: EnumUserRoleFilter<"User"> | $Enums.UserRole
+    status?: EnumUserStatusFilter<"User"> | $Enums.UserStatus
+    avatarUrl?: StringNullableFilter<"User"> | string | null
+    bio?: StringNullableFilter<"User"> | string | null
+    location?: StringNullableFilter<"User"> | string | null
+    websiteUrl?: StringNullableFilter<"User"> | string | null
+    instagramUrl?: StringNullableFilter<"User"> | string | null
+    createdAt?: DateTimeFilter<"User"> | Date | string
+    updatedAt?: DateTimeFilter<"User"> | Date | string
+    photos?: PhotoListRelationFilter
+    votes?: VoteListRelationFilter
+    comments?: CommentListRelationFilter
+    awards?: AwardListRelationFilter
+    forumThreads?: ForumThreadListRelationFilter
+    forumReplies?: ForumReplyListRelationFilter
+    collections?: CollectionListRelationFilter
+    followers?: FollowListRelationFilter
+    following?: FollowListRelationFilter
+  }
+
+  export type UserOrderByWithRelationInput = {
+    id?: SortOrder
+    email?: SortOrder
+    username?: SortOrder
+    name?: SortOrder
+    password?: SortOrder
+    role?: SortOrder
+    status?: SortOrder
+    avatarUrl?: SortOrderInput | SortOrder
+    bio?: SortOrderInput | SortOrder
+    location?: SortOrderInput | SortOrder
+    websiteUrl?: SortOrderInput | SortOrder
+    instagramUrl?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    photos?: PhotoOrderByRelationAggregateInput
+    votes?: VoteOrderByRelationAggregateInput
+    comments?: CommentOrderByRelationAggregateInput
+    awards?: AwardOrderByRelationAggregateInput
+    forumThreads?: ForumThreadOrderByRelationAggregateInput
+    forumReplies?: ForumReplyOrderByRelationAggregateInput
+    collections?: CollectionOrderByRelationAggregateInput
+    followers?: FollowOrderByRelationAggregateInput
+    following?: FollowOrderByRelationAggregateInput
+  }
+
+  export type UserWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    email?: string
+    username?: string
+    AND?: UserWhereInput | UserWhereInput[]
+    OR?: UserWhereInput[]
+    NOT?: UserWhereInput | UserWhereInput[]
+    name?: StringFilter<"User"> | string
+    password?: StringFilter<"User"> | string
+    role?: EnumUserRoleFilter<"User"> | $Enums.UserRole
+    status?: EnumUserStatusFilter<"User"> | $Enums.UserStatus
+    avatarUrl?: StringNullableFilter<"User"> | string | null
+    bio?: StringNullableFilter<"User"> | string | null
+    location?: StringNullableFilter<"User"> | string | null
+    websiteUrl?: StringNullableFilter<"User"> | string | null
+    instagramUrl?: StringNullableFilter<"User"> | string | null
+    createdAt?: DateTimeFilter<"User"> | Date | string
+    updatedAt?: DateTimeFilter<"User"> | Date | string
+    photos?: PhotoListRelationFilter
+    votes?: VoteListRelationFilter
+    comments?: CommentListRelationFilter
+    awards?: AwardListRelationFilter
+    forumThreads?: ForumThreadListRelationFilter
+    forumReplies?: ForumReplyListRelationFilter
+    collections?: CollectionListRelationFilter
+    followers?: FollowListRelationFilter
+    following?: FollowListRelationFilter
+  }, "id" | "email" | "username">
+
+  export type UserOrderByWithAggregationInput = {
+    id?: SortOrder
+    email?: SortOrder
+    username?: SortOrder
+    name?: SortOrder
+    password?: SortOrder
+    role?: SortOrder
+    status?: SortOrder
+    avatarUrl?: SortOrderInput | SortOrder
+    bio?: SortOrderInput | SortOrder
+    location?: SortOrderInput | SortOrder
+    websiteUrl?: SortOrderInput | SortOrder
+    instagramUrl?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: UserCountOrderByAggregateInput
+    _max?: UserMaxOrderByAggregateInput
+    _min?: UserMinOrderByAggregateInput
+  }
+
+  export type UserScalarWhereWithAggregatesInput = {
+    AND?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
+    OR?: UserScalarWhereWithAggregatesInput[]
+    NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"User"> | string
+    email?: StringWithAggregatesFilter<"User"> | string
+    username?: StringWithAggregatesFilter<"User"> | string
+    name?: StringWithAggregatesFilter<"User"> | string
+    password?: StringWithAggregatesFilter<"User"> | string
+    role?: EnumUserRoleWithAggregatesFilter<"User"> | $Enums.UserRole
+    status?: EnumUserStatusWithAggregatesFilter<"User"> | $Enums.UserStatus
+    avatarUrl?: StringNullableWithAggregatesFilter<"User"> | string | null
+    bio?: StringNullableWithAggregatesFilter<"User"> | string | null
+    location?: StringNullableWithAggregatesFilter<"User"> | string | null
+    websiteUrl?: StringNullableWithAggregatesFilter<"User"> | string | null
+    instagramUrl?: StringNullableWithAggregatesFilter<"User"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+  }
+
+  export type PhotoWhereInput = {
+    AND?: PhotoWhereInput | PhotoWhereInput[]
+    OR?: PhotoWhereInput[]
+    NOT?: PhotoWhereInput | PhotoWhereInput[]
+    id?: StringFilter<"Photo"> | string
+    title?: StringFilter<"Photo"> | string
+    description?: StringNullableFilter<"Photo"> | string | null
+    imageUrl?: StringFilter<"Photo"> | string
+    thumbnailUrl?: StringNullableFilter<"Photo"> | string | null
+    width?: IntFilter<"Photo"> | number
+    height?: IntFilter<"Photo"> | number
+    fileSize?: IntFilter<"Photo"> | number
+    neighborhood?: StringFilter<"Photo"> | string
+    category?: EnumPhotoCategoryFilter<"Photo"> | $Enums.PhotoCategory
+    status?: EnumPhotoStatusFilter<"Photo"> | $Enums.PhotoStatus
+    cameraMake?: StringNullableFilter<"Photo"> | string | null
+    cameraModel?: StringNullableFilter<"Photo"> | string | null
+    lens?: StringNullableFilter<"Photo"> | string | null
+    iso?: IntNullableFilter<"Photo"> | number | null
+    aperture?: StringNullableFilter<"Photo"> | string | null
+    shutterSpeed?: StringNullableFilter<"Photo"> | string | null
+    focalLength?: StringNullableFilter<"Photo"> | string | null
+    takenAt?: DateTimeNullableFilter<"Photo"> | Date | string | null
+    authorId?: StringFilter<"Photo"> | string
+    voteCount?: IntFilter<"Photo"> | number
+    approvedAt?: DateTimeNullableFilter<"Photo"> | Date | string | null
+    createdAt?: DateTimeFilter<"Photo"> | Date | string
+    updatedAt?: DateTimeFilter<"Photo"> | Date | string
+    author?: XOR<UserScalarRelationFilter, UserWhereInput>
+    votes?: VoteListRelationFilter
+    comments?: CommentListRelationFilter
+    awards?: AwardListRelationFilter
+    forumReplies?: ForumReplyListRelationFilter
+    collectionItems?: CollectionItemListRelationFilter
+  }
+
+  export type PhotoOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    imageUrl?: SortOrder
+    thumbnailUrl?: SortOrderInput | SortOrder
+    width?: SortOrder
+    height?: SortOrder
+    fileSize?: SortOrder
+    neighborhood?: SortOrder
+    category?: SortOrder
+    status?: SortOrder
+    cameraMake?: SortOrderInput | SortOrder
+    cameraModel?: SortOrderInput | SortOrder
+    lens?: SortOrderInput | SortOrder
+    iso?: SortOrderInput | SortOrder
+    aperture?: SortOrderInput | SortOrder
+    shutterSpeed?: SortOrderInput | SortOrder
+    focalLength?: SortOrderInput | SortOrder
+    takenAt?: SortOrderInput | SortOrder
+    authorId?: SortOrder
+    voteCount?: SortOrder
+    approvedAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    author?: UserOrderByWithRelationInput
+    votes?: VoteOrderByRelationAggregateInput
+    comments?: CommentOrderByRelationAggregateInput
+    awards?: AwardOrderByRelationAggregateInput
+    forumReplies?: ForumReplyOrderByRelationAggregateInput
+    collectionItems?: CollectionItemOrderByRelationAggregateInput
+  }
+
+  export type PhotoWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: PhotoWhereInput | PhotoWhereInput[]
+    OR?: PhotoWhereInput[]
+    NOT?: PhotoWhereInput | PhotoWhereInput[]
+    title?: StringFilter<"Photo"> | string
+    description?: StringNullableFilter<"Photo"> | string | null
+    imageUrl?: StringFilter<"Photo"> | string
+    thumbnailUrl?: StringNullableFilter<"Photo"> | string | null
+    width?: IntFilter<"Photo"> | number
+    height?: IntFilter<"Photo"> | number
+    fileSize?: IntFilter<"Photo"> | number
+    neighborhood?: StringFilter<"Photo"> | string
+    category?: EnumPhotoCategoryFilter<"Photo"> | $Enums.PhotoCategory
+    status?: EnumPhotoStatusFilter<"Photo"> | $Enums.PhotoStatus
+    cameraMake?: StringNullableFilter<"Photo"> | string | null
+    cameraModel?: StringNullableFilter<"Photo"> | string | null
+    lens?: StringNullableFilter<"Photo"> | string | null
+    iso?: IntNullableFilter<"Photo"> | number | null
+    aperture?: StringNullableFilter<"Photo"> | string | null
+    shutterSpeed?: StringNullableFilter<"Photo"> | string | null
+    focalLength?: StringNullableFilter<"Photo"> | string | null
+    takenAt?: DateTimeNullableFilter<"Photo"> | Date | string | null
+    authorId?: StringFilter<"Photo"> | string
+    voteCount?: IntFilter<"Photo"> | number
+    approvedAt?: DateTimeNullableFilter<"Photo"> | Date | string | null
+    createdAt?: DateTimeFilter<"Photo"> | Date | string
+    updatedAt?: DateTimeFilter<"Photo"> | Date | string
+    author?: XOR<UserScalarRelationFilter, UserWhereInput>
+    votes?: VoteListRelationFilter
+    comments?: CommentListRelationFilter
+    awards?: AwardListRelationFilter
+    forumReplies?: ForumReplyListRelationFilter
+    collectionItems?: CollectionItemListRelationFilter
+  }, "id">
+
+  export type PhotoOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    imageUrl?: SortOrder
+    thumbnailUrl?: SortOrderInput | SortOrder
+    width?: SortOrder
+    height?: SortOrder
+    fileSize?: SortOrder
+    neighborhood?: SortOrder
+    category?: SortOrder
+    status?: SortOrder
+    cameraMake?: SortOrderInput | SortOrder
+    cameraModel?: SortOrderInput | SortOrder
+    lens?: SortOrderInput | SortOrder
+    iso?: SortOrderInput | SortOrder
+    aperture?: SortOrderInput | SortOrder
+    shutterSpeed?: SortOrderInput | SortOrder
+    focalLength?: SortOrderInput | SortOrder
+    takenAt?: SortOrderInput | SortOrder
+    authorId?: SortOrder
+    voteCount?: SortOrder
+    approvedAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: PhotoCountOrderByAggregateInput
+    _avg?: PhotoAvgOrderByAggregateInput
+    _max?: PhotoMaxOrderByAggregateInput
+    _min?: PhotoMinOrderByAggregateInput
+    _sum?: PhotoSumOrderByAggregateInput
+  }
+
+  export type PhotoScalarWhereWithAggregatesInput = {
+    AND?: PhotoScalarWhereWithAggregatesInput | PhotoScalarWhereWithAggregatesInput[]
+    OR?: PhotoScalarWhereWithAggregatesInput[]
+    NOT?: PhotoScalarWhereWithAggregatesInput | PhotoScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Photo"> | string
+    title?: StringWithAggregatesFilter<"Photo"> | string
+    description?: StringNullableWithAggregatesFilter<"Photo"> | string | null
+    imageUrl?: StringWithAggregatesFilter<"Photo"> | string
+    thumbnailUrl?: StringNullableWithAggregatesFilter<"Photo"> | string | null
+    width?: IntWithAggregatesFilter<"Photo"> | number
+    height?: IntWithAggregatesFilter<"Photo"> | number
+    fileSize?: IntWithAggregatesFilter<"Photo"> | number
+    neighborhood?: StringWithAggregatesFilter<"Photo"> | string
+    category?: EnumPhotoCategoryWithAggregatesFilter<"Photo"> | $Enums.PhotoCategory
+    status?: EnumPhotoStatusWithAggregatesFilter<"Photo"> | $Enums.PhotoStatus
+    cameraMake?: StringNullableWithAggregatesFilter<"Photo"> | string | null
+    cameraModel?: StringNullableWithAggregatesFilter<"Photo"> | string | null
+    lens?: StringNullableWithAggregatesFilter<"Photo"> | string | null
+    iso?: IntNullableWithAggregatesFilter<"Photo"> | number | null
+    aperture?: StringNullableWithAggregatesFilter<"Photo"> | string | null
+    shutterSpeed?: StringNullableWithAggregatesFilter<"Photo"> | string | null
+    focalLength?: StringNullableWithAggregatesFilter<"Photo"> | string | null
+    takenAt?: DateTimeNullableWithAggregatesFilter<"Photo"> | Date | string | null
+    authorId?: StringWithAggregatesFilter<"Photo"> | string
+    voteCount?: IntWithAggregatesFilter<"Photo"> | number
+    approvedAt?: DateTimeNullableWithAggregatesFilter<"Photo"> | Date | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Photo"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Photo"> | Date | string
+  }
+
+  export type VoteWhereInput = {
+    AND?: VoteWhereInput | VoteWhereInput[]
+    OR?: VoteWhereInput[]
+    NOT?: VoteWhereInput | VoteWhereInput[]
+    id?: StringFilter<"Vote"> | string
+    userId?: StringFilter<"Vote"> | string
+    photoId?: StringFilter<"Vote"> | string
+    createdAt?: DateTimeFilter<"Vote"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    photo?: XOR<PhotoScalarRelationFilter, PhotoWhereInput>
+  }
+
+  export type VoteOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    photoId?: SortOrder
+    createdAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+    photo?: PhotoOrderByWithRelationInput
+  }
+
+  export type VoteWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    userId_photoId?: VoteUserIdPhotoIdCompoundUniqueInput
+    AND?: VoteWhereInput | VoteWhereInput[]
+    OR?: VoteWhereInput[]
+    NOT?: VoteWhereInput | VoteWhereInput[]
+    userId?: StringFilter<"Vote"> | string
+    photoId?: StringFilter<"Vote"> | string
+    createdAt?: DateTimeFilter<"Vote"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    photo?: XOR<PhotoScalarRelationFilter, PhotoWhereInput>
+  }, "id" | "userId_photoId">
+
+  export type VoteOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    photoId?: SortOrder
+    createdAt?: SortOrder
+    _count?: VoteCountOrderByAggregateInput
+    _max?: VoteMaxOrderByAggregateInput
+    _min?: VoteMinOrderByAggregateInput
+  }
+
+  export type VoteScalarWhereWithAggregatesInput = {
+    AND?: VoteScalarWhereWithAggregatesInput | VoteScalarWhereWithAggregatesInput[]
+    OR?: VoteScalarWhereWithAggregatesInput[]
+    NOT?: VoteScalarWhereWithAggregatesInput | VoteScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Vote"> | string
+    userId?: StringWithAggregatesFilter<"Vote"> | string
+    photoId?: StringWithAggregatesFilter<"Vote"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Vote"> | Date | string
+  }
+
+  export type CommentWhereInput = {
+    AND?: CommentWhereInput | CommentWhereInput[]
+    OR?: CommentWhereInput[]
+    NOT?: CommentWhereInput | CommentWhereInput[]
+    id?: StringFilter<"Comment"> | string
+    body?: StringFilter<"Comment"> | string
+    authorId?: StringFilter<"Comment"> | string
+    photoId?: StringFilter<"Comment"> | string
+    createdAt?: DateTimeFilter<"Comment"> | Date | string
+    updatedAt?: DateTimeFilter<"Comment"> | Date | string
+    author?: XOR<UserScalarRelationFilter, UserWhereInput>
+    photo?: XOR<PhotoScalarRelationFilter, PhotoWhereInput>
+  }
+
+  export type CommentOrderByWithRelationInput = {
+    id?: SortOrder
+    body?: SortOrder
+    authorId?: SortOrder
+    photoId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    author?: UserOrderByWithRelationInput
+    photo?: PhotoOrderByWithRelationInput
+  }
+
+  export type CommentWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: CommentWhereInput | CommentWhereInput[]
+    OR?: CommentWhereInput[]
+    NOT?: CommentWhereInput | CommentWhereInput[]
+    body?: StringFilter<"Comment"> | string
+    authorId?: StringFilter<"Comment"> | string
+    photoId?: StringFilter<"Comment"> | string
+    createdAt?: DateTimeFilter<"Comment"> | Date | string
+    updatedAt?: DateTimeFilter<"Comment"> | Date | string
+    author?: XOR<UserScalarRelationFilter, UserWhereInput>
+    photo?: XOR<PhotoScalarRelationFilter, PhotoWhereInput>
+  }, "id">
+
+  export type CommentOrderByWithAggregationInput = {
+    id?: SortOrder
+    body?: SortOrder
+    authorId?: SortOrder
+    photoId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: CommentCountOrderByAggregateInput
+    _max?: CommentMaxOrderByAggregateInput
+    _min?: CommentMinOrderByAggregateInput
+  }
+
+  export type CommentScalarWhereWithAggregatesInput = {
+    AND?: CommentScalarWhereWithAggregatesInput | CommentScalarWhereWithAggregatesInput[]
+    OR?: CommentScalarWhereWithAggregatesInput[]
+    NOT?: CommentScalarWhereWithAggregatesInput | CommentScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Comment"> | string
+    body?: StringWithAggregatesFilter<"Comment"> | string
+    authorId?: StringWithAggregatesFilter<"Comment"> | string
+    photoId?: StringWithAggregatesFilter<"Comment"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Comment"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Comment"> | Date | string
+  }
+
+  export type AwardWhereInput = {
+    AND?: AwardWhereInput | AwardWhereInput[]
+    OR?: AwardWhereInput[]
+    NOT?: AwardWhereInput | AwardWhereInput[]
+    id?: StringFilter<"Award"> | string
+    type?: EnumAwardTypeFilter<"Award"> | $Enums.AwardType
+    photoId?: StringFilter<"Award"> | string
+    userId?: StringFilter<"Award"> | string
+    periodStart?: DateTimeFilter<"Award"> | Date | string
+    periodEnd?: DateTimeFilter<"Award"> | Date | string
+    voteCount?: IntFilter<"Award"> | number
+    awardedAt?: DateTimeFilter<"Award"> | Date | string
+    photo?: XOR<PhotoScalarRelationFilter, PhotoWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type AwardOrderByWithRelationInput = {
+    id?: SortOrder
+    type?: SortOrder
+    photoId?: SortOrder
+    userId?: SortOrder
+    periodStart?: SortOrder
+    periodEnd?: SortOrder
+    voteCount?: SortOrder
+    awardedAt?: SortOrder
+    photo?: PhotoOrderByWithRelationInput
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type AwardWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    type_periodStart?: AwardTypePeriodStartCompoundUniqueInput
+    AND?: AwardWhereInput | AwardWhereInput[]
+    OR?: AwardWhereInput[]
+    NOT?: AwardWhereInput | AwardWhereInput[]
+    type?: EnumAwardTypeFilter<"Award"> | $Enums.AwardType
+    photoId?: StringFilter<"Award"> | string
+    userId?: StringFilter<"Award"> | string
+    periodStart?: DateTimeFilter<"Award"> | Date | string
+    periodEnd?: DateTimeFilter<"Award"> | Date | string
+    voteCount?: IntFilter<"Award"> | number
+    awardedAt?: DateTimeFilter<"Award"> | Date | string
+    photo?: XOR<PhotoScalarRelationFilter, PhotoWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id" | "type_periodStart">
+
+  export type AwardOrderByWithAggregationInput = {
+    id?: SortOrder
+    type?: SortOrder
+    photoId?: SortOrder
+    userId?: SortOrder
+    periodStart?: SortOrder
+    periodEnd?: SortOrder
+    voteCount?: SortOrder
+    awardedAt?: SortOrder
+    _count?: AwardCountOrderByAggregateInput
+    _avg?: AwardAvgOrderByAggregateInput
+    _max?: AwardMaxOrderByAggregateInput
+    _min?: AwardMinOrderByAggregateInput
+    _sum?: AwardSumOrderByAggregateInput
+  }
+
+  export type AwardScalarWhereWithAggregatesInput = {
+    AND?: AwardScalarWhereWithAggregatesInput | AwardScalarWhereWithAggregatesInput[]
+    OR?: AwardScalarWhereWithAggregatesInput[]
+    NOT?: AwardScalarWhereWithAggregatesInput | AwardScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Award"> | string
+    type?: EnumAwardTypeWithAggregatesFilter<"Award"> | $Enums.AwardType
+    photoId?: StringWithAggregatesFilter<"Award"> | string
+    userId?: StringWithAggregatesFilter<"Award"> | string
+    periodStart?: DateTimeWithAggregatesFilter<"Award"> | Date | string
+    periodEnd?: DateTimeWithAggregatesFilter<"Award"> | Date | string
+    voteCount?: IntWithAggregatesFilter<"Award"> | number
+    awardedAt?: DateTimeWithAggregatesFilter<"Award"> | Date | string
+  }
+
+  export type ForumCategoryWhereInput = {
+    AND?: ForumCategoryWhereInput | ForumCategoryWhereInput[]
+    OR?: ForumCategoryWhereInput[]
+    NOT?: ForumCategoryWhereInput | ForumCategoryWhereInput[]
+    id?: StringFilter<"ForumCategory"> | string
+    slug?: EnumForumCategorySlugFilter<"ForumCategory"> | $Enums.ForumCategorySlug
+    name?: StringFilter<"ForumCategory"> | string
+    description?: StringFilter<"ForumCategory"> | string
+    sortOrder?: IntFilter<"ForumCategory"> | number
+    threads?: ForumThreadListRelationFilter
+  }
+
+  export type ForumCategoryOrderByWithRelationInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    sortOrder?: SortOrder
+    threads?: ForumThreadOrderByRelationAggregateInput
+  }
+
+  export type ForumCategoryWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    slug?: $Enums.ForumCategorySlug
+    AND?: ForumCategoryWhereInput | ForumCategoryWhereInput[]
+    OR?: ForumCategoryWhereInput[]
+    NOT?: ForumCategoryWhereInput | ForumCategoryWhereInput[]
+    name?: StringFilter<"ForumCategory"> | string
+    description?: StringFilter<"ForumCategory"> | string
+    sortOrder?: IntFilter<"ForumCategory"> | number
+    threads?: ForumThreadListRelationFilter
+  }, "id" | "slug">
+
+  export type ForumCategoryOrderByWithAggregationInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    sortOrder?: SortOrder
+    _count?: ForumCategoryCountOrderByAggregateInput
+    _avg?: ForumCategoryAvgOrderByAggregateInput
+    _max?: ForumCategoryMaxOrderByAggregateInput
+    _min?: ForumCategoryMinOrderByAggregateInput
+    _sum?: ForumCategorySumOrderByAggregateInput
+  }
+
+  export type ForumCategoryScalarWhereWithAggregatesInput = {
+    AND?: ForumCategoryScalarWhereWithAggregatesInput | ForumCategoryScalarWhereWithAggregatesInput[]
+    OR?: ForumCategoryScalarWhereWithAggregatesInput[]
+    NOT?: ForumCategoryScalarWhereWithAggregatesInput | ForumCategoryScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ForumCategory"> | string
+    slug?: EnumForumCategorySlugWithAggregatesFilter<"ForumCategory"> | $Enums.ForumCategorySlug
+    name?: StringWithAggregatesFilter<"ForumCategory"> | string
+    description?: StringWithAggregatesFilter<"ForumCategory"> | string
+    sortOrder?: IntWithAggregatesFilter<"ForumCategory"> | number
+  }
+
+  export type ForumThreadWhereInput = {
+    AND?: ForumThreadWhereInput | ForumThreadWhereInput[]
+    OR?: ForumThreadWhereInput[]
+    NOT?: ForumThreadWhereInput | ForumThreadWhereInput[]
+    id?: StringFilter<"ForumThread"> | string
+    title?: StringFilter<"ForumThread"> | string
+    body?: StringFilter<"ForumThread"> | string
+    authorId?: StringFilter<"ForumThread"> | string
+    categoryId?: StringFilter<"ForumThread"> | string
+    pinned?: BoolFilter<"ForumThread"> | boolean
+    locked?: BoolFilter<"ForumThread"> | boolean
+    replyCount?: IntFilter<"ForumThread"> | number
+    lastReplyAt?: DateTimeFilter<"ForumThread"> | Date | string
+    createdAt?: DateTimeFilter<"ForumThread"> | Date | string
+    updatedAt?: DateTimeFilter<"ForumThread"> | Date | string
+    author?: XOR<UserScalarRelationFilter, UserWhereInput>
+    category?: XOR<ForumCategoryScalarRelationFilter, ForumCategoryWhereInput>
+    replies?: ForumReplyListRelationFilter
+  }
+
+  export type ForumThreadOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    body?: SortOrder
+    authorId?: SortOrder
+    categoryId?: SortOrder
+    pinned?: SortOrder
+    locked?: SortOrder
+    replyCount?: SortOrder
+    lastReplyAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    author?: UserOrderByWithRelationInput
+    category?: ForumCategoryOrderByWithRelationInput
+    replies?: ForumReplyOrderByRelationAggregateInput
+  }
+
+  export type ForumThreadWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ForumThreadWhereInput | ForumThreadWhereInput[]
+    OR?: ForumThreadWhereInput[]
+    NOT?: ForumThreadWhereInput | ForumThreadWhereInput[]
+    title?: StringFilter<"ForumThread"> | string
+    body?: StringFilter<"ForumThread"> | string
+    authorId?: StringFilter<"ForumThread"> | string
+    categoryId?: StringFilter<"ForumThread"> | string
+    pinned?: BoolFilter<"ForumThread"> | boolean
+    locked?: BoolFilter<"ForumThread"> | boolean
+    replyCount?: IntFilter<"ForumThread"> | number
+    lastReplyAt?: DateTimeFilter<"ForumThread"> | Date | string
+    createdAt?: DateTimeFilter<"ForumThread"> | Date | string
+    updatedAt?: DateTimeFilter<"ForumThread"> | Date | string
+    author?: XOR<UserScalarRelationFilter, UserWhereInput>
+    category?: XOR<ForumCategoryScalarRelationFilter, ForumCategoryWhereInput>
+    replies?: ForumReplyListRelationFilter
+  }, "id">
+
+  export type ForumThreadOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    body?: SortOrder
+    authorId?: SortOrder
+    categoryId?: SortOrder
+    pinned?: SortOrder
+    locked?: SortOrder
+    replyCount?: SortOrder
+    lastReplyAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ForumThreadCountOrderByAggregateInput
+    _avg?: ForumThreadAvgOrderByAggregateInput
+    _max?: ForumThreadMaxOrderByAggregateInput
+    _min?: ForumThreadMinOrderByAggregateInput
+    _sum?: ForumThreadSumOrderByAggregateInput
+  }
+
+  export type ForumThreadScalarWhereWithAggregatesInput = {
+    AND?: ForumThreadScalarWhereWithAggregatesInput | ForumThreadScalarWhereWithAggregatesInput[]
+    OR?: ForumThreadScalarWhereWithAggregatesInput[]
+    NOT?: ForumThreadScalarWhereWithAggregatesInput | ForumThreadScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ForumThread"> | string
+    title?: StringWithAggregatesFilter<"ForumThread"> | string
+    body?: StringWithAggregatesFilter<"ForumThread"> | string
+    authorId?: StringWithAggregatesFilter<"ForumThread"> | string
+    categoryId?: StringWithAggregatesFilter<"ForumThread"> | string
+    pinned?: BoolWithAggregatesFilter<"ForumThread"> | boolean
+    locked?: BoolWithAggregatesFilter<"ForumThread"> | boolean
+    replyCount?: IntWithAggregatesFilter<"ForumThread"> | number
+    lastReplyAt?: DateTimeWithAggregatesFilter<"ForumThread"> | Date | string
+    createdAt?: DateTimeWithAggregatesFilter<"ForumThread"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"ForumThread"> | Date | string
+  }
+
+  export type ForumReplyWhereInput = {
+    AND?: ForumReplyWhereInput | ForumReplyWhereInput[]
+    OR?: ForumReplyWhereInput[]
+    NOT?: ForumReplyWhereInput | ForumReplyWhereInput[]
+    id?: StringFilter<"ForumReply"> | string
+    body?: StringFilter<"ForumReply"> | string
+    authorId?: StringFilter<"ForumReply"> | string
+    threadId?: StringFilter<"ForumReply"> | string
+    embeddedPhotoId?: StringNullableFilter<"ForumReply"> | string | null
+    createdAt?: DateTimeFilter<"ForumReply"> | Date | string
+    updatedAt?: DateTimeFilter<"ForumReply"> | Date | string
+    author?: XOR<UserScalarRelationFilter, UserWhereInput>
+    thread?: XOR<ForumThreadScalarRelationFilter, ForumThreadWhereInput>
+    embeddedPhoto?: XOR<PhotoNullableScalarRelationFilter, PhotoWhereInput> | null
+  }
+
+  export type ForumReplyOrderByWithRelationInput = {
+    id?: SortOrder
+    body?: SortOrder
+    authorId?: SortOrder
+    threadId?: SortOrder
+    embeddedPhotoId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    author?: UserOrderByWithRelationInput
+    thread?: ForumThreadOrderByWithRelationInput
+    embeddedPhoto?: PhotoOrderByWithRelationInput
+  }
+
+  export type ForumReplyWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ForumReplyWhereInput | ForumReplyWhereInput[]
+    OR?: ForumReplyWhereInput[]
+    NOT?: ForumReplyWhereInput | ForumReplyWhereInput[]
+    body?: StringFilter<"ForumReply"> | string
+    authorId?: StringFilter<"ForumReply"> | string
+    threadId?: StringFilter<"ForumReply"> | string
+    embeddedPhotoId?: StringNullableFilter<"ForumReply"> | string | null
+    createdAt?: DateTimeFilter<"ForumReply"> | Date | string
+    updatedAt?: DateTimeFilter<"ForumReply"> | Date | string
+    author?: XOR<UserScalarRelationFilter, UserWhereInput>
+    thread?: XOR<ForumThreadScalarRelationFilter, ForumThreadWhereInput>
+    embeddedPhoto?: XOR<PhotoNullableScalarRelationFilter, PhotoWhereInput> | null
+  }, "id">
+
+  export type ForumReplyOrderByWithAggregationInput = {
+    id?: SortOrder
+    body?: SortOrder
+    authorId?: SortOrder
+    threadId?: SortOrder
+    embeddedPhotoId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ForumReplyCountOrderByAggregateInput
+    _max?: ForumReplyMaxOrderByAggregateInput
+    _min?: ForumReplyMinOrderByAggregateInput
+  }
+
+  export type ForumReplyScalarWhereWithAggregatesInput = {
+    AND?: ForumReplyScalarWhereWithAggregatesInput | ForumReplyScalarWhereWithAggregatesInput[]
+    OR?: ForumReplyScalarWhereWithAggregatesInput[]
+    NOT?: ForumReplyScalarWhereWithAggregatesInput | ForumReplyScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ForumReply"> | string
+    body?: StringWithAggregatesFilter<"ForumReply"> | string
+    authorId?: StringWithAggregatesFilter<"ForumReply"> | string
+    threadId?: StringWithAggregatesFilter<"ForumReply"> | string
+    embeddedPhotoId?: StringNullableWithAggregatesFilter<"ForumReply"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"ForumReply"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"ForumReply"> | Date | string
+  }
+
+  export type CollectionWhereInput = {
+    AND?: CollectionWhereInput | CollectionWhereInput[]
+    OR?: CollectionWhereInput[]
+    NOT?: CollectionWhereInput | CollectionWhereInput[]
+    id?: StringFilter<"Collection"> | string
+    name?: StringFilter<"Collection"> | string
+    description?: StringNullableFilter<"Collection"> | string | null
+    isPrivate?: BoolFilter<"Collection"> | boolean
+    coverUrl?: StringNullableFilter<"Collection"> | string | null
+    userId?: StringFilter<"Collection"> | string
+    createdAt?: DateTimeFilter<"Collection"> | Date | string
+    updatedAt?: DateTimeFilter<"Collection"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    items?: CollectionItemListRelationFilter
+  }
+
+  export type CollectionOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    isPrivate?: SortOrder
+    coverUrl?: SortOrderInput | SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+    items?: CollectionItemOrderByRelationAggregateInput
+  }
+
+  export type CollectionWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: CollectionWhereInput | CollectionWhereInput[]
+    OR?: CollectionWhereInput[]
+    NOT?: CollectionWhereInput | CollectionWhereInput[]
+    name?: StringFilter<"Collection"> | string
+    description?: StringNullableFilter<"Collection"> | string | null
+    isPrivate?: BoolFilter<"Collection"> | boolean
+    coverUrl?: StringNullableFilter<"Collection"> | string | null
+    userId?: StringFilter<"Collection"> | string
+    createdAt?: DateTimeFilter<"Collection"> | Date | string
+    updatedAt?: DateTimeFilter<"Collection"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    items?: CollectionItemListRelationFilter
+  }, "id">
+
+  export type CollectionOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    isPrivate?: SortOrder
+    coverUrl?: SortOrderInput | SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: CollectionCountOrderByAggregateInput
+    _max?: CollectionMaxOrderByAggregateInput
+    _min?: CollectionMinOrderByAggregateInput
+  }
+
+  export type CollectionScalarWhereWithAggregatesInput = {
+    AND?: CollectionScalarWhereWithAggregatesInput | CollectionScalarWhereWithAggregatesInput[]
+    OR?: CollectionScalarWhereWithAggregatesInput[]
+    NOT?: CollectionScalarWhereWithAggregatesInput | CollectionScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Collection"> | string
+    name?: StringWithAggregatesFilter<"Collection"> | string
+    description?: StringNullableWithAggregatesFilter<"Collection"> | string | null
+    isPrivate?: BoolWithAggregatesFilter<"Collection"> | boolean
+    coverUrl?: StringNullableWithAggregatesFilter<"Collection"> | string | null
+    userId?: StringWithAggregatesFilter<"Collection"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Collection"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Collection"> | Date | string
+  }
+
+  export type CollectionItemWhereInput = {
+    AND?: CollectionItemWhereInput | CollectionItemWhereInput[]
+    OR?: CollectionItemWhereInput[]
+    NOT?: CollectionItemWhereInput | CollectionItemWhereInput[]
+    id?: StringFilter<"CollectionItem"> | string
+    collectionId?: StringFilter<"CollectionItem"> | string
+    photoId?: StringFilter<"CollectionItem"> | string
+    savedAt?: DateTimeFilter<"CollectionItem"> | Date | string
+    collection?: XOR<CollectionScalarRelationFilter, CollectionWhereInput>
+    photo?: XOR<PhotoScalarRelationFilter, PhotoWhereInput>
+  }
+
+  export type CollectionItemOrderByWithRelationInput = {
+    id?: SortOrder
+    collectionId?: SortOrder
+    photoId?: SortOrder
+    savedAt?: SortOrder
+    collection?: CollectionOrderByWithRelationInput
+    photo?: PhotoOrderByWithRelationInput
+  }
+
+  export type CollectionItemWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    collectionId_photoId?: CollectionItemCollectionIdPhotoIdCompoundUniqueInput
+    AND?: CollectionItemWhereInput | CollectionItemWhereInput[]
+    OR?: CollectionItemWhereInput[]
+    NOT?: CollectionItemWhereInput | CollectionItemWhereInput[]
+    collectionId?: StringFilter<"CollectionItem"> | string
+    photoId?: StringFilter<"CollectionItem"> | string
+    savedAt?: DateTimeFilter<"CollectionItem"> | Date | string
+    collection?: XOR<CollectionScalarRelationFilter, CollectionWhereInput>
+    photo?: XOR<PhotoScalarRelationFilter, PhotoWhereInput>
+  }, "id" | "collectionId_photoId">
+
+  export type CollectionItemOrderByWithAggregationInput = {
+    id?: SortOrder
+    collectionId?: SortOrder
+    photoId?: SortOrder
+    savedAt?: SortOrder
+    _count?: CollectionItemCountOrderByAggregateInput
+    _max?: CollectionItemMaxOrderByAggregateInput
+    _min?: CollectionItemMinOrderByAggregateInput
+  }
+
+  export type CollectionItemScalarWhereWithAggregatesInput = {
+    AND?: CollectionItemScalarWhereWithAggregatesInput | CollectionItemScalarWhereWithAggregatesInput[]
+    OR?: CollectionItemScalarWhereWithAggregatesInput[]
+    NOT?: CollectionItemScalarWhereWithAggregatesInput | CollectionItemScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CollectionItem"> | string
+    collectionId?: StringWithAggregatesFilter<"CollectionItem"> | string
+    photoId?: StringWithAggregatesFilter<"CollectionItem"> | string
+    savedAt?: DateTimeWithAggregatesFilter<"CollectionItem"> | Date | string
+  }
+
+  export type FollowWhereInput = {
+    AND?: FollowWhereInput | FollowWhereInput[]
+    OR?: FollowWhereInput[]
+    NOT?: FollowWhereInput | FollowWhereInput[]
+    id?: StringFilter<"Follow"> | string
+    followerId?: StringFilter<"Follow"> | string
+    followingId?: StringFilter<"Follow"> | string
+    createdAt?: DateTimeFilter<"Follow"> | Date | string
+    follower?: XOR<UserScalarRelationFilter, UserWhereInput>
+    following?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type FollowOrderByWithRelationInput = {
+    id?: SortOrder
+    followerId?: SortOrder
+    followingId?: SortOrder
+    createdAt?: SortOrder
+    follower?: UserOrderByWithRelationInput
+    following?: UserOrderByWithRelationInput
+  }
+
+  export type FollowWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    followerId_followingId?: FollowFollowerIdFollowingIdCompoundUniqueInput
+    AND?: FollowWhereInput | FollowWhereInput[]
+    OR?: FollowWhereInput[]
+    NOT?: FollowWhereInput | FollowWhereInput[]
+    followerId?: StringFilter<"Follow"> | string
+    followingId?: StringFilter<"Follow"> | string
+    createdAt?: DateTimeFilter<"Follow"> | Date | string
+    follower?: XOR<UserScalarRelationFilter, UserWhereInput>
+    following?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id" | "followerId_followingId">
+
+  export type FollowOrderByWithAggregationInput = {
+    id?: SortOrder
+    followerId?: SortOrder
+    followingId?: SortOrder
+    createdAt?: SortOrder
+    _count?: FollowCountOrderByAggregateInput
+    _max?: FollowMaxOrderByAggregateInput
+    _min?: FollowMinOrderByAggregateInput
+  }
+
+  export type FollowScalarWhereWithAggregatesInput = {
+    AND?: FollowScalarWhereWithAggregatesInput | FollowScalarWhereWithAggregatesInput[]
+    OR?: FollowScalarWhereWithAggregatesInput[]
+    NOT?: FollowScalarWhereWithAggregatesInput | FollowScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Follow"> | string
+    followerId?: StringWithAggregatesFilter<"Follow"> | string
+    followingId?: StringWithAggregatesFilter<"Follow"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Follow"> | Date | string
+  }
+
+  export type UserCreateInput = {
+    id?: string
+    email: string
+    username: string
+    name: string
+    password: string
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    avatarUrl?: string | null
+    bio?: string | null
+    location?: string | null
+    websiteUrl?: string | null
+    instagramUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    photos?: PhotoCreateNestedManyWithoutAuthorInput
+    votes?: VoteCreateNestedManyWithoutUserInput
+    comments?: CommentCreateNestedManyWithoutAuthorInput
+    awards?: AwardCreateNestedManyWithoutUserInput
+    forumThreads?: ForumThreadCreateNestedManyWithoutAuthorInput
+    forumReplies?: ForumReplyCreateNestedManyWithoutAuthorInput
+    collections?: CollectionCreateNestedManyWithoutUserInput
+    followers?: FollowCreateNestedManyWithoutFollowingInput
+    following?: FollowCreateNestedManyWithoutFollowerInput
+  }
+
+  export type UserUncheckedCreateInput = {
+    id?: string
+    email: string
+    username: string
+    name: string
+    password: string
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    avatarUrl?: string | null
+    bio?: string | null
+    location?: string | null
+    websiteUrl?: string | null
+    instagramUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    photos?: PhotoUncheckedCreateNestedManyWithoutAuthorInput
+    votes?: VoteUncheckedCreateNestedManyWithoutUserInput
+    comments?: CommentUncheckedCreateNestedManyWithoutAuthorInput
+    awards?: AwardUncheckedCreateNestedManyWithoutUserInput
+    forumThreads?: ForumThreadUncheckedCreateNestedManyWithoutAuthorInput
+    forumReplies?: ForumReplyUncheckedCreateNestedManyWithoutAuthorInput
+    collections?: CollectionUncheckedCreateNestedManyWithoutUserInput
+    followers?: FollowUncheckedCreateNestedManyWithoutFollowingInput
+    following?: FollowUncheckedCreateNestedManyWithoutFollowerInput
+  }
+
+  export type UserUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    instagramUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    photos?: PhotoUpdateManyWithoutAuthorNestedInput
+    votes?: VoteUpdateManyWithoutUserNestedInput
+    comments?: CommentUpdateManyWithoutAuthorNestedInput
+    awards?: AwardUpdateManyWithoutUserNestedInput
+    forumThreads?: ForumThreadUpdateManyWithoutAuthorNestedInput
+    forumReplies?: ForumReplyUpdateManyWithoutAuthorNestedInput
+    collections?: CollectionUpdateManyWithoutUserNestedInput
+    followers?: FollowUpdateManyWithoutFollowingNestedInput
+    following?: FollowUpdateManyWithoutFollowerNestedInput
+  }
+
+  export type UserUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    instagramUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    photos?: PhotoUncheckedUpdateManyWithoutAuthorNestedInput
+    votes?: VoteUncheckedUpdateManyWithoutUserNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutAuthorNestedInput
+    awards?: AwardUncheckedUpdateManyWithoutUserNestedInput
+    forumThreads?: ForumThreadUncheckedUpdateManyWithoutAuthorNestedInput
+    forumReplies?: ForumReplyUncheckedUpdateManyWithoutAuthorNestedInput
+    collections?: CollectionUncheckedUpdateManyWithoutUserNestedInput
+    followers?: FollowUncheckedUpdateManyWithoutFollowingNestedInput
+    following?: FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  }
+
+  export type UserCreateManyInput = {
+    id?: string
+    email: string
+    username: string
+    name: string
+    password: string
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    avatarUrl?: string | null
+    bio?: string | null
+    location?: string | null
+    websiteUrl?: string | null
+    instagramUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UserUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    instagramUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    instagramUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PhotoCreateInput = {
+    id?: string
+    title: string
+    description?: string | null
+    imageUrl: string
+    thumbnailUrl?: string | null
+    width?: number
+    height?: number
+    fileSize?: number
+    neighborhood: string
+    category: $Enums.PhotoCategory
+    status?: $Enums.PhotoStatus
+    cameraMake?: string | null
+    cameraModel?: string | null
+    lens?: string | null
+    iso?: number | null
+    aperture?: string | null
+    shutterSpeed?: string | null
+    focalLength?: string | null
+    takenAt?: Date | string | null
+    voteCount?: number
+    approvedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    author: UserCreateNestedOneWithoutPhotosInput
+    votes?: VoteCreateNestedManyWithoutPhotoInput
+    comments?: CommentCreateNestedManyWithoutPhotoInput
+    awards?: AwardCreateNestedManyWithoutPhotoInput
+    forumReplies?: ForumReplyCreateNestedManyWithoutEmbeddedPhotoInput
+    collectionItems?: CollectionItemCreateNestedManyWithoutPhotoInput
+  }
+
+  export type PhotoUncheckedCreateInput = {
+    id?: string
+    title: string
+    description?: string | null
+    imageUrl: string
+    thumbnailUrl?: string | null
+    width?: number
+    height?: number
+    fileSize?: number
+    neighborhood: string
+    category: $Enums.PhotoCategory
+    status?: $Enums.PhotoStatus
+    cameraMake?: string | null
+    cameraModel?: string | null
+    lens?: string | null
+    iso?: number | null
+    aperture?: string | null
+    shutterSpeed?: string | null
+    focalLength?: string | null
+    takenAt?: Date | string | null
+    authorId: string
+    voteCount?: number
+    approvedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    votes?: VoteUncheckedCreateNestedManyWithoutPhotoInput
+    comments?: CommentUncheckedCreateNestedManyWithoutPhotoInput
+    awards?: AwardUncheckedCreateNestedManyWithoutPhotoInput
+    forumReplies?: ForumReplyUncheckedCreateNestedManyWithoutEmbeddedPhotoInput
+    collectionItems?: CollectionItemUncheckedCreateNestedManyWithoutPhotoInput
+  }
+
+  export type PhotoUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    width?: IntFieldUpdateOperationsInput | number
+    height?: IntFieldUpdateOperationsInput | number
+    fileSize?: IntFieldUpdateOperationsInput | number
+    neighborhood?: StringFieldUpdateOperationsInput | string
+    category?: EnumPhotoCategoryFieldUpdateOperationsInput | $Enums.PhotoCategory
+    status?: EnumPhotoStatusFieldUpdateOperationsInput | $Enums.PhotoStatus
+    cameraMake?: NullableStringFieldUpdateOperationsInput | string | null
+    cameraModel?: NullableStringFieldUpdateOperationsInput | string | null
+    lens?: NullableStringFieldUpdateOperationsInput | string | null
+    iso?: NullableIntFieldUpdateOperationsInput | number | null
+    aperture?: NullableStringFieldUpdateOperationsInput | string | null
+    shutterSpeed?: NullableStringFieldUpdateOperationsInput | string | null
+    focalLength?: NullableStringFieldUpdateOperationsInput | string | null
+    takenAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    voteCount?: IntFieldUpdateOperationsInput | number
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    author?: UserUpdateOneRequiredWithoutPhotosNestedInput
+    votes?: VoteUpdateManyWithoutPhotoNestedInput
+    comments?: CommentUpdateManyWithoutPhotoNestedInput
+    awards?: AwardUpdateManyWithoutPhotoNestedInput
+    forumReplies?: ForumReplyUpdateManyWithoutEmbeddedPhotoNestedInput
+    collectionItems?: CollectionItemUpdateManyWithoutPhotoNestedInput
+  }
+
+  export type PhotoUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    width?: IntFieldUpdateOperationsInput | number
+    height?: IntFieldUpdateOperationsInput | number
+    fileSize?: IntFieldUpdateOperationsInput | number
+    neighborhood?: StringFieldUpdateOperationsInput | string
+    category?: EnumPhotoCategoryFieldUpdateOperationsInput | $Enums.PhotoCategory
+    status?: EnumPhotoStatusFieldUpdateOperationsInput | $Enums.PhotoStatus
+    cameraMake?: NullableStringFieldUpdateOperationsInput | string | null
+    cameraModel?: NullableStringFieldUpdateOperationsInput | string | null
+    lens?: NullableStringFieldUpdateOperationsInput | string | null
+    iso?: NullableIntFieldUpdateOperationsInput | number | null
+    aperture?: NullableStringFieldUpdateOperationsInput | string | null
+    shutterSpeed?: NullableStringFieldUpdateOperationsInput | string | null
+    focalLength?: NullableStringFieldUpdateOperationsInput | string | null
+    takenAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    authorId?: StringFieldUpdateOperationsInput | string
+    voteCount?: IntFieldUpdateOperationsInput | number
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    votes?: VoteUncheckedUpdateManyWithoutPhotoNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutPhotoNestedInput
+    awards?: AwardUncheckedUpdateManyWithoutPhotoNestedInput
+    forumReplies?: ForumReplyUncheckedUpdateManyWithoutEmbeddedPhotoNestedInput
+    collectionItems?: CollectionItemUncheckedUpdateManyWithoutPhotoNestedInput
+  }
+
+  export type PhotoCreateManyInput = {
+    id?: string
+    title: string
+    description?: string | null
+    imageUrl: string
+    thumbnailUrl?: string | null
+    width?: number
+    height?: number
+    fileSize?: number
+    neighborhood: string
+    category: $Enums.PhotoCategory
+    status?: $Enums.PhotoStatus
+    cameraMake?: string | null
+    cameraModel?: string | null
+    lens?: string | null
+    iso?: number | null
+    aperture?: string | null
+    shutterSpeed?: string | null
+    focalLength?: string | null
+    takenAt?: Date | string | null
+    authorId: string
+    voteCount?: number
+    approvedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PhotoUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    width?: IntFieldUpdateOperationsInput | number
+    height?: IntFieldUpdateOperationsInput | number
+    fileSize?: IntFieldUpdateOperationsInput | number
+    neighborhood?: StringFieldUpdateOperationsInput | string
+    category?: EnumPhotoCategoryFieldUpdateOperationsInput | $Enums.PhotoCategory
+    status?: EnumPhotoStatusFieldUpdateOperationsInput | $Enums.PhotoStatus
+    cameraMake?: NullableStringFieldUpdateOperationsInput | string | null
+    cameraModel?: NullableStringFieldUpdateOperationsInput | string | null
+    lens?: NullableStringFieldUpdateOperationsInput | string | null
+    iso?: NullableIntFieldUpdateOperationsInput | number | null
+    aperture?: NullableStringFieldUpdateOperationsInput | string | null
+    shutterSpeed?: NullableStringFieldUpdateOperationsInput | string | null
+    focalLength?: NullableStringFieldUpdateOperationsInput | string | null
+    takenAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    voteCount?: IntFieldUpdateOperationsInput | number
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PhotoUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    width?: IntFieldUpdateOperationsInput | number
+    height?: IntFieldUpdateOperationsInput | number
+    fileSize?: IntFieldUpdateOperationsInput | number
+    neighborhood?: StringFieldUpdateOperationsInput | string
+    category?: EnumPhotoCategoryFieldUpdateOperationsInput | $Enums.PhotoCategory
+    status?: EnumPhotoStatusFieldUpdateOperationsInput | $Enums.PhotoStatus
+    cameraMake?: NullableStringFieldUpdateOperationsInput | string | null
+    cameraModel?: NullableStringFieldUpdateOperationsInput | string | null
+    lens?: NullableStringFieldUpdateOperationsInput | string | null
+    iso?: NullableIntFieldUpdateOperationsInput | number | null
+    aperture?: NullableStringFieldUpdateOperationsInput | string | null
+    shutterSpeed?: NullableStringFieldUpdateOperationsInput | string | null
+    focalLength?: NullableStringFieldUpdateOperationsInput | string | null
+    takenAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    authorId?: StringFieldUpdateOperationsInput | string
+    voteCount?: IntFieldUpdateOperationsInput | number
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type VoteCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutVotesInput
+    photo: PhotoCreateNestedOneWithoutVotesInput
+  }
+
+  export type VoteUncheckedCreateInput = {
+    id?: string
+    userId: string
+    photoId: string
+    createdAt?: Date | string
+  }
+
+  export type VoteUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutVotesNestedInput
+    photo?: PhotoUpdateOneRequiredWithoutVotesNestedInput
+  }
+
+  export type VoteUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    photoId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type VoteCreateManyInput = {
+    id?: string
+    userId: string
+    photoId: string
+    createdAt?: Date | string
+  }
+
+  export type VoteUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type VoteUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    photoId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CommentCreateInput = {
+    id?: string
+    body: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    author: UserCreateNestedOneWithoutCommentsInput
+    photo: PhotoCreateNestedOneWithoutCommentsInput
+  }
+
+  export type CommentUncheckedCreateInput = {
+    id?: string
+    body: string
+    authorId: string
+    photoId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CommentUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    author?: UserUpdateOneRequiredWithoutCommentsNestedInput
+    photo?: PhotoUpdateOneRequiredWithoutCommentsNestedInput
+  }
+
+  export type CommentUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    authorId?: StringFieldUpdateOperationsInput | string
+    photoId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CommentCreateManyInput = {
+    id?: string
+    body: string
+    authorId: string
+    photoId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CommentUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CommentUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    authorId?: StringFieldUpdateOperationsInput | string
+    photoId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AwardCreateInput = {
+    id?: string
+    type: $Enums.AwardType
+    periodStart: Date | string
+    periodEnd: Date | string
+    voteCount: number
+    awardedAt?: Date | string
+    photo: PhotoCreateNestedOneWithoutAwardsInput
+    user: UserCreateNestedOneWithoutAwardsInput
+  }
+
+  export type AwardUncheckedCreateInput = {
+    id?: string
+    type: $Enums.AwardType
+    photoId: string
+    userId: string
+    periodStart: Date | string
+    periodEnd: Date | string
+    voteCount: number
+    awardedAt?: Date | string
+  }
+
+  export type AwardUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumAwardTypeFieldUpdateOperationsInput | $Enums.AwardType
+    periodStart?: DateTimeFieldUpdateOperationsInput | Date | string
+    periodEnd?: DateTimeFieldUpdateOperationsInput | Date | string
+    voteCount?: IntFieldUpdateOperationsInput | number
+    awardedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    photo?: PhotoUpdateOneRequiredWithoutAwardsNestedInput
+    user?: UserUpdateOneRequiredWithoutAwardsNestedInput
+  }
+
+  export type AwardUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumAwardTypeFieldUpdateOperationsInput | $Enums.AwardType
+    photoId?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    periodStart?: DateTimeFieldUpdateOperationsInput | Date | string
+    periodEnd?: DateTimeFieldUpdateOperationsInput | Date | string
+    voteCount?: IntFieldUpdateOperationsInput | number
+    awardedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AwardCreateManyInput = {
+    id?: string
+    type: $Enums.AwardType
+    photoId: string
+    userId: string
+    periodStart: Date | string
+    periodEnd: Date | string
+    voteCount: number
+    awardedAt?: Date | string
+  }
+
+  export type AwardUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumAwardTypeFieldUpdateOperationsInput | $Enums.AwardType
+    periodStart?: DateTimeFieldUpdateOperationsInput | Date | string
+    periodEnd?: DateTimeFieldUpdateOperationsInput | Date | string
+    voteCount?: IntFieldUpdateOperationsInput | number
+    awardedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AwardUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumAwardTypeFieldUpdateOperationsInput | $Enums.AwardType
+    photoId?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    periodStart?: DateTimeFieldUpdateOperationsInput | Date | string
+    periodEnd?: DateTimeFieldUpdateOperationsInput | Date | string
+    voteCount?: IntFieldUpdateOperationsInput | number
+    awardedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ForumCategoryCreateInput = {
+    id?: string
+    slug: $Enums.ForumCategorySlug
+    name: string
+    description: string
+    sortOrder?: number
+    threads?: ForumThreadCreateNestedManyWithoutCategoryInput
+  }
+
+  export type ForumCategoryUncheckedCreateInput = {
+    id?: string
+    slug: $Enums.ForumCategorySlug
+    name: string
+    description: string
+    sortOrder?: number
+    threads?: ForumThreadUncheckedCreateNestedManyWithoutCategoryInput
+  }
+
+  export type ForumCategoryUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: EnumForumCategorySlugFieldUpdateOperationsInput | $Enums.ForumCategorySlug
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    threads?: ForumThreadUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type ForumCategoryUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: EnumForumCategorySlugFieldUpdateOperationsInput | $Enums.ForumCategorySlug
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    threads?: ForumThreadUncheckedUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type ForumCategoryCreateManyInput = {
+    id?: string
+    slug: $Enums.ForumCategorySlug
+    name: string
+    description: string
+    sortOrder?: number
+  }
+
+  export type ForumCategoryUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: EnumForumCategorySlugFieldUpdateOperationsInput | $Enums.ForumCategorySlug
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ForumCategoryUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: EnumForumCategorySlugFieldUpdateOperationsInput | $Enums.ForumCategorySlug
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ForumThreadCreateInput = {
+    id?: string
+    title: string
+    body: string
+    pinned?: boolean
+    locked?: boolean
+    replyCount?: number
+    lastReplyAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    author: UserCreateNestedOneWithoutForumThreadsInput
+    category: ForumCategoryCreateNestedOneWithoutThreadsInput
+    replies?: ForumReplyCreateNestedManyWithoutThreadInput
+  }
+
+  export type ForumThreadUncheckedCreateInput = {
+    id?: string
+    title: string
+    body: string
+    authorId: string
+    categoryId: string
+    pinned?: boolean
+    locked?: boolean
+    replyCount?: number
+    lastReplyAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    replies?: ForumReplyUncheckedCreateNestedManyWithoutThreadInput
+  }
+
+  export type ForumThreadUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    pinned?: BoolFieldUpdateOperationsInput | boolean
+    locked?: BoolFieldUpdateOperationsInput | boolean
+    replyCount?: IntFieldUpdateOperationsInput | number
+    lastReplyAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    author?: UserUpdateOneRequiredWithoutForumThreadsNestedInput
+    category?: ForumCategoryUpdateOneRequiredWithoutThreadsNestedInput
+    replies?: ForumReplyUpdateManyWithoutThreadNestedInput
+  }
+
+  export type ForumThreadUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    authorId?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
+    pinned?: BoolFieldUpdateOperationsInput | boolean
+    locked?: BoolFieldUpdateOperationsInput | boolean
+    replyCount?: IntFieldUpdateOperationsInput | number
+    lastReplyAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    replies?: ForumReplyUncheckedUpdateManyWithoutThreadNestedInput
+  }
+
+  export type ForumThreadCreateManyInput = {
+    id?: string
+    title: string
+    body: string
+    authorId: string
+    categoryId: string
+    pinned?: boolean
+    locked?: boolean
+    replyCount?: number
+    lastReplyAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ForumThreadUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    pinned?: BoolFieldUpdateOperationsInput | boolean
+    locked?: BoolFieldUpdateOperationsInput | boolean
+    replyCount?: IntFieldUpdateOperationsInput | number
+    lastReplyAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ForumThreadUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    authorId?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
+    pinned?: BoolFieldUpdateOperationsInput | boolean
+    locked?: BoolFieldUpdateOperationsInput | boolean
+    replyCount?: IntFieldUpdateOperationsInput | number
+    lastReplyAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ForumReplyCreateInput = {
+    id?: string
+    body: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    author: UserCreateNestedOneWithoutForumRepliesInput
+    thread: ForumThreadCreateNestedOneWithoutRepliesInput
+    embeddedPhoto?: PhotoCreateNestedOneWithoutForumRepliesInput
+  }
+
+  export type ForumReplyUncheckedCreateInput = {
+    id?: string
+    body: string
+    authorId: string
+    threadId: string
+    embeddedPhotoId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ForumReplyUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    author?: UserUpdateOneRequiredWithoutForumRepliesNestedInput
+    thread?: ForumThreadUpdateOneRequiredWithoutRepliesNestedInput
+    embeddedPhoto?: PhotoUpdateOneWithoutForumRepliesNestedInput
+  }
+
+  export type ForumReplyUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    authorId?: StringFieldUpdateOperationsInput | string
+    threadId?: StringFieldUpdateOperationsInput | string
+    embeddedPhotoId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ForumReplyCreateManyInput = {
+    id?: string
+    body: string
+    authorId: string
+    threadId: string
+    embeddedPhotoId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ForumReplyUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ForumReplyUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    authorId?: StringFieldUpdateOperationsInput | string
+    threadId?: StringFieldUpdateOperationsInput | string
+    embeddedPhotoId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CollectionCreateInput = {
+    id?: string
+    name: string
+    description?: string | null
+    isPrivate?: boolean
+    coverUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutCollectionsInput
+    items?: CollectionItemCreateNestedManyWithoutCollectionInput
+  }
+
+  export type CollectionUncheckedCreateInput = {
+    id?: string
+    name: string
+    description?: string | null
+    isPrivate?: boolean
+    coverUrl?: string | null
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    items?: CollectionItemUncheckedCreateNestedManyWithoutCollectionInput
+  }
+
+  export type CollectionUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isPrivate?: BoolFieldUpdateOperationsInput | boolean
+    coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutCollectionsNestedInput
+    items?: CollectionItemUpdateManyWithoutCollectionNestedInput
+  }
+
+  export type CollectionUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isPrivate?: BoolFieldUpdateOperationsInput | boolean
+    coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    items?: CollectionItemUncheckedUpdateManyWithoutCollectionNestedInput
+  }
+
+  export type CollectionCreateManyInput = {
+    id?: string
+    name: string
+    description?: string | null
+    isPrivate?: boolean
+    coverUrl?: string | null
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CollectionUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isPrivate?: BoolFieldUpdateOperationsInput | boolean
+    coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CollectionUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isPrivate?: BoolFieldUpdateOperationsInput | boolean
+    coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CollectionItemCreateInput = {
+    id?: string
+    savedAt?: Date | string
+    collection: CollectionCreateNestedOneWithoutItemsInput
+    photo: PhotoCreateNestedOneWithoutCollectionItemsInput
+  }
+
+  export type CollectionItemUncheckedCreateInput = {
+    id?: string
+    collectionId: string
+    photoId: string
+    savedAt?: Date | string
+  }
+
+  export type CollectionItemUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    collection?: CollectionUpdateOneRequiredWithoutItemsNestedInput
+    photo?: PhotoUpdateOneRequiredWithoutCollectionItemsNestedInput
+  }
+
+  export type CollectionItemUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    collectionId?: StringFieldUpdateOperationsInput | string
+    photoId?: StringFieldUpdateOperationsInput | string
+    savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CollectionItemCreateManyInput = {
+    id?: string
+    collectionId: string
+    photoId: string
+    savedAt?: Date | string
+  }
+
+  export type CollectionItemUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CollectionItemUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    collectionId?: StringFieldUpdateOperationsInput | string
+    photoId?: StringFieldUpdateOperationsInput | string
+    savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FollowCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    follower: UserCreateNestedOneWithoutFollowingInput
+    following: UserCreateNestedOneWithoutFollowersInput
+  }
+
+  export type FollowUncheckedCreateInput = {
+    id?: string
+    followerId: string
+    followingId: string
+    createdAt?: Date | string
+  }
+
+  export type FollowUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    follower?: UserUpdateOneRequiredWithoutFollowingNestedInput
+    following?: UserUpdateOneRequiredWithoutFollowersNestedInput
+  }
+
+  export type FollowUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    followerId?: StringFieldUpdateOperationsInput | string
+    followingId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FollowCreateManyInput = {
+    id?: string
+    followerId: string
+    followingId: string
+    createdAt?: Date | string
+  }
+
+  export type FollowUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FollowUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    followerId?: StringFieldUpdateOperationsInput | string
+    followingId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type EnumUserRoleFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserRole | EnumUserRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumUserRoleFilter<$PrismaModel> | $Enums.UserRole
+  }
+
+  export type EnumUserStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserStatus | EnumUserStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumUserStatusFilter<$PrismaModel> | $Enums.UserStatus
+  }
+
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type PhotoListRelationFilter = {
+    every?: PhotoWhereInput
+    some?: PhotoWhereInput
+    none?: PhotoWhereInput
+  }
+
+  export type VoteListRelationFilter = {
+    every?: VoteWhereInput
+    some?: VoteWhereInput
+    none?: VoteWhereInput
+  }
+
+  export type CommentListRelationFilter = {
+    every?: CommentWhereInput
+    some?: CommentWhereInput
+    none?: CommentWhereInput
+  }
+
+  export type AwardListRelationFilter = {
+    every?: AwardWhereInput
+    some?: AwardWhereInput
+    none?: AwardWhereInput
+  }
+
+  export type ForumThreadListRelationFilter = {
+    every?: ForumThreadWhereInput
+    some?: ForumThreadWhereInput
+    none?: ForumThreadWhereInput
+  }
+
+  export type ForumReplyListRelationFilter = {
+    every?: ForumReplyWhereInput
+    some?: ForumReplyWhereInput
+    none?: ForumReplyWhereInput
+  }
+
+  export type CollectionListRelationFilter = {
+    every?: CollectionWhereInput
+    some?: CollectionWhereInput
+    none?: CollectionWhereInput
+  }
+
+  export type FollowListRelationFilter = {
+    every?: FollowWhereInput
+    some?: FollowWhereInput
+    none?: FollowWhereInput
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
+  export type PhotoOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type VoteOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CommentOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type AwardOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ForumThreadOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ForumReplyOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CollectionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type FollowOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type UserCountOrderByAggregateInput = {
+    id?: SortOrder
+    email?: SortOrder
+    username?: SortOrder
+    name?: SortOrder
+    password?: SortOrder
+    role?: SortOrder
+    status?: SortOrder
+    avatarUrl?: SortOrder
+    bio?: SortOrder
+    location?: SortOrder
+    websiteUrl?: SortOrder
+    instagramUrl?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UserMaxOrderByAggregateInput = {
+    id?: SortOrder
+    email?: SortOrder
+    username?: SortOrder
+    name?: SortOrder
+    password?: SortOrder
+    role?: SortOrder
+    status?: SortOrder
+    avatarUrl?: SortOrder
+    bio?: SortOrder
+    location?: SortOrder
+    websiteUrl?: SortOrder
+    instagramUrl?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UserMinOrderByAggregateInput = {
+    id?: SortOrder
+    email?: SortOrder
+    username?: SortOrder
+    name?: SortOrder
+    password?: SortOrder
+    role?: SortOrder
+    status?: SortOrder
+    avatarUrl?: SortOrder
+    bio?: SortOrder
+    location?: SortOrder
+    websiteUrl?: SortOrder
+    instagramUrl?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type EnumUserRoleWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserRole | EnumUserRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumUserRoleWithAggregatesFilter<$PrismaModel> | $Enums.UserRole
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumUserRoleFilter<$PrismaModel>
+    _max?: NestedEnumUserRoleFilter<$PrismaModel>
+  }
+
+  export type EnumUserStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserStatus | EnumUserStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumUserStatusWithAggregatesFilter<$PrismaModel> | $Enums.UserStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumUserStatusFilter<$PrismaModel>
+    _max?: NestedEnumUserStatusFilter<$PrismaModel>
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type EnumPhotoCategoryFilter<$PrismaModel = never> = {
+    equals?: $Enums.PhotoCategory | EnumPhotoCategoryFieldRefInput<$PrismaModel>
+    in?: $Enums.PhotoCategory[] | ListEnumPhotoCategoryFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PhotoCategory[] | ListEnumPhotoCategoryFieldRefInput<$PrismaModel>
+    not?: NestedEnumPhotoCategoryFilter<$PrismaModel> | $Enums.PhotoCategory
+  }
+
+  export type EnumPhotoStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.PhotoStatus | EnumPhotoStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.PhotoStatus[] | ListEnumPhotoStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PhotoStatus[] | ListEnumPhotoStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumPhotoStatusFilter<$PrismaModel> | $Enums.PhotoStatus
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type UserScalarRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
+  }
+
+  export type CollectionItemListRelationFilter = {
+    every?: CollectionItemWhereInput
+    some?: CollectionItemWhereInput
+    none?: CollectionItemWhereInput
+  }
+
+  export type CollectionItemOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type PhotoCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    imageUrl?: SortOrder
+    thumbnailUrl?: SortOrder
+    width?: SortOrder
+    height?: SortOrder
+    fileSize?: SortOrder
+    neighborhood?: SortOrder
+    category?: SortOrder
+    status?: SortOrder
+    cameraMake?: SortOrder
+    cameraModel?: SortOrder
+    lens?: SortOrder
+    iso?: SortOrder
+    aperture?: SortOrder
+    shutterSpeed?: SortOrder
+    focalLength?: SortOrder
+    takenAt?: SortOrder
+    authorId?: SortOrder
+    voteCount?: SortOrder
+    approvedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PhotoAvgOrderByAggregateInput = {
+    width?: SortOrder
+    height?: SortOrder
+    fileSize?: SortOrder
+    iso?: SortOrder
+    voteCount?: SortOrder
+  }
+
+  export type PhotoMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    imageUrl?: SortOrder
+    thumbnailUrl?: SortOrder
+    width?: SortOrder
+    height?: SortOrder
+    fileSize?: SortOrder
+    neighborhood?: SortOrder
+    category?: SortOrder
+    status?: SortOrder
+    cameraMake?: SortOrder
+    cameraModel?: SortOrder
+    lens?: SortOrder
+    iso?: SortOrder
+    aperture?: SortOrder
+    shutterSpeed?: SortOrder
+    focalLength?: SortOrder
+    takenAt?: SortOrder
+    authorId?: SortOrder
+    voteCount?: SortOrder
+    approvedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PhotoMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    imageUrl?: SortOrder
+    thumbnailUrl?: SortOrder
+    width?: SortOrder
+    height?: SortOrder
+    fileSize?: SortOrder
+    neighborhood?: SortOrder
+    category?: SortOrder
+    status?: SortOrder
+    cameraMake?: SortOrder
+    cameraModel?: SortOrder
+    lens?: SortOrder
+    iso?: SortOrder
+    aperture?: SortOrder
+    shutterSpeed?: SortOrder
+    focalLength?: SortOrder
+    takenAt?: SortOrder
+    authorId?: SortOrder
+    voteCount?: SortOrder
+    approvedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PhotoSumOrderByAggregateInput = {
+    width?: SortOrder
+    height?: SortOrder
+    fileSize?: SortOrder
+    iso?: SortOrder
+    voteCount?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type EnumPhotoCategoryWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.PhotoCategory | EnumPhotoCategoryFieldRefInput<$PrismaModel>
+    in?: $Enums.PhotoCategory[] | ListEnumPhotoCategoryFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PhotoCategory[] | ListEnumPhotoCategoryFieldRefInput<$PrismaModel>
+    not?: NestedEnumPhotoCategoryWithAggregatesFilter<$PrismaModel> | $Enums.PhotoCategory
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumPhotoCategoryFilter<$PrismaModel>
+    _max?: NestedEnumPhotoCategoryFilter<$PrismaModel>
+  }
+
+  export type EnumPhotoStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.PhotoStatus | EnumPhotoStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.PhotoStatus[] | ListEnumPhotoStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PhotoStatus[] | ListEnumPhotoStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumPhotoStatusWithAggregatesFilter<$PrismaModel> | $Enums.PhotoStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumPhotoStatusFilter<$PrismaModel>
+    _max?: NestedEnumPhotoStatusFilter<$PrismaModel>
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type PhotoScalarRelationFilter = {
+    is?: PhotoWhereInput
+    isNot?: PhotoWhereInput
+  }
+
+  export type VoteUserIdPhotoIdCompoundUniqueInput = {
+    userId: string
+    photoId: string
+  }
+
+  export type VoteCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    photoId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type VoteMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    photoId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type VoteMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    photoId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CommentCountOrderByAggregateInput = {
+    id?: SortOrder
+    body?: SortOrder
+    authorId?: SortOrder
+    photoId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CommentMaxOrderByAggregateInput = {
+    id?: SortOrder
+    body?: SortOrder
+    authorId?: SortOrder
+    photoId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CommentMinOrderByAggregateInput = {
+    id?: SortOrder
+    body?: SortOrder
+    authorId?: SortOrder
+    photoId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EnumAwardTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.AwardType | EnumAwardTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AwardType[] | ListEnumAwardTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AwardType[] | ListEnumAwardTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAwardTypeFilter<$PrismaModel> | $Enums.AwardType
+  }
+
+  export type AwardTypePeriodStartCompoundUniqueInput = {
+    type: $Enums.AwardType
+    periodStart: Date | string
+  }
+
+  export type AwardCountOrderByAggregateInput = {
+    id?: SortOrder
+    type?: SortOrder
+    photoId?: SortOrder
+    userId?: SortOrder
+    periodStart?: SortOrder
+    periodEnd?: SortOrder
+    voteCount?: SortOrder
+    awardedAt?: SortOrder
+  }
+
+  export type AwardAvgOrderByAggregateInput = {
+    voteCount?: SortOrder
+  }
+
+  export type AwardMaxOrderByAggregateInput = {
+    id?: SortOrder
+    type?: SortOrder
+    photoId?: SortOrder
+    userId?: SortOrder
+    periodStart?: SortOrder
+    periodEnd?: SortOrder
+    voteCount?: SortOrder
+    awardedAt?: SortOrder
+  }
+
+  export type AwardMinOrderByAggregateInput = {
+    id?: SortOrder
+    type?: SortOrder
+    photoId?: SortOrder
+    userId?: SortOrder
+    periodStart?: SortOrder
+    periodEnd?: SortOrder
+    voteCount?: SortOrder
+    awardedAt?: SortOrder
+  }
+
+  export type AwardSumOrderByAggregateInput = {
+    voteCount?: SortOrder
+  }
+
+  export type EnumAwardTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AwardType | EnumAwardTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AwardType[] | ListEnumAwardTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AwardType[] | ListEnumAwardTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAwardTypeWithAggregatesFilter<$PrismaModel> | $Enums.AwardType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumAwardTypeFilter<$PrismaModel>
+    _max?: NestedEnumAwardTypeFilter<$PrismaModel>
+  }
+
+  export type EnumForumCategorySlugFilter<$PrismaModel = never> = {
+    equals?: $Enums.ForumCategorySlug | EnumForumCategorySlugFieldRefInput<$PrismaModel>
+    in?: $Enums.ForumCategorySlug[] | ListEnumForumCategorySlugFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ForumCategorySlug[] | ListEnumForumCategorySlugFieldRefInput<$PrismaModel>
+    not?: NestedEnumForumCategorySlugFilter<$PrismaModel> | $Enums.ForumCategorySlug
+  }
+
+  export type ForumCategoryCountOrderByAggregateInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    sortOrder?: SortOrder
+  }
+
+  export type ForumCategoryAvgOrderByAggregateInput = {
+    sortOrder?: SortOrder
+  }
+
+  export type ForumCategoryMaxOrderByAggregateInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    sortOrder?: SortOrder
+  }
+
+  export type ForumCategoryMinOrderByAggregateInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    sortOrder?: SortOrder
+  }
+
+  export type ForumCategorySumOrderByAggregateInput = {
+    sortOrder?: SortOrder
+  }
+
+  export type EnumForumCategorySlugWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ForumCategorySlug | EnumForumCategorySlugFieldRefInput<$PrismaModel>
+    in?: $Enums.ForumCategorySlug[] | ListEnumForumCategorySlugFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ForumCategorySlug[] | ListEnumForumCategorySlugFieldRefInput<$PrismaModel>
+    not?: NestedEnumForumCategorySlugWithAggregatesFilter<$PrismaModel> | $Enums.ForumCategorySlug
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumForumCategorySlugFilter<$PrismaModel>
+    _max?: NestedEnumForumCategorySlugFilter<$PrismaModel>
+  }
+
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type ForumCategoryScalarRelationFilter = {
+    is?: ForumCategoryWhereInput
+    isNot?: ForumCategoryWhereInput
+  }
+
+  export type ForumThreadCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    body?: SortOrder
+    authorId?: SortOrder
+    categoryId?: SortOrder
+    pinned?: SortOrder
+    locked?: SortOrder
+    replyCount?: SortOrder
+    lastReplyAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ForumThreadAvgOrderByAggregateInput = {
+    replyCount?: SortOrder
+  }
+
+  export type ForumThreadMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    body?: SortOrder
+    authorId?: SortOrder
+    categoryId?: SortOrder
+    pinned?: SortOrder
+    locked?: SortOrder
+    replyCount?: SortOrder
+    lastReplyAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ForumThreadMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    body?: SortOrder
+    authorId?: SortOrder
+    categoryId?: SortOrder
+    pinned?: SortOrder
+    locked?: SortOrder
+    replyCount?: SortOrder
+    lastReplyAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ForumThreadSumOrderByAggregateInput = {
+    replyCount?: SortOrder
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type ForumThreadScalarRelationFilter = {
+    is?: ForumThreadWhereInput
+    isNot?: ForumThreadWhereInput
+  }
+
+  export type PhotoNullableScalarRelationFilter = {
+    is?: PhotoWhereInput | null
+    isNot?: PhotoWhereInput | null
+  }
+
+  export type ForumReplyCountOrderByAggregateInput = {
+    id?: SortOrder
+    body?: SortOrder
+    authorId?: SortOrder
+    threadId?: SortOrder
+    embeddedPhotoId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ForumReplyMaxOrderByAggregateInput = {
+    id?: SortOrder
+    body?: SortOrder
+    authorId?: SortOrder
+    threadId?: SortOrder
+    embeddedPhotoId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ForumReplyMinOrderByAggregateInput = {
+    id?: SortOrder
+    body?: SortOrder
+    authorId?: SortOrder
+    threadId?: SortOrder
+    embeddedPhotoId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CollectionCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    isPrivate?: SortOrder
+    coverUrl?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CollectionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    isPrivate?: SortOrder
+    coverUrl?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CollectionMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    isPrivate?: SortOrder
+    coverUrl?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CollectionScalarRelationFilter = {
+    is?: CollectionWhereInput
+    isNot?: CollectionWhereInput
+  }
+
+  export type CollectionItemCollectionIdPhotoIdCompoundUniqueInput = {
+    collectionId: string
+    photoId: string
+  }
+
+  export type CollectionItemCountOrderByAggregateInput = {
+    id?: SortOrder
+    collectionId?: SortOrder
+    photoId?: SortOrder
+    savedAt?: SortOrder
+  }
+
+  export type CollectionItemMaxOrderByAggregateInput = {
+    id?: SortOrder
+    collectionId?: SortOrder
+    photoId?: SortOrder
+    savedAt?: SortOrder
+  }
+
+  export type CollectionItemMinOrderByAggregateInput = {
+    id?: SortOrder
+    collectionId?: SortOrder
+    photoId?: SortOrder
+    savedAt?: SortOrder
+  }
+
+  export type FollowFollowerIdFollowingIdCompoundUniqueInput = {
+    followerId: string
+    followingId: string
+  }
+
+  export type FollowCountOrderByAggregateInput = {
+    id?: SortOrder
+    followerId?: SortOrder
+    followingId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type FollowMaxOrderByAggregateInput = {
+    id?: SortOrder
+    followerId?: SortOrder
+    followingId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type FollowMinOrderByAggregateInput = {
+    id?: SortOrder
+    followerId?: SortOrder
+    followingId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type PhotoCreateNestedManyWithoutAuthorInput = {
+    create?: XOR<PhotoCreateWithoutAuthorInput, PhotoUncheckedCreateWithoutAuthorInput> | PhotoCreateWithoutAuthorInput[] | PhotoUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: PhotoCreateOrConnectWithoutAuthorInput | PhotoCreateOrConnectWithoutAuthorInput[]
+    createMany?: PhotoCreateManyAuthorInputEnvelope
+    connect?: PhotoWhereUniqueInput | PhotoWhereUniqueInput[]
+  }
+
+  export type VoteCreateNestedManyWithoutUserInput = {
+    create?: XOR<VoteCreateWithoutUserInput, VoteUncheckedCreateWithoutUserInput> | VoteCreateWithoutUserInput[] | VoteUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: VoteCreateOrConnectWithoutUserInput | VoteCreateOrConnectWithoutUserInput[]
+    createMany?: VoteCreateManyUserInputEnvelope
+    connect?: VoteWhereUniqueInput | VoteWhereUniqueInput[]
+  }
+
+  export type CommentCreateNestedManyWithoutAuthorInput = {
+    create?: XOR<CommentCreateWithoutAuthorInput, CommentUncheckedCreateWithoutAuthorInput> | CommentCreateWithoutAuthorInput[] | CommentUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutAuthorInput | CommentCreateOrConnectWithoutAuthorInput[]
+    createMany?: CommentCreateManyAuthorInputEnvelope
+    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+  }
+
+  export type AwardCreateNestedManyWithoutUserInput = {
+    create?: XOR<AwardCreateWithoutUserInput, AwardUncheckedCreateWithoutUserInput> | AwardCreateWithoutUserInput[] | AwardUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AwardCreateOrConnectWithoutUserInput | AwardCreateOrConnectWithoutUserInput[]
+    createMany?: AwardCreateManyUserInputEnvelope
+    connect?: AwardWhereUniqueInput | AwardWhereUniqueInput[]
+  }
+
+  export type ForumThreadCreateNestedManyWithoutAuthorInput = {
+    create?: XOR<ForumThreadCreateWithoutAuthorInput, ForumThreadUncheckedCreateWithoutAuthorInput> | ForumThreadCreateWithoutAuthorInput[] | ForumThreadUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: ForumThreadCreateOrConnectWithoutAuthorInput | ForumThreadCreateOrConnectWithoutAuthorInput[]
+    createMany?: ForumThreadCreateManyAuthorInputEnvelope
+    connect?: ForumThreadWhereUniqueInput | ForumThreadWhereUniqueInput[]
+  }
+
+  export type ForumReplyCreateNestedManyWithoutAuthorInput = {
+    create?: XOR<ForumReplyCreateWithoutAuthorInput, ForumReplyUncheckedCreateWithoutAuthorInput> | ForumReplyCreateWithoutAuthorInput[] | ForumReplyUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: ForumReplyCreateOrConnectWithoutAuthorInput | ForumReplyCreateOrConnectWithoutAuthorInput[]
+    createMany?: ForumReplyCreateManyAuthorInputEnvelope
+    connect?: ForumReplyWhereUniqueInput | ForumReplyWhereUniqueInput[]
+  }
+
+  export type CollectionCreateNestedManyWithoutUserInput = {
+    create?: XOR<CollectionCreateWithoutUserInput, CollectionUncheckedCreateWithoutUserInput> | CollectionCreateWithoutUserInput[] | CollectionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CollectionCreateOrConnectWithoutUserInput | CollectionCreateOrConnectWithoutUserInput[]
+    createMany?: CollectionCreateManyUserInputEnvelope
+    connect?: CollectionWhereUniqueInput | CollectionWhereUniqueInput[]
+  }
+
+  export type FollowCreateNestedManyWithoutFollowingInput = {
+    create?: XOR<FollowCreateWithoutFollowingInput, FollowUncheckedCreateWithoutFollowingInput> | FollowCreateWithoutFollowingInput[] | FollowUncheckedCreateWithoutFollowingInput[]
+    connectOrCreate?: FollowCreateOrConnectWithoutFollowingInput | FollowCreateOrConnectWithoutFollowingInput[]
+    createMany?: FollowCreateManyFollowingInputEnvelope
+    connect?: FollowWhereUniqueInput | FollowWhereUniqueInput[]
+  }
+
+  export type FollowCreateNestedManyWithoutFollowerInput = {
+    create?: XOR<FollowCreateWithoutFollowerInput, FollowUncheckedCreateWithoutFollowerInput> | FollowCreateWithoutFollowerInput[] | FollowUncheckedCreateWithoutFollowerInput[]
+    connectOrCreate?: FollowCreateOrConnectWithoutFollowerInput | FollowCreateOrConnectWithoutFollowerInput[]
+    createMany?: FollowCreateManyFollowerInputEnvelope
+    connect?: FollowWhereUniqueInput | FollowWhereUniqueInput[]
+  }
+
+  export type PhotoUncheckedCreateNestedManyWithoutAuthorInput = {
+    create?: XOR<PhotoCreateWithoutAuthorInput, PhotoUncheckedCreateWithoutAuthorInput> | PhotoCreateWithoutAuthorInput[] | PhotoUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: PhotoCreateOrConnectWithoutAuthorInput | PhotoCreateOrConnectWithoutAuthorInput[]
+    createMany?: PhotoCreateManyAuthorInputEnvelope
+    connect?: PhotoWhereUniqueInput | PhotoWhereUniqueInput[]
+  }
+
+  export type VoteUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<VoteCreateWithoutUserInput, VoteUncheckedCreateWithoutUserInput> | VoteCreateWithoutUserInput[] | VoteUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: VoteCreateOrConnectWithoutUserInput | VoteCreateOrConnectWithoutUserInput[]
+    createMany?: VoteCreateManyUserInputEnvelope
+    connect?: VoteWhereUniqueInput | VoteWhereUniqueInput[]
+  }
+
+  export type CommentUncheckedCreateNestedManyWithoutAuthorInput = {
+    create?: XOR<CommentCreateWithoutAuthorInput, CommentUncheckedCreateWithoutAuthorInput> | CommentCreateWithoutAuthorInput[] | CommentUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutAuthorInput | CommentCreateOrConnectWithoutAuthorInput[]
+    createMany?: CommentCreateManyAuthorInputEnvelope
+    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+  }
+
+  export type AwardUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<AwardCreateWithoutUserInput, AwardUncheckedCreateWithoutUserInput> | AwardCreateWithoutUserInput[] | AwardUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AwardCreateOrConnectWithoutUserInput | AwardCreateOrConnectWithoutUserInput[]
+    createMany?: AwardCreateManyUserInputEnvelope
+    connect?: AwardWhereUniqueInput | AwardWhereUniqueInput[]
+  }
+
+  export type ForumThreadUncheckedCreateNestedManyWithoutAuthorInput = {
+    create?: XOR<ForumThreadCreateWithoutAuthorInput, ForumThreadUncheckedCreateWithoutAuthorInput> | ForumThreadCreateWithoutAuthorInput[] | ForumThreadUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: ForumThreadCreateOrConnectWithoutAuthorInput | ForumThreadCreateOrConnectWithoutAuthorInput[]
+    createMany?: ForumThreadCreateManyAuthorInputEnvelope
+    connect?: ForumThreadWhereUniqueInput | ForumThreadWhereUniqueInput[]
+  }
+
+  export type ForumReplyUncheckedCreateNestedManyWithoutAuthorInput = {
+    create?: XOR<ForumReplyCreateWithoutAuthorInput, ForumReplyUncheckedCreateWithoutAuthorInput> | ForumReplyCreateWithoutAuthorInput[] | ForumReplyUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: ForumReplyCreateOrConnectWithoutAuthorInput | ForumReplyCreateOrConnectWithoutAuthorInput[]
+    createMany?: ForumReplyCreateManyAuthorInputEnvelope
+    connect?: ForumReplyWhereUniqueInput | ForumReplyWhereUniqueInput[]
+  }
+
+  export type CollectionUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<CollectionCreateWithoutUserInput, CollectionUncheckedCreateWithoutUserInput> | CollectionCreateWithoutUserInput[] | CollectionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CollectionCreateOrConnectWithoutUserInput | CollectionCreateOrConnectWithoutUserInput[]
+    createMany?: CollectionCreateManyUserInputEnvelope
+    connect?: CollectionWhereUniqueInput | CollectionWhereUniqueInput[]
+  }
+
+  export type FollowUncheckedCreateNestedManyWithoutFollowingInput = {
+    create?: XOR<FollowCreateWithoutFollowingInput, FollowUncheckedCreateWithoutFollowingInput> | FollowCreateWithoutFollowingInput[] | FollowUncheckedCreateWithoutFollowingInput[]
+    connectOrCreate?: FollowCreateOrConnectWithoutFollowingInput | FollowCreateOrConnectWithoutFollowingInput[]
+    createMany?: FollowCreateManyFollowingInputEnvelope
+    connect?: FollowWhereUniqueInput | FollowWhereUniqueInput[]
+  }
+
+  export type FollowUncheckedCreateNestedManyWithoutFollowerInput = {
+    create?: XOR<FollowCreateWithoutFollowerInput, FollowUncheckedCreateWithoutFollowerInput> | FollowCreateWithoutFollowerInput[] | FollowUncheckedCreateWithoutFollowerInput[]
+    connectOrCreate?: FollowCreateOrConnectWithoutFollowerInput | FollowCreateOrConnectWithoutFollowerInput[]
+    createMany?: FollowCreateManyFollowerInputEnvelope
+    connect?: FollowWhereUniqueInput | FollowWhereUniqueInput[]
+  }
+
+  export type StringFieldUpdateOperationsInput = {
+    set?: string
+  }
+
+  export type EnumUserRoleFieldUpdateOperationsInput = {
+    set?: $Enums.UserRole
+  }
+
+  export type EnumUserStatusFieldUpdateOperationsInput = {
+    set?: $Enums.UserStatus
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
+  export type PhotoUpdateManyWithoutAuthorNestedInput = {
+    create?: XOR<PhotoCreateWithoutAuthorInput, PhotoUncheckedCreateWithoutAuthorInput> | PhotoCreateWithoutAuthorInput[] | PhotoUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: PhotoCreateOrConnectWithoutAuthorInput | PhotoCreateOrConnectWithoutAuthorInput[]
+    upsert?: PhotoUpsertWithWhereUniqueWithoutAuthorInput | PhotoUpsertWithWhereUniqueWithoutAuthorInput[]
+    createMany?: PhotoCreateManyAuthorInputEnvelope
+    set?: PhotoWhereUniqueInput | PhotoWhereUniqueInput[]
+    disconnect?: PhotoWhereUniqueInput | PhotoWhereUniqueInput[]
+    delete?: PhotoWhereUniqueInput | PhotoWhereUniqueInput[]
+    connect?: PhotoWhereUniqueInput | PhotoWhereUniqueInput[]
+    update?: PhotoUpdateWithWhereUniqueWithoutAuthorInput | PhotoUpdateWithWhereUniqueWithoutAuthorInput[]
+    updateMany?: PhotoUpdateManyWithWhereWithoutAuthorInput | PhotoUpdateManyWithWhereWithoutAuthorInput[]
+    deleteMany?: PhotoScalarWhereInput | PhotoScalarWhereInput[]
+  }
+
+  export type VoteUpdateManyWithoutUserNestedInput = {
+    create?: XOR<VoteCreateWithoutUserInput, VoteUncheckedCreateWithoutUserInput> | VoteCreateWithoutUserInput[] | VoteUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: VoteCreateOrConnectWithoutUserInput | VoteCreateOrConnectWithoutUserInput[]
+    upsert?: VoteUpsertWithWhereUniqueWithoutUserInput | VoteUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: VoteCreateManyUserInputEnvelope
+    set?: VoteWhereUniqueInput | VoteWhereUniqueInput[]
+    disconnect?: VoteWhereUniqueInput | VoteWhereUniqueInput[]
+    delete?: VoteWhereUniqueInput | VoteWhereUniqueInput[]
+    connect?: VoteWhereUniqueInput | VoteWhereUniqueInput[]
+    update?: VoteUpdateWithWhereUniqueWithoutUserInput | VoteUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: VoteUpdateManyWithWhereWithoutUserInput | VoteUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: VoteScalarWhereInput | VoteScalarWhereInput[]
+  }
+
+  export type CommentUpdateManyWithoutAuthorNestedInput = {
+    create?: XOR<CommentCreateWithoutAuthorInput, CommentUncheckedCreateWithoutAuthorInput> | CommentCreateWithoutAuthorInput[] | CommentUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutAuthorInput | CommentCreateOrConnectWithoutAuthorInput[]
+    upsert?: CommentUpsertWithWhereUniqueWithoutAuthorInput | CommentUpsertWithWhereUniqueWithoutAuthorInput[]
+    createMany?: CommentCreateManyAuthorInputEnvelope
+    set?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    disconnect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    delete?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    update?: CommentUpdateWithWhereUniqueWithoutAuthorInput | CommentUpdateWithWhereUniqueWithoutAuthorInput[]
+    updateMany?: CommentUpdateManyWithWhereWithoutAuthorInput | CommentUpdateManyWithWhereWithoutAuthorInput[]
+    deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
+  }
+
+  export type AwardUpdateManyWithoutUserNestedInput = {
+    create?: XOR<AwardCreateWithoutUserInput, AwardUncheckedCreateWithoutUserInput> | AwardCreateWithoutUserInput[] | AwardUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AwardCreateOrConnectWithoutUserInput | AwardCreateOrConnectWithoutUserInput[]
+    upsert?: AwardUpsertWithWhereUniqueWithoutUserInput | AwardUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: AwardCreateManyUserInputEnvelope
+    set?: AwardWhereUniqueInput | AwardWhereUniqueInput[]
+    disconnect?: AwardWhereUniqueInput | AwardWhereUniqueInput[]
+    delete?: AwardWhereUniqueInput | AwardWhereUniqueInput[]
+    connect?: AwardWhereUniqueInput | AwardWhereUniqueInput[]
+    update?: AwardUpdateWithWhereUniqueWithoutUserInput | AwardUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: AwardUpdateManyWithWhereWithoutUserInput | AwardUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: AwardScalarWhereInput | AwardScalarWhereInput[]
+  }
+
+  export type ForumThreadUpdateManyWithoutAuthorNestedInput = {
+    create?: XOR<ForumThreadCreateWithoutAuthorInput, ForumThreadUncheckedCreateWithoutAuthorInput> | ForumThreadCreateWithoutAuthorInput[] | ForumThreadUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: ForumThreadCreateOrConnectWithoutAuthorInput | ForumThreadCreateOrConnectWithoutAuthorInput[]
+    upsert?: ForumThreadUpsertWithWhereUniqueWithoutAuthorInput | ForumThreadUpsertWithWhereUniqueWithoutAuthorInput[]
+    createMany?: ForumThreadCreateManyAuthorInputEnvelope
+    set?: ForumThreadWhereUniqueInput | ForumThreadWhereUniqueInput[]
+    disconnect?: ForumThreadWhereUniqueInput | ForumThreadWhereUniqueInput[]
+    delete?: ForumThreadWhereUniqueInput | ForumThreadWhereUniqueInput[]
+    connect?: ForumThreadWhereUniqueInput | ForumThreadWhereUniqueInput[]
+    update?: ForumThreadUpdateWithWhereUniqueWithoutAuthorInput | ForumThreadUpdateWithWhereUniqueWithoutAuthorInput[]
+    updateMany?: ForumThreadUpdateManyWithWhereWithoutAuthorInput | ForumThreadUpdateManyWithWhereWithoutAuthorInput[]
+    deleteMany?: ForumThreadScalarWhereInput | ForumThreadScalarWhereInput[]
+  }
+
+  export type ForumReplyUpdateManyWithoutAuthorNestedInput = {
+    create?: XOR<ForumReplyCreateWithoutAuthorInput, ForumReplyUncheckedCreateWithoutAuthorInput> | ForumReplyCreateWithoutAuthorInput[] | ForumReplyUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: ForumReplyCreateOrConnectWithoutAuthorInput | ForumReplyCreateOrConnectWithoutAuthorInput[]
+    upsert?: ForumReplyUpsertWithWhereUniqueWithoutAuthorInput | ForumReplyUpsertWithWhereUniqueWithoutAuthorInput[]
+    createMany?: ForumReplyCreateManyAuthorInputEnvelope
+    set?: ForumReplyWhereUniqueInput | ForumReplyWhereUniqueInput[]
+    disconnect?: ForumReplyWhereUniqueInput | ForumReplyWhereUniqueInput[]
+    delete?: ForumReplyWhereUniqueInput | ForumReplyWhereUniqueInput[]
+    connect?: ForumReplyWhereUniqueInput | ForumReplyWhereUniqueInput[]
+    update?: ForumReplyUpdateWithWhereUniqueWithoutAuthorInput | ForumReplyUpdateWithWhereUniqueWithoutAuthorInput[]
+    updateMany?: ForumReplyUpdateManyWithWhereWithoutAuthorInput | ForumReplyUpdateManyWithWhereWithoutAuthorInput[]
+    deleteMany?: ForumReplyScalarWhereInput | ForumReplyScalarWhereInput[]
+  }
+
+  export type CollectionUpdateManyWithoutUserNestedInput = {
+    create?: XOR<CollectionCreateWithoutUserInput, CollectionUncheckedCreateWithoutUserInput> | CollectionCreateWithoutUserInput[] | CollectionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CollectionCreateOrConnectWithoutUserInput | CollectionCreateOrConnectWithoutUserInput[]
+    upsert?: CollectionUpsertWithWhereUniqueWithoutUserInput | CollectionUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: CollectionCreateManyUserInputEnvelope
+    set?: CollectionWhereUniqueInput | CollectionWhereUniqueInput[]
+    disconnect?: CollectionWhereUniqueInput | CollectionWhereUniqueInput[]
+    delete?: CollectionWhereUniqueInput | CollectionWhereUniqueInput[]
+    connect?: CollectionWhereUniqueInput | CollectionWhereUniqueInput[]
+    update?: CollectionUpdateWithWhereUniqueWithoutUserInput | CollectionUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: CollectionUpdateManyWithWhereWithoutUserInput | CollectionUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: CollectionScalarWhereInput | CollectionScalarWhereInput[]
+  }
+
+  export type FollowUpdateManyWithoutFollowingNestedInput = {
+    create?: XOR<FollowCreateWithoutFollowingInput, FollowUncheckedCreateWithoutFollowingInput> | FollowCreateWithoutFollowingInput[] | FollowUncheckedCreateWithoutFollowingInput[]
+    connectOrCreate?: FollowCreateOrConnectWithoutFollowingInput | FollowCreateOrConnectWithoutFollowingInput[]
+    upsert?: FollowUpsertWithWhereUniqueWithoutFollowingInput | FollowUpsertWithWhereUniqueWithoutFollowingInput[]
+    createMany?: FollowCreateManyFollowingInputEnvelope
+    set?: FollowWhereUniqueInput | FollowWhereUniqueInput[]
+    disconnect?: FollowWhereUniqueInput | FollowWhereUniqueInput[]
+    delete?: FollowWhereUniqueInput | FollowWhereUniqueInput[]
+    connect?: FollowWhereUniqueInput | FollowWhereUniqueInput[]
+    update?: FollowUpdateWithWhereUniqueWithoutFollowingInput | FollowUpdateWithWhereUniqueWithoutFollowingInput[]
+    updateMany?: FollowUpdateManyWithWhereWithoutFollowingInput | FollowUpdateManyWithWhereWithoutFollowingInput[]
+    deleteMany?: FollowScalarWhereInput | FollowScalarWhereInput[]
+  }
+
+  export type FollowUpdateManyWithoutFollowerNestedInput = {
+    create?: XOR<FollowCreateWithoutFollowerInput, FollowUncheckedCreateWithoutFollowerInput> | FollowCreateWithoutFollowerInput[] | FollowUncheckedCreateWithoutFollowerInput[]
+    connectOrCreate?: FollowCreateOrConnectWithoutFollowerInput | FollowCreateOrConnectWithoutFollowerInput[]
+    upsert?: FollowUpsertWithWhereUniqueWithoutFollowerInput | FollowUpsertWithWhereUniqueWithoutFollowerInput[]
+    createMany?: FollowCreateManyFollowerInputEnvelope
+    set?: FollowWhereUniqueInput | FollowWhereUniqueInput[]
+    disconnect?: FollowWhereUniqueInput | FollowWhereUniqueInput[]
+    delete?: FollowWhereUniqueInput | FollowWhereUniqueInput[]
+    connect?: FollowWhereUniqueInput | FollowWhereUniqueInput[]
+    update?: FollowUpdateWithWhereUniqueWithoutFollowerInput | FollowUpdateWithWhereUniqueWithoutFollowerInput[]
+    updateMany?: FollowUpdateManyWithWhereWithoutFollowerInput | FollowUpdateManyWithWhereWithoutFollowerInput[]
+    deleteMany?: FollowScalarWhereInput | FollowScalarWhereInput[]
+  }
+
+  export type PhotoUncheckedUpdateManyWithoutAuthorNestedInput = {
+    create?: XOR<PhotoCreateWithoutAuthorInput, PhotoUncheckedCreateWithoutAuthorInput> | PhotoCreateWithoutAuthorInput[] | PhotoUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: PhotoCreateOrConnectWithoutAuthorInput | PhotoCreateOrConnectWithoutAuthorInput[]
+    upsert?: PhotoUpsertWithWhereUniqueWithoutAuthorInput | PhotoUpsertWithWhereUniqueWithoutAuthorInput[]
+    createMany?: PhotoCreateManyAuthorInputEnvelope
+    set?: PhotoWhereUniqueInput | PhotoWhereUniqueInput[]
+    disconnect?: PhotoWhereUniqueInput | PhotoWhereUniqueInput[]
+    delete?: PhotoWhereUniqueInput | PhotoWhereUniqueInput[]
+    connect?: PhotoWhereUniqueInput | PhotoWhereUniqueInput[]
+    update?: PhotoUpdateWithWhereUniqueWithoutAuthorInput | PhotoUpdateWithWhereUniqueWithoutAuthorInput[]
+    updateMany?: PhotoUpdateManyWithWhereWithoutAuthorInput | PhotoUpdateManyWithWhereWithoutAuthorInput[]
+    deleteMany?: PhotoScalarWhereInput | PhotoScalarWhereInput[]
+  }
+
+  export type VoteUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<VoteCreateWithoutUserInput, VoteUncheckedCreateWithoutUserInput> | VoteCreateWithoutUserInput[] | VoteUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: VoteCreateOrConnectWithoutUserInput | VoteCreateOrConnectWithoutUserInput[]
+    upsert?: VoteUpsertWithWhereUniqueWithoutUserInput | VoteUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: VoteCreateManyUserInputEnvelope
+    set?: VoteWhereUniqueInput | VoteWhereUniqueInput[]
+    disconnect?: VoteWhereUniqueInput | VoteWhereUniqueInput[]
+    delete?: VoteWhereUniqueInput | VoteWhereUniqueInput[]
+    connect?: VoteWhereUniqueInput | VoteWhereUniqueInput[]
+    update?: VoteUpdateWithWhereUniqueWithoutUserInput | VoteUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: VoteUpdateManyWithWhereWithoutUserInput | VoteUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: VoteScalarWhereInput | VoteScalarWhereInput[]
+  }
+
+  export type CommentUncheckedUpdateManyWithoutAuthorNestedInput = {
+    create?: XOR<CommentCreateWithoutAuthorInput, CommentUncheckedCreateWithoutAuthorInput> | CommentCreateWithoutAuthorInput[] | CommentUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutAuthorInput | CommentCreateOrConnectWithoutAuthorInput[]
+    upsert?: CommentUpsertWithWhereUniqueWithoutAuthorInput | CommentUpsertWithWhereUniqueWithoutAuthorInput[]
+    createMany?: CommentCreateManyAuthorInputEnvelope
+    set?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    disconnect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    delete?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    update?: CommentUpdateWithWhereUniqueWithoutAuthorInput | CommentUpdateWithWhereUniqueWithoutAuthorInput[]
+    updateMany?: CommentUpdateManyWithWhereWithoutAuthorInput | CommentUpdateManyWithWhereWithoutAuthorInput[]
+    deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
+  }
+
+  export type AwardUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<AwardCreateWithoutUserInput, AwardUncheckedCreateWithoutUserInput> | AwardCreateWithoutUserInput[] | AwardUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AwardCreateOrConnectWithoutUserInput | AwardCreateOrConnectWithoutUserInput[]
+    upsert?: AwardUpsertWithWhereUniqueWithoutUserInput | AwardUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: AwardCreateManyUserInputEnvelope
+    set?: AwardWhereUniqueInput | AwardWhereUniqueInput[]
+    disconnect?: AwardWhereUniqueInput | AwardWhereUniqueInput[]
+    delete?: AwardWhereUniqueInput | AwardWhereUniqueInput[]
+    connect?: AwardWhereUniqueInput | AwardWhereUniqueInput[]
+    update?: AwardUpdateWithWhereUniqueWithoutUserInput | AwardUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: AwardUpdateManyWithWhereWithoutUserInput | AwardUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: AwardScalarWhereInput | AwardScalarWhereInput[]
+  }
+
+  export type ForumThreadUncheckedUpdateManyWithoutAuthorNestedInput = {
+    create?: XOR<ForumThreadCreateWithoutAuthorInput, ForumThreadUncheckedCreateWithoutAuthorInput> | ForumThreadCreateWithoutAuthorInput[] | ForumThreadUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: ForumThreadCreateOrConnectWithoutAuthorInput | ForumThreadCreateOrConnectWithoutAuthorInput[]
+    upsert?: ForumThreadUpsertWithWhereUniqueWithoutAuthorInput | ForumThreadUpsertWithWhereUniqueWithoutAuthorInput[]
+    createMany?: ForumThreadCreateManyAuthorInputEnvelope
+    set?: ForumThreadWhereUniqueInput | ForumThreadWhereUniqueInput[]
+    disconnect?: ForumThreadWhereUniqueInput | ForumThreadWhereUniqueInput[]
+    delete?: ForumThreadWhereUniqueInput | ForumThreadWhereUniqueInput[]
+    connect?: ForumThreadWhereUniqueInput | ForumThreadWhereUniqueInput[]
+    update?: ForumThreadUpdateWithWhereUniqueWithoutAuthorInput | ForumThreadUpdateWithWhereUniqueWithoutAuthorInput[]
+    updateMany?: ForumThreadUpdateManyWithWhereWithoutAuthorInput | ForumThreadUpdateManyWithWhereWithoutAuthorInput[]
+    deleteMany?: ForumThreadScalarWhereInput | ForumThreadScalarWhereInput[]
+  }
+
+  export type ForumReplyUncheckedUpdateManyWithoutAuthorNestedInput = {
+    create?: XOR<ForumReplyCreateWithoutAuthorInput, ForumReplyUncheckedCreateWithoutAuthorInput> | ForumReplyCreateWithoutAuthorInput[] | ForumReplyUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: ForumReplyCreateOrConnectWithoutAuthorInput | ForumReplyCreateOrConnectWithoutAuthorInput[]
+    upsert?: ForumReplyUpsertWithWhereUniqueWithoutAuthorInput | ForumReplyUpsertWithWhereUniqueWithoutAuthorInput[]
+    createMany?: ForumReplyCreateManyAuthorInputEnvelope
+    set?: ForumReplyWhereUniqueInput | ForumReplyWhereUniqueInput[]
+    disconnect?: ForumReplyWhereUniqueInput | ForumReplyWhereUniqueInput[]
+    delete?: ForumReplyWhereUniqueInput | ForumReplyWhereUniqueInput[]
+    connect?: ForumReplyWhereUniqueInput | ForumReplyWhereUniqueInput[]
+    update?: ForumReplyUpdateWithWhereUniqueWithoutAuthorInput | ForumReplyUpdateWithWhereUniqueWithoutAuthorInput[]
+    updateMany?: ForumReplyUpdateManyWithWhereWithoutAuthorInput | ForumReplyUpdateManyWithWhereWithoutAuthorInput[]
+    deleteMany?: ForumReplyScalarWhereInput | ForumReplyScalarWhereInput[]
+  }
+
+  export type CollectionUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<CollectionCreateWithoutUserInput, CollectionUncheckedCreateWithoutUserInput> | CollectionCreateWithoutUserInput[] | CollectionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CollectionCreateOrConnectWithoutUserInput | CollectionCreateOrConnectWithoutUserInput[]
+    upsert?: CollectionUpsertWithWhereUniqueWithoutUserInput | CollectionUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: CollectionCreateManyUserInputEnvelope
+    set?: CollectionWhereUniqueInput | CollectionWhereUniqueInput[]
+    disconnect?: CollectionWhereUniqueInput | CollectionWhereUniqueInput[]
+    delete?: CollectionWhereUniqueInput | CollectionWhereUniqueInput[]
+    connect?: CollectionWhereUniqueInput | CollectionWhereUniqueInput[]
+    update?: CollectionUpdateWithWhereUniqueWithoutUserInput | CollectionUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: CollectionUpdateManyWithWhereWithoutUserInput | CollectionUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: CollectionScalarWhereInput | CollectionScalarWhereInput[]
+  }
+
+  export type FollowUncheckedUpdateManyWithoutFollowingNestedInput = {
+    create?: XOR<FollowCreateWithoutFollowingInput, FollowUncheckedCreateWithoutFollowingInput> | FollowCreateWithoutFollowingInput[] | FollowUncheckedCreateWithoutFollowingInput[]
+    connectOrCreate?: FollowCreateOrConnectWithoutFollowingInput | FollowCreateOrConnectWithoutFollowingInput[]
+    upsert?: FollowUpsertWithWhereUniqueWithoutFollowingInput | FollowUpsertWithWhereUniqueWithoutFollowingInput[]
+    createMany?: FollowCreateManyFollowingInputEnvelope
+    set?: FollowWhereUniqueInput | FollowWhereUniqueInput[]
+    disconnect?: FollowWhereUniqueInput | FollowWhereUniqueInput[]
+    delete?: FollowWhereUniqueInput | FollowWhereUniqueInput[]
+    connect?: FollowWhereUniqueInput | FollowWhereUniqueInput[]
+    update?: FollowUpdateWithWhereUniqueWithoutFollowingInput | FollowUpdateWithWhereUniqueWithoutFollowingInput[]
+    updateMany?: FollowUpdateManyWithWhereWithoutFollowingInput | FollowUpdateManyWithWhereWithoutFollowingInput[]
+    deleteMany?: FollowScalarWhereInput | FollowScalarWhereInput[]
+  }
+
+  export type FollowUncheckedUpdateManyWithoutFollowerNestedInput = {
+    create?: XOR<FollowCreateWithoutFollowerInput, FollowUncheckedCreateWithoutFollowerInput> | FollowCreateWithoutFollowerInput[] | FollowUncheckedCreateWithoutFollowerInput[]
+    connectOrCreate?: FollowCreateOrConnectWithoutFollowerInput | FollowCreateOrConnectWithoutFollowerInput[]
+    upsert?: FollowUpsertWithWhereUniqueWithoutFollowerInput | FollowUpsertWithWhereUniqueWithoutFollowerInput[]
+    createMany?: FollowCreateManyFollowerInputEnvelope
+    set?: FollowWhereUniqueInput | FollowWhereUniqueInput[]
+    disconnect?: FollowWhereUniqueInput | FollowWhereUniqueInput[]
+    delete?: FollowWhereUniqueInput | FollowWhereUniqueInput[]
+    connect?: FollowWhereUniqueInput | FollowWhereUniqueInput[]
+    update?: FollowUpdateWithWhereUniqueWithoutFollowerInput | FollowUpdateWithWhereUniqueWithoutFollowerInput[]
+    updateMany?: FollowUpdateManyWithWhereWithoutFollowerInput | FollowUpdateManyWithWhereWithoutFollowerInput[]
+    deleteMany?: FollowScalarWhereInput | FollowScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutPhotosInput = {
+    create?: XOR<UserCreateWithoutPhotosInput, UserUncheckedCreateWithoutPhotosInput>
+    connectOrCreate?: UserCreateOrConnectWithoutPhotosInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type VoteCreateNestedManyWithoutPhotoInput = {
+    create?: XOR<VoteCreateWithoutPhotoInput, VoteUncheckedCreateWithoutPhotoInput> | VoteCreateWithoutPhotoInput[] | VoteUncheckedCreateWithoutPhotoInput[]
+    connectOrCreate?: VoteCreateOrConnectWithoutPhotoInput | VoteCreateOrConnectWithoutPhotoInput[]
+    createMany?: VoteCreateManyPhotoInputEnvelope
+    connect?: VoteWhereUniqueInput | VoteWhereUniqueInput[]
+  }
+
+  export type CommentCreateNestedManyWithoutPhotoInput = {
+    create?: XOR<CommentCreateWithoutPhotoInput, CommentUncheckedCreateWithoutPhotoInput> | CommentCreateWithoutPhotoInput[] | CommentUncheckedCreateWithoutPhotoInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutPhotoInput | CommentCreateOrConnectWithoutPhotoInput[]
+    createMany?: CommentCreateManyPhotoInputEnvelope
+    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+  }
+
+  export type AwardCreateNestedManyWithoutPhotoInput = {
+    create?: XOR<AwardCreateWithoutPhotoInput, AwardUncheckedCreateWithoutPhotoInput> | AwardCreateWithoutPhotoInput[] | AwardUncheckedCreateWithoutPhotoInput[]
+    connectOrCreate?: AwardCreateOrConnectWithoutPhotoInput | AwardCreateOrConnectWithoutPhotoInput[]
+    createMany?: AwardCreateManyPhotoInputEnvelope
+    connect?: AwardWhereUniqueInput | AwardWhereUniqueInput[]
+  }
+
+  export type ForumReplyCreateNestedManyWithoutEmbeddedPhotoInput = {
+    create?: XOR<ForumReplyCreateWithoutEmbeddedPhotoInput, ForumReplyUncheckedCreateWithoutEmbeddedPhotoInput> | ForumReplyCreateWithoutEmbeddedPhotoInput[] | ForumReplyUncheckedCreateWithoutEmbeddedPhotoInput[]
+    connectOrCreate?: ForumReplyCreateOrConnectWithoutEmbeddedPhotoInput | ForumReplyCreateOrConnectWithoutEmbeddedPhotoInput[]
+    createMany?: ForumReplyCreateManyEmbeddedPhotoInputEnvelope
+    connect?: ForumReplyWhereUniqueInput | ForumReplyWhereUniqueInput[]
+  }
+
+  export type CollectionItemCreateNestedManyWithoutPhotoInput = {
+    create?: XOR<CollectionItemCreateWithoutPhotoInput, CollectionItemUncheckedCreateWithoutPhotoInput> | CollectionItemCreateWithoutPhotoInput[] | CollectionItemUncheckedCreateWithoutPhotoInput[]
+    connectOrCreate?: CollectionItemCreateOrConnectWithoutPhotoInput | CollectionItemCreateOrConnectWithoutPhotoInput[]
+    createMany?: CollectionItemCreateManyPhotoInputEnvelope
+    connect?: CollectionItemWhereUniqueInput | CollectionItemWhereUniqueInput[]
+  }
+
+  export type VoteUncheckedCreateNestedManyWithoutPhotoInput = {
+    create?: XOR<VoteCreateWithoutPhotoInput, VoteUncheckedCreateWithoutPhotoInput> | VoteCreateWithoutPhotoInput[] | VoteUncheckedCreateWithoutPhotoInput[]
+    connectOrCreate?: VoteCreateOrConnectWithoutPhotoInput | VoteCreateOrConnectWithoutPhotoInput[]
+    createMany?: VoteCreateManyPhotoInputEnvelope
+    connect?: VoteWhereUniqueInput | VoteWhereUniqueInput[]
+  }
+
+  export type CommentUncheckedCreateNestedManyWithoutPhotoInput = {
+    create?: XOR<CommentCreateWithoutPhotoInput, CommentUncheckedCreateWithoutPhotoInput> | CommentCreateWithoutPhotoInput[] | CommentUncheckedCreateWithoutPhotoInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutPhotoInput | CommentCreateOrConnectWithoutPhotoInput[]
+    createMany?: CommentCreateManyPhotoInputEnvelope
+    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+  }
+
+  export type AwardUncheckedCreateNestedManyWithoutPhotoInput = {
+    create?: XOR<AwardCreateWithoutPhotoInput, AwardUncheckedCreateWithoutPhotoInput> | AwardCreateWithoutPhotoInput[] | AwardUncheckedCreateWithoutPhotoInput[]
+    connectOrCreate?: AwardCreateOrConnectWithoutPhotoInput | AwardCreateOrConnectWithoutPhotoInput[]
+    createMany?: AwardCreateManyPhotoInputEnvelope
+    connect?: AwardWhereUniqueInput | AwardWhereUniqueInput[]
+  }
+
+  export type ForumReplyUncheckedCreateNestedManyWithoutEmbeddedPhotoInput = {
+    create?: XOR<ForumReplyCreateWithoutEmbeddedPhotoInput, ForumReplyUncheckedCreateWithoutEmbeddedPhotoInput> | ForumReplyCreateWithoutEmbeddedPhotoInput[] | ForumReplyUncheckedCreateWithoutEmbeddedPhotoInput[]
+    connectOrCreate?: ForumReplyCreateOrConnectWithoutEmbeddedPhotoInput | ForumReplyCreateOrConnectWithoutEmbeddedPhotoInput[]
+    createMany?: ForumReplyCreateManyEmbeddedPhotoInputEnvelope
+    connect?: ForumReplyWhereUniqueInput | ForumReplyWhereUniqueInput[]
+  }
+
+  export type CollectionItemUncheckedCreateNestedManyWithoutPhotoInput = {
+    create?: XOR<CollectionItemCreateWithoutPhotoInput, CollectionItemUncheckedCreateWithoutPhotoInput> | CollectionItemCreateWithoutPhotoInput[] | CollectionItemUncheckedCreateWithoutPhotoInput[]
+    connectOrCreate?: CollectionItemCreateOrConnectWithoutPhotoInput | CollectionItemCreateOrConnectWithoutPhotoInput[]
+    createMany?: CollectionItemCreateManyPhotoInputEnvelope
+    connect?: CollectionItemWhereUniqueInput | CollectionItemWhereUniqueInput[]
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type EnumPhotoCategoryFieldUpdateOperationsInput = {
+    set?: $Enums.PhotoCategory
+  }
+
+  export type EnumPhotoStatusFieldUpdateOperationsInput = {
+    set?: $Enums.PhotoStatus
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
+  export type UserUpdateOneRequiredWithoutPhotosNestedInput = {
+    create?: XOR<UserCreateWithoutPhotosInput, UserUncheckedCreateWithoutPhotosInput>
+    connectOrCreate?: UserCreateOrConnectWithoutPhotosInput
+    upsert?: UserUpsertWithoutPhotosInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutPhotosInput, UserUpdateWithoutPhotosInput>, UserUncheckedUpdateWithoutPhotosInput>
+  }
+
+  export type VoteUpdateManyWithoutPhotoNestedInput = {
+    create?: XOR<VoteCreateWithoutPhotoInput, VoteUncheckedCreateWithoutPhotoInput> | VoteCreateWithoutPhotoInput[] | VoteUncheckedCreateWithoutPhotoInput[]
+    connectOrCreate?: VoteCreateOrConnectWithoutPhotoInput | VoteCreateOrConnectWithoutPhotoInput[]
+    upsert?: VoteUpsertWithWhereUniqueWithoutPhotoInput | VoteUpsertWithWhereUniqueWithoutPhotoInput[]
+    createMany?: VoteCreateManyPhotoInputEnvelope
+    set?: VoteWhereUniqueInput | VoteWhereUniqueInput[]
+    disconnect?: VoteWhereUniqueInput | VoteWhereUniqueInput[]
+    delete?: VoteWhereUniqueInput | VoteWhereUniqueInput[]
+    connect?: VoteWhereUniqueInput | VoteWhereUniqueInput[]
+    update?: VoteUpdateWithWhereUniqueWithoutPhotoInput | VoteUpdateWithWhereUniqueWithoutPhotoInput[]
+    updateMany?: VoteUpdateManyWithWhereWithoutPhotoInput | VoteUpdateManyWithWhereWithoutPhotoInput[]
+    deleteMany?: VoteScalarWhereInput | VoteScalarWhereInput[]
+  }
+
+  export type CommentUpdateManyWithoutPhotoNestedInput = {
+    create?: XOR<CommentCreateWithoutPhotoInput, CommentUncheckedCreateWithoutPhotoInput> | CommentCreateWithoutPhotoInput[] | CommentUncheckedCreateWithoutPhotoInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutPhotoInput | CommentCreateOrConnectWithoutPhotoInput[]
+    upsert?: CommentUpsertWithWhereUniqueWithoutPhotoInput | CommentUpsertWithWhereUniqueWithoutPhotoInput[]
+    createMany?: CommentCreateManyPhotoInputEnvelope
+    set?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    disconnect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    delete?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    update?: CommentUpdateWithWhereUniqueWithoutPhotoInput | CommentUpdateWithWhereUniqueWithoutPhotoInput[]
+    updateMany?: CommentUpdateManyWithWhereWithoutPhotoInput | CommentUpdateManyWithWhereWithoutPhotoInput[]
+    deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
+  }
+
+  export type AwardUpdateManyWithoutPhotoNestedInput = {
+    create?: XOR<AwardCreateWithoutPhotoInput, AwardUncheckedCreateWithoutPhotoInput> | AwardCreateWithoutPhotoInput[] | AwardUncheckedCreateWithoutPhotoInput[]
+    connectOrCreate?: AwardCreateOrConnectWithoutPhotoInput | AwardCreateOrConnectWithoutPhotoInput[]
+    upsert?: AwardUpsertWithWhereUniqueWithoutPhotoInput | AwardUpsertWithWhereUniqueWithoutPhotoInput[]
+    createMany?: AwardCreateManyPhotoInputEnvelope
+    set?: AwardWhereUniqueInput | AwardWhereUniqueInput[]
+    disconnect?: AwardWhereUniqueInput | AwardWhereUniqueInput[]
+    delete?: AwardWhereUniqueInput | AwardWhereUniqueInput[]
+    connect?: AwardWhereUniqueInput | AwardWhereUniqueInput[]
+    update?: AwardUpdateWithWhereUniqueWithoutPhotoInput | AwardUpdateWithWhereUniqueWithoutPhotoInput[]
+    updateMany?: AwardUpdateManyWithWhereWithoutPhotoInput | AwardUpdateManyWithWhereWithoutPhotoInput[]
+    deleteMany?: AwardScalarWhereInput | AwardScalarWhereInput[]
+  }
+
+  export type ForumReplyUpdateManyWithoutEmbeddedPhotoNestedInput = {
+    create?: XOR<ForumReplyCreateWithoutEmbeddedPhotoInput, ForumReplyUncheckedCreateWithoutEmbeddedPhotoInput> | ForumReplyCreateWithoutEmbeddedPhotoInput[] | ForumReplyUncheckedCreateWithoutEmbeddedPhotoInput[]
+    connectOrCreate?: ForumReplyCreateOrConnectWithoutEmbeddedPhotoInput | ForumReplyCreateOrConnectWithoutEmbeddedPhotoInput[]
+    upsert?: ForumReplyUpsertWithWhereUniqueWithoutEmbeddedPhotoInput | ForumReplyUpsertWithWhereUniqueWithoutEmbeddedPhotoInput[]
+    createMany?: ForumReplyCreateManyEmbeddedPhotoInputEnvelope
+    set?: ForumReplyWhereUniqueInput | ForumReplyWhereUniqueInput[]
+    disconnect?: ForumReplyWhereUniqueInput | ForumReplyWhereUniqueInput[]
+    delete?: ForumReplyWhereUniqueInput | ForumReplyWhereUniqueInput[]
+    connect?: ForumReplyWhereUniqueInput | ForumReplyWhereUniqueInput[]
+    update?: ForumReplyUpdateWithWhereUniqueWithoutEmbeddedPhotoInput | ForumReplyUpdateWithWhereUniqueWithoutEmbeddedPhotoInput[]
+    updateMany?: ForumReplyUpdateManyWithWhereWithoutEmbeddedPhotoInput | ForumReplyUpdateManyWithWhereWithoutEmbeddedPhotoInput[]
+    deleteMany?: ForumReplyScalarWhereInput | ForumReplyScalarWhereInput[]
+  }
+
+  export type CollectionItemUpdateManyWithoutPhotoNestedInput = {
+    create?: XOR<CollectionItemCreateWithoutPhotoInput, CollectionItemUncheckedCreateWithoutPhotoInput> | CollectionItemCreateWithoutPhotoInput[] | CollectionItemUncheckedCreateWithoutPhotoInput[]
+    connectOrCreate?: CollectionItemCreateOrConnectWithoutPhotoInput | CollectionItemCreateOrConnectWithoutPhotoInput[]
+    upsert?: CollectionItemUpsertWithWhereUniqueWithoutPhotoInput | CollectionItemUpsertWithWhereUniqueWithoutPhotoInput[]
+    createMany?: CollectionItemCreateManyPhotoInputEnvelope
+    set?: CollectionItemWhereUniqueInput | CollectionItemWhereUniqueInput[]
+    disconnect?: CollectionItemWhereUniqueInput | CollectionItemWhereUniqueInput[]
+    delete?: CollectionItemWhereUniqueInput | CollectionItemWhereUniqueInput[]
+    connect?: CollectionItemWhereUniqueInput | CollectionItemWhereUniqueInput[]
+    update?: CollectionItemUpdateWithWhereUniqueWithoutPhotoInput | CollectionItemUpdateWithWhereUniqueWithoutPhotoInput[]
+    updateMany?: CollectionItemUpdateManyWithWhereWithoutPhotoInput | CollectionItemUpdateManyWithWhereWithoutPhotoInput[]
+    deleteMany?: CollectionItemScalarWhereInput | CollectionItemScalarWhereInput[]
+  }
+
+  export type VoteUncheckedUpdateManyWithoutPhotoNestedInput = {
+    create?: XOR<VoteCreateWithoutPhotoInput, VoteUncheckedCreateWithoutPhotoInput> | VoteCreateWithoutPhotoInput[] | VoteUncheckedCreateWithoutPhotoInput[]
+    connectOrCreate?: VoteCreateOrConnectWithoutPhotoInput | VoteCreateOrConnectWithoutPhotoInput[]
+    upsert?: VoteUpsertWithWhereUniqueWithoutPhotoInput | VoteUpsertWithWhereUniqueWithoutPhotoInput[]
+    createMany?: VoteCreateManyPhotoInputEnvelope
+    set?: VoteWhereUniqueInput | VoteWhereUniqueInput[]
+    disconnect?: VoteWhereUniqueInput | VoteWhereUniqueInput[]
+    delete?: VoteWhereUniqueInput | VoteWhereUniqueInput[]
+    connect?: VoteWhereUniqueInput | VoteWhereUniqueInput[]
+    update?: VoteUpdateWithWhereUniqueWithoutPhotoInput | VoteUpdateWithWhereUniqueWithoutPhotoInput[]
+    updateMany?: VoteUpdateManyWithWhereWithoutPhotoInput | VoteUpdateManyWithWhereWithoutPhotoInput[]
+    deleteMany?: VoteScalarWhereInput | VoteScalarWhereInput[]
+  }
+
+  export type CommentUncheckedUpdateManyWithoutPhotoNestedInput = {
+    create?: XOR<CommentCreateWithoutPhotoInput, CommentUncheckedCreateWithoutPhotoInput> | CommentCreateWithoutPhotoInput[] | CommentUncheckedCreateWithoutPhotoInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutPhotoInput | CommentCreateOrConnectWithoutPhotoInput[]
+    upsert?: CommentUpsertWithWhereUniqueWithoutPhotoInput | CommentUpsertWithWhereUniqueWithoutPhotoInput[]
+    createMany?: CommentCreateManyPhotoInputEnvelope
+    set?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    disconnect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    delete?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    update?: CommentUpdateWithWhereUniqueWithoutPhotoInput | CommentUpdateWithWhereUniqueWithoutPhotoInput[]
+    updateMany?: CommentUpdateManyWithWhereWithoutPhotoInput | CommentUpdateManyWithWhereWithoutPhotoInput[]
+    deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
+  }
+
+  export type AwardUncheckedUpdateManyWithoutPhotoNestedInput = {
+    create?: XOR<AwardCreateWithoutPhotoInput, AwardUncheckedCreateWithoutPhotoInput> | AwardCreateWithoutPhotoInput[] | AwardUncheckedCreateWithoutPhotoInput[]
+    connectOrCreate?: AwardCreateOrConnectWithoutPhotoInput | AwardCreateOrConnectWithoutPhotoInput[]
+    upsert?: AwardUpsertWithWhereUniqueWithoutPhotoInput | AwardUpsertWithWhereUniqueWithoutPhotoInput[]
+    createMany?: AwardCreateManyPhotoInputEnvelope
+    set?: AwardWhereUniqueInput | AwardWhereUniqueInput[]
+    disconnect?: AwardWhereUniqueInput | AwardWhereUniqueInput[]
+    delete?: AwardWhereUniqueInput | AwardWhereUniqueInput[]
+    connect?: AwardWhereUniqueInput | AwardWhereUniqueInput[]
+    update?: AwardUpdateWithWhereUniqueWithoutPhotoInput | AwardUpdateWithWhereUniqueWithoutPhotoInput[]
+    updateMany?: AwardUpdateManyWithWhereWithoutPhotoInput | AwardUpdateManyWithWhereWithoutPhotoInput[]
+    deleteMany?: AwardScalarWhereInput | AwardScalarWhereInput[]
+  }
+
+  export type ForumReplyUncheckedUpdateManyWithoutEmbeddedPhotoNestedInput = {
+    create?: XOR<ForumReplyCreateWithoutEmbeddedPhotoInput, ForumReplyUncheckedCreateWithoutEmbeddedPhotoInput> | ForumReplyCreateWithoutEmbeddedPhotoInput[] | ForumReplyUncheckedCreateWithoutEmbeddedPhotoInput[]
+    connectOrCreate?: ForumReplyCreateOrConnectWithoutEmbeddedPhotoInput | ForumReplyCreateOrConnectWithoutEmbeddedPhotoInput[]
+    upsert?: ForumReplyUpsertWithWhereUniqueWithoutEmbeddedPhotoInput | ForumReplyUpsertWithWhereUniqueWithoutEmbeddedPhotoInput[]
+    createMany?: ForumReplyCreateManyEmbeddedPhotoInputEnvelope
+    set?: ForumReplyWhereUniqueInput | ForumReplyWhereUniqueInput[]
+    disconnect?: ForumReplyWhereUniqueInput | ForumReplyWhereUniqueInput[]
+    delete?: ForumReplyWhereUniqueInput | ForumReplyWhereUniqueInput[]
+    connect?: ForumReplyWhereUniqueInput | ForumReplyWhereUniqueInput[]
+    update?: ForumReplyUpdateWithWhereUniqueWithoutEmbeddedPhotoInput | ForumReplyUpdateWithWhereUniqueWithoutEmbeddedPhotoInput[]
+    updateMany?: ForumReplyUpdateManyWithWhereWithoutEmbeddedPhotoInput | ForumReplyUpdateManyWithWhereWithoutEmbeddedPhotoInput[]
+    deleteMany?: ForumReplyScalarWhereInput | ForumReplyScalarWhereInput[]
+  }
+
+  export type CollectionItemUncheckedUpdateManyWithoutPhotoNestedInput = {
+    create?: XOR<CollectionItemCreateWithoutPhotoInput, CollectionItemUncheckedCreateWithoutPhotoInput> | CollectionItemCreateWithoutPhotoInput[] | CollectionItemUncheckedCreateWithoutPhotoInput[]
+    connectOrCreate?: CollectionItemCreateOrConnectWithoutPhotoInput | CollectionItemCreateOrConnectWithoutPhotoInput[]
+    upsert?: CollectionItemUpsertWithWhereUniqueWithoutPhotoInput | CollectionItemUpsertWithWhereUniqueWithoutPhotoInput[]
+    createMany?: CollectionItemCreateManyPhotoInputEnvelope
+    set?: CollectionItemWhereUniqueInput | CollectionItemWhereUniqueInput[]
+    disconnect?: CollectionItemWhereUniqueInput | CollectionItemWhereUniqueInput[]
+    delete?: CollectionItemWhereUniqueInput | CollectionItemWhereUniqueInput[]
+    connect?: CollectionItemWhereUniqueInput | CollectionItemWhereUniqueInput[]
+    update?: CollectionItemUpdateWithWhereUniqueWithoutPhotoInput | CollectionItemUpdateWithWhereUniqueWithoutPhotoInput[]
+    updateMany?: CollectionItemUpdateManyWithWhereWithoutPhotoInput | CollectionItemUpdateManyWithWhereWithoutPhotoInput[]
+    deleteMany?: CollectionItemScalarWhereInput | CollectionItemScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutVotesInput = {
+    create?: XOR<UserCreateWithoutVotesInput, UserUncheckedCreateWithoutVotesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutVotesInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type PhotoCreateNestedOneWithoutVotesInput = {
+    create?: XOR<PhotoCreateWithoutVotesInput, PhotoUncheckedCreateWithoutVotesInput>
+    connectOrCreate?: PhotoCreateOrConnectWithoutVotesInput
+    connect?: PhotoWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutVotesNestedInput = {
+    create?: XOR<UserCreateWithoutVotesInput, UserUncheckedCreateWithoutVotesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutVotesInput
+    upsert?: UserUpsertWithoutVotesInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutVotesInput, UserUpdateWithoutVotesInput>, UserUncheckedUpdateWithoutVotesInput>
+  }
+
+  export type PhotoUpdateOneRequiredWithoutVotesNestedInput = {
+    create?: XOR<PhotoCreateWithoutVotesInput, PhotoUncheckedCreateWithoutVotesInput>
+    connectOrCreate?: PhotoCreateOrConnectWithoutVotesInput
+    upsert?: PhotoUpsertWithoutVotesInput
+    connect?: PhotoWhereUniqueInput
+    update?: XOR<XOR<PhotoUpdateToOneWithWhereWithoutVotesInput, PhotoUpdateWithoutVotesInput>, PhotoUncheckedUpdateWithoutVotesInput>
+  }
+
+  export type UserCreateNestedOneWithoutCommentsInput = {
+    create?: XOR<UserCreateWithoutCommentsInput, UserUncheckedCreateWithoutCommentsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCommentsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type PhotoCreateNestedOneWithoutCommentsInput = {
+    create?: XOR<PhotoCreateWithoutCommentsInput, PhotoUncheckedCreateWithoutCommentsInput>
+    connectOrCreate?: PhotoCreateOrConnectWithoutCommentsInput
+    connect?: PhotoWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutCommentsNestedInput = {
+    create?: XOR<UserCreateWithoutCommentsInput, UserUncheckedCreateWithoutCommentsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCommentsInput
+    upsert?: UserUpsertWithoutCommentsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCommentsInput, UserUpdateWithoutCommentsInput>, UserUncheckedUpdateWithoutCommentsInput>
+  }
+
+  export type PhotoUpdateOneRequiredWithoutCommentsNestedInput = {
+    create?: XOR<PhotoCreateWithoutCommentsInput, PhotoUncheckedCreateWithoutCommentsInput>
+    connectOrCreate?: PhotoCreateOrConnectWithoutCommentsInput
+    upsert?: PhotoUpsertWithoutCommentsInput
+    connect?: PhotoWhereUniqueInput
+    update?: XOR<XOR<PhotoUpdateToOneWithWhereWithoutCommentsInput, PhotoUpdateWithoutCommentsInput>, PhotoUncheckedUpdateWithoutCommentsInput>
+  }
+
+  export type PhotoCreateNestedOneWithoutAwardsInput = {
+    create?: XOR<PhotoCreateWithoutAwardsInput, PhotoUncheckedCreateWithoutAwardsInput>
+    connectOrCreate?: PhotoCreateOrConnectWithoutAwardsInput
+    connect?: PhotoWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutAwardsInput = {
+    create?: XOR<UserCreateWithoutAwardsInput, UserUncheckedCreateWithoutAwardsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutAwardsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type EnumAwardTypeFieldUpdateOperationsInput = {
+    set?: $Enums.AwardType
+  }
+
+  export type PhotoUpdateOneRequiredWithoutAwardsNestedInput = {
+    create?: XOR<PhotoCreateWithoutAwardsInput, PhotoUncheckedCreateWithoutAwardsInput>
+    connectOrCreate?: PhotoCreateOrConnectWithoutAwardsInput
+    upsert?: PhotoUpsertWithoutAwardsInput
+    connect?: PhotoWhereUniqueInput
+    update?: XOR<XOR<PhotoUpdateToOneWithWhereWithoutAwardsInput, PhotoUpdateWithoutAwardsInput>, PhotoUncheckedUpdateWithoutAwardsInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutAwardsNestedInput = {
+    create?: XOR<UserCreateWithoutAwardsInput, UserUncheckedCreateWithoutAwardsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutAwardsInput
+    upsert?: UserUpsertWithoutAwardsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAwardsInput, UserUpdateWithoutAwardsInput>, UserUncheckedUpdateWithoutAwardsInput>
+  }
+
+  export type ForumThreadCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<ForumThreadCreateWithoutCategoryInput, ForumThreadUncheckedCreateWithoutCategoryInput> | ForumThreadCreateWithoutCategoryInput[] | ForumThreadUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: ForumThreadCreateOrConnectWithoutCategoryInput | ForumThreadCreateOrConnectWithoutCategoryInput[]
+    createMany?: ForumThreadCreateManyCategoryInputEnvelope
+    connect?: ForumThreadWhereUniqueInput | ForumThreadWhereUniqueInput[]
+  }
+
+  export type ForumThreadUncheckedCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<ForumThreadCreateWithoutCategoryInput, ForumThreadUncheckedCreateWithoutCategoryInput> | ForumThreadCreateWithoutCategoryInput[] | ForumThreadUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: ForumThreadCreateOrConnectWithoutCategoryInput | ForumThreadCreateOrConnectWithoutCategoryInput[]
+    createMany?: ForumThreadCreateManyCategoryInputEnvelope
+    connect?: ForumThreadWhereUniqueInput | ForumThreadWhereUniqueInput[]
+  }
+
+  export type EnumForumCategorySlugFieldUpdateOperationsInput = {
+    set?: $Enums.ForumCategorySlug
+  }
+
+  export type ForumThreadUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<ForumThreadCreateWithoutCategoryInput, ForumThreadUncheckedCreateWithoutCategoryInput> | ForumThreadCreateWithoutCategoryInput[] | ForumThreadUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: ForumThreadCreateOrConnectWithoutCategoryInput | ForumThreadCreateOrConnectWithoutCategoryInput[]
+    upsert?: ForumThreadUpsertWithWhereUniqueWithoutCategoryInput | ForumThreadUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: ForumThreadCreateManyCategoryInputEnvelope
+    set?: ForumThreadWhereUniqueInput | ForumThreadWhereUniqueInput[]
+    disconnect?: ForumThreadWhereUniqueInput | ForumThreadWhereUniqueInput[]
+    delete?: ForumThreadWhereUniqueInput | ForumThreadWhereUniqueInput[]
+    connect?: ForumThreadWhereUniqueInput | ForumThreadWhereUniqueInput[]
+    update?: ForumThreadUpdateWithWhereUniqueWithoutCategoryInput | ForumThreadUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: ForumThreadUpdateManyWithWhereWithoutCategoryInput | ForumThreadUpdateManyWithWhereWithoutCategoryInput[]
+    deleteMany?: ForumThreadScalarWhereInput | ForumThreadScalarWhereInput[]
+  }
+
+  export type ForumThreadUncheckedUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<ForumThreadCreateWithoutCategoryInput, ForumThreadUncheckedCreateWithoutCategoryInput> | ForumThreadCreateWithoutCategoryInput[] | ForumThreadUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: ForumThreadCreateOrConnectWithoutCategoryInput | ForumThreadCreateOrConnectWithoutCategoryInput[]
+    upsert?: ForumThreadUpsertWithWhereUniqueWithoutCategoryInput | ForumThreadUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: ForumThreadCreateManyCategoryInputEnvelope
+    set?: ForumThreadWhereUniqueInput | ForumThreadWhereUniqueInput[]
+    disconnect?: ForumThreadWhereUniqueInput | ForumThreadWhereUniqueInput[]
+    delete?: ForumThreadWhereUniqueInput | ForumThreadWhereUniqueInput[]
+    connect?: ForumThreadWhereUniqueInput | ForumThreadWhereUniqueInput[]
+    update?: ForumThreadUpdateWithWhereUniqueWithoutCategoryInput | ForumThreadUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: ForumThreadUpdateManyWithWhereWithoutCategoryInput | ForumThreadUpdateManyWithWhereWithoutCategoryInput[]
+    deleteMany?: ForumThreadScalarWhereInput | ForumThreadScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutForumThreadsInput = {
+    create?: XOR<UserCreateWithoutForumThreadsInput, UserUncheckedCreateWithoutForumThreadsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutForumThreadsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type ForumCategoryCreateNestedOneWithoutThreadsInput = {
+    create?: XOR<ForumCategoryCreateWithoutThreadsInput, ForumCategoryUncheckedCreateWithoutThreadsInput>
+    connectOrCreate?: ForumCategoryCreateOrConnectWithoutThreadsInput
+    connect?: ForumCategoryWhereUniqueInput
+  }
+
+  export type ForumReplyCreateNestedManyWithoutThreadInput = {
+    create?: XOR<ForumReplyCreateWithoutThreadInput, ForumReplyUncheckedCreateWithoutThreadInput> | ForumReplyCreateWithoutThreadInput[] | ForumReplyUncheckedCreateWithoutThreadInput[]
+    connectOrCreate?: ForumReplyCreateOrConnectWithoutThreadInput | ForumReplyCreateOrConnectWithoutThreadInput[]
+    createMany?: ForumReplyCreateManyThreadInputEnvelope
+    connect?: ForumReplyWhereUniqueInput | ForumReplyWhereUniqueInput[]
+  }
+
+  export type ForumReplyUncheckedCreateNestedManyWithoutThreadInput = {
+    create?: XOR<ForumReplyCreateWithoutThreadInput, ForumReplyUncheckedCreateWithoutThreadInput> | ForumReplyCreateWithoutThreadInput[] | ForumReplyUncheckedCreateWithoutThreadInput[]
+    connectOrCreate?: ForumReplyCreateOrConnectWithoutThreadInput | ForumReplyCreateOrConnectWithoutThreadInput[]
+    createMany?: ForumReplyCreateManyThreadInputEnvelope
+    connect?: ForumReplyWhereUniqueInput | ForumReplyWhereUniqueInput[]
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
+  export type UserUpdateOneRequiredWithoutForumThreadsNestedInput = {
+    create?: XOR<UserCreateWithoutForumThreadsInput, UserUncheckedCreateWithoutForumThreadsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutForumThreadsInput
+    upsert?: UserUpsertWithoutForumThreadsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutForumThreadsInput, UserUpdateWithoutForumThreadsInput>, UserUncheckedUpdateWithoutForumThreadsInput>
+  }
+
+  export type ForumCategoryUpdateOneRequiredWithoutThreadsNestedInput = {
+    create?: XOR<ForumCategoryCreateWithoutThreadsInput, ForumCategoryUncheckedCreateWithoutThreadsInput>
+    connectOrCreate?: ForumCategoryCreateOrConnectWithoutThreadsInput
+    upsert?: ForumCategoryUpsertWithoutThreadsInput
+    connect?: ForumCategoryWhereUniqueInput
+    update?: XOR<XOR<ForumCategoryUpdateToOneWithWhereWithoutThreadsInput, ForumCategoryUpdateWithoutThreadsInput>, ForumCategoryUncheckedUpdateWithoutThreadsInput>
+  }
+
+  export type ForumReplyUpdateManyWithoutThreadNestedInput = {
+    create?: XOR<ForumReplyCreateWithoutThreadInput, ForumReplyUncheckedCreateWithoutThreadInput> | ForumReplyCreateWithoutThreadInput[] | ForumReplyUncheckedCreateWithoutThreadInput[]
+    connectOrCreate?: ForumReplyCreateOrConnectWithoutThreadInput | ForumReplyCreateOrConnectWithoutThreadInput[]
+    upsert?: ForumReplyUpsertWithWhereUniqueWithoutThreadInput | ForumReplyUpsertWithWhereUniqueWithoutThreadInput[]
+    createMany?: ForumReplyCreateManyThreadInputEnvelope
+    set?: ForumReplyWhereUniqueInput | ForumReplyWhereUniqueInput[]
+    disconnect?: ForumReplyWhereUniqueInput | ForumReplyWhereUniqueInput[]
+    delete?: ForumReplyWhereUniqueInput | ForumReplyWhereUniqueInput[]
+    connect?: ForumReplyWhereUniqueInput | ForumReplyWhereUniqueInput[]
+    update?: ForumReplyUpdateWithWhereUniqueWithoutThreadInput | ForumReplyUpdateWithWhereUniqueWithoutThreadInput[]
+    updateMany?: ForumReplyUpdateManyWithWhereWithoutThreadInput | ForumReplyUpdateManyWithWhereWithoutThreadInput[]
+    deleteMany?: ForumReplyScalarWhereInput | ForumReplyScalarWhereInput[]
+  }
+
+  export type ForumReplyUncheckedUpdateManyWithoutThreadNestedInput = {
+    create?: XOR<ForumReplyCreateWithoutThreadInput, ForumReplyUncheckedCreateWithoutThreadInput> | ForumReplyCreateWithoutThreadInput[] | ForumReplyUncheckedCreateWithoutThreadInput[]
+    connectOrCreate?: ForumReplyCreateOrConnectWithoutThreadInput | ForumReplyCreateOrConnectWithoutThreadInput[]
+    upsert?: ForumReplyUpsertWithWhereUniqueWithoutThreadInput | ForumReplyUpsertWithWhereUniqueWithoutThreadInput[]
+    createMany?: ForumReplyCreateManyThreadInputEnvelope
+    set?: ForumReplyWhereUniqueInput | ForumReplyWhereUniqueInput[]
+    disconnect?: ForumReplyWhereUniqueInput | ForumReplyWhereUniqueInput[]
+    delete?: ForumReplyWhereUniqueInput | ForumReplyWhereUniqueInput[]
+    connect?: ForumReplyWhereUniqueInput | ForumReplyWhereUniqueInput[]
+    update?: ForumReplyUpdateWithWhereUniqueWithoutThreadInput | ForumReplyUpdateWithWhereUniqueWithoutThreadInput[]
+    updateMany?: ForumReplyUpdateManyWithWhereWithoutThreadInput | ForumReplyUpdateManyWithWhereWithoutThreadInput[]
+    deleteMany?: ForumReplyScalarWhereInput | ForumReplyScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutForumRepliesInput = {
+    create?: XOR<UserCreateWithoutForumRepliesInput, UserUncheckedCreateWithoutForumRepliesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutForumRepliesInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type ForumThreadCreateNestedOneWithoutRepliesInput = {
+    create?: XOR<ForumThreadCreateWithoutRepliesInput, ForumThreadUncheckedCreateWithoutRepliesInput>
+    connectOrCreate?: ForumThreadCreateOrConnectWithoutRepliesInput
+    connect?: ForumThreadWhereUniqueInput
+  }
+
+  export type PhotoCreateNestedOneWithoutForumRepliesInput = {
+    create?: XOR<PhotoCreateWithoutForumRepliesInput, PhotoUncheckedCreateWithoutForumRepliesInput>
+    connectOrCreate?: PhotoCreateOrConnectWithoutForumRepliesInput
+    connect?: PhotoWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutForumRepliesNestedInput = {
+    create?: XOR<UserCreateWithoutForumRepliesInput, UserUncheckedCreateWithoutForumRepliesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutForumRepliesInput
+    upsert?: UserUpsertWithoutForumRepliesInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutForumRepliesInput, UserUpdateWithoutForumRepliesInput>, UserUncheckedUpdateWithoutForumRepliesInput>
+  }
+
+  export type ForumThreadUpdateOneRequiredWithoutRepliesNestedInput = {
+    create?: XOR<ForumThreadCreateWithoutRepliesInput, ForumThreadUncheckedCreateWithoutRepliesInput>
+    connectOrCreate?: ForumThreadCreateOrConnectWithoutRepliesInput
+    upsert?: ForumThreadUpsertWithoutRepliesInput
+    connect?: ForumThreadWhereUniqueInput
+    update?: XOR<XOR<ForumThreadUpdateToOneWithWhereWithoutRepliesInput, ForumThreadUpdateWithoutRepliesInput>, ForumThreadUncheckedUpdateWithoutRepliesInput>
+  }
+
+  export type PhotoUpdateOneWithoutForumRepliesNestedInput = {
+    create?: XOR<PhotoCreateWithoutForumRepliesInput, PhotoUncheckedCreateWithoutForumRepliesInput>
+    connectOrCreate?: PhotoCreateOrConnectWithoutForumRepliesInput
+    upsert?: PhotoUpsertWithoutForumRepliesInput
+    disconnect?: PhotoWhereInput | boolean
+    delete?: PhotoWhereInput | boolean
+    connect?: PhotoWhereUniqueInput
+    update?: XOR<XOR<PhotoUpdateToOneWithWhereWithoutForumRepliesInput, PhotoUpdateWithoutForumRepliesInput>, PhotoUncheckedUpdateWithoutForumRepliesInput>
+  }
+
+  export type UserCreateNestedOneWithoutCollectionsInput = {
+    create?: XOR<UserCreateWithoutCollectionsInput, UserUncheckedCreateWithoutCollectionsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCollectionsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type CollectionItemCreateNestedManyWithoutCollectionInput = {
+    create?: XOR<CollectionItemCreateWithoutCollectionInput, CollectionItemUncheckedCreateWithoutCollectionInput> | CollectionItemCreateWithoutCollectionInput[] | CollectionItemUncheckedCreateWithoutCollectionInput[]
+    connectOrCreate?: CollectionItemCreateOrConnectWithoutCollectionInput | CollectionItemCreateOrConnectWithoutCollectionInput[]
+    createMany?: CollectionItemCreateManyCollectionInputEnvelope
+    connect?: CollectionItemWhereUniqueInput | CollectionItemWhereUniqueInput[]
+  }
+
+  export type CollectionItemUncheckedCreateNestedManyWithoutCollectionInput = {
+    create?: XOR<CollectionItemCreateWithoutCollectionInput, CollectionItemUncheckedCreateWithoutCollectionInput> | CollectionItemCreateWithoutCollectionInput[] | CollectionItemUncheckedCreateWithoutCollectionInput[]
+    connectOrCreate?: CollectionItemCreateOrConnectWithoutCollectionInput | CollectionItemCreateOrConnectWithoutCollectionInput[]
+    createMany?: CollectionItemCreateManyCollectionInputEnvelope
+    connect?: CollectionItemWhereUniqueInput | CollectionItemWhereUniqueInput[]
+  }
+
+  export type UserUpdateOneRequiredWithoutCollectionsNestedInput = {
+    create?: XOR<UserCreateWithoutCollectionsInput, UserUncheckedCreateWithoutCollectionsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCollectionsInput
+    upsert?: UserUpsertWithoutCollectionsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCollectionsInput, UserUpdateWithoutCollectionsInput>, UserUncheckedUpdateWithoutCollectionsInput>
+  }
+
+  export type CollectionItemUpdateManyWithoutCollectionNestedInput = {
+    create?: XOR<CollectionItemCreateWithoutCollectionInput, CollectionItemUncheckedCreateWithoutCollectionInput> | CollectionItemCreateWithoutCollectionInput[] | CollectionItemUncheckedCreateWithoutCollectionInput[]
+    connectOrCreate?: CollectionItemCreateOrConnectWithoutCollectionInput | CollectionItemCreateOrConnectWithoutCollectionInput[]
+    upsert?: CollectionItemUpsertWithWhereUniqueWithoutCollectionInput | CollectionItemUpsertWithWhereUniqueWithoutCollectionInput[]
+    createMany?: CollectionItemCreateManyCollectionInputEnvelope
+    set?: CollectionItemWhereUniqueInput | CollectionItemWhereUniqueInput[]
+    disconnect?: CollectionItemWhereUniqueInput | CollectionItemWhereUniqueInput[]
+    delete?: CollectionItemWhereUniqueInput | CollectionItemWhereUniqueInput[]
+    connect?: CollectionItemWhereUniqueInput | CollectionItemWhereUniqueInput[]
+    update?: CollectionItemUpdateWithWhereUniqueWithoutCollectionInput | CollectionItemUpdateWithWhereUniqueWithoutCollectionInput[]
+    updateMany?: CollectionItemUpdateManyWithWhereWithoutCollectionInput | CollectionItemUpdateManyWithWhereWithoutCollectionInput[]
+    deleteMany?: CollectionItemScalarWhereInput | CollectionItemScalarWhereInput[]
+  }
+
+  export type CollectionItemUncheckedUpdateManyWithoutCollectionNestedInput = {
+    create?: XOR<CollectionItemCreateWithoutCollectionInput, CollectionItemUncheckedCreateWithoutCollectionInput> | CollectionItemCreateWithoutCollectionInput[] | CollectionItemUncheckedCreateWithoutCollectionInput[]
+    connectOrCreate?: CollectionItemCreateOrConnectWithoutCollectionInput | CollectionItemCreateOrConnectWithoutCollectionInput[]
+    upsert?: CollectionItemUpsertWithWhereUniqueWithoutCollectionInput | CollectionItemUpsertWithWhereUniqueWithoutCollectionInput[]
+    createMany?: CollectionItemCreateManyCollectionInputEnvelope
+    set?: CollectionItemWhereUniqueInput | CollectionItemWhereUniqueInput[]
+    disconnect?: CollectionItemWhereUniqueInput | CollectionItemWhereUniqueInput[]
+    delete?: CollectionItemWhereUniqueInput | CollectionItemWhereUniqueInput[]
+    connect?: CollectionItemWhereUniqueInput | CollectionItemWhereUniqueInput[]
+    update?: CollectionItemUpdateWithWhereUniqueWithoutCollectionInput | CollectionItemUpdateWithWhereUniqueWithoutCollectionInput[]
+    updateMany?: CollectionItemUpdateManyWithWhereWithoutCollectionInput | CollectionItemUpdateManyWithWhereWithoutCollectionInput[]
+    deleteMany?: CollectionItemScalarWhereInput | CollectionItemScalarWhereInput[]
+  }
+
+  export type CollectionCreateNestedOneWithoutItemsInput = {
+    create?: XOR<CollectionCreateWithoutItemsInput, CollectionUncheckedCreateWithoutItemsInput>
+    connectOrCreate?: CollectionCreateOrConnectWithoutItemsInput
+    connect?: CollectionWhereUniqueInput
+  }
+
+  export type PhotoCreateNestedOneWithoutCollectionItemsInput = {
+    create?: XOR<PhotoCreateWithoutCollectionItemsInput, PhotoUncheckedCreateWithoutCollectionItemsInput>
+    connectOrCreate?: PhotoCreateOrConnectWithoutCollectionItemsInput
+    connect?: PhotoWhereUniqueInput
+  }
+
+  export type CollectionUpdateOneRequiredWithoutItemsNestedInput = {
+    create?: XOR<CollectionCreateWithoutItemsInput, CollectionUncheckedCreateWithoutItemsInput>
+    connectOrCreate?: CollectionCreateOrConnectWithoutItemsInput
+    upsert?: CollectionUpsertWithoutItemsInput
+    connect?: CollectionWhereUniqueInput
+    update?: XOR<XOR<CollectionUpdateToOneWithWhereWithoutItemsInput, CollectionUpdateWithoutItemsInput>, CollectionUncheckedUpdateWithoutItemsInput>
+  }
+
+  export type PhotoUpdateOneRequiredWithoutCollectionItemsNestedInput = {
+    create?: XOR<PhotoCreateWithoutCollectionItemsInput, PhotoUncheckedCreateWithoutCollectionItemsInput>
+    connectOrCreate?: PhotoCreateOrConnectWithoutCollectionItemsInput
+    upsert?: PhotoUpsertWithoutCollectionItemsInput
+    connect?: PhotoWhereUniqueInput
+    update?: XOR<XOR<PhotoUpdateToOneWithWhereWithoutCollectionItemsInput, PhotoUpdateWithoutCollectionItemsInput>, PhotoUncheckedUpdateWithoutCollectionItemsInput>
+  }
+
+  export type UserCreateNestedOneWithoutFollowingInput = {
+    create?: XOR<UserCreateWithoutFollowingInput, UserUncheckedCreateWithoutFollowingInput>
+    connectOrCreate?: UserCreateOrConnectWithoutFollowingInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutFollowersInput = {
+    create?: XOR<UserCreateWithoutFollowersInput, UserUncheckedCreateWithoutFollowersInput>
+    connectOrCreate?: UserCreateOrConnectWithoutFollowersInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutFollowingNestedInput = {
+    create?: XOR<UserCreateWithoutFollowingInput, UserUncheckedCreateWithoutFollowingInput>
+    connectOrCreate?: UserCreateOrConnectWithoutFollowingInput
+    upsert?: UserUpsertWithoutFollowingInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutFollowingInput, UserUpdateWithoutFollowingInput>, UserUncheckedUpdateWithoutFollowingInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutFollowersNestedInput = {
+    create?: XOR<UserCreateWithoutFollowersInput, UserUncheckedCreateWithoutFollowersInput>
+    connectOrCreate?: UserCreateOrConnectWithoutFollowersInput
+    upsert?: UserUpsertWithoutFollowersInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutFollowersInput, UserUpdateWithoutFollowersInput>, UserUncheckedUpdateWithoutFollowersInput>
+  }
+
+  export type NestedStringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type NestedEnumUserRoleFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserRole | EnumUserRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumUserRoleFilter<$PrismaModel> | $Enums.UserRole
+  }
+
+  export type NestedEnumUserStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserStatus | EnumUserStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumUserStatusFilter<$PrismaModel> | $Enums.UserStatus
+  }
+
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type NestedEnumUserRoleWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserRole | EnumUserRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumUserRoleWithAggregatesFilter<$PrismaModel> | $Enums.UserRole
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumUserRoleFilter<$PrismaModel>
+    _max?: NestedEnumUserRoleFilter<$PrismaModel>
+  }
+
+  export type NestedEnumUserStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserStatus | EnumUserStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumUserStatusWithAggregatesFilter<$PrismaModel> | $Enums.UserStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumUserStatusFilter<$PrismaModel>
+    _max?: NestedEnumUserStatusFilter<$PrismaModel>
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumPhotoCategoryFilter<$PrismaModel = never> = {
+    equals?: $Enums.PhotoCategory | EnumPhotoCategoryFieldRefInput<$PrismaModel>
+    in?: $Enums.PhotoCategory[] | ListEnumPhotoCategoryFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PhotoCategory[] | ListEnumPhotoCategoryFieldRefInput<$PrismaModel>
+    not?: NestedEnumPhotoCategoryFilter<$PrismaModel> | $Enums.PhotoCategory
+  }
+
+  export type NestedEnumPhotoStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.PhotoStatus | EnumPhotoStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.PhotoStatus[] | ListEnumPhotoStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PhotoStatus[] | ListEnumPhotoStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumPhotoStatusFilter<$PrismaModel> | $Enums.PhotoStatus
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedEnumPhotoCategoryWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.PhotoCategory | EnumPhotoCategoryFieldRefInput<$PrismaModel>
+    in?: $Enums.PhotoCategory[] | ListEnumPhotoCategoryFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PhotoCategory[] | ListEnumPhotoCategoryFieldRefInput<$PrismaModel>
+    not?: NestedEnumPhotoCategoryWithAggregatesFilter<$PrismaModel> | $Enums.PhotoCategory
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumPhotoCategoryFilter<$PrismaModel>
+    _max?: NestedEnumPhotoCategoryFilter<$PrismaModel>
+  }
+
+  export type NestedEnumPhotoStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.PhotoStatus | EnumPhotoStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.PhotoStatus[] | ListEnumPhotoStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PhotoStatus[] | ListEnumPhotoStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumPhotoStatusWithAggregatesFilter<$PrismaModel> | $Enums.PhotoStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumPhotoStatusFilter<$PrismaModel>
+    _max?: NestedEnumPhotoStatusFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumAwardTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.AwardType | EnumAwardTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AwardType[] | ListEnumAwardTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AwardType[] | ListEnumAwardTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAwardTypeFilter<$PrismaModel> | $Enums.AwardType
+  }
+
+  export type NestedEnumAwardTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AwardType | EnumAwardTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AwardType[] | ListEnumAwardTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AwardType[] | ListEnumAwardTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAwardTypeWithAggregatesFilter<$PrismaModel> | $Enums.AwardType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumAwardTypeFilter<$PrismaModel>
+    _max?: NestedEnumAwardTypeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumForumCategorySlugFilter<$PrismaModel = never> = {
+    equals?: $Enums.ForumCategorySlug | EnumForumCategorySlugFieldRefInput<$PrismaModel>
+    in?: $Enums.ForumCategorySlug[] | ListEnumForumCategorySlugFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ForumCategorySlug[] | ListEnumForumCategorySlugFieldRefInput<$PrismaModel>
+    not?: NestedEnumForumCategorySlugFilter<$PrismaModel> | $Enums.ForumCategorySlug
+  }
+
+  export type NestedEnumForumCategorySlugWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ForumCategorySlug | EnumForumCategorySlugFieldRefInput<$PrismaModel>
+    in?: $Enums.ForumCategorySlug[] | ListEnumForumCategorySlugFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ForumCategorySlug[] | ListEnumForumCategorySlugFieldRefInput<$PrismaModel>
+    not?: NestedEnumForumCategorySlugWithAggregatesFilter<$PrismaModel> | $Enums.ForumCategorySlug
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumForumCategorySlugFilter<$PrismaModel>
+    _max?: NestedEnumForumCategorySlugFilter<$PrismaModel>
+  }
+
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type PhotoCreateWithoutAuthorInput = {
+    id?: string
+    title: string
+    description?: string | null
+    imageUrl: string
+    thumbnailUrl?: string | null
+    width?: number
+    height?: number
+    fileSize?: number
+    neighborhood: string
+    category: $Enums.PhotoCategory
+    status?: $Enums.PhotoStatus
+    cameraMake?: string | null
+    cameraModel?: string | null
+    lens?: string | null
+    iso?: number | null
+    aperture?: string | null
+    shutterSpeed?: string | null
+    focalLength?: string | null
+    takenAt?: Date | string | null
+    voteCount?: number
+    approvedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    votes?: VoteCreateNestedManyWithoutPhotoInput
+    comments?: CommentCreateNestedManyWithoutPhotoInput
+    awards?: AwardCreateNestedManyWithoutPhotoInput
+    forumReplies?: ForumReplyCreateNestedManyWithoutEmbeddedPhotoInput
+    collectionItems?: CollectionItemCreateNestedManyWithoutPhotoInput
+  }
+
+  export type PhotoUncheckedCreateWithoutAuthorInput = {
+    id?: string
+    title: string
+    description?: string | null
+    imageUrl: string
+    thumbnailUrl?: string | null
+    width?: number
+    height?: number
+    fileSize?: number
+    neighborhood: string
+    category: $Enums.PhotoCategory
+    status?: $Enums.PhotoStatus
+    cameraMake?: string | null
+    cameraModel?: string | null
+    lens?: string | null
+    iso?: number | null
+    aperture?: string | null
+    shutterSpeed?: string | null
+    focalLength?: string | null
+    takenAt?: Date | string | null
+    voteCount?: number
+    approvedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    votes?: VoteUncheckedCreateNestedManyWithoutPhotoInput
+    comments?: CommentUncheckedCreateNestedManyWithoutPhotoInput
+    awards?: AwardUncheckedCreateNestedManyWithoutPhotoInput
+    forumReplies?: ForumReplyUncheckedCreateNestedManyWithoutEmbeddedPhotoInput
+    collectionItems?: CollectionItemUncheckedCreateNestedManyWithoutPhotoInput
+  }
+
+  export type PhotoCreateOrConnectWithoutAuthorInput = {
+    where: PhotoWhereUniqueInput
+    create: XOR<PhotoCreateWithoutAuthorInput, PhotoUncheckedCreateWithoutAuthorInput>
+  }
+
+  export type PhotoCreateManyAuthorInputEnvelope = {
+    data: PhotoCreateManyAuthorInput | PhotoCreateManyAuthorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type VoteCreateWithoutUserInput = {
+    id?: string
+    createdAt?: Date | string
+    photo: PhotoCreateNestedOneWithoutVotesInput
+  }
+
+  export type VoteUncheckedCreateWithoutUserInput = {
+    id?: string
+    photoId: string
+    createdAt?: Date | string
+  }
+
+  export type VoteCreateOrConnectWithoutUserInput = {
+    where: VoteWhereUniqueInput
+    create: XOR<VoteCreateWithoutUserInput, VoteUncheckedCreateWithoutUserInput>
+  }
+
+  export type VoteCreateManyUserInputEnvelope = {
+    data: VoteCreateManyUserInput | VoteCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CommentCreateWithoutAuthorInput = {
+    id?: string
+    body: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    photo: PhotoCreateNestedOneWithoutCommentsInput
+  }
+
+  export type CommentUncheckedCreateWithoutAuthorInput = {
+    id?: string
+    body: string
+    photoId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CommentCreateOrConnectWithoutAuthorInput = {
+    where: CommentWhereUniqueInput
+    create: XOR<CommentCreateWithoutAuthorInput, CommentUncheckedCreateWithoutAuthorInput>
+  }
+
+  export type CommentCreateManyAuthorInputEnvelope = {
+    data: CommentCreateManyAuthorInput | CommentCreateManyAuthorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type AwardCreateWithoutUserInput = {
+    id?: string
+    type: $Enums.AwardType
+    periodStart: Date | string
+    periodEnd: Date | string
+    voteCount: number
+    awardedAt?: Date | string
+    photo: PhotoCreateNestedOneWithoutAwardsInput
+  }
+
+  export type AwardUncheckedCreateWithoutUserInput = {
+    id?: string
+    type: $Enums.AwardType
+    photoId: string
+    periodStart: Date | string
+    periodEnd: Date | string
+    voteCount: number
+    awardedAt?: Date | string
+  }
+
+  export type AwardCreateOrConnectWithoutUserInput = {
+    where: AwardWhereUniqueInput
+    create: XOR<AwardCreateWithoutUserInput, AwardUncheckedCreateWithoutUserInput>
+  }
+
+  export type AwardCreateManyUserInputEnvelope = {
+    data: AwardCreateManyUserInput | AwardCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ForumThreadCreateWithoutAuthorInput = {
+    id?: string
+    title: string
+    body: string
+    pinned?: boolean
+    locked?: boolean
+    replyCount?: number
+    lastReplyAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    category: ForumCategoryCreateNestedOneWithoutThreadsInput
+    replies?: ForumReplyCreateNestedManyWithoutThreadInput
+  }
+
+  export type ForumThreadUncheckedCreateWithoutAuthorInput = {
+    id?: string
+    title: string
+    body: string
+    categoryId: string
+    pinned?: boolean
+    locked?: boolean
+    replyCount?: number
+    lastReplyAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    replies?: ForumReplyUncheckedCreateNestedManyWithoutThreadInput
+  }
+
+  export type ForumThreadCreateOrConnectWithoutAuthorInput = {
+    where: ForumThreadWhereUniqueInput
+    create: XOR<ForumThreadCreateWithoutAuthorInput, ForumThreadUncheckedCreateWithoutAuthorInput>
+  }
+
+  export type ForumThreadCreateManyAuthorInputEnvelope = {
+    data: ForumThreadCreateManyAuthorInput | ForumThreadCreateManyAuthorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ForumReplyCreateWithoutAuthorInput = {
+    id?: string
+    body: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    thread: ForumThreadCreateNestedOneWithoutRepliesInput
+    embeddedPhoto?: PhotoCreateNestedOneWithoutForumRepliesInput
+  }
+
+  export type ForumReplyUncheckedCreateWithoutAuthorInput = {
+    id?: string
+    body: string
+    threadId: string
+    embeddedPhotoId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ForumReplyCreateOrConnectWithoutAuthorInput = {
+    where: ForumReplyWhereUniqueInput
+    create: XOR<ForumReplyCreateWithoutAuthorInput, ForumReplyUncheckedCreateWithoutAuthorInput>
+  }
+
+  export type ForumReplyCreateManyAuthorInputEnvelope = {
+    data: ForumReplyCreateManyAuthorInput | ForumReplyCreateManyAuthorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CollectionCreateWithoutUserInput = {
+    id?: string
+    name: string
+    description?: string | null
+    isPrivate?: boolean
+    coverUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    items?: CollectionItemCreateNestedManyWithoutCollectionInput
+  }
+
+  export type CollectionUncheckedCreateWithoutUserInput = {
+    id?: string
+    name: string
+    description?: string | null
+    isPrivate?: boolean
+    coverUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    items?: CollectionItemUncheckedCreateNestedManyWithoutCollectionInput
+  }
+
+  export type CollectionCreateOrConnectWithoutUserInput = {
+    where: CollectionWhereUniqueInput
+    create: XOR<CollectionCreateWithoutUserInput, CollectionUncheckedCreateWithoutUserInput>
+  }
+
+  export type CollectionCreateManyUserInputEnvelope = {
+    data: CollectionCreateManyUserInput | CollectionCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type FollowCreateWithoutFollowingInput = {
+    id?: string
+    createdAt?: Date | string
+    follower: UserCreateNestedOneWithoutFollowingInput
+  }
+
+  export type FollowUncheckedCreateWithoutFollowingInput = {
+    id?: string
+    followerId: string
+    createdAt?: Date | string
+  }
+
+  export type FollowCreateOrConnectWithoutFollowingInput = {
+    where: FollowWhereUniqueInput
+    create: XOR<FollowCreateWithoutFollowingInput, FollowUncheckedCreateWithoutFollowingInput>
+  }
+
+  export type FollowCreateManyFollowingInputEnvelope = {
+    data: FollowCreateManyFollowingInput | FollowCreateManyFollowingInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type FollowCreateWithoutFollowerInput = {
+    id?: string
+    createdAt?: Date | string
+    following: UserCreateNestedOneWithoutFollowersInput
+  }
+
+  export type FollowUncheckedCreateWithoutFollowerInput = {
+    id?: string
+    followingId: string
+    createdAt?: Date | string
+  }
+
+  export type FollowCreateOrConnectWithoutFollowerInput = {
+    where: FollowWhereUniqueInput
+    create: XOR<FollowCreateWithoutFollowerInput, FollowUncheckedCreateWithoutFollowerInput>
+  }
+
+  export type FollowCreateManyFollowerInputEnvelope = {
+    data: FollowCreateManyFollowerInput | FollowCreateManyFollowerInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PhotoUpsertWithWhereUniqueWithoutAuthorInput = {
+    where: PhotoWhereUniqueInput
+    update: XOR<PhotoUpdateWithoutAuthorInput, PhotoUncheckedUpdateWithoutAuthorInput>
+    create: XOR<PhotoCreateWithoutAuthorInput, PhotoUncheckedCreateWithoutAuthorInput>
+  }
+
+  export type PhotoUpdateWithWhereUniqueWithoutAuthorInput = {
+    where: PhotoWhereUniqueInput
+    data: XOR<PhotoUpdateWithoutAuthorInput, PhotoUncheckedUpdateWithoutAuthorInput>
+  }
+
+  export type PhotoUpdateManyWithWhereWithoutAuthorInput = {
+    where: PhotoScalarWhereInput
+    data: XOR<PhotoUpdateManyMutationInput, PhotoUncheckedUpdateManyWithoutAuthorInput>
+  }
+
+  export type PhotoScalarWhereInput = {
+    AND?: PhotoScalarWhereInput | PhotoScalarWhereInput[]
+    OR?: PhotoScalarWhereInput[]
+    NOT?: PhotoScalarWhereInput | PhotoScalarWhereInput[]
+    id?: StringFilter<"Photo"> | string
+    title?: StringFilter<"Photo"> | string
+    description?: StringNullableFilter<"Photo"> | string | null
+    imageUrl?: StringFilter<"Photo"> | string
+    thumbnailUrl?: StringNullableFilter<"Photo"> | string | null
+    width?: IntFilter<"Photo"> | number
+    height?: IntFilter<"Photo"> | number
+    fileSize?: IntFilter<"Photo"> | number
+    neighborhood?: StringFilter<"Photo"> | string
+    category?: EnumPhotoCategoryFilter<"Photo"> | $Enums.PhotoCategory
+    status?: EnumPhotoStatusFilter<"Photo"> | $Enums.PhotoStatus
+    cameraMake?: StringNullableFilter<"Photo"> | string | null
+    cameraModel?: StringNullableFilter<"Photo"> | string | null
+    lens?: StringNullableFilter<"Photo"> | string | null
+    iso?: IntNullableFilter<"Photo"> | number | null
+    aperture?: StringNullableFilter<"Photo"> | string | null
+    shutterSpeed?: StringNullableFilter<"Photo"> | string | null
+    focalLength?: StringNullableFilter<"Photo"> | string | null
+    takenAt?: DateTimeNullableFilter<"Photo"> | Date | string | null
+    authorId?: StringFilter<"Photo"> | string
+    voteCount?: IntFilter<"Photo"> | number
+    approvedAt?: DateTimeNullableFilter<"Photo"> | Date | string | null
+    createdAt?: DateTimeFilter<"Photo"> | Date | string
+    updatedAt?: DateTimeFilter<"Photo"> | Date | string
+  }
+
+  export type VoteUpsertWithWhereUniqueWithoutUserInput = {
+    where: VoteWhereUniqueInput
+    update: XOR<VoteUpdateWithoutUserInput, VoteUncheckedUpdateWithoutUserInput>
+    create: XOR<VoteCreateWithoutUserInput, VoteUncheckedCreateWithoutUserInput>
+  }
+
+  export type VoteUpdateWithWhereUniqueWithoutUserInput = {
+    where: VoteWhereUniqueInput
+    data: XOR<VoteUpdateWithoutUserInput, VoteUncheckedUpdateWithoutUserInput>
+  }
+
+  export type VoteUpdateManyWithWhereWithoutUserInput = {
+    where: VoteScalarWhereInput
+    data: XOR<VoteUpdateManyMutationInput, VoteUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type VoteScalarWhereInput = {
+    AND?: VoteScalarWhereInput | VoteScalarWhereInput[]
+    OR?: VoteScalarWhereInput[]
+    NOT?: VoteScalarWhereInput | VoteScalarWhereInput[]
+    id?: StringFilter<"Vote"> | string
+    userId?: StringFilter<"Vote"> | string
+    photoId?: StringFilter<"Vote"> | string
+    createdAt?: DateTimeFilter<"Vote"> | Date | string
+  }
+
+  export type CommentUpsertWithWhereUniqueWithoutAuthorInput = {
+    where: CommentWhereUniqueInput
+    update: XOR<CommentUpdateWithoutAuthorInput, CommentUncheckedUpdateWithoutAuthorInput>
+    create: XOR<CommentCreateWithoutAuthorInput, CommentUncheckedCreateWithoutAuthorInput>
+  }
+
+  export type CommentUpdateWithWhereUniqueWithoutAuthorInput = {
+    where: CommentWhereUniqueInput
+    data: XOR<CommentUpdateWithoutAuthorInput, CommentUncheckedUpdateWithoutAuthorInput>
+  }
+
+  export type CommentUpdateManyWithWhereWithoutAuthorInput = {
+    where: CommentScalarWhereInput
+    data: XOR<CommentUpdateManyMutationInput, CommentUncheckedUpdateManyWithoutAuthorInput>
+  }
+
+  export type CommentScalarWhereInput = {
+    AND?: CommentScalarWhereInput | CommentScalarWhereInput[]
+    OR?: CommentScalarWhereInput[]
+    NOT?: CommentScalarWhereInput | CommentScalarWhereInput[]
+    id?: StringFilter<"Comment"> | string
+    body?: StringFilter<"Comment"> | string
+    authorId?: StringFilter<"Comment"> | string
+    photoId?: StringFilter<"Comment"> | string
+    createdAt?: DateTimeFilter<"Comment"> | Date | string
+    updatedAt?: DateTimeFilter<"Comment"> | Date | string
+  }
+
+  export type AwardUpsertWithWhereUniqueWithoutUserInput = {
+    where: AwardWhereUniqueInput
+    update: XOR<AwardUpdateWithoutUserInput, AwardUncheckedUpdateWithoutUserInput>
+    create: XOR<AwardCreateWithoutUserInput, AwardUncheckedCreateWithoutUserInput>
+  }
+
+  export type AwardUpdateWithWhereUniqueWithoutUserInput = {
+    where: AwardWhereUniqueInput
+    data: XOR<AwardUpdateWithoutUserInput, AwardUncheckedUpdateWithoutUserInput>
+  }
+
+  export type AwardUpdateManyWithWhereWithoutUserInput = {
+    where: AwardScalarWhereInput
+    data: XOR<AwardUpdateManyMutationInput, AwardUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type AwardScalarWhereInput = {
+    AND?: AwardScalarWhereInput | AwardScalarWhereInput[]
+    OR?: AwardScalarWhereInput[]
+    NOT?: AwardScalarWhereInput | AwardScalarWhereInput[]
+    id?: StringFilter<"Award"> | string
+    type?: EnumAwardTypeFilter<"Award"> | $Enums.AwardType
+    photoId?: StringFilter<"Award"> | string
+    userId?: StringFilter<"Award"> | string
+    periodStart?: DateTimeFilter<"Award"> | Date | string
+    periodEnd?: DateTimeFilter<"Award"> | Date | string
+    voteCount?: IntFilter<"Award"> | number
+    awardedAt?: DateTimeFilter<"Award"> | Date | string
+  }
+
+  export type ForumThreadUpsertWithWhereUniqueWithoutAuthorInput = {
+    where: ForumThreadWhereUniqueInput
+    update: XOR<ForumThreadUpdateWithoutAuthorInput, ForumThreadUncheckedUpdateWithoutAuthorInput>
+    create: XOR<ForumThreadCreateWithoutAuthorInput, ForumThreadUncheckedCreateWithoutAuthorInput>
+  }
+
+  export type ForumThreadUpdateWithWhereUniqueWithoutAuthorInput = {
+    where: ForumThreadWhereUniqueInput
+    data: XOR<ForumThreadUpdateWithoutAuthorInput, ForumThreadUncheckedUpdateWithoutAuthorInput>
+  }
+
+  export type ForumThreadUpdateManyWithWhereWithoutAuthorInput = {
+    where: ForumThreadScalarWhereInput
+    data: XOR<ForumThreadUpdateManyMutationInput, ForumThreadUncheckedUpdateManyWithoutAuthorInput>
+  }
+
+  export type ForumThreadScalarWhereInput = {
+    AND?: ForumThreadScalarWhereInput | ForumThreadScalarWhereInput[]
+    OR?: ForumThreadScalarWhereInput[]
+    NOT?: ForumThreadScalarWhereInput | ForumThreadScalarWhereInput[]
+    id?: StringFilter<"ForumThread"> | string
+    title?: StringFilter<"ForumThread"> | string
+    body?: StringFilter<"ForumThread"> | string
+    authorId?: StringFilter<"ForumThread"> | string
+    categoryId?: StringFilter<"ForumThread"> | string
+    pinned?: BoolFilter<"ForumThread"> | boolean
+    locked?: BoolFilter<"ForumThread"> | boolean
+    replyCount?: IntFilter<"ForumThread"> | number
+    lastReplyAt?: DateTimeFilter<"ForumThread"> | Date | string
+    createdAt?: DateTimeFilter<"ForumThread"> | Date | string
+    updatedAt?: DateTimeFilter<"ForumThread"> | Date | string
+  }
+
+  export type ForumReplyUpsertWithWhereUniqueWithoutAuthorInput = {
+    where: ForumReplyWhereUniqueInput
+    update: XOR<ForumReplyUpdateWithoutAuthorInput, ForumReplyUncheckedUpdateWithoutAuthorInput>
+    create: XOR<ForumReplyCreateWithoutAuthorInput, ForumReplyUncheckedCreateWithoutAuthorInput>
+  }
+
+  export type ForumReplyUpdateWithWhereUniqueWithoutAuthorInput = {
+    where: ForumReplyWhereUniqueInput
+    data: XOR<ForumReplyUpdateWithoutAuthorInput, ForumReplyUncheckedUpdateWithoutAuthorInput>
+  }
+
+  export type ForumReplyUpdateManyWithWhereWithoutAuthorInput = {
+    where: ForumReplyScalarWhereInput
+    data: XOR<ForumReplyUpdateManyMutationInput, ForumReplyUncheckedUpdateManyWithoutAuthorInput>
+  }
+
+  export type ForumReplyScalarWhereInput = {
+    AND?: ForumReplyScalarWhereInput | ForumReplyScalarWhereInput[]
+    OR?: ForumReplyScalarWhereInput[]
+    NOT?: ForumReplyScalarWhereInput | ForumReplyScalarWhereInput[]
+    id?: StringFilter<"ForumReply"> | string
+    body?: StringFilter<"ForumReply"> | string
+    authorId?: StringFilter<"ForumReply"> | string
+    threadId?: StringFilter<"ForumReply"> | string
+    embeddedPhotoId?: StringNullableFilter<"ForumReply"> | string | null
+    createdAt?: DateTimeFilter<"ForumReply"> | Date | string
+    updatedAt?: DateTimeFilter<"ForumReply"> | Date | string
+  }
+
+  export type CollectionUpsertWithWhereUniqueWithoutUserInput = {
+    where: CollectionWhereUniqueInput
+    update: XOR<CollectionUpdateWithoutUserInput, CollectionUncheckedUpdateWithoutUserInput>
+    create: XOR<CollectionCreateWithoutUserInput, CollectionUncheckedCreateWithoutUserInput>
+  }
+
+  export type CollectionUpdateWithWhereUniqueWithoutUserInput = {
+    where: CollectionWhereUniqueInput
+    data: XOR<CollectionUpdateWithoutUserInput, CollectionUncheckedUpdateWithoutUserInput>
+  }
+
+  export type CollectionUpdateManyWithWhereWithoutUserInput = {
+    where: CollectionScalarWhereInput
+    data: XOR<CollectionUpdateManyMutationInput, CollectionUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type CollectionScalarWhereInput = {
+    AND?: CollectionScalarWhereInput | CollectionScalarWhereInput[]
+    OR?: CollectionScalarWhereInput[]
+    NOT?: CollectionScalarWhereInput | CollectionScalarWhereInput[]
+    id?: StringFilter<"Collection"> | string
+    name?: StringFilter<"Collection"> | string
+    description?: StringNullableFilter<"Collection"> | string | null
+    isPrivate?: BoolFilter<"Collection"> | boolean
+    coverUrl?: StringNullableFilter<"Collection"> | string | null
+    userId?: StringFilter<"Collection"> | string
+    createdAt?: DateTimeFilter<"Collection"> | Date | string
+    updatedAt?: DateTimeFilter<"Collection"> | Date | string
+  }
+
+  export type FollowUpsertWithWhereUniqueWithoutFollowingInput = {
+    where: FollowWhereUniqueInput
+    update: XOR<FollowUpdateWithoutFollowingInput, FollowUncheckedUpdateWithoutFollowingInput>
+    create: XOR<FollowCreateWithoutFollowingInput, FollowUncheckedCreateWithoutFollowingInput>
+  }
+
+  export type FollowUpdateWithWhereUniqueWithoutFollowingInput = {
+    where: FollowWhereUniqueInput
+    data: XOR<FollowUpdateWithoutFollowingInput, FollowUncheckedUpdateWithoutFollowingInput>
+  }
+
+  export type FollowUpdateManyWithWhereWithoutFollowingInput = {
+    where: FollowScalarWhereInput
+    data: XOR<FollowUpdateManyMutationInput, FollowUncheckedUpdateManyWithoutFollowingInput>
+  }
+
+  export type FollowScalarWhereInput = {
+    AND?: FollowScalarWhereInput | FollowScalarWhereInput[]
+    OR?: FollowScalarWhereInput[]
+    NOT?: FollowScalarWhereInput | FollowScalarWhereInput[]
+    id?: StringFilter<"Follow"> | string
+    followerId?: StringFilter<"Follow"> | string
+    followingId?: StringFilter<"Follow"> | string
+    createdAt?: DateTimeFilter<"Follow"> | Date | string
+  }
+
+  export type FollowUpsertWithWhereUniqueWithoutFollowerInput = {
+    where: FollowWhereUniqueInput
+    update: XOR<FollowUpdateWithoutFollowerInput, FollowUncheckedUpdateWithoutFollowerInput>
+    create: XOR<FollowCreateWithoutFollowerInput, FollowUncheckedCreateWithoutFollowerInput>
+  }
+
+  export type FollowUpdateWithWhereUniqueWithoutFollowerInput = {
+    where: FollowWhereUniqueInput
+    data: XOR<FollowUpdateWithoutFollowerInput, FollowUncheckedUpdateWithoutFollowerInput>
+  }
+
+  export type FollowUpdateManyWithWhereWithoutFollowerInput = {
+    where: FollowScalarWhereInput
+    data: XOR<FollowUpdateManyMutationInput, FollowUncheckedUpdateManyWithoutFollowerInput>
+  }
+
+  export type UserCreateWithoutPhotosInput = {
+    id?: string
+    email: string
+    username: string
+    name: string
+    password: string
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    avatarUrl?: string | null
+    bio?: string | null
+    location?: string | null
+    websiteUrl?: string | null
+    instagramUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    votes?: VoteCreateNestedManyWithoutUserInput
+    comments?: CommentCreateNestedManyWithoutAuthorInput
+    awards?: AwardCreateNestedManyWithoutUserInput
+    forumThreads?: ForumThreadCreateNestedManyWithoutAuthorInput
+    forumReplies?: ForumReplyCreateNestedManyWithoutAuthorInput
+    collections?: CollectionCreateNestedManyWithoutUserInput
+    followers?: FollowCreateNestedManyWithoutFollowingInput
+    following?: FollowCreateNestedManyWithoutFollowerInput
+  }
+
+  export type UserUncheckedCreateWithoutPhotosInput = {
+    id?: string
+    email: string
+    username: string
+    name: string
+    password: string
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    avatarUrl?: string | null
+    bio?: string | null
+    location?: string | null
+    websiteUrl?: string | null
+    instagramUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    votes?: VoteUncheckedCreateNestedManyWithoutUserInput
+    comments?: CommentUncheckedCreateNestedManyWithoutAuthorInput
+    awards?: AwardUncheckedCreateNestedManyWithoutUserInput
+    forumThreads?: ForumThreadUncheckedCreateNestedManyWithoutAuthorInput
+    forumReplies?: ForumReplyUncheckedCreateNestedManyWithoutAuthorInput
+    collections?: CollectionUncheckedCreateNestedManyWithoutUserInput
+    followers?: FollowUncheckedCreateNestedManyWithoutFollowingInput
+    following?: FollowUncheckedCreateNestedManyWithoutFollowerInput
+  }
+
+  export type UserCreateOrConnectWithoutPhotosInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutPhotosInput, UserUncheckedCreateWithoutPhotosInput>
+  }
+
+  export type VoteCreateWithoutPhotoInput = {
+    id?: string
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutVotesInput
+  }
+
+  export type VoteUncheckedCreateWithoutPhotoInput = {
+    id?: string
+    userId: string
+    createdAt?: Date | string
+  }
+
+  export type VoteCreateOrConnectWithoutPhotoInput = {
+    where: VoteWhereUniqueInput
+    create: XOR<VoteCreateWithoutPhotoInput, VoteUncheckedCreateWithoutPhotoInput>
+  }
+
+  export type VoteCreateManyPhotoInputEnvelope = {
+    data: VoteCreateManyPhotoInput | VoteCreateManyPhotoInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CommentCreateWithoutPhotoInput = {
+    id?: string
+    body: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    author: UserCreateNestedOneWithoutCommentsInput
+  }
+
+  export type CommentUncheckedCreateWithoutPhotoInput = {
+    id?: string
+    body: string
+    authorId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CommentCreateOrConnectWithoutPhotoInput = {
+    where: CommentWhereUniqueInput
+    create: XOR<CommentCreateWithoutPhotoInput, CommentUncheckedCreateWithoutPhotoInput>
+  }
+
+  export type CommentCreateManyPhotoInputEnvelope = {
+    data: CommentCreateManyPhotoInput | CommentCreateManyPhotoInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type AwardCreateWithoutPhotoInput = {
+    id?: string
+    type: $Enums.AwardType
+    periodStart: Date | string
+    periodEnd: Date | string
+    voteCount: number
+    awardedAt?: Date | string
+    user: UserCreateNestedOneWithoutAwardsInput
+  }
+
+  export type AwardUncheckedCreateWithoutPhotoInput = {
+    id?: string
+    type: $Enums.AwardType
+    userId: string
+    periodStart: Date | string
+    periodEnd: Date | string
+    voteCount: number
+    awardedAt?: Date | string
+  }
+
+  export type AwardCreateOrConnectWithoutPhotoInput = {
+    where: AwardWhereUniqueInput
+    create: XOR<AwardCreateWithoutPhotoInput, AwardUncheckedCreateWithoutPhotoInput>
+  }
+
+  export type AwardCreateManyPhotoInputEnvelope = {
+    data: AwardCreateManyPhotoInput | AwardCreateManyPhotoInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ForumReplyCreateWithoutEmbeddedPhotoInput = {
+    id?: string
+    body: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    author: UserCreateNestedOneWithoutForumRepliesInput
+    thread: ForumThreadCreateNestedOneWithoutRepliesInput
+  }
+
+  export type ForumReplyUncheckedCreateWithoutEmbeddedPhotoInput = {
+    id?: string
+    body: string
+    authorId: string
+    threadId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ForumReplyCreateOrConnectWithoutEmbeddedPhotoInput = {
+    where: ForumReplyWhereUniqueInput
+    create: XOR<ForumReplyCreateWithoutEmbeddedPhotoInput, ForumReplyUncheckedCreateWithoutEmbeddedPhotoInput>
+  }
+
+  export type ForumReplyCreateManyEmbeddedPhotoInputEnvelope = {
+    data: ForumReplyCreateManyEmbeddedPhotoInput | ForumReplyCreateManyEmbeddedPhotoInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CollectionItemCreateWithoutPhotoInput = {
+    id?: string
+    savedAt?: Date | string
+    collection: CollectionCreateNestedOneWithoutItemsInput
+  }
+
+  export type CollectionItemUncheckedCreateWithoutPhotoInput = {
+    id?: string
+    collectionId: string
+    savedAt?: Date | string
+  }
+
+  export type CollectionItemCreateOrConnectWithoutPhotoInput = {
+    where: CollectionItemWhereUniqueInput
+    create: XOR<CollectionItemCreateWithoutPhotoInput, CollectionItemUncheckedCreateWithoutPhotoInput>
+  }
+
+  export type CollectionItemCreateManyPhotoInputEnvelope = {
+    data: CollectionItemCreateManyPhotoInput | CollectionItemCreateManyPhotoInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserUpsertWithoutPhotosInput = {
+    update: XOR<UserUpdateWithoutPhotosInput, UserUncheckedUpdateWithoutPhotosInput>
+    create: XOR<UserCreateWithoutPhotosInput, UserUncheckedCreateWithoutPhotosInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutPhotosInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutPhotosInput, UserUncheckedUpdateWithoutPhotosInput>
+  }
+
+  export type UserUpdateWithoutPhotosInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    instagramUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    votes?: VoteUpdateManyWithoutUserNestedInput
+    comments?: CommentUpdateManyWithoutAuthorNestedInput
+    awards?: AwardUpdateManyWithoutUserNestedInput
+    forumThreads?: ForumThreadUpdateManyWithoutAuthorNestedInput
+    forumReplies?: ForumReplyUpdateManyWithoutAuthorNestedInput
+    collections?: CollectionUpdateManyWithoutUserNestedInput
+    followers?: FollowUpdateManyWithoutFollowingNestedInput
+    following?: FollowUpdateManyWithoutFollowerNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutPhotosInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    instagramUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    votes?: VoteUncheckedUpdateManyWithoutUserNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutAuthorNestedInput
+    awards?: AwardUncheckedUpdateManyWithoutUserNestedInput
+    forumThreads?: ForumThreadUncheckedUpdateManyWithoutAuthorNestedInput
+    forumReplies?: ForumReplyUncheckedUpdateManyWithoutAuthorNestedInput
+    collections?: CollectionUncheckedUpdateManyWithoutUserNestedInput
+    followers?: FollowUncheckedUpdateManyWithoutFollowingNestedInput
+    following?: FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  }
+
+  export type VoteUpsertWithWhereUniqueWithoutPhotoInput = {
+    where: VoteWhereUniqueInput
+    update: XOR<VoteUpdateWithoutPhotoInput, VoteUncheckedUpdateWithoutPhotoInput>
+    create: XOR<VoteCreateWithoutPhotoInput, VoteUncheckedCreateWithoutPhotoInput>
+  }
+
+  export type VoteUpdateWithWhereUniqueWithoutPhotoInput = {
+    where: VoteWhereUniqueInput
+    data: XOR<VoteUpdateWithoutPhotoInput, VoteUncheckedUpdateWithoutPhotoInput>
+  }
+
+  export type VoteUpdateManyWithWhereWithoutPhotoInput = {
+    where: VoteScalarWhereInput
+    data: XOR<VoteUpdateManyMutationInput, VoteUncheckedUpdateManyWithoutPhotoInput>
+  }
+
+  export type CommentUpsertWithWhereUniqueWithoutPhotoInput = {
+    where: CommentWhereUniqueInput
+    update: XOR<CommentUpdateWithoutPhotoInput, CommentUncheckedUpdateWithoutPhotoInput>
+    create: XOR<CommentCreateWithoutPhotoInput, CommentUncheckedCreateWithoutPhotoInput>
+  }
+
+  export type CommentUpdateWithWhereUniqueWithoutPhotoInput = {
+    where: CommentWhereUniqueInput
+    data: XOR<CommentUpdateWithoutPhotoInput, CommentUncheckedUpdateWithoutPhotoInput>
+  }
+
+  export type CommentUpdateManyWithWhereWithoutPhotoInput = {
+    where: CommentScalarWhereInput
+    data: XOR<CommentUpdateManyMutationInput, CommentUncheckedUpdateManyWithoutPhotoInput>
+  }
+
+  export type AwardUpsertWithWhereUniqueWithoutPhotoInput = {
+    where: AwardWhereUniqueInput
+    update: XOR<AwardUpdateWithoutPhotoInput, AwardUncheckedUpdateWithoutPhotoInput>
+    create: XOR<AwardCreateWithoutPhotoInput, AwardUncheckedCreateWithoutPhotoInput>
+  }
+
+  export type AwardUpdateWithWhereUniqueWithoutPhotoInput = {
+    where: AwardWhereUniqueInput
+    data: XOR<AwardUpdateWithoutPhotoInput, AwardUncheckedUpdateWithoutPhotoInput>
+  }
+
+  export type AwardUpdateManyWithWhereWithoutPhotoInput = {
+    where: AwardScalarWhereInput
+    data: XOR<AwardUpdateManyMutationInput, AwardUncheckedUpdateManyWithoutPhotoInput>
+  }
+
+  export type ForumReplyUpsertWithWhereUniqueWithoutEmbeddedPhotoInput = {
+    where: ForumReplyWhereUniqueInput
+    update: XOR<ForumReplyUpdateWithoutEmbeddedPhotoInput, ForumReplyUncheckedUpdateWithoutEmbeddedPhotoInput>
+    create: XOR<ForumReplyCreateWithoutEmbeddedPhotoInput, ForumReplyUncheckedCreateWithoutEmbeddedPhotoInput>
+  }
+
+  export type ForumReplyUpdateWithWhereUniqueWithoutEmbeddedPhotoInput = {
+    where: ForumReplyWhereUniqueInput
+    data: XOR<ForumReplyUpdateWithoutEmbeddedPhotoInput, ForumReplyUncheckedUpdateWithoutEmbeddedPhotoInput>
+  }
+
+  export type ForumReplyUpdateManyWithWhereWithoutEmbeddedPhotoInput = {
+    where: ForumReplyScalarWhereInput
+    data: XOR<ForumReplyUpdateManyMutationInput, ForumReplyUncheckedUpdateManyWithoutEmbeddedPhotoInput>
+  }
+
+  export type CollectionItemUpsertWithWhereUniqueWithoutPhotoInput = {
+    where: CollectionItemWhereUniqueInput
+    update: XOR<CollectionItemUpdateWithoutPhotoInput, CollectionItemUncheckedUpdateWithoutPhotoInput>
+    create: XOR<CollectionItemCreateWithoutPhotoInput, CollectionItemUncheckedCreateWithoutPhotoInput>
+  }
+
+  export type CollectionItemUpdateWithWhereUniqueWithoutPhotoInput = {
+    where: CollectionItemWhereUniqueInput
+    data: XOR<CollectionItemUpdateWithoutPhotoInput, CollectionItemUncheckedUpdateWithoutPhotoInput>
+  }
+
+  export type CollectionItemUpdateManyWithWhereWithoutPhotoInput = {
+    where: CollectionItemScalarWhereInput
+    data: XOR<CollectionItemUpdateManyMutationInput, CollectionItemUncheckedUpdateManyWithoutPhotoInput>
+  }
+
+  export type CollectionItemScalarWhereInput = {
+    AND?: CollectionItemScalarWhereInput | CollectionItemScalarWhereInput[]
+    OR?: CollectionItemScalarWhereInput[]
+    NOT?: CollectionItemScalarWhereInput | CollectionItemScalarWhereInput[]
+    id?: StringFilter<"CollectionItem"> | string
+    collectionId?: StringFilter<"CollectionItem"> | string
+    photoId?: StringFilter<"CollectionItem"> | string
+    savedAt?: DateTimeFilter<"CollectionItem"> | Date | string
+  }
+
+  export type UserCreateWithoutVotesInput = {
+    id?: string
+    email: string
+    username: string
+    name: string
+    password: string
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    avatarUrl?: string | null
+    bio?: string | null
+    location?: string | null
+    websiteUrl?: string | null
+    instagramUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    photos?: PhotoCreateNestedManyWithoutAuthorInput
+    comments?: CommentCreateNestedManyWithoutAuthorInput
+    awards?: AwardCreateNestedManyWithoutUserInput
+    forumThreads?: ForumThreadCreateNestedManyWithoutAuthorInput
+    forumReplies?: ForumReplyCreateNestedManyWithoutAuthorInput
+    collections?: CollectionCreateNestedManyWithoutUserInput
+    followers?: FollowCreateNestedManyWithoutFollowingInput
+    following?: FollowCreateNestedManyWithoutFollowerInput
+  }
+
+  export type UserUncheckedCreateWithoutVotesInput = {
+    id?: string
+    email: string
+    username: string
+    name: string
+    password: string
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    avatarUrl?: string | null
+    bio?: string | null
+    location?: string | null
+    websiteUrl?: string | null
+    instagramUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    photos?: PhotoUncheckedCreateNestedManyWithoutAuthorInput
+    comments?: CommentUncheckedCreateNestedManyWithoutAuthorInput
+    awards?: AwardUncheckedCreateNestedManyWithoutUserInput
+    forumThreads?: ForumThreadUncheckedCreateNestedManyWithoutAuthorInput
+    forumReplies?: ForumReplyUncheckedCreateNestedManyWithoutAuthorInput
+    collections?: CollectionUncheckedCreateNestedManyWithoutUserInput
+    followers?: FollowUncheckedCreateNestedManyWithoutFollowingInput
+    following?: FollowUncheckedCreateNestedManyWithoutFollowerInput
+  }
+
+  export type UserCreateOrConnectWithoutVotesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutVotesInput, UserUncheckedCreateWithoutVotesInput>
+  }
+
+  export type PhotoCreateWithoutVotesInput = {
+    id?: string
+    title: string
+    description?: string | null
+    imageUrl: string
+    thumbnailUrl?: string | null
+    width?: number
+    height?: number
+    fileSize?: number
+    neighborhood: string
+    category: $Enums.PhotoCategory
+    status?: $Enums.PhotoStatus
+    cameraMake?: string | null
+    cameraModel?: string | null
+    lens?: string | null
+    iso?: number | null
+    aperture?: string | null
+    shutterSpeed?: string | null
+    focalLength?: string | null
+    takenAt?: Date | string | null
+    voteCount?: number
+    approvedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    author: UserCreateNestedOneWithoutPhotosInput
+    comments?: CommentCreateNestedManyWithoutPhotoInput
+    awards?: AwardCreateNestedManyWithoutPhotoInput
+    forumReplies?: ForumReplyCreateNestedManyWithoutEmbeddedPhotoInput
+    collectionItems?: CollectionItemCreateNestedManyWithoutPhotoInput
+  }
+
+  export type PhotoUncheckedCreateWithoutVotesInput = {
+    id?: string
+    title: string
+    description?: string | null
+    imageUrl: string
+    thumbnailUrl?: string | null
+    width?: number
+    height?: number
+    fileSize?: number
+    neighborhood: string
+    category: $Enums.PhotoCategory
+    status?: $Enums.PhotoStatus
+    cameraMake?: string | null
+    cameraModel?: string | null
+    lens?: string | null
+    iso?: number | null
+    aperture?: string | null
+    shutterSpeed?: string | null
+    focalLength?: string | null
+    takenAt?: Date | string | null
+    authorId: string
+    voteCount?: number
+    approvedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    comments?: CommentUncheckedCreateNestedManyWithoutPhotoInput
+    awards?: AwardUncheckedCreateNestedManyWithoutPhotoInput
+    forumReplies?: ForumReplyUncheckedCreateNestedManyWithoutEmbeddedPhotoInput
+    collectionItems?: CollectionItemUncheckedCreateNestedManyWithoutPhotoInput
+  }
+
+  export type PhotoCreateOrConnectWithoutVotesInput = {
+    where: PhotoWhereUniqueInput
+    create: XOR<PhotoCreateWithoutVotesInput, PhotoUncheckedCreateWithoutVotesInput>
+  }
+
+  export type UserUpsertWithoutVotesInput = {
+    update: XOR<UserUpdateWithoutVotesInput, UserUncheckedUpdateWithoutVotesInput>
+    create: XOR<UserCreateWithoutVotesInput, UserUncheckedCreateWithoutVotesInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutVotesInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutVotesInput, UserUncheckedUpdateWithoutVotesInput>
+  }
+
+  export type UserUpdateWithoutVotesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    instagramUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    photos?: PhotoUpdateManyWithoutAuthorNestedInput
+    comments?: CommentUpdateManyWithoutAuthorNestedInput
+    awards?: AwardUpdateManyWithoutUserNestedInput
+    forumThreads?: ForumThreadUpdateManyWithoutAuthorNestedInput
+    forumReplies?: ForumReplyUpdateManyWithoutAuthorNestedInput
+    collections?: CollectionUpdateManyWithoutUserNestedInput
+    followers?: FollowUpdateManyWithoutFollowingNestedInput
+    following?: FollowUpdateManyWithoutFollowerNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutVotesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    instagramUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    photos?: PhotoUncheckedUpdateManyWithoutAuthorNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutAuthorNestedInput
+    awards?: AwardUncheckedUpdateManyWithoutUserNestedInput
+    forumThreads?: ForumThreadUncheckedUpdateManyWithoutAuthorNestedInput
+    forumReplies?: ForumReplyUncheckedUpdateManyWithoutAuthorNestedInput
+    collections?: CollectionUncheckedUpdateManyWithoutUserNestedInput
+    followers?: FollowUncheckedUpdateManyWithoutFollowingNestedInput
+    following?: FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  }
+
+  export type PhotoUpsertWithoutVotesInput = {
+    update: XOR<PhotoUpdateWithoutVotesInput, PhotoUncheckedUpdateWithoutVotesInput>
+    create: XOR<PhotoCreateWithoutVotesInput, PhotoUncheckedCreateWithoutVotesInput>
+    where?: PhotoWhereInput
+  }
+
+  export type PhotoUpdateToOneWithWhereWithoutVotesInput = {
+    where?: PhotoWhereInput
+    data: XOR<PhotoUpdateWithoutVotesInput, PhotoUncheckedUpdateWithoutVotesInput>
+  }
+
+  export type PhotoUpdateWithoutVotesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    width?: IntFieldUpdateOperationsInput | number
+    height?: IntFieldUpdateOperationsInput | number
+    fileSize?: IntFieldUpdateOperationsInput | number
+    neighborhood?: StringFieldUpdateOperationsInput | string
+    category?: EnumPhotoCategoryFieldUpdateOperationsInput | $Enums.PhotoCategory
+    status?: EnumPhotoStatusFieldUpdateOperationsInput | $Enums.PhotoStatus
+    cameraMake?: NullableStringFieldUpdateOperationsInput | string | null
+    cameraModel?: NullableStringFieldUpdateOperationsInput | string | null
+    lens?: NullableStringFieldUpdateOperationsInput | string | null
+    iso?: NullableIntFieldUpdateOperationsInput | number | null
+    aperture?: NullableStringFieldUpdateOperationsInput | string | null
+    shutterSpeed?: NullableStringFieldUpdateOperationsInput | string | null
+    focalLength?: NullableStringFieldUpdateOperationsInput | string | null
+    takenAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    voteCount?: IntFieldUpdateOperationsInput | number
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    author?: UserUpdateOneRequiredWithoutPhotosNestedInput
+    comments?: CommentUpdateManyWithoutPhotoNestedInput
+    awards?: AwardUpdateManyWithoutPhotoNestedInput
+    forumReplies?: ForumReplyUpdateManyWithoutEmbeddedPhotoNestedInput
+    collectionItems?: CollectionItemUpdateManyWithoutPhotoNestedInput
+  }
+
+  export type PhotoUncheckedUpdateWithoutVotesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    width?: IntFieldUpdateOperationsInput | number
+    height?: IntFieldUpdateOperationsInput | number
+    fileSize?: IntFieldUpdateOperationsInput | number
+    neighborhood?: StringFieldUpdateOperationsInput | string
+    category?: EnumPhotoCategoryFieldUpdateOperationsInput | $Enums.PhotoCategory
+    status?: EnumPhotoStatusFieldUpdateOperationsInput | $Enums.PhotoStatus
+    cameraMake?: NullableStringFieldUpdateOperationsInput | string | null
+    cameraModel?: NullableStringFieldUpdateOperationsInput | string | null
+    lens?: NullableStringFieldUpdateOperationsInput | string | null
+    iso?: NullableIntFieldUpdateOperationsInput | number | null
+    aperture?: NullableStringFieldUpdateOperationsInput | string | null
+    shutterSpeed?: NullableStringFieldUpdateOperationsInput | string | null
+    focalLength?: NullableStringFieldUpdateOperationsInput | string | null
+    takenAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    authorId?: StringFieldUpdateOperationsInput | string
+    voteCount?: IntFieldUpdateOperationsInput | number
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    comments?: CommentUncheckedUpdateManyWithoutPhotoNestedInput
+    awards?: AwardUncheckedUpdateManyWithoutPhotoNestedInput
+    forumReplies?: ForumReplyUncheckedUpdateManyWithoutEmbeddedPhotoNestedInput
+    collectionItems?: CollectionItemUncheckedUpdateManyWithoutPhotoNestedInput
+  }
+
+  export type UserCreateWithoutCommentsInput = {
+    id?: string
+    email: string
+    username: string
+    name: string
+    password: string
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    avatarUrl?: string | null
+    bio?: string | null
+    location?: string | null
+    websiteUrl?: string | null
+    instagramUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    photos?: PhotoCreateNestedManyWithoutAuthorInput
+    votes?: VoteCreateNestedManyWithoutUserInput
+    awards?: AwardCreateNestedManyWithoutUserInput
+    forumThreads?: ForumThreadCreateNestedManyWithoutAuthorInput
+    forumReplies?: ForumReplyCreateNestedManyWithoutAuthorInput
+    collections?: CollectionCreateNestedManyWithoutUserInput
+    followers?: FollowCreateNestedManyWithoutFollowingInput
+    following?: FollowCreateNestedManyWithoutFollowerInput
+  }
+
+  export type UserUncheckedCreateWithoutCommentsInput = {
+    id?: string
+    email: string
+    username: string
+    name: string
+    password: string
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    avatarUrl?: string | null
+    bio?: string | null
+    location?: string | null
+    websiteUrl?: string | null
+    instagramUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    photos?: PhotoUncheckedCreateNestedManyWithoutAuthorInput
+    votes?: VoteUncheckedCreateNestedManyWithoutUserInput
+    awards?: AwardUncheckedCreateNestedManyWithoutUserInput
+    forumThreads?: ForumThreadUncheckedCreateNestedManyWithoutAuthorInput
+    forumReplies?: ForumReplyUncheckedCreateNestedManyWithoutAuthorInput
+    collections?: CollectionUncheckedCreateNestedManyWithoutUserInput
+    followers?: FollowUncheckedCreateNestedManyWithoutFollowingInput
+    following?: FollowUncheckedCreateNestedManyWithoutFollowerInput
+  }
+
+  export type UserCreateOrConnectWithoutCommentsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutCommentsInput, UserUncheckedCreateWithoutCommentsInput>
+  }
+
+  export type PhotoCreateWithoutCommentsInput = {
+    id?: string
+    title: string
+    description?: string | null
+    imageUrl: string
+    thumbnailUrl?: string | null
+    width?: number
+    height?: number
+    fileSize?: number
+    neighborhood: string
+    category: $Enums.PhotoCategory
+    status?: $Enums.PhotoStatus
+    cameraMake?: string | null
+    cameraModel?: string | null
+    lens?: string | null
+    iso?: number | null
+    aperture?: string | null
+    shutterSpeed?: string | null
+    focalLength?: string | null
+    takenAt?: Date | string | null
+    voteCount?: number
+    approvedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    author: UserCreateNestedOneWithoutPhotosInput
+    votes?: VoteCreateNestedManyWithoutPhotoInput
+    awards?: AwardCreateNestedManyWithoutPhotoInput
+    forumReplies?: ForumReplyCreateNestedManyWithoutEmbeddedPhotoInput
+    collectionItems?: CollectionItemCreateNestedManyWithoutPhotoInput
+  }
+
+  export type PhotoUncheckedCreateWithoutCommentsInput = {
+    id?: string
+    title: string
+    description?: string | null
+    imageUrl: string
+    thumbnailUrl?: string | null
+    width?: number
+    height?: number
+    fileSize?: number
+    neighborhood: string
+    category: $Enums.PhotoCategory
+    status?: $Enums.PhotoStatus
+    cameraMake?: string | null
+    cameraModel?: string | null
+    lens?: string | null
+    iso?: number | null
+    aperture?: string | null
+    shutterSpeed?: string | null
+    focalLength?: string | null
+    takenAt?: Date | string | null
+    authorId: string
+    voteCount?: number
+    approvedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    votes?: VoteUncheckedCreateNestedManyWithoutPhotoInput
+    awards?: AwardUncheckedCreateNestedManyWithoutPhotoInput
+    forumReplies?: ForumReplyUncheckedCreateNestedManyWithoutEmbeddedPhotoInput
+    collectionItems?: CollectionItemUncheckedCreateNestedManyWithoutPhotoInput
+  }
+
+  export type PhotoCreateOrConnectWithoutCommentsInput = {
+    where: PhotoWhereUniqueInput
+    create: XOR<PhotoCreateWithoutCommentsInput, PhotoUncheckedCreateWithoutCommentsInput>
+  }
+
+  export type UserUpsertWithoutCommentsInput = {
+    update: XOR<UserUpdateWithoutCommentsInput, UserUncheckedUpdateWithoutCommentsInput>
+    create: XOR<UserCreateWithoutCommentsInput, UserUncheckedCreateWithoutCommentsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutCommentsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutCommentsInput, UserUncheckedUpdateWithoutCommentsInput>
+  }
+
+  export type UserUpdateWithoutCommentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    instagramUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    photos?: PhotoUpdateManyWithoutAuthorNestedInput
+    votes?: VoteUpdateManyWithoutUserNestedInput
+    awards?: AwardUpdateManyWithoutUserNestedInput
+    forumThreads?: ForumThreadUpdateManyWithoutAuthorNestedInput
+    forumReplies?: ForumReplyUpdateManyWithoutAuthorNestedInput
+    collections?: CollectionUpdateManyWithoutUserNestedInput
+    followers?: FollowUpdateManyWithoutFollowingNestedInput
+    following?: FollowUpdateManyWithoutFollowerNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutCommentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    instagramUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    photos?: PhotoUncheckedUpdateManyWithoutAuthorNestedInput
+    votes?: VoteUncheckedUpdateManyWithoutUserNestedInput
+    awards?: AwardUncheckedUpdateManyWithoutUserNestedInput
+    forumThreads?: ForumThreadUncheckedUpdateManyWithoutAuthorNestedInput
+    forumReplies?: ForumReplyUncheckedUpdateManyWithoutAuthorNestedInput
+    collections?: CollectionUncheckedUpdateManyWithoutUserNestedInput
+    followers?: FollowUncheckedUpdateManyWithoutFollowingNestedInput
+    following?: FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  }
+
+  export type PhotoUpsertWithoutCommentsInput = {
+    update: XOR<PhotoUpdateWithoutCommentsInput, PhotoUncheckedUpdateWithoutCommentsInput>
+    create: XOR<PhotoCreateWithoutCommentsInput, PhotoUncheckedCreateWithoutCommentsInput>
+    where?: PhotoWhereInput
+  }
+
+  export type PhotoUpdateToOneWithWhereWithoutCommentsInput = {
+    where?: PhotoWhereInput
+    data: XOR<PhotoUpdateWithoutCommentsInput, PhotoUncheckedUpdateWithoutCommentsInput>
+  }
+
+  export type PhotoUpdateWithoutCommentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    width?: IntFieldUpdateOperationsInput | number
+    height?: IntFieldUpdateOperationsInput | number
+    fileSize?: IntFieldUpdateOperationsInput | number
+    neighborhood?: StringFieldUpdateOperationsInput | string
+    category?: EnumPhotoCategoryFieldUpdateOperationsInput | $Enums.PhotoCategory
+    status?: EnumPhotoStatusFieldUpdateOperationsInput | $Enums.PhotoStatus
+    cameraMake?: NullableStringFieldUpdateOperationsInput | string | null
+    cameraModel?: NullableStringFieldUpdateOperationsInput | string | null
+    lens?: NullableStringFieldUpdateOperationsInput | string | null
+    iso?: NullableIntFieldUpdateOperationsInput | number | null
+    aperture?: NullableStringFieldUpdateOperationsInput | string | null
+    shutterSpeed?: NullableStringFieldUpdateOperationsInput | string | null
+    focalLength?: NullableStringFieldUpdateOperationsInput | string | null
+    takenAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    voteCount?: IntFieldUpdateOperationsInput | number
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    author?: UserUpdateOneRequiredWithoutPhotosNestedInput
+    votes?: VoteUpdateManyWithoutPhotoNestedInput
+    awards?: AwardUpdateManyWithoutPhotoNestedInput
+    forumReplies?: ForumReplyUpdateManyWithoutEmbeddedPhotoNestedInput
+    collectionItems?: CollectionItemUpdateManyWithoutPhotoNestedInput
+  }
+
+  export type PhotoUncheckedUpdateWithoutCommentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    width?: IntFieldUpdateOperationsInput | number
+    height?: IntFieldUpdateOperationsInput | number
+    fileSize?: IntFieldUpdateOperationsInput | number
+    neighborhood?: StringFieldUpdateOperationsInput | string
+    category?: EnumPhotoCategoryFieldUpdateOperationsInput | $Enums.PhotoCategory
+    status?: EnumPhotoStatusFieldUpdateOperationsInput | $Enums.PhotoStatus
+    cameraMake?: NullableStringFieldUpdateOperationsInput | string | null
+    cameraModel?: NullableStringFieldUpdateOperationsInput | string | null
+    lens?: NullableStringFieldUpdateOperationsInput | string | null
+    iso?: NullableIntFieldUpdateOperationsInput | number | null
+    aperture?: NullableStringFieldUpdateOperationsInput | string | null
+    shutterSpeed?: NullableStringFieldUpdateOperationsInput | string | null
+    focalLength?: NullableStringFieldUpdateOperationsInput | string | null
+    takenAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    authorId?: StringFieldUpdateOperationsInput | string
+    voteCount?: IntFieldUpdateOperationsInput | number
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    votes?: VoteUncheckedUpdateManyWithoutPhotoNestedInput
+    awards?: AwardUncheckedUpdateManyWithoutPhotoNestedInput
+    forumReplies?: ForumReplyUncheckedUpdateManyWithoutEmbeddedPhotoNestedInput
+    collectionItems?: CollectionItemUncheckedUpdateManyWithoutPhotoNestedInput
+  }
+
+  export type PhotoCreateWithoutAwardsInput = {
+    id?: string
+    title: string
+    description?: string | null
+    imageUrl: string
+    thumbnailUrl?: string | null
+    width?: number
+    height?: number
+    fileSize?: number
+    neighborhood: string
+    category: $Enums.PhotoCategory
+    status?: $Enums.PhotoStatus
+    cameraMake?: string | null
+    cameraModel?: string | null
+    lens?: string | null
+    iso?: number | null
+    aperture?: string | null
+    shutterSpeed?: string | null
+    focalLength?: string | null
+    takenAt?: Date | string | null
+    voteCount?: number
+    approvedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    author: UserCreateNestedOneWithoutPhotosInput
+    votes?: VoteCreateNestedManyWithoutPhotoInput
+    comments?: CommentCreateNestedManyWithoutPhotoInput
+    forumReplies?: ForumReplyCreateNestedManyWithoutEmbeddedPhotoInput
+    collectionItems?: CollectionItemCreateNestedManyWithoutPhotoInput
+  }
+
+  export type PhotoUncheckedCreateWithoutAwardsInput = {
+    id?: string
+    title: string
+    description?: string | null
+    imageUrl: string
+    thumbnailUrl?: string | null
+    width?: number
+    height?: number
+    fileSize?: number
+    neighborhood: string
+    category: $Enums.PhotoCategory
+    status?: $Enums.PhotoStatus
+    cameraMake?: string | null
+    cameraModel?: string | null
+    lens?: string | null
+    iso?: number | null
+    aperture?: string | null
+    shutterSpeed?: string | null
+    focalLength?: string | null
+    takenAt?: Date | string | null
+    authorId: string
+    voteCount?: number
+    approvedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    votes?: VoteUncheckedCreateNestedManyWithoutPhotoInput
+    comments?: CommentUncheckedCreateNestedManyWithoutPhotoInput
+    forumReplies?: ForumReplyUncheckedCreateNestedManyWithoutEmbeddedPhotoInput
+    collectionItems?: CollectionItemUncheckedCreateNestedManyWithoutPhotoInput
+  }
+
+  export type PhotoCreateOrConnectWithoutAwardsInput = {
+    where: PhotoWhereUniqueInput
+    create: XOR<PhotoCreateWithoutAwardsInput, PhotoUncheckedCreateWithoutAwardsInput>
+  }
+
+  export type UserCreateWithoutAwardsInput = {
+    id?: string
+    email: string
+    username: string
+    name: string
+    password: string
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    avatarUrl?: string | null
+    bio?: string | null
+    location?: string | null
+    websiteUrl?: string | null
+    instagramUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    photos?: PhotoCreateNestedManyWithoutAuthorInput
+    votes?: VoteCreateNestedManyWithoutUserInput
+    comments?: CommentCreateNestedManyWithoutAuthorInput
+    forumThreads?: ForumThreadCreateNestedManyWithoutAuthorInput
+    forumReplies?: ForumReplyCreateNestedManyWithoutAuthorInput
+    collections?: CollectionCreateNestedManyWithoutUserInput
+    followers?: FollowCreateNestedManyWithoutFollowingInput
+    following?: FollowCreateNestedManyWithoutFollowerInput
+  }
+
+  export type UserUncheckedCreateWithoutAwardsInput = {
+    id?: string
+    email: string
+    username: string
+    name: string
+    password: string
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    avatarUrl?: string | null
+    bio?: string | null
+    location?: string | null
+    websiteUrl?: string | null
+    instagramUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    photos?: PhotoUncheckedCreateNestedManyWithoutAuthorInput
+    votes?: VoteUncheckedCreateNestedManyWithoutUserInput
+    comments?: CommentUncheckedCreateNestedManyWithoutAuthorInput
+    forumThreads?: ForumThreadUncheckedCreateNestedManyWithoutAuthorInput
+    forumReplies?: ForumReplyUncheckedCreateNestedManyWithoutAuthorInput
+    collections?: CollectionUncheckedCreateNestedManyWithoutUserInput
+    followers?: FollowUncheckedCreateNestedManyWithoutFollowingInput
+    following?: FollowUncheckedCreateNestedManyWithoutFollowerInput
+  }
+
+  export type UserCreateOrConnectWithoutAwardsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutAwardsInput, UserUncheckedCreateWithoutAwardsInput>
+  }
+
+  export type PhotoUpsertWithoutAwardsInput = {
+    update: XOR<PhotoUpdateWithoutAwardsInput, PhotoUncheckedUpdateWithoutAwardsInput>
+    create: XOR<PhotoCreateWithoutAwardsInput, PhotoUncheckedCreateWithoutAwardsInput>
+    where?: PhotoWhereInput
+  }
+
+  export type PhotoUpdateToOneWithWhereWithoutAwardsInput = {
+    where?: PhotoWhereInput
+    data: XOR<PhotoUpdateWithoutAwardsInput, PhotoUncheckedUpdateWithoutAwardsInput>
+  }
+
+  export type PhotoUpdateWithoutAwardsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    width?: IntFieldUpdateOperationsInput | number
+    height?: IntFieldUpdateOperationsInput | number
+    fileSize?: IntFieldUpdateOperationsInput | number
+    neighborhood?: StringFieldUpdateOperationsInput | string
+    category?: EnumPhotoCategoryFieldUpdateOperationsInput | $Enums.PhotoCategory
+    status?: EnumPhotoStatusFieldUpdateOperationsInput | $Enums.PhotoStatus
+    cameraMake?: NullableStringFieldUpdateOperationsInput | string | null
+    cameraModel?: NullableStringFieldUpdateOperationsInput | string | null
+    lens?: NullableStringFieldUpdateOperationsInput | string | null
+    iso?: NullableIntFieldUpdateOperationsInput | number | null
+    aperture?: NullableStringFieldUpdateOperationsInput | string | null
+    shutterSpeed?: NullableStringFieldUpdateOperationsInput | string | null
+    focalLength?: NullableStringFieldUpdateOperationsInput | string | null
+    takenAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    voteCount?: IntFieldUpdateOperationsInput | number
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    author?: UserUpdateOneRequiredWithoutPhotosNestedInput
+    votes?: VoteUpdateManyWithoutPhotoNestedInput
+    comments?: CommentUpdateManyWithoutPhotoNestedInput
+    forumReplies?: ForumReplyUpdateManyWithoutEmbeddedPhotoNestedInput
+    collectionItems?: CollectionItemUpdateManyWithoutPhotoNestedInput
+  }
+
+  export type PhotoUncheckedUpdateWithoutAwardsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    width?: IntFieldUpdateOperationsInput | number
+    height?: IntFieldUpdateOperationsInput | number
+    fileSize?: IntFieldUpdateOperationsInput | number
+    neighborhood?: StringFieldUpdateOperationsInput | string
+    category?: EnumPhotoCategoryFieldUpdateOperationsInput | $Enums.PhotoCategory
+    status?: EnumPhotoStatusFieldUpdateOperationsInput | $Enums.PhotoStatus
+    cameraMake?: NullableStringFieldUpdateOperationsInput | string | null
+    cameraModel?: NullableStringFieldUpdateOperationsInput | string | null
+    lens?: NullableStringFieldUpdateOperationsInput | string | null
+    iso?: NullableIntFieldUpdateOperationsInput | number | null
+    aperture?: NullableStringFieldUpdateOperationsInput | string | null
+    shutterSpeed?: NullableStringFieldUpdateOperationsInput | string | null
+    focalLength?: NullableStringFieldUpdateOperationsInput | string | null
+    takenAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    authorId?: StringFieldUpdateOperationsInput | string
+    voteCount?: IntFieldUpdateOperationsInput | number
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    votes?: VoteUncheckedUpdateManyWithoutPhotoNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutPhotoNestedInput
+    forumReplies?: ForumReplyUncheckedUpdateManyWithoutEmbeddedPhotoNestedInput
+    collectionItems?: CollectionItemUncheckedUpdateManyWithoutPhotoNestedInput
+  }
+
+  export type UserUpsertWithoutAwardsInput = {
+    update: XOR<UserUpdateWithoutAwardsInput, UserUncheckedUpdateWithoutAwardsInput>
+    create: XOR<UserCreateWithoutAwardsInput, UserUncheckedCreateWithoutAwardsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutAwardsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutAwardsInput, UserUncheckedUpdateWithoutAwardsInput>
+  }
+
+  export type UserUpdateWithoutAwardsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    instagramUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    photos?: PhotoUpdateManyWithoutAuthorNestedInput
+    votes?: VoteUpdateManyWithoutUserNestedInput
+    comments?: CommentUpdateManyWithoutAuthorNestedInput
+    forumThreads?: ForumThreadUpdateManyWithoutAuthorNestedInput
+    forumReplies?: ForumReplyUpdateManyWithoutAuthorNestedInput
+    collections?: CollectionUpdateManyWithoutUserNestedInput
+    followers?: FollowUpdateManyWithoutFollowingNestedInput
+    following?: FollowUpdateManyWithoutFollowerNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutAwardsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    instagramUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    photos?: PhotoUncheckedUpdateManyWithoutAuthorNestedInput
+    votes?: VoteUncheckedUpdateManyWithoutUserNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutAuthorNestedInput
+    forumThreads?: ForumThreadUncheckedUpdateManyWithoutAuthorNestedInput
+    forumReplies?: ForumReplyUncheckedUpdateManyWithoutAuthorNestedInput
+    collections?: CollectionUncheckedUpdateManyWithoutUserNestedInput
+    followers?: FollowUncheckedUpdateManyWithoutFollowingNestedInput
+    following?: FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  }
+
+  export type ForumThreadCreateWithoutCategoryInput = {
+    id?: string
+    title: string
+    body: string
+    pinned?: boolean
+    locked?: boolean
+    replyCount?: number
+    lastReplyAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    author: UserCreateNestedOneWithoutForumThreadsInput
+    replies?: ForumReplyCreateNestedManyWithoutThreadInput
+  }
+
+  export type ForumThreadUncheckedCreateWithoutCategoryInput = {
+    id?: string
+    title: string
+    body: string
+    authorId: string
+    pinned?: boolean
+    locked?: boolean
+    replyCount?: number
+    lastReplyAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    replies?: ForumReplyUncheckedCreateNestedManyWithoutThreadInput
+  }
+
+  export type ForumThreadCreateOrConnectWithoutCategoryInput = {
+    where: ForumThreadWhereUniqueInput
+    create: XOR<ForumThreadCreateWithoutCategoryInput, ForumThreadUncheckedCreateWithoutCategoryInput>
+  }
+
+  export type ForumThreadCreateManyCategoryInputEnvelope = {
+    data: ForumThreadCreateManyCategoryInput | ForumThreadCreateManyCategoryInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ForumThreadUpsertWithWhereUniqueWithoutCategoryInput = {
+    where: ForumThreadWhereUniqueInput
+    update: XOR<ForumThreadUpdateWithoutCategoryInput, ForumThreadUncheckedUpdateWithoutCategoryInput>
+    create: XOR<ForumThreadCreateWithoutCategoryInput, ForumThreadUncheckedCreateWithoutCategoryInput>
+  }
+
+  export type ForumThreadUpdateWithWhereUniqueWithoutCategoryInput = {
+    where: ForumThreadWhereUniqueInput
+    data: XOR<ForumThreadUpdateWithoutCategoryInput, ForumThreadUncheckedUpdateWithoutCategoryInput>
+  }
+
+  export type ForumThreadUpdateManyWithWhereWithoutCategoryInput = {
+    where: ForumThreadScalarWhereInput
+    data: XOR<ForumThreadUpdateManyMutationInput, ForumThreadUncheckedUpdateManyWithoutCategoryInput>
+  }
+
+  export type UserCreateWithoutForumThreadsInput = {
+    id?: string
+    email: string
+    username: string
+    name: string
+    password: string
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    avatarUrl?: string | null
+    bio?: string | null
+    location?: string | null
+    websiteUrl?: string | null
+    instagramUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    photos?: PhotoCreateNestedManyWithoutAuthorInput
+    votes?: VoteCreateNestedManyWithoutUserInput
+    comments?: CommentCreateNestedManyWithoutAuthorInput
+    awards?: AwardCreateNestedManyWithoutUserInput
+    forumReplies?: ForumReplyCreateNestedManyWithoutAuthorInput
+    collections?: CollectionCreateNestedManyWithoutUserInput
+    followers?: FollowCreateNestedManyWithoutFollowingInput
+    following?: FollowCreateNestedManyWithoutFollowerInput
+  }
+
+  export type UserUncheckedCreateWithoutForumThreadsInput = {
+    id?: string
+    email: string
+    username: string
+    name: string
+    password: string
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    avatarUrl?: string | null
+    bio?: string | null
+    location?: string | null
+    websiteUrl?: string | null
+    instagramUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    photos?: PhotoUncheckedCreateNestedManyWithoutAuthorInput
+    votes?: VoteUncheckedCreateNestedManyWithoutUserInput
+    comments?: CommentUncheckedCreateNestedManyWithoutAuthorInput
+    awards?: AwardUncheckedCreateNestedManyWithoutUserInput
+    forumReplies?: ForumReplyUncheckedCreateNestedManyWithoutAuthorInput
+    collections?: CollectionUncheckedCreateNestedManyWithoutUserInput
+    followers?: FollowUncheckedCreateNestedManyWithoutFollowingInput
+    following?: FollowUncheckedCreateNestedManyWithoutFollowerInput
+  }
+
+  export type UserCreateOrConnectWithoutForumThreadsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutForumThreadsInput, UserUncheckedCreateWithoutForumThreadsInput>
+  }
+
+  export type ForumCategoryCreateWithoutThreadsInput = {
+    id?: string
+    slug: $Enums.ForumCategorySlug
+    name: string
+    description: string
+    sortOrder?: number
+  }
+
+  export type ForumCategoryUncheckedCreateWithoutThreadsInput = {
+    id?: string
+    slug: $Enums.ForumCategorySlug
+    name: string
+    description: string
+    sortOrder?: number
+  }
+
+  export type ForumCategoryCreateOrConnectWithoutThreadsInput = {
+    where: ForumCategoryWhereUniqueInput
+    create: XOR<ForumCategoryCreateWithoutThreadsInput, ForumCategoryUncheckedCreateWithoutThreadsInput>
+  }
+
+  export type ForumReplyCreateWithoutThreadInput = {
+    id?: string
+    body: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    author: UserCreateNestedOneWithoutForumRepliesInput
+    embeddedPhoto?: PhotoCreateNestedOneWithoutForumRepliesInput
+  }
+
+  export type ForumReplyUncheckedCreateWithoutThreadInput = {
+    id?: string
+    body: string
+    authorId: string
+    embeddedPhotoId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ForumReplyCreateOrConnectWithoutThreadInput = {
+    where: ForumReplyWhereUniqueInput
+    create: XOR<ForumReplyCreateWithoutThreadInput, ForumReplyUncheckedCreateWithoutThreadInput>
+  }
+
+  export type ForumReplyCreateManyThreadInputEnvelope = {
+    data: ForumReplyCreateManyThreadInput | ForumReplyCreateManyThreadInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserUpsertWithoutForumThreadsInput = {
+    update: XOR<UserUpdateWithoutForumThreadsInput, UserUncheckedUpdateWithoutForumThreadsInput>
+    create: XOR<UserCreateWithoutForumThreadsInput, UserUncheckedCreateWithoutForumThreadsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutForumThreadsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutForumThreadsInput, UserUncheckedUpdateWithoutForumThreadsInput>
+  }
+
+  export type UserUpdateWithoutForumThreadsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    instagramUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    photos?: PhotoUpdateManyWithoutAuthorNestedInput
+    votes?: VoteUpdateManyWithoutUserNestedInput
+    comments?: CommentUpdateManyWithoutAuthorNestedInput
+    awards?: AwardUpdateManyWithoutUserNestedInput
+    forumReplies?: ForumReplyUpdateManyWithoutAuthorNestedInput
+    collections?: CollectionUpdateManyWithoutUserNestedInput
+    followers?: FollowUpdateManyWithoutFollowingNestedInput
+    following?: FollowUpdateManyWithoutFollowerNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutForumThreadsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    instagramUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    photos?: PhotoUncheckedUpdateManyWithoutAuthorNestedInput
+    votes?: VoteUncheckedUpdateManyWithoutUserNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutAuthorNestedInput
+    awards?: AwardUncheckedUpdateManyWithoutUserNestedInput
+    forumReplies?: ForumReplyUncheckedUpdateManyWithoutAuthorNestedInput
+    collections?: CollectionUncheckedUpdateManyWithoutUserNestedInput
+    followers?: FollowUncheckedUpdateManyWithoutFollowingNestedInput
+    following?: FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  }
+
+  export type ForumCategoryUpsertWithoutThreadsInput = {
+    update: XOR<ForumCategoryUpdateWithoutThreadsInput, ForumCategoryUncheckedUpdateWithoutThreadsInput>
+    create: XOR<ForumCategoryCreateWithoutThreadsInput, ForumCategoryUncheckedCreateWithoutThreadsInput>
+    where?: ForumCategoryWhereInput
+  }
+
+  export type ForumCategoryUpdateToOneWithWhereWithoutThreadsInput = {
+    where?: ForumCategoryWhereInput
+    data: XOR<ForumCategoryUpdateWithoutThreadsInput, ForumCategoryUncheckedUpdateWithoutThreadsInput>
+  }
+
+  export type ForumCategoryUpdateWithoutThreadsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: EnumForumCategorySlugFieldUpdateOperationsInput | $Enums.ForumCategorySlug
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ForumCategoryUncheckedUpdateWithoutThreadsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: EnumForumCategorySlugFieldUpdateOperationsInput | $Enums.ForumCategorySlug
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ForumReplyUpsertWithWhereUniqueWithoutThreadInput = {
+    where: ForumReplyWhereUniqueInput
+    update: XOR<ForumReplyUpdateWithoutThreadInput, ForumReplyUncheckedUpdateWithoutThreadInput>
+    create: XOR<ForumReplyCreateWithoutThreadInput, ForumReplyUncheckedCreateWithoutThreadInput>
+  }
+
+  export type ForumReplyUpdateWithWhereUniqueWithoutThreadInput = {
+    where: ForumReplyWhereUniqueInput
+    data: XOR<ForumReplyUpdateWithoutThreadInput, ForumReplyUncheckedUpdateWithoutThreadInput>
+  }
+
+  export type ForumReplyUpdateManyWithWhereWithoutThreadInput = {
+    where: ForumReplyScalarWhereInput
+    data: XOR<ForumReplyUpdateManyMutationInput, ForumReplyUncheckedUpdateManyWithoutThreadInput>
+  }
+
+  export type UserCreateWithoutForumRepliesInput = {
+    id?: string
+    email: string
+    username: string
+    name: string
+    password: string
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    avatarUrl?: string | null
+    bio?: string | null
+    location?: string | null
+    websiteUrl?: string | null
+    instagramUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    photos?: PhotoCreateNestedManyWithoutAuthorInput
+    votes?: VoteCreateNestedManyWithoutUserInput
+    comments?: CommentCreateNestedManyWithoutAuthorInput
+    awards?: AwardCreateNestedManyWithoutUserInput
+    forumThreads?: ForumThreadCreateNestedManyWithoutAuthorInput
+    collections?: CollectionCreateNestedManyWithoutUserInput
+    followers?: FollowCreateNestedManyWithoutFollowingInput
+    following?: FollowCreateNestedManyWithoutFollowerInput
+  }
+
+  export type UserUncheckedCreateWithoutForumRepliesInput = {
+    id?: string
+    email: string
+    username: string
+    name: string
+    password: string
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    avatarUrl?: string | null
+    bio?: string | null
+    location?: string | null
+    websiteUrl?: string | null
+    instagramUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    photos?: PhotoUncheckedCreateNestedManyWithoutAuthorInput
+    votes?: VoteUncheckedCreateNestedManyWithoutUserInput
+    comments?: CommentUncheckedCreateNestedManyWithoutAuthorInput
+    awards?: AwardUncheckedCreateNestedManyWithoutUserInput
+    forumThreads?: ForumThreadUncheckedCreateNestedManyWithoutAuthorInput
+    collections?: CollectionUncheckedCreateNestedManyWithoutUserInput
+    followers?: FollowUncheckedCreateNestedManyWithoutFollowingInput
+    following?: FollowUncheckedCreateNestedManyWithoutFollowerInput
+  }
+
+  export type UserCreateOrConnectWithoutForumRepliesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutForumRepliesInput, UserUncheckedCreateWithoutForumRepliesInput>
+  }
+
+  export type ForumThreadCreateWithoutRepliesInput = {
+    id?: string
+    title: string
+    body: string
+    pinned?: boolean
+    locked?: boolean
+    replyCount?: number
+    lastReplyAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    author: UserCreateNestedOneWithoutForumThreadsInput
+    category: ForumCategoryCreateNestedOneWithoutThreadsInput
+  }
+
+  export type ForumThreadUncheckedCreateWithoutRepliesInput = {
+    id?: string
+    title: string
+    body: string
+    authorId: string
+    categoryId: string
+    pinned?: boolean
+    locked?: boolean
+    replyCount?: number
+    lastReplyAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ForumThreadCreateOrConnectWithoutRepliesInput = {
+    where: ForumThreadWhereUniqueInput
+    create: XOR<ForumThreadCreateWithoutRepliesInput, ForumThreadUncheckedCreateWithoutRepliesInput>
+  }
+
+  export type PhotoCreateWithoutForumRepliesInput = {
+    id?: string
+    title: string
+    description?: string | null
+    imageUrl: string
+    thumbnailUrl?: string | null
+    width?: number
+    height?: number
+    fileSize?: number
+    neighborhood: string
+    category: $Enums.PhotoCategory
+    status?: $Enums.PhotoStatus
+    cameraMake?: string | null
+    cameraModel?: string | null
+    lens?: string | null
+    iso?: number | null
+    aperture?: string | null
+    shutterSpeed?: string | null
+    focalLength?: string | null
+    takenAt?: Date | string | null
+    voteCount?: number
+    approvedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    author: UserCreateNestedOneWithoutPhotosInput
+    votes?: VoteCreateNestedManyWithoutPhotoInput
+    comments?: CommentCreateNestedManyWithoutPhotoInput
+    awards?: AwardCreateNestedManyWithoutPhotoInput
+    collectionItems?: CollectionItemCreateNestedManyWithoutPhotoInput
+  }
+
+  export type PhotoUncheckedCreateWithoutForumRepliesInput = {
+    id?: string
+    title: string
+    description?: string | null
+    imageUrl: string
+    thumbnailUrl?: string | null
+    width?: number
+    height?: number
+    fileSize?: number
+    neighborhood: string
+    category: $Enums.PhotoCategory
+    status?: $Enums.PhotoStatus
+    cameraMake?: string | null
+    cameraModel?: string | null
+    lens?: string | null
+    iso?: number | null
+    aperture?: string | null
+    shutterSpeed?: string | null
+    focalLength?: string | null
+    takenAt?: Date | string | null
+    authorId: string
+    voteCount?: number
+    approvedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    votes?: VoteUncheckedCreateNestedManyWithoutPhotoInput
+    comments?: CommentUncheckedCreateNestedManyWithoutPhotoInput
+    awards?: AwardUncheckedCreateNestedManyWithoutPhotoInput
+    collectionItems?: CollectionItemUncheckedCreateNestedManyWithoutPhotoInput
+  }
+
+  export type PhotoCreateOrConnectWithoutForumRepliesInput = {
+    where: PhotoWhereUniqueInput
+    create: XOR<PhotoCreateWithoutForumRepliesInput, PhotoUncheckedCreateWithoutForumRepliesInput>
+  }
+
+  export type UserUpsertWithoutForumRepliesInput = {
+    update: XOR<UserUpdateWithoutForumRepliesInput, UserUncheckedUpdateWithoutForumRepliesInput>
+    create: XOR<UserCreateWithoutForumRepliesInput, UserUncheckedCreateWithoutForumRepliesInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutForumRepliesInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutForumRepliesInput, UserUncheckedUpdateWithoutForumRepliesInput>
+  }
+
+  export type UserUpdateWithoutForumRepliesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    instagramUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    photos?: PhotoUpdateManyWithoutAuthorNestedInput
+    votes?: VoteUpdateManyWithoutUserNestedInput
+    comments?: CommentUpdateManyWithoutAuthorNestedInput
+    awards?: AwardUpdateManyWithoutUserNestedInput
+    forumThreads?: ForumThreadUpdateManyWithoutAuthorNestedInput
+    collections?: CollectionUpdateManyWithoutUserNestedInput
+    followers?: FollowUpdateManyWithoutFollowingNestedInput
+    following?: FollowUpdateManyWithoutFollowerNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutForumRepliesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    instagramUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    photos?: PhotoUncheckedUpdateManyWithoutAuthorNestedInput
+    votes?: VoteUncheckedUpdateManyWithoutUserNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutAuthorNestedInput
+    awards?: AwardUncheckedUpdateManyWithoutUserNestedInput
+    forumThreads?: ForumThreadUncheckedUpdateManyWithoutAuthorNestedInput
+    collections?: CollectionUncheckedUpdateManyWithoutUserNestedInput
+    followers?: FollowUncheckedUpdateManyWithoutFollowingNestedInput
+    following?: FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  }
+
+  export type ForumThreadUpsertWithoutRepliesInput = {
+    update: XOR<ForumThreadUpdateWithoutRepliesInput, ForumThreadUncheckedUpdateWithoutRepliesInput>
+    create: XOR<ForumThreadCreateWithoutRepliesInput, ForumThreadUncheckedCreateWithoutRepliesInput>
+    where?: ForumThreadWhereInput
+  }
+
+  export type ForumThreadUpdateToOneWithWhereWithoutRepliesInput = {
+    where?: ForumThreadWhereInput
+    data: XOR<ForumThreadUpdateWithoutRepliesInput, ForumThreadUncheckedUpdateWithoutRepliesInput>
+  }
+
+  export type ForumThreadUpdateWithoutRepliesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    pinned?: BoolFieldUpdateOperationsInput | boolean
+    locked?: BoolFieldUpdateOperationsInput | boolean
+    replyCount?: IntFieldUpdateOperationsInput | number
+    lastReplyAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    author?: UserUpdateOneRequiredWithoutForumThreadsNestedInput
+    category?: ForumCategoryUpdateOneRequiredWithoutThreadsNestedInput
+  }
+
+  export type ForumThreadUncheckedUpdateWithoutRepliesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    authorId?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
+    pinned?: BoolFieldUpdateOperationsInput | boolean
+    locked?: BoolFieldUpdateOperationsInput | boolean
+    replyCount?: IntFieldUpdateOperationsInput | number
+    lastReplyAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PhotoUpsertWithoutForumRepliesInput = {
+    update: XOR<PhotoUpdateWithoutForumRepliesInput, PhotoUncheckedUpdateWithoutForumRepliesInput>
+    create: XOR<PhotoCreateWithoutForumRepliesInput, PhotoUncheckedCreateWithoutForumRepliesInput>
+    where?: PhotoWhereInput
+  }
+
+  export type PhotoUpdateToOneWithWhereWithoutForumRepliesInput = {
+    where?: PhotoWhereInput
+    data: XOR<PhotoUpdateWithoutForumRepliesInput, PhotoUncheckedUpdateWithoutForumRepliesInput>
+  }
+
+  export type PhotoUpdateWithoutForumRepliesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    width?: IntFieldUpdateOperationsInput | number
+    height?: IntFieldUpdateOperationsInput | number
+    fileSize?: IntFieldUpdateOperationsInput | number
+    neighborhood?: StringFieldUpdateOperationsInput | string
+    category?: EnumPhotoCategoryFieldUpdateOperationsInput | $Enums.PhotoCategory
+    status?: EnumPhotoStatusFieldUpdateOperationsInput | $Enums.PhotoStatus
+    cameraMake?: NullableStringFieldUpdateOperationsInput | string | null
+    cameraModel?: NullableStringFieldUpdateOperationsInput | string | null
+    lens?: NullableStringFieldUpdateOperationsInput | string | null
+    iso?: NullableIntFieldUpdateOperationsInput | number | null
+    aperture?: NullableStringFieldUpdateOperationsInput | string | null
+    shutterSpeed?: NullableStringFieldUpdateOperationsInput | string | null
+    focalLength?: NullableStringFieldUpdateOperationsInput | string | null
+    takenAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    voteCount?: IntFieldUpdateOperationsInput | number
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    author?: UserUpdateOneRequiredWithoutPhotosNestedInput
+    votes?: VoteUpdateManyWithoutPhotoNestedInput
+    comments?: CommentUpdateManyWithoutPhotoNestedInput
+    awards?: AwardUpdateManyWithoutPhotoNestedInput
+    collectionItems?: CollectionItemUpdateManyWithoutPhotoNestedInput
+  }
+
+  export type PhotoUncheckedUpdateWithoutForumRepliesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    width?: IntFieldUpdateOperationsInput | number
+    height?: IntFieldUpdateOperationsInput | number
+    fileSize?: IntFieldUpdateOperationsInput | number
+    neighborhood?: StringFieldUpdateOperationsInput | string
+    category?: EnumPhotoCategoryFieldUpdateOperationsInput | $Enums.PhotoCategory
+    status?: EnumPhotoStatusFieldUpdateOperationsInput | $Enums.PhotoStatus
+    cameraMake?: NullableStringFieldUpdateOperationsInput | string | null
+    cameraModel?: NullableStringFieldUpdateOperationsInput | string | null
+    lens?: NullableStringFieldUpdateOperationsInput | string | null
+    iso?: NullableIntFieldUpdateOperationsInput | number | null
+    aperture?: NullableStringFieldUpdateOperationsInput | string | null
+    shutterSpeed?: NullableStringFieldUpdateOperationsInput | string | null
+    focalLength?: NullableStringFieldUpdateOperationsInput | string | null
+    takenAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    authorId?: StringFieldUpdateOperationsInput | string
+    voteCount?: IntFieldUpdateOperationsInput | number
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    votes?: VoteUncheckedUpdateManyWithoutPhotoNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutPhotoNestedInput
+    awards?: AwardUncheckedUpdateManyWithoutPhotoNestedInput
+    collectionItems?: CollectionItemUncheckedUpdateManyWithoutPhotoNestedInput
+  }
+
+  export type UserCreateWithoutCollectionsInput = {
+    id?: string
+    email: string
+    username: string
+    name: string
+    password: string
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    avatarUrl?: string | null
+    bio?: string | null
+    location?: string | null
+    websiteUrl?: string | null
+    instagramUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    photos?: PhotoCreateNestedManyWithoutAuthorInput
+    votes?: VoteCreateNestedManyWithoutUserInput
+    comments?: CommentCreateNestedManyWithoutAuthorInput
+    awards?: AwardCreateNestedManyWithoutUserInput
+    forumThreads?: ForumThreadCreateNestedManyWithoutAuthorInput
+    forumReplies?: ForumReplyCreateNestedManyWithoutAuthorInput
+    followers?: FollowCreateNestedManyWithoutFollowingInput
+    following?: FollowCreateNestedManyWithoutFollowerInput
+  }
+
+  export type UserUncheckedCreateWithoutCollectionsInput = {
+    id?: string
+    email: string
+    username: string
+    name: string
+    password: string
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    avatarUrl?: string | null
+    bio?: string | null
+    location?: string | null
+    websiteUrl?: string | null
+    instagramUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    photos?: PhotoUncheckedCreateNestedManyWithoutAuthorInput
+    votes?: VoteUncheckedCreateNestedManyWithoutUserInput
+    comments?: CommentUncheckedCreateNestedManyWithoutAuthorInput
+    awards?: AwardUncheckedCreateNestedManyWithoutUserInput
+    forumThreads?: ForumThreadUncheckedCreateNestedManyWithoutAuthorInput
+    forumReplies?: ForumReplyUncheckedCreateNestedManyWithoutAuthorInput
+    followers?: FollowUncheckedCreateNestedManyWithoutFollowingInput
+    following?: FollowUncheckedCreateNestedManyWithoutFollowerInput
+  }
+
+  export type UserCreateOrConnectWithoutCollectionsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutCollectionsInput, UserUncheckedCreateWithoutCollectionsInput>
+  }
+
+  export type CollectionItemCreateWithoutCollectionInput = {
+    id?: string
+    savedAt?: Date | string
+    photo: PhotoCreateNestedOneWithoutCollectionItemsInput
+  }
+
+  export type CollectionItemUncheckedCreateWithoutCollectionInput = {
+    id?: string
+    photoId: string
+    savedAt?: Date | string
+  }
+
+  export type CollectionItemCreateOrConnectWithoutCollectionInput = {
+    where: CollectionItemWhereUniqueInput
+    create: XOR<CollectionItemCreateWithoutCollectionInput, CollectionItemUncheckedCreateWithoutCollectionInput>
+  }
+
+  export type CollectionItemCreateManyCollectionInputEnvelope = {
+    data: CollectionItemCreateManyCollectionInput | CollectionItemCreateManyCollectionInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserUpsertWithoutCollectionsInput = {
+    update: XOR<UserUpdateWithoutCollectionsInput, UserUncheckedUpdateWithoutCollectionsInput>
+    create: XOR<UserCreateWithoutCollectionsInput, UserUncheckedCreateWithoutCollectionsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutCollectionsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutCollectionsInput, UserUncheckedUpdateWithoutCollectionsInput>
+  }
+
+  export type UserUpdateWithoutCollectionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    instagramUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    photos?: PhotoUpdateManyWithoutAuthorNestedInput
+    votes?: VoteUpdateManyWithoutUserNestedInput
+    comments?: CommentUpdateManyWithoutAuthorNestedInput
+    awards?: AwardUpdateManyWithoutUserNestedInput
+    forumThreads?: ForumThreadUpdateManyWithoutAuthorNestedInput
+    forumReplies?: ForumReplyUpdateManyWithoutAuthorNestedInput
+    followers?: FollowUpdateManyWithoutFollowingNestedInput
+    following?: FollowUpdateManyWithoutFollowerNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutCollectionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    instagramUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    photos?: PhotoUncheckedUpdateManyWithoutAuthorNestedInput
+    votes?: VoteUncheckedUpdateManyWithoutUserNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutAuthorNestedInput
+    awards?: AwardUncheckedUpdateManyWithoutUserNestedInput
+    forumThreads?: ForumThreadUncheckedUpdateManyWithoutAuthorNestedInput
+    forumReplies?: ForumReplyUncheckedUpdateManyWithoutAuthorNestedInput
+    followers?: FollowUncheckedUpdateManyWithoutFollowingNestedInput
+    following?: FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  }
+
+  export type CollectionItemUpsertWithWhereUniqueWithoutCollectionInput = {
+    where: CollectionItemWhereUniqueInput
+    update: XOR<CollectionItemUpdateWithoutCollectionInput, CollectionItemUncheckedUpdateWithoutCollectionInput>
+    create: XOR<CollectionItemCreateWithoutCollectionInput, CollectionItemUncheckedCreateWithoutCollectionInput>
+  }
+
+  export type CollectionItemUpdateWithWhereUniqueWithoutCollectionInput = {
+    where: CollectionItemWhereUniqueInput
+    data: XOR<CollectionItemUpdateWithoutCollectionInput, CollectionItemUncheckedUpdateWithoutCollectionInput>
+  }
+
+  export type CollectionItemUpdateManyWithWhereWithoutCollectionInput = {
+    where: CollectionItemScalarWhereInput
+    data: XOR<CollectionItemUpdateManyMutationInput, CollectionItemUncheckedUpdateManyWithoutCollectionInput>
+  }
+
+  export type CollectionCreateWithoutItemsInput = {
+    id?: string
+    name: string
+    description?: string | null
+    isPrivate?: boolean
+    coverUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutCollectionsInput
+  }
+
+  export type CollectionUncheckedCreateWithoutItemsInput = {
+    id?: string
+    name: string
+    description?: string | null
+    isPrivate?: boolean
+    coverUrl?: string | null
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CollectionCreateOrConnectWithoutItemsInput = {
+    where: CollectionWhereUniqueInput
+    create: XOR<CollectionCreateWithoutItemsInput, CollectionUncheckedCreateWithoutItemsInput>
+  }
+
+  export type PhotoCreateWithoutCollectionItemsInput = {
+    id?: string
+    title: string
+    description?: string | null
+    imageUrl: string
+    thumbnailUrl?: string | null
+    width?: number
+    height?: number
+    fileSize?: number
+    neighborhood: string
+    category: $Enums.PhotoCategory
+    status?: $Enums.PhotoStatus
+    cameraMake?: string | null
+    cameraModel?: string | null
+    lens?: string | null
+    iso?: number | null
+    aperture?: string | null
+    shutterSpeed?: string | null
+    focalLength?: string | null
+    takenAt?: Date | string | null
+    voteCount?: number
+    approvedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    author: UserCreateNestedOneWithoutPhotosInput
+    votes?: VoteCreateNestedManyWithoutPhotoInput
+    comments?: CommentCreateNestedManyWithoutPhotoInput
+    awards?: AwardCreateNestedManyWithoutPhotoInput
+    forumReplies?: ForumReplyCreateNestedManyWithoutEmbeddedPhotoInput
+  }
+
+  export type PhotoUncheckedCreateWithoutCollectionItemsInput = {
+    id?: string
+    title: string
+    description?: string | null
+    imageUrl: string
+    thumbnailUrl?: string | null
+    width?: number
+    height?: number
+    fileSize?: number
+    neighborhood: string
+    category: $Enums.PhotoCategory
+    status?: $Enums.PhotoStatus
+    cameraMake?: string | null
+    cameraModel?: string | null
+    lens?: string | null
+    iso?: number | null
+    aperture?: string | null
+    shutterSpeed?: string | null
+    focalLength?: string | null
+    takenAt?: Date | string | null
+    authorId: string
+    voteCount?: number
+    approvedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    votes?: VoteUncheckedCreateNestedManyWithoutPhotoInput
+    comments?: CommentUncheckedCreateNestedManyWithoutPhotoInput
+    awards?: AwardUncheckedCreateNestedManyWithoutPhotoInput
+    forumReplies?: ForumReplyUncheckedCreateNestedManyWithoutEmbeddedPhotoInput
+  }
+
+  export type PhotoCreateOrConnectWithoutCollectionItemsInput = {
+    where: PhotoWhereUniqueInput
+    create: XOR<PhotoCreateWithoutCollectionItemsInput, PhotoUncheckedCreateWithoutCollectionItemsInput>
+  }
+
+  export type CollectionUpsertWithoutItemsInput = {
+    update: XOR<CollectionUpdateWithoutItemsInput, CollectionUncheckedUpdateWithoutItemsInput>
+    create: XOR<CollectionCreateWithoutItemsInput, CollectionUncheckedCreateWithoutItemsInput>
+    where?: CollectionWhereInput
+  }
+
+  export type CollectionUpdateToOneWithWhereWithoutItemsInput = {
+    where?: CollectionWhereInput
+    data: XOR<CollectionUpdateWithoutItemsInput, CollectionUncheckedUpdateWithoutItemsInput>
+  }
+
+  export type CollectionUpdateWithoutItemsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isPrivate?: BoolFieldUpdateOperationsInput | boolean
+    coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutCollectionsNestedInput
+  }
+
+  export type CollectionUncheckedUpdateWithoutItemsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isPrivate?: BoolFieldUpdateOperationsInput | boolean
+    coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PhotoUpsertWithoutCollectionItemsInput = {
+    update: XOR<PhotoUpdateWithoutCollectionItemsInput, PhotoUncheckedUpdateWithoutCollectionItemsInput>
+    create: XOR<PhotoCreateWithoutCollectionItemsInput, PhotoUncheckedCreateWithoutCollectionItemsInput>
+    where?: PhotoWhereInput
+  }
+
+  export type PhotoUpdateToOneWithWhereWithoutCollectionItemsInput = {
+    where?: PhotoWhereInput
+    data: XOR<PhotoUpdateWithoutCollectionItemsInput, PhotoUncheckedUpdateWithoutCollectionItemsInput>
+  }
+
+  export type PhotoUpdateWithoutCollectionItemsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    width?: IntFieldUpdateOperationsInput | number
+    height?: IntFieldUpdateOperationsInput | number
+    fileSize?: IntFieldUpdateOperationsInput | number
+    neighborhood?: StringFieldUpdateOperationsInput | string
+    category?: EnumPhotoCategoryFieldUpdateOperationsInput | $Enums.PhotoCategory
+    status?: EnumPhotoStatusFieldUpdateOperationsInput | $Enums.PhotoStatus
+    cameraMake?: NullableStringFieldUpdateOperationsInput | string | null
+    cameraModel?: NullableStringFieldUpdateOperationsInput | string | null
+    lens?: NullableStringFieldUpdateOperationsInput | string | null
+    iso?: NullableIntFieldUpdateOperationsInput | number | null
+    aperture?: NullableStringFieldUpdateOperationsInput | string | null
+    shutterSpeed?: NullableStringFieldUpdateOperationsInput | string | null
+    focalLength?: NullableStringFieldUpdateOperationsInput | string | null
+    takenAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    voteCount?: IntFieldUpdateOperationsInput | number
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    author?: UserUpdateOneRequiredWithoutPhotosNestedInput
+    votes?: VoteUpdateManyWithoutPhotoNestedInput
+    comments?: CommentUpdateManyWithoutPhotoNestedInput
+    awards?: AwardUpdateManyWithoutPhotoNestedInput
+    forumReplies?: ForumReplyUpdateManyWithoutEmbeddedPhotoNestedInput
+  }
+
+  export type PhotoUncheckedUpdateWithoutCollectionItemsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    width?: IntFieldUpdateOperationsInput | number
+    height?: IntFieldUpdateOperationsInput | number
+    fileSize?: IntFieldUpdateOperationsInput | number
+    neighborhood?: StringFieldUpdateOperationsInput | string
+    category?: EnumPhotoCategoryFieldUpdateOperationsInput | $Enums.PhotoCategory
+    status?: EnumPhotoStatusFieldUpdateOperationsInput | $Enums.PhotoStatus
+    cameraMake?: NullableStringFieldUpdateOperationsInput | string | null
+    cameraModel?: NullableStringFieldUpdateOperationsInput | string | null
+    lens?: NullableStringFieldUpdateOperationsInput | string | null
+    iso?: NullableIntFieldUpdateOperationsInput | number | null
+    aperture?: NullableStringFieldUpdateOperationsInput | string | null
+    shutterSpeed?: NullableStringFieldUpdateOperationsInput | string | null
+    focalLength?: NullableStringFieldUpdateOperationsInput | string | null
+    takenAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    authorId?: StringFieldUpdateOperationsInput | string
+    voteCount?: IntFieldUpdateOperationsInput | number
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    votes?: VoteUncheckedUpdateManyWithoutPhotoNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutPhotoNestedInput
+    awards?: AwardUncheckedUpdateManyWithoutPhotoNestedInput
+    forumReplies?: ForumReplyUncheckedUpdateManyWithoutEmbeddedPhotoNestedInput
+  }
+
+  export type UserCreateWithoutFollowingInput = {
+    id?: string
+    email: string
+    username: string
+    name: string
+    password: string
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    avatarUrl?: string | null
+    bio?: string | null
+    location?: string | null
+    websiteUrl?: string | null
+    instagramUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    photos?: PhotoCreateNestedManyWithoutAuthorInput
+    votes?: VoteCreateNestedManyWithoutUserInput
+    comments?: CommentCreateNestedManyWithoutAuthorInput
+    awards?: AwardCreateNestedManyWithoutUserInput
+    forumThreads?: ForumThreadCreateNestedManyWithoutAuthorInput
+    forumReplies?: ForumReplyCreateNestedManyWithoutAuthorInput
+    collections?: CollectionCreateNestedManyWithoutUserInput
+    followers?: FollowCreateNestedManyWithoutFollowingInput
+  }
+
+  export type UserUncheckedCreateWithoutFollowingInput = {
+    id?: string
+    email: string
+    username: string
+    name: string
+    password: string
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    avatarUrl?: string | null
+    bio?: string | null
+    location?: string | null
+    websiteUrl?: string | null
+    instagramUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    photos?: PhotoUncheckedCreateNestedManyWithoutAuthorInput
+    votes?: VoteUncheckedCreateNestedManyWithoutUserInput
+    comments?: CommentUncheckedCreateNestedManyWithoutAuthorInput
+    awards?: AwardUncheckedCreateNestedManyWithoutUserInput
+    forumThreads?: ForumThreadUncheckedCreateNestedManyWithoutAuthorInput
+    forumReplies?: ForumReplyUncheckedCreateNestedManyWithoutAuthorInput
+    collections?: CollectionUncheckedCreateNestedManyWithoutUserInput
+    followers?: FollowUncheckedCreateNestedManyWithoutFollowingInput
+  }
+
+  export type UserCreateOrConnectWithoutFollowingInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutFollowingInput, UserUncheckedCreateWithoutFollowingInput>
+  }
+
+  export type UserCreateWithoutFollowersInput = {
+    id?: string
+    email: string
+    username: string
+    name: string
+    password: string
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    avatarUrl?: string | null
+    bio?: string | null
+    location?: string | null
+    websiteUrl?: string | null
+    instagramUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    photos?: PhotoCreateNestedManyWithoutAuthorInput
+    votes?: VoteCreateNestedManyWithoutUserInput
+    comments?: CommentCreateNestedManyWithoutAuthorInput
+    awards?: AwardCreateNestedManyWithoutUserInput
+    forumThreads?: ForumThreadCreateNestedManyWithoutAuthorInput
+    forumReplies?: ForumReplyCreateNestedManyWithoutAuthorInput
+    collections?: CollectionCreateNestedManyWithoutUserInput
+    following?: FollowCreateNestedManyWithoutFollowerInput
+  }
+
+  export type UserUncheckedCreateWithoutFollowersInput = {
+    id?: string
+    email: string
+    username: string
+    name: string
+    password: string
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    avatarUrl?: string | null
+    bio?: string | null
+    location?: string | null
+    websiteUrl?: string | null
+    instagramUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    photos?: PhotoUncheckedCreateNestedManyWithoutAuthorInput
+    votes?: VoteUncheckedCreateNestedManyWithoutUserInput
+    comments?: CommentUncheckedCreateNestedManyWithoutAuthorInput
+    awards?: AwardUncheckedCreateNestedManyWithoutUserInput
+    forumThreads?: ForumThreadUncheckedCreateNestedManyWithoutAuthorInput
+    forumReplies?: ForumReplyUncheckedCreateNestedManyWithoutAuthorInput
+    collections?: CollectionUncheckedCreateNestedManyWithoutUserInput
+    following?: FollowUncheckedCreateNestedManyWithoutFollowerInput
+  }
+
+  export type UserCreateOrConnectWithoutFollowersInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutFollowersInput, UserUncheckedCreateWithoutFollowersInput>
+  }
+
+  export type UserUpsertWithoutFollowingInput = {
+    update: XOR<UserUpdateWithoutFollowingInput, UserUncheckedUpdateWithoutFollowingInput>
+    create: XOR<UserCreateWithoutFollowingInput, UserUncheckedCreateWithoutFollowingInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutFollowingInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutFollowingInput, UserUncheckedUpdateWithoutFollowingInput>
+  }
+
+  export type UserUpdateWithoutFollowingInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    instagramUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    photos?: PhotoUpdateManyWithoutAuthorNestedInput
+    votes?: VoteUpdateManyWithoutUserNestedInput
+    comments?: CommentUpdateManyWithoutAuthorNestedInput
+    awards?: AwardUpdateManyWithoutUserNestedInput
+    forumThreads?: ForumThreadUpdateManyWithoutAuthorNestedInput
+    forumReplies?: ForumReplyUpdateManyWithoutAuthorNestedInput
+    collections?: CollectionUpdateManyWithoutUserNestedInput
+    followers?: FollowUpdateManyWithoutFollowingNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutFollowingInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    instagramUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    photos?: PhotoUncheckedUpdateManyWithoutAuthorNestedInput
+    votes?: VoteUncheckedUpdateManyWithoutUserNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutAuthorNestedInput
+    awards?: AwardUncheckedUpdateManyWithoutUserNestedInput
+    forumThreads?: ForumThreadUncheckedUpdateManyWithoutAuthorNestedInput
+    forumReplies?: ForumReplyUncheckedUpdateManyWithoutAuthorNestedInput
+    collections?: CollectionUncheckedUpdateManyWithoutUserNestedInput
+    followers?: FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  }
+
+  export type UserUpsertWithoutFollowersInput = {
+    update: XOR<UserUpdateWithoutFollowersInput, UserUncheckedUpdateWithoutFollowersInput>
+    create: XOR<UserCreateWithoutFollowersInput, UserUncheckedCreateWithoutFollowersInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutFollowersInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutFollowersInput, UserUncheckedUpdateWithoutFollowersInput>
+  }
+
+  export type UserUpdateWithoutFollowersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    instagramUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    photos?: PhotoUpdateManyWithoutAuthorNestedInput
+    votes?: VoteUpdateManyWithoutUserNestedInput
+    comments?: CommentUpdateManyWithoutAuthorNestedInput
+    awards?: AwardUpdateManyWithoutUserNestedInput
+    forumThreads?: ForumThreadUpdateManyWithoutAuthorNestedInput
+    forumReplies?: ForumReplyUpdateManyWithoutAuthorNestedInput
+    collections?: CollectionUpdateManyWithoutUserNestedInput
+    following?: FollowUpdateManyWithoutFollowerNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutFollowersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    instagramUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    photos?: PhotoUncheckedUpdateManyWithoutAuthorNestedInput
+    votes?: VoteUncheckedUpdateManyWithoutUserNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutAuthorNestedInput
+    awards?: AwardUncheckedUpdateManyWithoutUserNestedInput
+    forumThreads?: ForumThreadUncheckedUpdateManyWithoutAuthorNestedInput
+    forumReplies?: ForumReplyUncheckedUpdateManyWithoutAuthorNestedInput
+    collections?: CollectionUncheckedUpdateManyWithoutUserNestedInput
+    following?: FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  }
+
+  export type PhotoCreateManyAuthorInput = {
+    id?: string
+    title: string
+    description?: string | null
+    imageUrl: string
+    thumbnailUrl?: string | null
+    width?: number
+    height?: number
+    fileSize?: number
+    neighborhood: string
+    category: $Enums.PhotoCategory
+    status?: $Enums.PhotoStatus
+    cameraMake?: string | null
+    cameraModel?: string | null
+    lens?: string | null
+    iso?: number | null
+    aperture?: string | null
+    shutterSpeed?: string | null
+    focalLength?: string | null
+    takenAt?: Date | string | null
+    voteCount?: number
+    approvedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type VoteCreateManyUserInput = {
+    id?: string
+    photoId: string
+    createdAt?: Date | string
+  }
+
+  export type CommentCreateManyAuthorInput = {
+    id?: string
+    body: string
+    photoId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AwardCreateManyUserInput = {
+    id?: string
+    type: $Enums.AwardType
+    photoId: string
+    periodStart: Date | string
+    periodEnd: Date | string
+    voteCount: number
+    awardedAt?: Date | string
+  }
+
+  export type ForumThreadCreateManyAuthorInput = {
+    id?: string
+    title: string
+    body: string
+    categoryId: string
+    pinned?: boolean
+    locked?: boolean
+    replyCount?: number
+    lastReplyAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ForumReplyCreateManyAuthorInput = {
+    id?: string
+    body: string
+    threadId: string
+    embeddedPhotoId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CollectionCreateManyUserInput = {
+    id?: string
+    name: string
+    description?: string | null
+    isPrivate?: boolean
+    coverUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FollowCreateManyFollowingInput = {
+    id?: string
+    followerId: string
+    createdAt?: Date | string
+  }
+
+  export type FollowCreateManyFollowerInput = {
+    id?: string
+    followingId: string
+    createdAt?: Date | string
+  }
+
+  export type PhotoUpdateWithoutAuthorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    width?: IntFieldUpdateOperationsInput | number
+    height?: IntFieldUpdateOperationsInput | number
+    fileSize?: IntFieldUpdateOperationsInput | number
+    neighborhood?: StringFieldUpdateOperationsInput | string
+    category?: EnumPhotoCategoryFieldUpdateOperationsInput | $Enums.PhotoCategory
+    status?: EnumPhotoStatusFieldUpdateOperationsInput | $Enums.PhotoStatus
+    cameraMake?: NullableStringFieldUpdateOperationsInput | string | null
+    cameraModel?: NullableStringFieldUpdateOperationsInput | string | null
+    lens?: NullableStringFieldUpdateOperationsInput | string | null
+    iso?: NullableIntFieldUpdateOperationsInput | number | null
+    aperture?: NullableStringFieldUpdateOperationsInput | string | null
+    shutterSpeed?: NullableStringFieldUpdateOperationsInput | string | null
+    focalLength?: NullableStringFieldUpdateOperationsInput | string | null
+    takenAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    voteCount?: IntFieldUpdateOperationsInput | number
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    votes?: VoteUpdateManyWithoutPhotoNestedInput
+    comments?: CommentUpdateManyWithoutPhotoNestedInput
+    awards?: AwardUpdateManyWithoutPhotoNestedInput
+    forumReplies?: ForumReplyUpdateManyWithoutEmbeddedPhotoNestedInput
+    collectionItems?: CollectionItemUpdateManyWithoutPhotoNestedInput
+  }
+
+  export type PhotoUncheckedUpdateWithoutAuthorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    width?: IntFieldUpdateOperationsInput | number
+    height?: IntFieldUpdateOperationsInput | number
+    fileSize?: IntFieldUpdateOperationsInput | number
+    neighborhood?: StringFieldUpdateOperationsInput | string
+    category?: EnumPhotoCategoryFieldUpdateOperationsInput | $Enums.PhotoCategory
+    status?: EnumPhotoStatusFieldUpdateOperationsInput | $Enums.PhotoStatus
+    cameraMake?: NullableStringFieldUpdateOperationsInput | string | null
+    cameraModel?: NullableStringFieldUpdateOperationsInput | string | null
+    lens?: NullableStringFieldUpdateOperationsInput | string | null
+    iso?: NullableIntFieldUpdateOperationsInput | number | null
+    aperture?: NullableStringFieldUpdateOperationsInput | string | null
+    shutterSpeed?: NullableStringFieldUpdateOperationsInput | string | null
+    focalLength?: NullableStringFieldUpdateOperationsInput | string | null
+    takenAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    voteCount?: IntFieldUpdateOperationsInput | number
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    votes?: VoteUncheckedUpdateManyWithoutPhotoNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutPhotoNestedInput
+    awards?: AwardUncheckedUpdateManyWithoutPhotoNestedInput
+    forumReplies?: ForumReplyUncheckedUpdateManyWithoutEmbeddedPhotoNestedInput
+    collectionItems?: CollectionItemUncheckedUpdateManyWithoutPhotoNestedInput
+  }
+
+  export type PhotoUncheckedUpdateManyWithoutAuthorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    width?: IntFieldUpdateOperationsInput | number
+    height?: IntFieldUpdateOperationsInput | number
+    fileSize?: IntFieldUpdateOperationsInput | number
+    neighborhood?: StringFieldUpdateOperationsInput | string
+    category?: EnumPhotoCategoryFieldUpdateOperationsInput | $Enums.PhotoCategory
+    status?: EnumPhotoStatusFieldUpdateOperationsInput | $Enums.PhotoStatus
+    cameraMake?: NullableStringFieldUpdateOperationsInput | string | null
+    cameraModel?: NullableStringFieldUpdateOperationsInput | string | null
+    lens?: NullableStringFieldUpdateOperationsInput | string | null
+    iso?: NullableIntFieldUpdateOperationsInput | number | null
+    aperture?: NullableStringFieldUpdateOperationsInput | string | null
+    shutterSpeed?: NullableStringFieldUpdateOperationsInput | string | null
+    focalLength?: NullableStringFieldUpdateOperationsInput | string | null
+    takenAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    voteCount?: IntFieldUpdateOperationsInput | number
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type VoteUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    photo?: PhotoUpdateOneRequiredWithoutVotesNestedInput
+  }
+
+  export type VoteUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    photoId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type VoteUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    photoId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CommentUpdateWithoutAuthorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    photo?: PhotoUpdateOneRequiredWithoutCommentsNestedInput
+  }
+
+  export type CommentUncheckedUpdateWithoutAuthorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    photoId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CommentUncheckedUpdateManyWithoutAuthorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    photoId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AwardUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumAwardTypeFieldUpdateOperationsInput | $Enums.AwardType
+    periodStart?: DateTimeFieldUpdateOperationsInput | Date | string
+    periodEnd?: DateTimeFieldUpdateOperationsInput | Date | string
+    voteCount?: IntFieldUpdateOperationsInput | number
+    awardedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    photo?: PhotoUpdateOneRequiredWithoutAwardsNestedInput
+  }
+
+  export type AwardUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumAwardTypeFieldUpdateOperationsInput | $Enums.AwardType
+    photoId?: StringFieldUpdateOperationsInput | string
+    periodStart?: DateTimeFieldUpdateOperationsInput | Date | string
+    periodEnd?: DateTimeFieldUpdateOperationsInput | Date | string
+    voteCount?: IntFieldUpdateOperationsInput | number
+    awardedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AwardUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumAwardTypeFieldUpdateOperationsInput | $Enums.AwardType
+    photoId?: StringFieldUpdateOperationsInput | string
+    periodStart?: DateTimeFieldUpdateOperationsInput | Date | string
+    periodEnd?: DateTimeFieldUpdateOperationsInput | Date | string
+    voteCount?: IntFieldUpdateOperationsInput | number
+    awardedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ForumThreadUpdateWithoutAuthorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    pinned?: BoolFieldUpdateOperationsInput | boolean
+    locked?: BoolFieldUpdateOperationsInput | boolean
+    replyCount?: IntFieldUpdateOperationsInput | number
+    lastReplyAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    category?: ForumCategoryUpdateOneRequiredWithoutThreadsNestedInput
+    replies?: ForumReplyUpdateManyWithoutThreadNestedInput
+  }
+
+  export type ForumThreadUncheckedUpdateWithoutAuthorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
+    pinned?: BoolFieldUpdateOperationsInput | boolean
+    locked?: BoolFieldUpdateOperationsInput | boolean
+    replyCount?: IntFieldUpdateOperationsInput | number
+    lastReplyAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    replies?: ForumReplyUncheckedUpdateManyWithoutThreadNestedInput
+  }
+
+  export type ForumThreadUncheckedUpdateManyWithoutAuthorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
+    pinned?: BoolFieldUpdateOperationsInput | boolean
+    locked?: BoolFieldUpdateOperationsInput | boolean
+    replyCount?: IntFieldUpdateOperationsInput | number
+    lastReplyAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ForumReplyUpdateWithoutAuthorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    thread?: ForumThreadUpdateOneRequiredWithoutRepliesNestedInput
+    embeddedPhoto?: PhotoUpdateOneWithoutForumRepliesNestedInput
+  }
+
+  export type ForumReplyUncheckedUpdateWithoutAuthorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    threadId?: StringFieldUpdateOperationsInput | string
+    embeddedPhotoId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ForumReplyUncheckedUpdateManyWithoutAuthorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    threadId?: StringFieldUpdateOperationsInput | string
+    embeddedPhotoId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CollectionUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isPrivate?: BoolFieldUpdateOperationsInput | boolean
+    coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    items?: CollectionItemUpdateManyWithoutCollectionNestedInput
+  }
+
+  export type CollectionUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isPrivate?: BoolFieldUpdateOperationsInput | boolean
+    coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    items?: CollectionItemUncheckedUpdateManyWithoutCollectionNestedInput
+  }
+
+  export type CollectionUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isPrivate?: BoolFieldUpdateOperationsInput | boolean
+    coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FollowUpdateWithoutFollowingInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    follower?: UserUpdateOneRequiredWithoutFollowingNestedInput
+  }
+
+  export type FollowUncheckedUpdateWithoutFollowingInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    followerId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FollowUncheckedUpdateManyWithoutFollowingInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    followerId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FollowUpdateWithoutFollowerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    following?: UserUpdateOneRequiredWithoutFollowersNestedInput
+  }
+
+  export type FollowUncheckedUpdateWithoutFollowerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    followingId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FollowUncheckedUpdateManyWithoutFollowerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    followingId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type VoteCreateManyPhotoInput = {
+    id?: string
+    userId: string
+    createdAt?: Date | string
+  }
+
+  export type CommentCreateManyPhotoInput = {
+    id?: string
+    body: string
+    authorId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AwardCreateManyPhotoInput = {
+    id?: string
+    type: $Enums.AwardType
+    userId: string
+    periodStart: Date | string
+    periodEnd: Date | string
+    voteCount: number
+    awardedAt?: Date | string
+  }
+
+  export type ForumReplyCreateManyEmbeddedPhotoInput = {
+    id?: string
+    body: string
+    authorId: string
+    threadId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CollectionItemCreateManyPhotoInput = {
+    id?: string
+    collectionId: string
+    savedAt?: Date | string
+  }
+
+  export type VoteUpdateWithoutPhotoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutVotesNestedInput
+  }
+
+  export type VoteUncheckedUpdateWithoutPhotoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type VoteUncheckedUpdateManyWithoutPhotoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CommentUpdateWithoutPhotoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    author?: UserUpdateOneRequiredWithoutCommentsNestedInput
+  }
+
+  export type CommentUncheckedUpdateWithoutPhotoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    authorId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CommentUncheckedUpdateManyWithoutPhotoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    authorId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AwardUpdateWithoutPhotoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumAwardTypeFieldUpdateOperationsInput | $Enums.AwardType
+    periodStart?: DateTimeFieldUpdateOperationsInput | Date | string
+    periodEnd?: DateTimeFieldUpdateOperationsInput | Date | string
+    voteCount?: IntFieldUpdateOperationsInput | number
+    awardedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutAwardsNestedInput
+  }
+
+  export type AwardUncheckedUpdateWithoutPhotoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumAwardTypeFieldUpdateOperationsInput | $Enums.AwardType
+    userId?: StringFieldUpdateOperationsInput | string
+    periodStart?: DateTimeFieldUpdateOperationsInput | Date | string
+    periodEnd?: DateTimeFieldUpdateOperationsInput | Date | string
+    voteCount?: IntFieldUpdateOperationsInput | number
+    awardedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AwardUncheckedUpdateManyWithoutPhotoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumAwardTypeFieldUpdateOperationsInput | $Enums.AwardType
+    userId?: StringFieldUpdateOperationsInput | string
+    periodStart?: DateTimeFieldUpdateOperationsInput | Date | string
+    periodEnd?: DateTimeFieldUpdateOperationsInput | Date | string
+    voteCount?: IntFieldUpdateOperationsInput | number
+    awardedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ForumReplyUpdateWithoutEmbeddedPhotoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    author?: UserUpdateOneRequiredWithoutForumRepliesNestedInput
+    thread?: ForumThreadUpdateOneRequiredWithoutRepliesNestedInput
+  }
+
+  export type ForumReplyUncheckedUpdateWithoutEmbeddedPhotoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    authorId?: StringFieldUpdateOperationsInput | string
+    threadId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ForumReplyUncheckedUpdateManyWithoutEmbeddedPhotoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    authorId?: StringFieldUpdateOperationsInput | string
+    threadId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CollectionItemUpdateWithoutPhotoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    collection?: CollectionUpdateOneRequiredWithoutItemsNestedInput
+  }
+
+  export type CollectionItemUncheckedUpdateWithoutPhotoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    collectionId?: StringFieldUpdateOperationsInput | string
+    savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CollectionItemUncheckedUpdateManyWithoutPhotoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    collectionId?: StringFieldUpdateOperationsInput | string
+    savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ForumThreadCreateManyCategoryInput = {
+    id?: string
+    title: string
+    body: string
+    authorId: string
+    pinned?: boolean
+    locked?: boolean
+    replyCount?: number
+    lastReplyAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ForumThreadUpdateWithoutCategoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    pinned?: BoolFieldUpdateOperationsInput | boolean
+    locked?: BoolFieldUpdateOperationsInput | boolean
+    replyCount?: IntFieldUpdateOperationsInput | number
+    lastReplyAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    author?: UserUpdateOneRequiredWithoutForumThreadsNestedInput
+    replies?: ForumReplyUpdateManyWithoutThreadNestedInput
+  }
+
+  export type ForumThreadUncheckedUpdateWithoutCategoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    authorId?: StringFieldUpdateOperationsInput | string
+    pinned?: BoolFieldUpdateOperationsInput | boolean
+    locked?: BoolFieldUpdateOperationsInput | boolean
+    replyCount?: IntFieldUpdateOperationsInput | number
+    lastReplyAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    replies?: ForumReplyUncheckedUpdateManyWithoutThreadNestedInput
+  }
+
+  export type ForumThreadUncheckedUpdateManyWithoutCategoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    authorId?: StringFieldUpdateOperationsInput | string
+    pinned?: BoolFieldUpdateOperationsInput | boolean
+    locked?: BoolFieldUpdateOperationsInput | boolean
+    replyCount?: IntFieldUpdateOperationsInput | number
+    lastReplyAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ForumReplyCreateManyThreadInput = {
+    id?: string
+    body: string
+    authorId: string
+    embeddedPhotoId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ForumReplyUpdateWithoutThreadInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    author?: UserUpdateOneRequiredWithoutForumRepliesNestedInput
+    embeddedPhoto?: PhotoUpdateOneWithoutForumRepliesNestedInput
+  }
+
+  export type ForumReplyUncheckedUpdateWithoutThreadInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    authorId?: StringFieldUpdateOperationsInput | string
+    embeddedPhotoId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ForumReplyUncheckedUpdateManyWithoutThreadInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    authorId?: StringFieldUpdateOperationsInput | string
+    embeddedPhotoId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CollectionItemCreateManyCollectionInput = {
+    id?: string
+    photoId: string
+    savedAt?: Date | string
+  }
+
+  export type CollectionItemUpdateWithoutCollectionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    photo?: PhotoUpdateOneRequiredWithoutCollectionItemsNestedInput
+  }
+
+  export type CollectionItemUncheckedUpdateWithoutCollectionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    photoId?: StringFieldUpdateOperationsInput | string
+    savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CollectionItemUncheckedUpdateManyWithoutCollectionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    photoId?: StringFieldUpdateOperationsInput | string
+    savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+
+
+  /**
+   * Batch Payload for updateMany & deleteMany & createMany
+   */
+
+  export type BatchPayload = {
+    count: number
+  }
+
+  /**
+   * DMMF
+   */
+  export const dmmf: runtime.BaseDMMF
+}

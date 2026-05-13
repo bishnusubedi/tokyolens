@@ -1,6 +1,6 @@
 export class AppError extends Error {
   constructor(
-    public readonly message: string,
+    public override readonly message: string,
     public readonly statusCode: number,
     public readonly code?: string,
     public readonly errors?: Record<string, string[]>,
@@ -42,5 +42,11 @@ export class ConflictError extends AppError {
 export class ValidationError extends AppError {
   constructor(errors: Record<string, string[]>) {
     super('Validation failed', 422, 'VALIDATION_ERROR', errors);
+  }
+}
+
+export class BadRequestError extends AppError {
+  constructor(message: string) {
+    super(message, 400, 'BAD_REQUEST');
   }
 }

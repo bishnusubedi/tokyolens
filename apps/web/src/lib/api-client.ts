@@ -69,7 +69,16 @@ export const apiClient = {
       method: 'DELETE',
       ...init,
       headers: { ...getAuthHeader(), ...init?.headers },
-    });
-    return handleResponse<T>(res);
+    })
+    return handleResponse<T>(res)
   },
-};
+
+  async upload<T>(path: string, formData: FormData): Promise<T> {
+    const res = await fetch(`${API_URL}${path}`, {
+      method: 'POST',
+      headers: { ...getAuthHeader() },
+      body: formData,
+    })
+    return handleResponse<T>(res)
+  },
+}

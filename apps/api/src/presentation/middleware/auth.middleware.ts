@@ -24,6 +24,18 @@ export function authenticate(req: AuthRequest, _res: Response, next: NextFunctio
   }
 }
 
+export function optionalAuthenticate(req: AuthRequest, _res: Response, next: NextFunction): void {
+  const header = req.headers.authorization
+  if (header?.startsWith('Bearer ')) {
+    try {
+      req.user = AuthService.verifyToken(header.slice(7))
+    } catch {
+      // ignore — optional
+    }
+  }
+  next()
+}
+
 export function requireRole(...roles: string[]) {
   return (req: AuthRequest, _res: Response, next: NextFunction): void => {
     if (!req.user) return next(new UnauthorizedError());

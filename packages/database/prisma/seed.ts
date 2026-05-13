@@ -1,67 +1,64 @@
-import { PrismaClient } from '@prisma/client';
-import { createHash } from 'crypto';
+import bcryptjs from 'bcryptjs'
+const { hash } = bcryptjs
+import { prisma } from '../src/index.js'
 
-const prisma = new PrismaClient();
-
-function hashPassword(password: string): string {
-  return createHash('sha256').update(password).digest('hex');
-}
 
 async function main() {
-  console.log('Seeding database...');
+  console.log('Seeding database...')
 
+  // Forum categories
+  const categories = [
+    { slug: 'EQUIPMENT_REVIEWS', name: 'Equipment Reviews', description: 'Cameras, lenses, and gear discussion', sortOrder: 0 },
+    { slug: 'TOKYO_PHOTO_SPOTS', name: 'Tokyo Photo Spots', description: 'Discover the best shooting locations in Tokyo', sortOrder: 1 },
+    { slug: 'CRITIQUE_MY_WORK', name: 'Critique My Work', description: 'Share your photos and get constructive feedback', sortOrder: 2 },
+    { slug: 'GENERAL', name: 'General Discussion', description: 'Photography talk and community chat', sortOrder: 3 },
+  ]
+
+  for (const cat of categories) {
+    await prisma.forumCategory.upsert({
+      where: { slug: cat.slug as any },
+      update: {},
+      create: cat as any,
+    })
+  }
+
+  // Admin user
+  const adminPassword = await hash('admin123456', 12)
   const admin = await prisma.user.upsert({
-    where: { email: 'admin@example.com' },
-    update: {},
+    where: { email: 'admin@tokyolens.jp' },
+    update: { password: adminPassword },
     create: {
-      email: 'admin@example.com',
-      name: 'Admin User',
-      password: hashPassword('admin123'),
+      email: 'admin@tokyolens.jp',
+      username: 'admin',
+      name: 'Tokyo Lens Admin',
+      password: adminPassword,
       role: 'ADMIN',
+      bio: 'Platform administrator',
     },
-  });
+  })
 
-  const user = await prisma.user.upsert({
-    where: { email: 'user@example.com' },
-    update: {},
+  // Demo photographer
+  const demoPassword = await hash('demo123456', 12)
+  await prisma.user.upsert({
+    where: { email: 'demo@tokyolens.jp' },
+    update: { password: demoPassword },
     create: {
-      email: 'user@example.com',
-      name: 'Regular User',
-      password: hashPassword('user123'),
+      email: 'demo@tokyolens.jp',
+      username: 'sakura_shots',
+      name: 'Sakura Yamamoto',
+      password: demoPassword,
       role: 'USER',
+      bio: 'Street photographer based in Shinjuku. Capturing Tokyo one frame at a time.',
+      location: 'Shinjuku, Tokyo',
     },
-  });
+  })
 
-  await prisma.post.createMany({
-    data: [
-      {
-        title: 'Hello World',
-        content: 'This is the first post.',
-        status: 'PUBLISHED',
-        authorId: admin.id,
-      },
-      {
-        title: 'Getting Started',
-        content: 'A guide to getting started with this app.',
-        status: 'PUBLISHED',
-        authorId: user.id,
-      },
-      {
-        title: 'Draft Post',
-        content: 'This post is still a draft.',
-        status: 'DRAFT',
-        authorId: user.id,
-      },
-    ],
-    skipDuplicates: true,
-  });
-
-  console.log('Seed complete.', { admin: admin.email, user: user.email });
+  console.log('Seed complete.', { admin: admin.email })
 }
 
 main()
   .catch((e) => {
-    console.error(e);
-    process.exit(1);
+    console.error(e)
+    process.exit(1)
   })
-  .finally(() => prisma.$disconnect());
+  .finally(() => prisma.$disconnect())

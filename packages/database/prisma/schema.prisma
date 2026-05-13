@@ -1,46 +1,271 @@
 generator client {
-  provider = "prisma-client-js"
-  output   = "../node_modules/.prisma/client"
+  provider        = "prisma-client-js"
+  output          = "../src/generated/client"
+  previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
 }
 
 enum UserRole {
-  ADMIN
   USER
+  MODERATOR
+  ADMIN
 }
 
-enum PostStatus {
-  DRAFT
-  PUBLISHED
-  ARCHIVED
+enum UserStatus {
+  ACTIVE
+  BANNED
+}
+
+enum PhotoStatus {
+  PENDING
+  APPROVED
+  HIDDEN
+  DELETED
+}
+
+enum PhotoCategory {
+  STREET
+  PORTRAIT
+  LANDSCAPE
+  ARCHITECTURE
+  NIGHT
+  MACRO
+  WILDLIFE
+  TRAVEL
+  ABSTRACT
+  OTHER
+}
+
+enum AwardType {
+  WEEKLY_WINNER
+  MONTHLY_WINNER
+}
+
+enum ForumCategorySlug {
+  EQUIPMENT_REVIEWS
+  TOKYO_PHOTO_SPOTS
+  CRITIQUE_MY_WORK
+  GENERAL
 }
 
 model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
-  name      String
-  password  String
-  role      UserRole @default(USER)
-  posts     Post[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id           String     @id @default(cuid())
+  email        String     @unique
+  username     String     @unique
+  name         String
+  password     String
+  role         UserRole   @default(USER)
+  status       UserStatus @default(ACTIVE)
+  avatarUrl    String?
+  bio          String?    @db.Text
+  location     String?
+  websiteUrl   String?
+  instagramUrl String?
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
 
+  photos       Photo[]
+  votes        Vote[]
+  comments     Comment[]
+  awards       Award[]
+  forumThreads ForumThread[]
+  forumReplies ForumReply[]
+  collections  Collection[]
+  followers    Follow[]     @relation("Following")
+  following    Follow[]     @relation("Follower")
+
+  @@index([username])
+  @@index([status])
   @@map("users")
 }
 
-model Post {
-  id        String     @id @default(uuid())
-  title     String
-  content   String
-  status    PostStatus @default(DRAFT)
-  authorId  String
-  author    User       @relation(fields: [authorId], references: [id], onDelete: Cascade)
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
+model Photo {
+  id           String        @id @default(cuid())
+  title        String
+  description  String?       @db.Text
+  imageUrl     String
+  thumbnailUrl String?
+  width        Int           @default(0)
+  height       Int           @default(0)
+  fileSize     Int           @default(0)
+  neighborhood String
+  category     PhotoCategory
+  status       PhotoStatus   @default(PENDING)
 
-  @@map("posts")
+  cameraMake   String?
+  cameraModel  String?
+  lens         String?
+  iso          Int?
+  aperture     String?
+  shutterSpeed String?
+  focalLength  String?
+  takenAt      DateTime?
+
+  authorId   String
+  author     User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  voteCount  Int       @default(0)
+  votes      Vote[]
+  comments   Comment[]
+  awards     Award[]
+  forumReplies     ForumReply[]     @relation("EmbeddedPhoto")
+  collectionItems  CollectionItem[]
+
+  approvedAt DateTime?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  @@index([status, createdAt])
+  @@index([authorId])
+  @@index([category])
+  @@index([voteCount])
+  @@map("photos")
+}
+
+model Vote {
+  id        String   @id @default(cuid())
+  userId    String
+  photoId   String
+  createdAt DateTime @default(now())
+
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  photo Photo @relation(fields: [photoId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, photoId])
+  @@index([photoId])
+  @@index([createdAt])
+  @@map("votes")
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  body      String   @db.Text
+  authorId  String
+  photoId   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  author User  @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  photo  Photo @relation(fields: [photoId], references: [id], onDelete: Cascade)
+
+  @@index([photoId, createdAt])
+  @@map("comments")
+}
+
+model Award {
+  id          String    @id @default(cuid())
+  type        AwardType
+  photoId     String
+  userId      String
+  periodStart DateTime
+  periodEnd   DateTime
+  voteCount   Int
+  awardedAt   DateTime  @default(now())
+
+  photo Photo @relation(fields: [photoId], references: [id], onDelete: Cascade)
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([type, periodStart])
+  @@index([userId])
+  @@index([type, awardedAt])
+  @@map("awards")
+}
+
+model ForumCategory {
+  id          String            @id @default(cuid())
+  slug        ForumCategorySlug @unique
+  name        String
+  description String
+  sortOrder   Int               @default(0)
+
+  threads ForumThread[]
+
+  @@map("forum_categories")
+}
+
+model ForumThread {
+  id          String   @id @default(cuid())
+  title       String
+  body        String   @db.Text
+  authorId    String
+  categoryId  String
+  pinned      Boolean  @default(false)
+  locked      Boolean  @default(false)
+  replyCount  Int      @default(0)
+  lastReplyAt DateTime @default(now())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  author   User          @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  category ForumCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  replies  ForumReply[]
+
+  @@index([categoryId, lastReplyAt])
+  @@index([authorId])
+  @@map("forum_threads")
+}
+
+model ForumReply {
+  id              String   @id @default(cuid())
+  body            String   @db.Text
+  authorId        String
+  threadId        String
+  embeddedPhotoId String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  author        User         @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  thread        ForumThread  @relation(fields: [threadId], references: [id], onDelete: Cascade)
+  embeddedPhoto Photo?       @relation("EmbeddedPhoto", fields: [embeddedPhotoId], references: [id], onDelete: SetNull)
+
+  @@index([threadId, createdAt])
+  @@map("forum_replies")
+}
+
+model Collection {
+  id          String   @id @default(cuid())
+  name        String
+  description String?  @db.Text
+  isPrivate   Boolean  @default(false)
+  coverUrl    String?
+  userId      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user  User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  items CollectionItem[]
+
+  @@index([userId])
+  @@map("collections")
+}
+
+model CollectionItem {
+  id           String   @id @default(cuid())
+  collectionId String
+  photoId      String
+  savedAt      DateTime @default(now())
+
+  collection Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+  photo      Photo      @relation(fields: [photoId], references: [id], onDelete: Cascade)
+
+  @@unique([collectionId, photoId])
+  @@index([collectionId, savedAt])
+  @@map("collection_items")
+}
+
+model Follow {
+  id          String   @id @default(cuid())
+  followerId  String
+  followingId String
+  createdAt   DateTime @default(now())
+
+  follower  User @relation("Follower",  fields: [followerId],  references: [id], onDelete: Cascade)
+  following User @relation("Following", fields: [followingId], references: [id], onDelete: Cascade)
+
+  @@unique([followerId, followingId])
+  @@index([followerId])
+  @@index([followingId])
+  @@map("follows")
 }

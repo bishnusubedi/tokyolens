@@ -1,0 +1,40 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm db:generate)",
+      "Bash(pnpm install *)",
+      "Bash(npx prisma *)",
+      "Bash(/Users/zoomcreatives/claudecode/node_modules/.pnpm/node_modules/.bin/prisma generate *)",
+      "Bash(DATABASE_URL=\"postgresql://postgres:postgres@localhost:5432/photodb?schema=public\" node /Users/zoomcreatives/claudecode/node_modules/.pnpm/prisma@7.8.0_@types+react-dom@19.2.3_@types+react@19.2.14__@types+react@19.2.14_react-dom@19._4nedg3i46d7sazeavepegoou6u/node_modules/prisma/build/index.js generate)",
+      "Read(//Users/zoomcreatives/.nvm/versions/**)",
+      "Bash(brew list *)",
+      "Bash(nvm ls *)",
+      "Read(//usr/local/bin/**)",
+      "Read(//opt/homebrew/bin/**)",
+      "Bash(command -v fnm)",
+      "Bash(fnm list *)",
+      "Read(//Users/zoomcreativas/**)",
+      "Bash(DATABASE_URL=\"postgresql://postgres:postgres@localhost:5432/appdb?schema=public\" PRISMA_SCHEMA_PATH=/Users/zoomcreatives/claudecode/packages/database/prisma/schema.prisma /bin/sh /Users/zoomcreatives/claudecode/node_modules/.pnpm/node_modules/.bin/prisma generate --schema=/Users/zoomcreativas/claudecode/packages/database/prisma/schema.prisma)",
+      "Bash(brew --version)",
+      "Bash(brew info *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://nodejs.org)",
+      "Read(//Users/zoomcreatives/**)",
+      "Bash(curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh)",
+      "Bash(bash)",
+      "Bash(pnpm --filter @repo/api typecheck)",
+      "Bash(pnpm --filter @repo/shared build)",
+      "Bash(pnpm --filter @repo/web typecheck)",
+      "Bash(pnpm typecheck *)",
+      "Bash(docker compose *)",
+      "Bash(DATABASE_URL=\"postgresql://postgres:postgres@localhost:5432/appdb?schema=public\" pnpm db:migrate)",
+      "Bash(curl -s http://localhost:3001/api/awards/champion)",
+      "Bash(python3 -m json.tool)",
+      "Bash(curl -s \"http://localhost:3001/api/photos?limit=5\")",
+      "Bash(curl -s http://localhost:3001/api/forum/categories)",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(curl -s -X POST http://localhost:3001/api/auth/login -H 'Content-Type: application/json' -d '{\"email\":\"demo@tokyolens.jp\",\"password\":\"sakura_shots\"}')",
+      "Bash(curl -s http://localhost:3001/api/users/sakura_shots)",
+      "Bash(curl -s http://localhost:3001/health)"
+    ]
+  }
+}

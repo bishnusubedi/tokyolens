@@ -1,21 +1,21 @@
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import './globals.css';
-import { QueryProvider } from '@/providers/query-provider';
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
+import './globals.css'
+import { Providers } from '@/providers/query-provider'
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
 export const metadata: Metadata = {
-  title: 'Monorepo App',
-  description: 'Full-stack monorepo application',
-};
+  title: 'TokyoLens — Tokyo Photography Community',
+  description: 'A community for photographers based in Tokyo. Share, vote, and celebrate the city through your lens.',
+}
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <QueryProvider>{children}</QueryProvider>
+    <html lang="en" suppressHydrationWarning className={inter.variable}>
+      <body className="font-sans">
+        <Providers>{children}</Providers>
       </body>
     </html>
-  );
+  )
 }

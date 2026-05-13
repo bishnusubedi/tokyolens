@@ -1,40 +1,68 @@
-import type { IUserRepository } from '../../../domain/repositories/IUserRepository.js';
-import { NotFoundError } from '../../../shared/errors/AppError.js';
-import type { PaginationQuery, PaginatedResponse, User } from '@repo/shared';
+import type { IUserRepository } from '../../../domain/repositories/IUserRepository.js'
+import type { IAwardRepository, IPhotoRepository } from '../../../domain/repositories/IPostRepository.js'
+import { NotFoundError, BadRequestError } from '../../../shared/errors/AppError.js'
+import type { UpdateProfileInput } from '@repo/shared'
 
-type PublicUser = Omit<User, 'password'>;
+export class UserUseCase {
+  constructor(
+    private readonly userRepo: IUserRepository,
+    private readonly photoRepo: IPhotoRepository,
+    private readonly awardRepo: IAwardRepository,
+  ) {}
 
-function toPublicUser(user: {
-  id: string;
-  email: string;
-  name: string;
-  password: string;
-  role: 'ADMIN' | 'USER';
-  createdAt: Date;
-  updatedAt: Date;
-}): PublicUser {
-  const { password: _, ...rest } = user;
-  return {
-    ...rest,
-    createdAt: rest.createdAt.toISOString(),
-    updatedAt: rest.updatedAt.toISOString(),
-  };
-}
-
-export class GetUsersUseCase {
-  constructor(private readonly userRepository: IUserRepository) {}
-
-  async getAll(pagination: PaginationQuery): Promise<PaginatedResponse<PublicUser>> {
-    const result = await this.userRepository.findAll(pagination);
-    return {
-      ...result,
-      data: result.data.map(toPublicUser),
-    };
+  async getProfile(username: string, requestingUserId?: string) {
+    const user = await this.userRepo.findByUsername(username)
+    if (!user || user.status === 'BANNED') throw new NotFoundError('User')
+    const { password: _, email: __, ...publicUser } = user
+    const counts = await this.userRepo.getFollowCounts(user.id)
+    const isFollowing = requestingUserId ? await this.userRepo.isFollowing(requestingUserId, user.id) : false
+    return { ...publicUser, ...counts, isFollowing }
   }
 
-  async getById(id: string): Promise<PublicUser> {
-    const user = await this.userRepository.findById(id);
-    if (!user) throw new NotFoundError('User', id);
-    return toPublicUser(user);
+  async updateProfile(userId: string, dto: UpdateProfileInput) {
+    return this.userRepo.update(userId, dto)
+  }
+
+  async getGallery(username: string, page = 1, limit = 20) {
+    const user = await this.userRepo.findByUsername(username)
+    if (!user) throw new NotFoundError('User')
+    return this.photoRepo.list({ page, limit, sortBy: 'newest', authorId: user.id, status: 'APPROVED' })
+  }
+
+  async getTrophyCase(username: string) {
+    const user = await this.userRepo.findByUsername(username)
+    if (!user) throw new NotFoundError('User')
+    return this.awardRepo.listByUser(user.id)
+  }
+
+  async listUsers(page = 1, limit = 20) {
+    return this.userRepo.list({ page, limit })
+  }
+
+  async follow(followerId: string, targetUsername: string) {
+    const target = await this.userRepo.findByUsername(targetUsername)
+    if (!target) throw new NotFoundError('User')
+    if (target.id === followerId) throw new BadRequestError('Cannot follow yourself')
+    await this.userRepo.follow(followerId, target.id)
+    return { following: true }
+  }
+
+  async unfollow(followerId: string, targetUsername: string) {
+    const target = await this.userRepo.findByUsername(targetUsername)
+    if (!target) throw new NotFoundError('User')
+    await this.userRepo.unfollow(followerId, target.id)
+    return { following: false }
+  }
+
+  async listFollowers(username: string, page = 1, limit = 20) {
+    const user = await this.userRepo.findByUsername(username)
+    if (!user) throw new NotFoundError('User')
+    return this.userRepo.listFollowers(user.id, page, limit)
+  }
+
+  async listFollowing(username: string, page = 1, limit = 20) {
+    const user = await this.userRepo.findByUsername(username)
+    if (!user) throw new NotFoundError('User')
+    return this.userRepo.listFollowing(user.id, page, limit)
   }
 }

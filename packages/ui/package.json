@@ -19,7 +19,7 @@
     "./globals.css": "./src/globals.css"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && find dist -name '*.jsx' -exec sh -c 'mv \"$0\" \"${0%.jsx}.js\"' {} \\; && find dist -name '*.jsx.map' -exec sh -c 'mv \"$0\" \"${0%.jsx.map}.js.map\"' {} \\;",
     "dev": "tsc --watch",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf dist"

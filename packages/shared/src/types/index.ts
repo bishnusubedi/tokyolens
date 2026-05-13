@@ -1,51 +1,74 @@
-import { z } from 'zod';
-import {
-  UserSchema,
-  CreateUserSchema,
-  UpdateUserSchema,
-  UserLoginSchema,
-  AuthResponseSchema,
-  UserRoleSchema,
-} from '../schemas/user.schema.js';
-import {
-  PostSchema,
-  CreatePostSchema,
-  UpdatePostSchema,
-  PostStatusSchema,
-} from '../schemas/post.schema.js';
-import {
-  PaginationQuerySchema,
-  ApiErrorSchema,
-  UuidParamSchema,
-} from '../schemas/common.schema.js';
+export type {
+  UserRole,
+  UserStatus,
+  PhotoCategory,
+  PhotoStatus,
+  AwardType,
+  ForumCategorySlug,
+} from '../schemas/enums.js'
 
-export type UserRole = z.infer<typeof UserRoleSchema>;
-export type User = z.infer<typeof UserSchema>;
-export type CreateUserDto = z.infer<typeof CreateUserSchema>;
-export type UpdateUserDto = z.infer<typeof UpdateUserSchema>;
-export type UserLoginDto = z.infer<typeof UserLoginSchema>;
-export type AuthResponse = z.infer<typeof AuthResponseSchema>;
+export type {
+  User,
+  UserPublic,
+  RegisterInput,
+  LoginInput,
+  UpdateProfileInput,
+} from '../schemas/user.schema.js'
 
-export type PostStatus = z.infer<typeof PostStatusSchema>;
-export type Post = z.infer<typeof PostSchema>;
-export type CreatePostDto = z.infer<typeof CreatePostSchema>;
-export type UpdatePostDto = z.infer<typeof UpdatePostSchema>;
+export type {
+  Photo,
+  CreatePhotoInput,
+  UpdatePhotoInput,
+  PhotoQuery,
+} from '../schemas/post.schema.js'
 
-export type PaginationQuery = z.infer<typeof PaginationQuerySchema>;
-export type ApiError = z.infer<typeof ApiErrorSchema>;
-export type UuidParam = z.infer<typeof UuidParamSchema>;
+export type {
+  PaginationMeta,
+  Comment,
+  CreateCommentInput,
+  VoteResponse,
+  Award,
+  ForumCategory,
+  CreateThreadInput,
+  CreateReplyInput,
+  ModerationAction,
+} from '../schemas/common.schema.js'
+
+export type {
+  Collection,
+  CreateCollectionInput,
+  UpdateCollectionInput,
+  SaveToCollectionInput,
+} from '../schemas/collection.schema.js'
+
+export type FollowStats = {
+  followerCount: number
+  followingCount: number
+  isFollowing: boolean
+}
 
 export type PaginatedResponse<T> = {
-  data: T[];
+  data: T[]
   meta: {
-    page: number;
-    limit: number;
-    total: number;
-    totalPages: number;
-  };
-};
+    page: number
+    limit: number
+    total: number
+    totalPages: number
+    hasNextPage?: boolean
+  }
+}
+
+export type CursorResponse<T> = {
+  data: T[]
+  meta: { total: number; nextCursor?: string }
+}
 
 export type ApiResponse<T> = {
-  data: T;
-  message?: string;
-};
+  data: T
+  message?: string
+}
+
+export type AuthResponse = {
+  user: import('../schemas/user.schema.js').UserPublic
+  token: string
+}

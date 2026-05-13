@@ -12,24 +12,28 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && cp -r src/generated dist/",
     "dev": "tsc --watch",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf dist",
-    "db:generate": "prisma generate",
-    "db:migrate": "prisma migrate dev",
-    "db:push": "prisma db push",
+    "db:generate": "prisma generate --config ./prisma.config.ts",
+    "db:migrate": "prisma migrate dev --config ./prisma.config.ts",
+    "db:push": "prisma db push --config ./prisma.config.ts",
     "db:seed": "tsx prisma/seed.ts",
-    "db:studio": "prisma studio",
-    "db:reset": "prisma migrate reset"
+    "db:studio": "prisma studio --config ./prisma.config.ts",
+    "db:reset": "prisma migrate reset --config ./prisma.config.ts"
   },
   "dependencies": {
-    "@prisma/client": "^7.0.0"
+    "@prisma/adapter-pg": "^7.8.0",
+    "@prisma/client": "^7.0.0",
+    "pg": "^8.20.0"
   },
   "devDependencies": {
     "@repo/shared": "workspace:*",
     "@repo/typescript-config": "workspace:*",
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "^22.10.2",
+    "bcryptjs": "^2.4.3",
     "prisma": "^7.0.0",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2"

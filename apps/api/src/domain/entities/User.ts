@@ -1,11 +1,19 @@
 export interface User {
-  id: string;
-  email: string;
-  name: string;
-  password: string;
-  role: 'ADMIN' | 'USER';
-  createdAt: Date;
-  updatedAt: Date;
+  id: string
+  email: string
+  username: string
+  name: string
+  password: string
+  role: 'USER' | 'MODERATOR' | 'ADMIN'
+  status: 'ACTIVE' | 'BANNED'
+  avatarUrl: string | null
+  bio: string | null
+  location: string | null
+  websiteUrl: string | null
+  instagramUrl: string | null
+  createdAt: Date
+  updatedAt: Date
 }
 
-export type PublicUser = Omit<User, 'password'>;
+export type UserPublic = Omit<User, 'password'>
+export type UserSummary = Pick<User, 'id' | 'username' | 'name' | 'avatarUrl' | 'role'>

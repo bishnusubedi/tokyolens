@@ -6,6 +6,21 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['@repo/ui'],
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '3001',
+        pathname: '/uploads/**',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.tokyolens.jp',
+        pathname: '/uploads/**',
+      },
+    ],
+  },
 };
 
 export default nextConfig;
