@@ -14,6 +14,13 @@ export const queryKeys = {
     list: (params?: Record<string, unknown>) => ['photos', 'list', params] as const,
     detail: (id: string) => ['photos', id] as const,
     comments: (id: string) => ['photos', id, 'comments'] as const,
+    discuss: (id: string) => ['photos', id, 'discuss'] as const,
+  },
+  search: {
+    results: (q: string, type?: string) => ['search', q, type] as const,
+  },
+  feed: {
+    list: (params?: Record<string, unknown>) => ['feed', 'list', params] as const,
   },
   awards: {
     all: () => ['awards'] as const,

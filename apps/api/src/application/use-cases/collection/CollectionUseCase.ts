@@ -57,4 +57,46 @@ export class CollectionUseCase {
     const all = await this.collectionRepo.listByUser(userId)
     return all.filter((c) => !c.isPrivate)
   }
+
+  async createSection(collectionId: string, userId: string, name: string, sortOrder?: number) {
+    const col = await this.collectionRepo.findById(collectionId)
+    if (!col) throw new NotFoundError('Collection', collectionId)
+    if (col.userId !== userId) throw new ForbiddenError()
+    return this.collectionRepo.createSection(collectionId, name, sortOrder ?? 0)
+  }
+
+  async deleteSection(collectionId: string, sectionId: string, userId: string) {
+    const col = await this.collectionRepo.findById(collectionId)
+    if (!col) throw new NotFoundError('Collection', collectionId)
+    if (col.userId !== userId) throw new ForbiddenError()
+    await this.collectionRepo.deleteSection(sectionId)
+  }
+
+  async addCollaborator(collectionId: string, ownerId: string, username: string, canEdit: boolean) {
+    const col = await this.collectionRepo.findById(collectionId)
+    if (!col) throw new NotFoundError('Collection', collectionId)
+    if (col.userId !== ownerId) throw new ForbiddenError()
+    return this.collectionRepo.addCollaborator(collectionId, username, canEdit)
+  }
+
+  async removeCollaborator(collectionId: string, ownerId: string, targetUserId: string) {
+    const col = await this.collectionRepo.findById(collectionId)
+    if (!col) throw new NotFoundError('Collection', collectionId)
+    if (col.userId !== ownerId) throw new ForbiddenError()
+    await this.collectionRepo.removeCollaborator(collectionId, targetUserId)
+  }
+
+  async getCollectionDetail(id: string, requestingUserId?: string) {
+    const col = await this.collectionRepo.findById(id)
+    if (!col) throw new NotFoundError('Collection', id)
+    if (col.isPrivate && col.userId !== requestingUserId) throw new NotFoundError('Collection', id)
+    return this.collectionRepo.findWithSections(id)
+  }
+
+  async moveItemToSection(collectionId: string, userId: string, photoId: string, sectionId: string | null) {
+    const col = await this.collectionRepo.findById(collectionId)
+    if (!col) throw new NotFoundError('Collection', collectionId)
+    if (col.userId !== userId) throw new ForbiddenError()
+    return this.collectionRepo.moveItemToSection(collectionId, photoId, sectionId)
+  }
 }

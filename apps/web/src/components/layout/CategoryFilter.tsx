@@ -30,10 +30,10 @@ export function CategoryFilter({ value, onChange }: CategoryFilterProps) {
           key={cat.value}
           onClick={() => onChange(cat.value as PhotoCategory | '')}
           className={cn(
-            'flex-shrink-0 px-4 py-1.5 rounded-full text-sm font-medium transition-all border',
+            'flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold transition-all',
             value === cat.value
-              ? 'bg-foreground text-background border-foreground'
-              : 'bg-transparent text-muted-foreground border-border hover:border-foreground hover:text-foreground',
+              ? 'bg-black text-white'
+              : 'bg-[#f6f6f3] text-black hover:bg-[#e5e5e0]',
           )}
         >
           {cat.label}

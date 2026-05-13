@@ -67,15 +67,16 @@ model User {
   createdAt    DateTime   @default(now())
   updatedAt    DateTime   @updatedAt
 
-  photos       Photo[]
-  votes        Vote[]
-  comments     Comment[]
-  awards       Award[]
-  forumThreads ForumThread[]
-  forumReplies ForumReply[]
-  collections  Collection[]
-  followers    Follow[]     @relation("Following")
-  following    Follow[]     @relation("Follower")
+  photos            Photo[]
+  votes             Vote[]
+  comments          Comment[]
+  awards            Award[]
+  forumThreads      ForumThread[]
+  forumReplies      ForumReply[]
+  collections       Collection[]
+  collectionCollabs CollectionCollaborator[]
+  followers         Follow[]     @relation("Following")
+  following         Follow[]     @relation("Follower")
 
   @@index([username])
   @@index([status])
@@ -88,6 +89,7 @@ model Photo {
   description  String?       @db.Text
   imageUrl     String
   thumbnailUrl String?
+  previewUrl   String?
   width        Int           @default(0)
   height       Int           @default(0)
   fileSize     Int           @default(0)
@@ -111,7 +113,9 @@ model Photo {
   comments   Comment[]
   awards     Award[]
   forumReplies     ForumReply[]     @relation("EmbeddedPhoto")
+  forumThreads     ForumThread[]    @relation("SourcePhoto")
   collectionItems  CollectionItem[]
+  tags             PhotoTag[]
 
   approvedAt DateTime?
   createdAt  DateTime  @default(now())
@@ -186,24 +190,27 @@ model ForumCategory {
 }
 
 model ForumThread {
-  id          String   @id @default(cuid())
-  title       String
-  body        String   @db.Text
-  authorId    String
-  categoryId  String
-  pinned      Boolean  @default(false)
-  locked      Boolean  @default(false)
-  replyCount  Int      @default(0)
-  lastReplyAt DateTime @default(now())
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id            String   @id @default(cuid())
+  title         String
+  body          String   @db.Text
+  authorId      String
+  categoryId    String
+  sourcePhotoId String?
+  pinned        Boolean  @default(false)
+  locked        Boolean  @default(false)
+  replyCount    Int      @default(0)
+  lastReplyAt   DateTime @default(now())
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 
-  author   User          @relation(fields: [authorId], references: [id], onDelete: Cascade)
-  category ForumCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-  replies  ForumReply[]
+  author      User          @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  category    ForumCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  sourcePhoto Photo?        @relation("SourcePhoto", fields: [sourcePhotoId], references: [id], onDelete: SetNull)
+  replies     ForumReply[]
 
   @@index([categoryId, lastReplyAt])
   @@index([authorId])
+  @@index([sourcePhotoId])
   @@map("forum_threads")
 }
 
@@ -225,34 +232,91 @@ model ForumReply {
 }
 
 model Collection {
-  id          String   @id @default(cuid())
-  name        String
-  description String?  @db.Text
-  isPrivate   Boolean  @default(false)
-  coverUrl    String?
-  userId      String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id              String   @id @default(cuid())
+  name            String
+  description     String?  @db.Text
+  isPrivate       Boolean  @default(false)
+  isCollaborative Boolean  @default(false)
+  coverUrl        String?
+  userId          String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 
-  user  User             @relation(fields: [userId], references: [id], onDelete: Cascade)
-  items CollectionItem[]
+  user          User                     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  items         CollectionItem[]
+  sections      CollectionSection[]
+  collaborators CollectionCollaborator[]
 
   @@index([userId])
   @@map("collections")
+}
+
+model CollectionSection {
+  id           String   @id @default(cuid())
+  name         String
+  collectionId String
+  sortOrder    Int      @default(0)
+  createdAt    DateTime @default(now())
+
+  collection Collection     @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+  items      CollectionItem[]
+
+  @@index([collectionId, sortOrder])
+  @@map("collection_sections")
+}
+
+model CollectionCollaborator {
+  id           String   @id @default(cuid())
+  collectionId String
+  userId       String
+  canEdit      Boolean  @default(true)
+  invitedAt    DateTime @default(now())
+
+  collection Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+  user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([collectionId, userId])
+  @@index([userId])
+  @@map("collection_collaborators")
 }
 
 model CollectionItem {
   id           String   @id @default(cuid())
   collectionId String
   photoId      String
+  sectionId    String?
+  note         String?
   savedAt      DateTime @default(now())
 
-  collection Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
-  photo      Photo      @relation(fields: [photoId], references: [id], onDelete: Cascade)
+  collection Collection         @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+  photo      Photo              @relation(fields: [photoId], references: [id], onDelete: Cascade)
+  section    CollectionSection? @relation(fields: [sectionId], references: [id], onDelete: SetNull)
 
   @@unique([collectionId, photoId])
   @@index([collectionId, savedAt])
+  @@index([sectionId])
   @@map("collection_items")
+}
+
+model Tag {
+  id        String     @id @default(cuid())
+  name      String     @unique
+  slug      String     @unique
+  photoTags PhotoTag[]
+
+  @@index([slug])
+  @@map("tags")
+}
+
+model PhotoTag {
+  photoId String
+  tagId   String
+
+  photo Photo @relation(fields: [photoId], references: [id], onDelete: Cascade)
+  tag   Tag   @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([photoId, tagId])
+  @@map("photo_tags")
 }
 
 model Follow {

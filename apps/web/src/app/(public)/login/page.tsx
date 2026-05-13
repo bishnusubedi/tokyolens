@@ -4,13 +4,15 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Camera } from 'lucide-react'
-import { Button, Card, CardContent, CardFooter, CardHeader, CardTitle, Input, Label } from '@repo/ui'
 import { useLogin } from '@/hooks/use-auth'
 
 const DEMO_ACCOUNTS = [
   { label: 'Photographer', email: 'demo@tokyolens.jp', password: 'demo123456' },
   { label: 'Admin', email: 'admin@tokyolens.jp', password: 'admin123456' },
 ]
+
+const inputClass =
+  'w-full h-11 px-4 bg-white border border-[#91918c] rounded-[16px] text-sm text-black placeholder:text-[#91918c] focus:outline-none focus:border-black focus:ring-2 focus:ring-[#435ee5] focus:ring-offset-1 transition-all'
 
 export default function LoginPage() {
   const router = useRouter()
@@ -28,70 +30,100 @@ export default function LoginPage() {
     }
   }
 
-  const fillDemo = (acc: typeof DEMO_ACCOUNTS[0]) => {
+  const fillDemo = (acc: (typeof DEMO_ACCOUNTS)[0]) => {
     setEmail(acc.email)
     setPassword(acc.password)
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background px-4">
-      <div className="w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center bg-[#fbfbf9] px-4 py-12">
+      <div className="w-full max-w-[400px]">
+        {/* Logo */}
         <div className="text-center mb-8">
-          <Link href="/" className="inline-flex items-center gap-2 text-primary font-bold text-xl">
+          <Link href="/" className="inline-flex items-center gap-2 text-[#e60023] font-bold text-xl">
             <Camera className="h-6 w-6" />
             TokyoLens
           </Link>
-          <p className="text-muted-foreground text-sm mt-2">Sign in to share your Tokyo photos</p>
         </div>
 
-        {/* Demo credentials */}
-        <div className="mb-4 rounded-xl border border-border bg-muted/50 p-3">
-          <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">Demo accounts — click to fill</p>
-          <div className="flex gap-2 flex-wrap">
-            {DEMO_ACCOUNTS.map((acc) => (
-              <button
-                key={acc.email}
-                type="button"
-                onClick={() => fillDemo(acc)}
-                className="flex-1 min-w-0 rounded-lg border border-border bg-background px-3 py-2 text-left hover:border-primary hover:bg-primary/5 transition-colors"
-              >
-                <p className="text-xs font-medium">{acc.label}</p>
-                <p className="text-xs text-muted-foreground truncate">{acc.email}</p>
-                <p className="text-xs text-muted-foreground font-mono">{acc.password}</p>
-              </button>
-            ))}
+        {/* Card */}
+        <div className="bg-white rounded-[32px] p-8 shadow-2xl">
+          <h1 className="text-[22px] font-semibold text-black mb-1">Welcome to TokyoLens</h1>
+          <p className="text-sm text-[#62625b] mb-6">Sign in to discover Tokyo photography</p>
+
+          <form onSubmit={handleSubmit} className="space-y-4">
+            {login.error && (
+              <p className="text-sm text-[#9e0a0a] bg-[#9e0a0a]/10 px-3 py-2 rounded-[16px]">
+                {login.error.message}
+              </p>
+            )}
+
+            <div>
+              <label htmlFor="email" className="block text-sm font-semibold text-black mb-1.5">
+                Email
+              </label>
+              <input
+                id="email"
+                type="email"
+                placeholder="you@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className={inputClass}
+              />
+            </div>
+
+            <div>
+              <label htmlFor="password" className="block text-sm font-semibold text-black mb-1.5">
+                Password
+              </label>
+              <input
+                id="password"
+                type="password"
+                placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className={inputClass}
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={login.isPending}
+              className="w-full h-10 rounded-[16px] bg-[#e60023] text-white text-sm font-bold hover:bg-[#cc001f] disabled:opacity-60 transition-colors mt-2"
+            >
+              {login.isPending ? 'Signing in…' : 'Log in'}
+            </button>
+          </form>
+
+          <p className="text-sm text-center text-[#62625b] mt-4">
+            Don&apos;t have an account?{' '}
+            <Link href="/register" className="font-semibold text-black hover:underline">
+              Sign up
+            </Link>
+          </p>
+
+          {/* Demo accounts */}
+          <div className="mt-6 pt-6 border-t border-[#dadad3]">
+            <p className="text-xs font-bold text-[#91918c] uppercase tracking-wider mb-3 text-center">
+              Quick demo access
+            </p>
+            <div className="flex gap-2">
+              {DEMO_ACCOUNTS.map((acc) => (
+                <button
+                  key={acc.email}
+                  type="button"
+                  onClick={() => fillDemo(acc)}
+                  className="flex-1 px-3 py-2 rounded-[16px] bg-[#f6f6f3] hover:bg-[#e5e5e0] text-left transition-colors"
+                >
+                  <p className="text-xs font-bold text-black">{acc.label}</p>
+                  <p className="text-xs text-[#62625b] truncate">{acc.email}</p>
+                </button>
+              ))}
+            </div>
           </div>
         </div>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>Welcome back</CardTitle>
-          </CardHeader>
-          <form onSubmit={handleSubmit}>
-            <CardContent className="space-y-4">
-              {login.error && (
-                <p className="text-sm text-destructive bg-destructive/10 px-3 py-2 rounded-md">{login.error.message}</p>
-              )}
-              <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" placeholder="you@example.com" value={email} onChange={(e) => setEmail(e.target.value)} required />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
-                <Input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-              </div>
-            </CardContent>
-            <CardFooter className="flex flex-col gap-4">
-              <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90" disabled={login.isPending}>
-                {login.isPending ? 'Signing in…' : 'Sign in'}
-              </Button>
-              <p className="text-sm text-muted-foreground">
-                No account?{' '}
-                <Link href="/register" className="text-primary hover:underline">Join TokyoLens</Link>
-              </p>
-            </CardFooter>
-          </form>
-        </Card>
       </div>
     </div>
   )

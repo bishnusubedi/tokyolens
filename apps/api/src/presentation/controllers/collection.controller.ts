@@ -76,4 +76,46 @@ export class CollectionController {
       res.json({ data: collections })
     } catch (err) { next(err) }
   }
+
+  getDetail = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
+    try {
+      const col = await this.useCase.getCollectionDetail(param(req.params['id']), req.user?.userId)
+      res.json({ data: col })
+    } catch (err) { next(err) }
+  }
+
+  createSection = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
+    try {
+      const section = await this.useCase.createSection(param(req.params['id']), req.user!.userId, req.body.name, req.body.sortOrder)
+      res.status(201).json({ data: section })
+    } catch (err) { next(err) }
+  }
+
+  deleteSection = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
+    try {
+      await this.useCase.deleteSection(param(req.params['id']), param(req.params['sectionId']), req.user!.userId)
+      res.status(204).send()
+    } catch (err) { next(err) }
+  }
+
+  addCollaborator = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
+    try {
+      const collab = await this.useCase.addCollaborator(param(req.params['id']), req.user!.userId, req.body.username, req.body.canEdit ?? true)
+      res.status(201).json({ data: collab })
+    } catch (err) { next(err) }
+  }
+
+  removeCollaborator = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
+    try {
+      await this.useCase.removeCollaborator(param(req.params['id']), req.user!.userId, param(req.params['userId']))
+      res.status(204).send()
+    } catch (err) { next(err) }
+  }
+
+  moveItemToSection = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
+    try {
+      const item = await this.useCase.moveItemToSection(param(req.params['id']), req.user!.userId, param(req.params['photoId']), req.body.sectionId ?? null)
+      res.json({ data: item })
+    } catch (err) { next(err) }
+  }
 }

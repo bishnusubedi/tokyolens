@@ -6,12 +6,24 @@ import { createId } from '../utils/cuid.js'
 
 const UPLOADS_DIR = path.resolve(process.cwd(), 'uploads')
 
-// R2 client — only initialised when env vars are present
-function makeR2Client(): S3Client | null {
-  const accountId = process.env['R2_ACCOUNT_ID']
+// S3 client — supports LocalStack (S3_ENDPOINT set) or Cloudflare R2 (R2_ACCOUNT_ID set)
+function makeS3Client(): S3Client | null {
   const accessKeyId = process.env['R2_ACCESS_KEY_ID']
   const secretAccessKey = process.env['R2_SECRET_ACCESS_KEY']
-  if (!accountId || !accessKeyId || !secretAccessKey) return null
+  if (!accessKeyId || !secretAccessKey) return null
+
+  const s3Endpoint = process.env['S3_ENDPOINT']
+  if (s3Endpoint) {
+    return new S3Client({
+      region: 'us-east-1',
+      endpoint: s3Endpoint,
+      credentials: { accessKeyId, secretAccessKey },
+      forcePathStyle: true,
+    })
+  }
+
+  const accountId = process.env['R2_ACCOUNT_ID']
+  if (!accountId) return null
   return new S3Client({
     region: 'auto',
     endpoint: `https://${accountId}.r2.cloudflarestorage.com`,
@@ -22,13 +34,14 @@ function makeR2Client(): S3Client | null {
 let r2: S3Client | null | undefined
 
 function getR2(): S3Client | null {
-  if (r2 === undefined) r2 = makeR2Client()
+  if (r2 === undefined) r2 = makeS3Client()
   return r2
 }
 
 export interface ProcessedImage {
   imageUrl: string
   thumbnailUrl: string
+  previewUrl: string
   width: number
   height: number
   fileSize: number
@@ -71,6 +84,7 @@ export const ImageService = {
     const filename = `${id}.jpg`
     const photoKey = `photos/${yyyy}/${mm}/${filename}`
     const thumbKey = `thumbs/${yyyy}/${mm}/${filename}`
+    const previewKey = `previews/${yyyy}/${mm}/${filename}`
 
     const image = sharp(buffer).rotate()
     const metadata = await image.metadata()
@@ -80,6 +94,13 @@ export const ImageService = {
       .rotate()
       .resize({ width: 1920, withoutEnlargement: true })
       .jpeg({ quality: 92, progressive: true })
+      .toBuffer()
+
+    // Preview: 800px wide — for photo detail page
+    const previewBuffer = await sharp(buffer)
+      .rotate()
+      .resize({ width: 800, withoutEnlargement: true })
+      .jpeg({ quality: 85, progressive: true })
       .toBuffer()
 
     // Thumbnail: 600px wide
@@ -93,29 +114,35 @@ export const ImageService = {
 
     let imageUrl: string
     let thumbnailUrl: string
+    let previewUrl: string
 
     if (client) {
       // Upload to Cloudflare R2
-      ;[imageUrl, thumbnailUrl] = await Promise.all([
+      ;[imageUrl, thumbnailUrl, previewUrl] = await Promise.all([
         uploadToR2(client, photoKey, mainBuffer, 'image/jpeg'),
         uploadToR2(client, thumbKey, thumbBuffer, 'image/jpeg'),
+        uploadToR2(client, previewKey, previewBuffer, 'image/jpeg'),
       ])
     } else {
       // Fall back to local disk (development without R2)
       const photoDir = path.join(UPLOADS_DIR, 'photos', String(yyyy), mm)
       const thumbDir = path.join(UPLOADS_DIR, 'thumbs', String(yyyy), mm)
-      await Promise.all([ensureDir(photoDir), ensureDir(thumbDir)])
+      const previewDir = path.join(UPLOADS_DIR, 'previews', String(yyyy), mm)
+      await Promise.all([ensureDir(photoDir), ensureDir(thumbDir), ensureDir(previewDir)])
       await Promise.all([
         fs.writeFile(path.join(photoDir, filename), mainBuffer),
         fs.writeFile(path.join(thumbDir, filename), thumbBuffer),
+        fs.writeFile(path.join(previewDir, filename), previewBuffer),
       ])
       imageUrl = `/uploads/photos/${yyyy}/${mm}/${filename}`
       thumbnailUrl = `/uploads/thumbs/${yyyy}/${mm}/${filename}`
+      previewUrl = `/uploads/previews/${yyyy}/${mm}/${filename}`
     }
 
     return {
       imageUrl,
       thumbnailUrl,
+      previewUrl,
       width: metadata.width ?? 0,
       height: metadata.height ?? 0,
       fileSize: mainBuffer.length,
@@ -127,6 +154,7 @@ export const ImageService = {
     if (!getR2()) {
       await ensureDir(path.join(UPLOADS_DIR, 'photos'))
       await ensureDir(path.join(UPLOADS_DIR, 'thumbs'))
+      await ensureDir(path.join(UPLOADS_DIR, 'previews'))
     }
   },
 }

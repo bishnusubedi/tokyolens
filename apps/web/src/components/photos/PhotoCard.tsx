@@ -28,11 +28,14 @@ export function PhotoCard({ photo, priority }: PhotoCardProps) {
   const src = photo.thumbnailUrl ?? photo.imageUrl
   const apiBase = process.env['NEXT_PUBLIC_API_URL'] ?? 'http://localhost:3001'
 
+  const imgSrc = src.startsWith('http') ? src : `${apiBase}${src}`
+
   return (
-    <Link href={`/photos/${photo.id}`} className="group block masonry-item">
-      <div className="relative overflow-hidden rounded-lg bg-muted">
+    <Link href={`/photos/${photo.id}`} className="group block">
+      <div className="relative overflow-hidden rounded-[16px] bg-[#f6f6f3]">
+        {/* Full-bleed pin image — no internal padding */}
         <Image
-          src={src.startsWith('http') ? src : `${apiBase}${src}`}
+          src={imgSrc}
           alt={photo.title}
           width={photo.width}
           height={photo.height}
@@ -40,24 +43,29 @@ export function PhotoCard({ photo, priority }: PhotoCardProps) {
           priority={priority}
           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-        {/* Save button — top right on hover */}
+        {/* Hover overlay gradient */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+        {/* Save button top right on hover */}
         <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
           <SaveButton photoId={photo.id} />
         </div>
+        {/* Neighborhood overlay pill top left on hover */}
+        <div className="absolute top-2 left-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          <span className="flex items-center gap-1 bg-white text-black text-xs font-bold px-2.5 py-1 rounded-full">
+            <MapPin className="h-3 w-3" />
+            {photo.neighborhood}
+          </span>
+        </div>
+        {/* Bottom meta on hover */}
         <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-1 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-          <p className="text-white text-sm font-medium line-clamp-1">{photo.title}</p>
-          <div className="flex items-center justify-between mt-1">
-            <span className="text-white/70 text-xs flex items-center gap-1">
-              <MapPin className="h-3 w-3" />
-              {photo.neighborhood}
-            </span>
-            <span className={cn('text-xs flex items-center gap-1', photo.hasVoted ? 'text-primary' : 'text-white/70')}>
-              <Heart className={cn('h-3 w-3', photo.hasVoted && 'fill-primary')} />
+          <p className="text-white text-sm font-semibold line-clamp-1">{photo.title}</p>
+          <div className="flex items-center justify-between mt-1.5">
+            <span className="text-white/70 text-xs">@{photo.author.username}</span>
+            <span className={cn('text-xs flex items-center gap-1', photo.hasVoted ? 'text-[#e60023]' : 'text-white/70')}>
+              <Heart className={cn('h-3 w-3', photo.hasVoted && 'fill-[#e60023]')} />
               {photo.voteCount}
             </span>
           </div>
-          <p className="text-white/60 text-xs mt-1">@{photo.author.username}</p>
         </div>
       </div>
     </Link>

@@ -143,6 +143,7 @@ exports.Prisma.PhotoScalarFieldEnum = {
   description: 'description',
   imageUrl: 'imageUrl',
   thumbnailUrl: 'thumbnailUrl',
+  previewUrl: 'previewUrl',
   width: 'width',
   height: 'height',
   fileSize: 'fileSize',
@@ -205,6 +206,7 @@ exports.Prisma.ForumThreadScalarFieldEnum = {
   body: 'body',
   authorId: 'authorId',
   categoryId: 'categoryId',
+  sourcePhotoId: 'sourcePhotoId',
   pinned: 'pinned',
   locked: 'locked',
   replyCount: 'replyCount',
@@ -228,17 +230,47 @@ exports.Prisma.CollectionScalarFieldEnum = {
   name: 'name',
   description: 'description',
   isPrivate: 'isPrivate',
+  isCollaborative: 'isCollaborative',
   coverUrl: 'coverUrl',
   userId: 'userId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.CollectionSectionScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  collectionId: 'collectionId',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.CollectionCollaboratorScalarFieldEnum = {
+  id: 'id',
+  collectionId: 'collectionId',
+  userId: 'userId',
+  canEdit: 'canEdit',
+  invitedAt: 'invitedAt'
+};
+
 exports.Prisma.CollectionItemScalarFieldEnum = {
   id: 'id',
   collectionId: 'collectionId',
   photoId: 'photoId',
+  sectionId: 'sectionId',
+  note: 'note',
   savedAt: 'savedAt'
+};
+
+exports.Prisma.TagScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug'
+};
+
+exports.Prisma.PhotoTagScalarFieldEnum = {
+  photoId: 'photoId',
+  tagId: 'tagId'
 };
 
 exports.Prisma.FollowScalarFieldEnum = {
@@ -315,7 +347,11 @@ exports.Prisma.ModelName = {
   ForumThread: 'ForumThread',
   ForumReply: 'ForumReply',
   Collection: 'Collection',
+  CollectionSection: 'CollectionSection',
+  CollectionCollaborator: 'CollectionCollaborator',
   CollectionItem: 'CollectionItem',
+  Tag: 'Tag',
+  PhotoTag: 'PhotoTag',
   Follow: 'Follow'
 };
 

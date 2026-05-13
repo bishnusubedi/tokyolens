@@ -17,6 +17,7 @@ export class PhotoUseCase {
       iso: dto.iso,
       imageUrl: processed.imageUrl,
       thumbnailUrl: processed.thumbnailUrl,
+      previewUrl: processed.previewUrl,
       width: processed.width,
       height: processed.height,
       fileSize: processed.fileSize,

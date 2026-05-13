@@ -39,4 +39,12 @@ export interface ICollectionRepository {
   listPhotos(collectionId: string, page: number, limit: number): Promise<{ data: CollectionItemRow[]; total: number }>
   hasPhoto(collectionId: string, photoId: string): Promise<boolean>
   getSavedCollections(userId: string, photoId: string): Promise<string[]>
+  // Sections
+  createSection(collectionId: string, name: string, sortOrder: number): Promise<unknown>
+  deleteSection(sectionId: string): Promise<void>
+  findWithSections(id: string): Promise<unknown>
+  moveItemToSection(collectionId: string, photoId: string, sectionId: string | null): Promise<unknown>
+  // Collaborators
+  addCollaborator(collectionId: string, username: string, canEdit: boolean): Promise<unknown>
+  removeCollaborator(collectionId: string, userId: string): Promise<void>
 }

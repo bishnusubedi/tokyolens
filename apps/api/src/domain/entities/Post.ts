@@ -30,6 +30,8 @@ export interface Photo {
 export interface PhotoWithAuthor extends Photo {
   author: UserSummary
   hasVoted?: boolean
+  previewUrl?: string | null
+  tags?: Array<{ name: string; slug: string }>
 }
 
 export interface Comment {

@@ -7,6 +7,7 @@ export const photoSchema = z.object({
   description: z.string().nullable(),
   imageUrl: z.string(),
   thumbnailUrl: z.string().nullable(),
+  previewUrl: z.string().nullable().optional(),
   width: z.number(),
   height: z.number(),
   fileSize: z.number(),
@@ -40,6 +41,7 @@ export const createPhotoSchema = z.object({
   aperture: z.string().max(10).optional(),
   shutterSpeed: z.string().max(20).optional(),
   focalLength: z.string().max(20).optional(),
+  tags: z.array(z.string().min(1).max(40)).max(10).optional().default([]),
 })
 
 export const updatePhotoSchema = createPhotoSchema.partial()
@@ -53,9 +55,19 @@ export const photoQuerySchema = z.object({
   authorId: z.string().optional(),
   status: photoStatusSchema.optional(),
   cursor: z.string().optional(),
+  q: z.string().optional(),
+  tags: z.string().optional(),
+})
+
+export const searchQuerySchema = z.object({
+  q: z.string().min(1),
+  type: z.enum(['photos', 'users', 'boards', 'tags']).optional().default('photos'),
+  page: z.coerce.number().int().min(1).default(1),
+  limit: z.coerce.number().int().min(1).max(50).default(20),
 })
 
 export type Photo = z.infer<typeof photoSchema>
 export type CreatePhotoInput = z.infer<typeof createPhotoSchema>
 export type UpdatePhotoInput = z.infer<typeof updatePhotoSchema>
 export type PhotoQuery = z.infer<typeof photoQuerySchema>
+export type SearchQuery = z.infer<typeof searchQuerySchema>

@@ -33,6 +33,8 @@ type PhotoWithAuthor = {
   shutterSpeed?: string | null
   focalLength?: string | null
   author: { id: string; username: string; name: string; avatarUrl: string | null; role: string }
+  previewUrl?: string | null
+  tags?: Array<{ name: string; slug: string }>
 }
 
 type CommentWithAuthor = {

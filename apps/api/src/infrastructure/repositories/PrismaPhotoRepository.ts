@@ -19,6 +19,7 @@ function mapPhoto(p: any, requestingUserId?: string): PhotoWithAuthor {
   return {
     ...p,
     hasVoted: requestingUserId ? p.votes?.some((v: any) => v.userId === requestingUserId) : undefined,
+    tags: p.tags?.map((pt: any) => pt.tag) ?? [],
     awards: undefined,
     votes: undefined,
   }
@@ -28,12 +29,31 @@ export class PrismaPhotoRepository implements IPhotoRepository {
   constructor(private readonly db: PrismaClient) {}
 
   async create(data: CreatePhotoData): Promise<Photo> {
-    return this.db.photo.create({ data: data as any }) as Promise<Photo>
+    const tags = (data as any).tags as string[] | undefined
+    const photo = await this.db.photo.create({ data: { ...data, tags: undefined } as any }) as Photo
+
+    if (tags && tags.length > 0) {
+      for (const tagName of tags) {
+        const slug = tagName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+        const tag = await this.db.tag.upsert({
+          where: { slug },
+          create: { name: tagName, slug },
+          update: {},
+        })
+        await this.db.photoTag.upsert({
+          where: { photoId_tagId: { photoId: photo.id, tagId: tag.id } },
+          create: { photoId: photo.id, tagId: tag.id },
+          update: {},
+        }).catch(() => {})
+      }
+    }
+    return photo
   }
 
   async findById(id: string, requestingUserId?: string): Promise<PhotoWithAuthor | null> {
     const include: any = {
       ...PHOTO_WITH_AUTHOR_INCLUDE,
+      tags: { include: { tag: { select: { name: true, slug: true } } } },
     }
     if (requestingUserId) {
       include.votes = { where: { userId: requestingUserId }, select: { userId: true } }

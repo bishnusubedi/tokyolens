@@ -59,10 +59,30 @@ export type ForumReply = $Result.DefaultSelection<Prisma.$ForumReplyPayload>
  */
 export type Collection = $Result.DefaultSelection<Prisma.$CollectionPayload>
 /**
+ * Model CollectionSection
+ * 
+ */
+export type CollectionSection = $Result.DefaultSelection<Prisma.$CollectionSectionPayload>
+/**
+ * Model CollectionCollaborator
+ * 
+ */
+export type CollectionCollaborator = $Result.DefaultSelection<Prisma.$CollectionCollaboratorPayload>
+/**
  * Model CollectionItem
  * 
  */
 export type CollectionItem = $Result.DefaultSelection<Prisma.$CollectionItemPayload>
+/**
+ * Model Tag
+ * 
+ */
+export type Tag = $Result.DefaultSelection<Prisma.$TagPayload>
+/**
+ * Model PhotoTag
+ * 
+ */
+export type PhotoTag = $Result.DefaultSelection<Prisma.$PhotoTagPayload>
 /**
  * Model Follow
  * 
@@ -371,6 +391,26 @@ export class PrismaClient<
   get collection(): Prisma.CollectionDelegate<ExtArgs, ClientOptions>;
 
   /**
+   * `prisma.collectionSection`: Exposes CRUD operations for the **CollectionSection** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CollectionSections
+    * const collectionSections = await prisma.collectionSection.findMany()
+    * ```
+    */
+  get collectionSection(): Prisma.CollectionSectionDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.collectionCollaborator`: Exposes CRUD operations for the **CollectionCollaborator** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CollectionCollaborators
+    * const collectionCollaborators = await prisma.collectionCollaborator.findMany()
+    * ```
+    */
+  get collectionCollaborator(): Prisma.CollectionCollaboratorDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.collectionItem`: Exposes CRUD operations for the **CollectionItem** model.
     * Example usage:
     * ```ts
@@ -379,6 +419,26 @@ export class PrismaClient<
     * ```
     */
   get collectionItem(): Prisma.CollectionItemDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.tag`: Exposes CRUD operations for the **Tag** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Tags
+    * const tags = await prisma.tag.findMany()
+    * ```
+    */
+  get tag(): Prisma.TagDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.photoTag`: Exposes CRUD operations for the **PhotoTag** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PhotoTags
+    * const photoTags = await prisma.photoTag.findMany()
+    * ```
+    */
+  get photoTag(): Prisma.PhotoTagDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.follow`: Exposes CRUD operations for the **Follow** model.
@@ -832,7 +892,11 @@ export namespace Prisma {
     ForumThread: 'ForumThread',
     ForumReply: 'ForumReply',
     Collection: 'Collection',
+    CollectionSection: 'CollectionSection',
+    CollectionCollaborator: 'CollectionCollaborator',
     CollectionItem: 'CollectionItem',
+    Tag: 'Tag',
+    PhotoTag: 'PhotoTag',
     Follow: 'Follow'
   };
 
@@ -849,7 +913,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "photo" | "vote" | "comment" | "award" | "forumCategory" | "forumThread" | "forumReply" | "collection" | "collectionItem" | "follow"
+      modelProps: "user" | "photo" | "vote" | "comment" | "award" | "forumCategory" | "forumThread" | "forumReply" | "collection" | "collectionSection" | "collectionCollaborator" | "collectionItem" | "tag" | "photoTag" | "follow"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1519,6 +1583,154 @@ export namespace Prisma {
           }
         }
       }
+      CollectionSection: {
+        payload: Prisma.$CollectionSectionPayload<ExtArgs>
+        fields: Prisma.CollectionSectionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CollectionSectionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionSectionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CollectionSectionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionSectionPayload>
+          }
+          findFirst: {
+            args: Prisma.CollectionSectionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionSectionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CollectionSectionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionSectionPayload>
+          }
+          findMany: {
+            args: Prisma.CollectionSectionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionSectionPayload>[]
+          }
+          create: {
+            args: Prisma.CollectionSectionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionSectionPayload>
+          }
+          createMany: {
+            args: Prisma.CollectionSectionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CollectionSectionCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionSectionPayload>[]
+          }
+          delete: {
+            args: Prisma.CollectionSectionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionSectionPayload>
+          }
+          update: {
+            args: Prisma.CollectionSectionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionSectionPayload>
+          }
+          deleteMany: {
+            args: Prisma.CollectionSectionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CollectionSectionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CollectionSectionUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionSectionPayload>[]
+          }
+          upsert: {
+            args: Prisma.CollectionSectionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionSectionPayload>
+          }
+          aggregate: {
+            args: Prisma.CollectionSectionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCollectionSection>
+          }
+          groupBy: {
+            args: Prisma.CollectionSectionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CollectionSectionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CollectionSectionCountArgs<ExtArgs>
+            result: $Utils.Optional<CollectionSectionCountAggregateOutputType> | number
+          }
+        }
+      }
+      CollectionCollaborator: {
+        payload: Prisma.$CollectionCollaboratorPayload<ExtArgs>
+        fields: Prisma.CollectionCollaboratorFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CollectionCollaboratorFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionCollaboratorPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CollectionCollaboratorFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionCollaboratorPayload>
+          }
+          findFirst: {
+            args: Prisma.CollectionCollaboratorFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionCollaboratorPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CollectionCollaboratorFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionCollaboratorPayload>
+          }
+          findMany: {
+            args: Prisma.CollectionCollaboratorFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionCollaboratorPayload>[]
+          }
+          create: {
+            args: Prisma.CollectionCollaboratorCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionCollaboratorPayload>
+          }
+          createMany: {
+            args: Prisma.CollectionCollaboratorCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CollectionCollaboratorCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionCollaboratorPayload>[]
+          }
+          delete: {
+            args: Prisma.CollectionCollaboratorDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionCollaboratorPayload>
+          }
+          update: {
+            args: Prisma.CollectionCollaboratorUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionCollaboratorPayload>
+          }
+          deleteMany: {
+            args: Prisma.CollectionCollaboratorDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CollectionCollaboratorUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CollectionCollaboratorUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionCollaboratorPayload>[]
+          }
+          upsert: {
+            args: Prisma.CollectionCollaboratorUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CollectionCollaboratorPayload>
+          }
+          aggregate: {
+            args: Prisma.CollectionCollaboratorAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCollectionCollaborator>
+          }
+          groupBy: {
+            args: Prisma.CollectionCollaboratorGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CollectionCollaboratorGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CollectionCollaboratorCountArgs<ExtArgs>
+            result: $Utils.Optional<CollectionCollaboratorCountAggregateOutputType> | number
+          }
+        }
+      }
       CollectionItem: {
         payload: Prisma.$CollectionItemPayload<ExtArgs>
         fields: Prisma.CollectionItemFieldRefs
@@ -1590,6 +1802,154 @@ export namespace Prisma {
           count: {
             args: Prisma.CollectionItemCountArgs<ExtArgs>
             result: $Utils.Optional<CollectionItemCountAggregateOutputType> | number
+          }
+        }
+      }
+      Tag: {
+        payload: Prisma.$TagPayload<ExtArgs>
+        fields: Prisma.TagFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TagFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TagPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TagFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TagPayload>
+          }
+          findFirst: {
+            args: Prisma.TagFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TagPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TagFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TagPayload>
+          }
+          findMany: {
+            args: Prisma.TagFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TagPayload>[]
+          }
+          create: {
+            args: Prisma.TagCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TagPayload>
+          }
+          createMany: {
+            args: Prisma.TagCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TagCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TagPayload>[]
+          }
+          delete: {
+            args: Prisma.TagDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TagPayload>
+          }
+          update: {
+            args: Prisma.TagUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TagPayload>
+          }
+          deleteMany: {
+            args: Prisma.TagDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TagUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TagUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TagPayload>[]
+          }
+          upsert: {
+            args: Prisma.TagUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TagPayload>
+          }
+          aggregate: {
+            args: Prisma.TagAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTag>
+          }
+          groupBy: {
+            args: Prisma.TagGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TagGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TagCountArgs<ExtArgs>
+            result: $Utils.Optional<TagCountAggregateOutputType> | number
+          }
+        }
+      }
+      PhotoTag: {
+        payload: Prisma.$PhotoTagPayload<ExtArgs>
+        fields: Prisma.PhotoTagFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PhotoTagFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PhotoTagPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PhotoTagFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PhotoTagPayload>
+          }
+          findFirst: {
+            args: Prisma.PhotoTagFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PhotoTagPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PhotoTagFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PhotoTagPayload>
+          }
+          findMany: {
+            args: Prisma.PhotoTagFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PhotoTagPayload>[]
+          }
+          create: {
+            args: Prisma.PhotoTagCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PhotoTagPayload>
+          }
+          createMany: {
+            args: Prisma.PhotoTagCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PhotoTagCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PhotoTagPayload>[]
+          }
+          delete: {
+            args: Prisma.PhotoTagDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PhotoTagPayload>
+          }
+          update: {
+            args: Prisma.PhotoTagUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PhotoTagPayload>
+          }
+          deleteMany: {
+            args: Prisma.PhotoTagDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PhotoTagUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.PhotoTagUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PhotoTagPayload>[]
+          }
+          upsert: {
+            args: Prisma.PhotoTagUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PhotoTagPayload>
+          }
+          aggregate: {
+            args: Prisma.PhotoTagAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePhotoTag>
+          }
+          groupBy: {
+            args: Prisma.PhotoTagGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PhotoTagGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PhotoTagCountArgs<ExtArgs>
+            result: $Utils.Optional<PhotoTagCountAggregateOutputType> | number
           }
         }
       }
@@ -1784,7 +2144,11 @@ export namespace Prisma {
     forumThread?: ForumThreadOmit
     forumReply?: ForumReplyOmit
     collection?: CollectionOmit
+    collectionSection?: CollectionSectionOmit
+    collectionCollaborator?: CollectionCollaboratorOmit
     collectionItem?: CollectionItemOmit
+    tag?: TagOmit
+    photoTag?: PhotoTagOmit
     follow?: FollowOmit
   }
 
@@ -1873,6 +2237,7 @@ export namespace Prisma {
     forumThreads: number
     forumReplies: number
     collections: number
+    collectionCollabs: number
     followers: number
     following: number
   }
@@ -1885,6 +2250,7 @@ export namespace Prisma {
     forumThreads?: boolean | UserCountOutputTypeCountForumThreadsArgs
     forumReplies?: boolean | UserCountOutputTypeCountForumRepliesArgs
     collections?: boolean | UserCountOutputTypeCountCollectionsArgs
+    collectionCollabs?: boolean | UserCountOutputTypeCountCollectionCollabsArgs
     followers?: boolean | UserCountOutputTypeCountFollowersArgs
     following?: boolean | UserCountOutputTypeCountFollowingArgs
   }
@@ -1952,6 +2318,13 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
+  export type UserCountOutputTypeCountCollectionCollabsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CollectionCollaboratorWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
   export type UserCountOutputTypeCountFollowersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: FollowWhereInput
   }
@@ -1973,7 +2346,9 @@ export namespace Prisma {
     comments: number
     awards: number
     forumReplies: number
+    forumThreads: number
     collectionItems: number
+    tags: number
   }
 
   export type PhotoCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1981,7 +2356,9 @@ export namespace Prisma {
     comments?: boolean | PhotoCountOutputTypeCountCommentsArgs
     awards?: boolean | PhotoCountOutputTypeCountAwardsArgs
     forumReplies?: boolean | PhotoCountOutputTypeCountForumRepliesArgs
+    forumThreads?: boolean | PhotoCountOutputTypeCountForumThreadsArgs
     collectionItems?: boolean | PhotoCountOutputTypeCountCollectionItemsArgs
+    tags?: boolean | PhotoCountOutputTypeCountTagsArgs
   }
 
   // Custom InputTypes
@@ -2026,8 +2403,22 @@ export namespace Prisma {
   /**
    * PhotoCountOutputType without action
    */
+  export type PhotoCountOutputTypeCountForumThreadsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ForumThreadWhereInput
+  }
+
+  /**
+   * PhotoCountOutputType without action
+   */
   export type PhotoCountOutputTypeCountCollectionItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CollectionItemWhereInput
+  }
+
+  /**
+   * PhotoCountOutputType without action
+   */
+  export type PhotoCountOutputTypeCountTagsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PhotoTagWhereInput
   }
 
 
@@ -2099,10 +2490,14 @@ export namespace Prisma {
 
   export type CollectionCountOutputType = {
     items: number
+    sections: number
+    collaborators: number
   }
 
   export type CollectionCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     items?: boolean | CollectionCountOutputTypeCountItemsArgs
+    sections?: boolean | CollectionCountOutputTypeCountSectionsArgs
+    collaborators?: boolean | CollectionCountOutputTypeCountCollaboratorsArgs
   }
 
   // Custom InputTypes
@@ -2121,6 +2516,82 @@ export namespace Prisma {
    */
   export type CollectionCountOutputTypeCountItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CollectionItemWhereInput
+  }
+
+  /**
+   * CollectionCountOutputType without action
+   */
+  export type CollectionCountOutputTypeCountSectionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CollectionSectionWhereInput
+  }
+
+  /**
+   * CollectionCountOutputType without action
+   */
+  export type CollectionCountOutputTypeCountCollaboratorsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CollectionCollaboratorWhereInput
+  }
+
+
+  /**
+   * Count Type CollectionSectionCountOutputType
+   */
+
+  export type CollectionSectionCountOutputType = {
+    items: number
+  }
+
+  export type CollectionSectionCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    items?: boolean | CollectionSectionCountOutputTypeCountItemsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CollectionSectionCountOutputType without action
+   */
+  export type CollectionSectionCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionSectionCountOutputType
+     */
+    select?: CollectionSectionCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CollectionSectionCountOutputType without action
+   */
+  export type CollectionSectionCountOutputTypeCountItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CollectionItemWhereInput
+  }
+
+
+  /**
+   * Count Type TagCountOutputType
+   */
+
+  export type TagCountOutputType = {
+    photoTags: number
+  }
+
+  export type TagCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    photoTags?: boolean | TagCountOutputTypeCountPhotoTagsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * TagCountOutputType without action
+   */
+  export type TagCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TagCountOutputType
+     */
+    select?: TagCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * TagCountOutputType without action
+   */
+  export type TagCountOutputTypeCountPhotoTagsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PhotoTagWhereInput
   }
 
 
@@ -2371,6 +2842,7 @@ export namespace Prisma {
     forumThreads?: boolean | User$forumThreadsArgs<ExtArgs>
     forumReplies?: boolean | User$forumRepliesArgs<ExtArgs>
     collections?: boolean | User$collectionsArgs<ExtArgs>
+    collectionCollabs?: boolean | User$collectionCollabsArgs<ExtArgs>
     followers?: boolean | User$followersArgs<ExtArgs>
     following?: boolean | User$followingArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -2436,6 +2908,7 @@ export namespace Prisma {
     forumThreads?: boolean | User$forumThreadsArgs<ExtArgs>
     forumReplies?: boolean | User$forumRepliesArgs<ExtArgs>
     collections?: boolean | User$collectionsArgs<ExtArgs>
+    collectionCollabs?: boolean | User$collectionCollabsArgs<ExtArgs>
     followers?: boolean | User$followersArgs<ExtArgs>
     following?: boolean | User$followingArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -2453,6 +2926,7 @@ export namespace Prisma {
       forumThreads: Prisma.$ForumThreadPayload<ExtArgs>[]
       forumReplies: Prisma.$ForumReplyPayload<ExtArgs>[]
       collections: Prisma.$CollectionPayload<ExtArgs>[]
+      collectionCollabs: Prisma.$CollectionCollaboratorPayload<ExtArgs>[]
       followers: Prisma.$FollowPayload<ExtArgs>[]
       following: Prisma.$FollowPayload<ExtArgs>[]
     }
@@ -2872,6 +3346,7 @@ export namespace Prisma {
     forumThreads<T extends User$forumThreadsArgs<ExtArgs> = {}>(args?: Subset<T, User$forumThreadsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumThreadPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     forumReplies<T extends User$forumRepliesArgs<ExtArgs> = {}>(args?: Subset<T, User$forumRepliesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumReplyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     collections<T extends User$collectionsArgs<ExtArgs> = {}>(args?: Subset<T, User$collectionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CollectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    collectionCollabs<T extends User$collectionCollabsArgs<ExtArgs> = {}>(args?: Subset<T, User$collectionCollabsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CollectionCollaboratorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     followers<T extends User$followersArgs<ExtArgs> = {}>(args?: Subset<T, User$followersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FollowPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     following<T extends User$followingArgs<ExtArgs> = {}>(args?: Subset<T, User$followingArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FollowPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
@@ -3478,6 +3953,30 @@ export namespace Prisma {
   }
 
   /**
+   * User.collectionCollabs
+   */
+  export type User$collectionCollabsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionCollaborator
+     */
+    select?: CollectionCollaboratorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionCollaborator
+     */
+    omit?: CollectionCollaboratorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionCollaboratorInclude<ExtArgs> | null
+    where?: CollectionCollaboratorWhereInput
+    orderBy?: CollectionCollaboratorOrderByWithRelationInput | CollectionCollaboratorOrderByWithRelationInput[]
+    cursor?: CollectionCollaboratorWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CollectionCollaboratorScalarFieldEnum | CollectionCollaboratorScalarFieldEnum[]
+  }
+
+  /**
    * User.followers
    */
   export type User$followersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3578,6 +4077,7 @@ export namespace Prisma {
     description: string | null
     imageUrl: string | null
     thumbnailUrl: string | null
+    previewUrl: string | null
     width: number | null
     height: number | null
     fileSize: number | null
@@ -3605,6 +4105,7 @@ export namespace Prisma {
     description: string | null
     imageUrl: string | null
     thumbnailUrl: string | null
+    previewUrl: string | null
     width: number | null
     height: number | null
     fileSize: number | null
@@ -3632,6 +4133,7 @@ export namespace Prisma {
     description: number
     imageUrl: number
     thumbnailUrl: number
+    previewUrl: number
     width: number
     height: number
     fileSize: number
@@ -3677,6 +4179,7 @@ export namespace Prisma {
     description?: true
     imageUrl?: true
     thumbnailUrl?: true
+    previewUrl?: true
     width?: true
     height?: true
     fileSize?: true
@@ -3704,6 +4207,7 @@ export namespace Prisma {
     description?: true
     imageUrl?: true
     thumbnailUrl?: true
+    previewUrl?: true
     width?: true
     height?: true
     fileSize?: true
@@ -3731,6 +4235,7 @@ export namespace Prisma {
     description?: true
     imageUrl?: true
     thumbnailUrl?: true
+    previewUrl?: true
     width?: true
     height?: true
     fileSize?: true
@@ -3845,6 +4350,7 @@ export namespace Prisma {
     description: string | null
     imageUrl: string
     thumbnailUrl: string | null
+    previewUrl: string | null
     width: number
     height: number
     fileSize: number
@@ -3891,6 +4397,7 @@ export namespace Prisma {
     description?: boolean
     imageUrl?: boolean
     thumbnailUrl?: boolean
+    previewUrl?: boolean
     width?: boolean
     height?: boolean
     fileSize?: boolean
@@ -3915,7 +4422,9 @@ export namespace Prisma {
     comments?: boolean | Photo$commentsArgs<ExtArgs>
     awards?: boolean | Photo$awardsArgs<ExtArgs>
     forumReplies?: boolean | Photo$forumRepliesArgs<ExtArgs>
+    forumThreads?: boolean | Photo$forumThreadsArgs<ExtArgs>
     collectionItems?: boolean | Photo$collectionItemsArgs<ExtArgs>
+    tags?: boolean | Photo$tagsArgs<ExtArgs>
     _count?: boolean | PhotoCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["photo"]>
 
@@ -3925,6 +4434,7 @@ export namespace Prisma {
     description?: boolean
     imageUrl?: boolean
     thumbnailUrl?: boolean
+    previewUrl?: boolean
     width?: boolean
     height?: boolean
     fileSize?: boolean
@@ -3953,6 +4463,7 @@ export namespace Prisma {
     description?: boolean
     imageUrl?: boolean
     thumbnailUrl?: boolean
+    previewUrl?: boolean
     width?: boolean
     height?: boolean
     fileSize?: boolean
@@ -3981,6 +4492,7 @@ export namespace Prisma {
     description?: boolean
     imageUrl?: boolean
     thumbnailUrl?: boolean
+    previewUrl?: boolean
     width?: boolean
     height?: boolean
     fileSize?: boolean
@@ -4002,14 +4514,16 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type PhotoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "imageUrl" | "thumbnailUrl" | "width" | "height" | "fileSize" | "neighborhood" | "category" | "status" | "cameraMake" | "cameraModel" | "lens" | "iso" | "aperture" | "shutterSpeed" | "focalLength" | "takenAt" | "authorId" | "voteCount" | "approvedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["photo"]>
+  export type PhotoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "imageUrl" | "thumbnailUrl" | "previewUrl" | "width" | "height" | "fileSize" | "neighborhood" | "category" | "status" | "cameraMake" | "cameraModel" | "lens" | "iso" | "aperture" | "shutterSpeed" | "focalLength" | "takenAt" | "authorId" | "voteCount" | "approvedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["photo"]>
   export type PhotoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     author?: boolean | UserDefaultArgs<ExtArgs>
     votes?: boolean | Photo$votesArgs<ExtArgs>
     comments?: boolean | Photo$commentsArgs<ExtArgs>
     awards?: boolean | Photo$awardsArgs<ExtArgs>
     forumReplies?: boolean | Photo$forumRepliesArgs<ExtArgs>
+    forumThreads?: boolean | Photo$forumThreadsArgs<ExtArgs>
     collectionItems?: boolean | Photo$collectionItemsArgs<ExtArgs>
+    tags?: boolean | Photo$tagsArgs<ExtArgs>
     _count?: boolean | PhotoCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type PhotoIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4027,7 +4541,9 @@ export namespace Prisma {
       comments: Prisma.$CommentPayload<ExtArgs>[]
       awards: Prisma.$AwardPayload<ExtArgs>[]
       forumReplies: Prisma.$ForumReplyPayload<ExtArgs>[]
+      forumThreads: Prisma.$ForumThreadPayload<ExtArgs>[]
       collectionItems: Prisma.$CollectionItemPayload<ExtArgs>[]
+      tags: Prisma.$PhotoTagPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -4035,6 +4551,7 @@ export namespace Prisma {
       description: string | null
       imageUrl: string
       thumbnailUrl: string | null
+      previewUrl: string | null
       width: number
       height: number
       fileSize: number
@@ -4453,7 +4970,9 @@ export namespace Prisma {
     comments<T extends Photo$commentsArgs<ExtArgs> = {}>(args?: Subset<T, Photo$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     awards<T extends Photo$awardsArgs<ExtArgs> = {}>(args?: Subset<T, Photo$awardsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AwardPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     forumReplies<T extends Photo$forumRepliesArgs<ExtArgs> = {}>(args?: Subset<T, Photo$forumRepliesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumReplyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    forumThreads<T extends Photo$forumThreadsArgs<ExtArgs> = {}>(args?: Subset<T, Photo$forumThreadsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumThreadPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     collectionItems<T extends Photo$collectionItemsArgs<ExtArgs> = {}>(args?: Subset<T, Photo$collectionItemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CollectionItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    tags<T extends Photo$tagsArgs<ExtArgs> = {}>(args?: Subset<T, Photo$tagsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PhotoTagPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4488,6 +5007,7 @@ export namespace Prisma {
     readonly description: FieldRef<"Photo", 'String'>
     readonly imageUrl: FieldRef<"Photo", 'String'>
     readonly thumbnailUrl: FieldRef<"Photo", 'String'>
+    readonly previewUrl: FieldRef<"Photo", 'String'>
     readonly width: FieldRef<"Photo", 'Int'>
     readonly height: FieldRef<"Photo", 'Int'>
     readonly fileSize: FieldRef<"Photo", 'Int'>
@@ -5004,6 +5524,30 @@ export namespace Prisma {
   }
 
   /**
+   * Photo.forumThreads
+   */
+  export type Photo$forumThreadsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumThread
+     */
+    select?: ForumThreadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumThread
+     */
+    omit?: ForumThreadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumThreadInclude<ExtArgs> | null
+    where?: ForumThreadWhereInput
+    orderBy?: ForumThreadOrderByWithRelationInput | ForumThreadOrderByWithRelationInput[]
+    cursor?: ForumThreadWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ForumThreadScalarFieldEnum | ForumThreadScalarFieldEnum[]
+  }
+
+  /**
    * Photo.collectionItems
    */
   export type Photo$collectionItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5025,6 +5569,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CollectionItemScalarFieldEnum | CollectionItemScalarFieldEnum[]
+  }
+
+  /**
+   * Photo.tags
+   */
+  export type Photo$tagsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PhotoTag
+     */
+    select?: PhotoTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PhotoTag
+     */
+    omit?: PhotoTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PhotoTagInclude<ExtArgs> | null
+    where?: PhotoTagWhereInput
+    orderBy?: PhotoTagOrderByWithRelationInput | PhotoTagOrderByWithRelationInput[]
+    cursor?: PhotoTagWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PhotoTagScalarFieldEnum | PhotoTagScalarFieldEnum[]
   }
 
   /**
@@ -9467,6 +10035,7 @@ export namespace Prisma {
     body: string | null
     authorId: string | null
     categoryId: string | null
+    sourcePhotoId: string | null
     pinned: boolean | null
     locked: boolean | null
     replyCount: number | null
@@ -9481,6 +10050,7 @@ export namespace Prisma {
     body: string | null
     authorId: string | null
     categoryId: string | null
+    sourcePhotoId: string | null
     pinned: boolean | null
     locked: boolean | null
     replyCount: number | null
@@ -9495,6 +10065,7 @@ export namespace Prisma {
     body: number
     authorId: number
     categoryId: number
+    sourcePhotoId: number
     pinned: number
     locked: number
     replyCount: number
@@ -9519,6 +10090,7 @@ export namespace Prisma {
     body?: true
     authorId?: true
     categoryId?: true
+    sourcePhotoId?: true
     pinned?: true
     locked?: true
     replyCount?: true
@@ -9533,6 +10105,7 @@ export namespace Prisma {
     body?: true
     authorId?: true
     categoryId?: true
+    sourcePhotoId?: true
     pinned?: true
     locked?: true
     replyCount?: true
@@ -9547,6 +10120,7 @@ export namespace Prisma {
     body?: true
     authorId?: true
     categoryId?: true
+    sourcePhotoId?: true
     pinned?: true
     locked?: true
     replyCount?: true
@@ -9648,6 +10222,7 @@ export namespace Prisma {
     body: string
     authorId: string
     categoryId: string
+    sourcePhotoId: string | null
     pinned: boolean
     locked: boolean
     replyCount: number
@@ -9681,6 +10256,7 @@ export namespace Prisma {
     body?: boolean
     authorId?: boolean
     categoryId?: boolean
+    sourcePhotoId?: boolean
     pinned?: boolean
     locked?: boolean
     replyCount?: boolean
@@ -9689,6 +10265,7 @@ export namespace Prisma {
     updatedAt?: boolean
     author?: boolean | UserDefaultArgs<ExtArgs>
     category?: boolean | ForumCategoryDefaultArgs<ExtArgs>
+    sourcePhoto?: boolean | ForumThread$sourcePhotoArgs<ExtArgs>
     replies?: boolean | ForumThread$repliesArgs<ExtArgs>
     _count?: boolean | ForumThreadCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["forumThread"]>
@@ -9699,6 +10276,7 @@ export namespace Prisma {
     body?: boolean
     authorId?: boolean
     categoryId?: boolean
+    sourcePhotoId?: boolean
     pinned?: boolean
     locked?: boolean
     replyCount?: boolean
@@ -9707,6 +10285,7 @@ export namespace Prisma {
     updatedAt?: boolean
     author?: boolean | UserDefaultArgs<ExtArgs>
     category?: boolean | ForumCategoryDefaultArgs<ExtArgs>
+    sourcePhoto?: boolean | ForumThread$sourcePhotoArgs<ExtArgs>
   }, ExtArgs["result"]["forumThread"]>
 
   export type ForumThreadSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -9715,6 +10294,7 @@ export namespace Prisma {
     body?: boolean
     authorId?: boolean
     categoryId?: boolean
+    sourcePhotoId?: boolean
     pinned?: boolean
     locked?: boolean
     replyCount?: boolean
@@ -9723,6 +10303,7 @@ export namespace Prisma {
     updatedAt?: boolean
     author?: boolean | UserDefaultArgs<ExtArgs>
     category?: boolean | ForumCategoryDefaultArgs<ExtArgs>
+    sourcePhoto?: boolean | ForumThread$sourcePhotoArgs<ExtArgs>
   }, ExtArgs["result"]["forumThread"]>
 
   export type ForumThreadSelectScalar = {
@@ -9731,6 +10312,7 @@ export namespace Prisma {
     body?: boolean
     authorId?: boolean
     categoryId?: boolean
+    sourcePhotoId?: boolean
     pinned?: boolean
     locked?: boolean
     replyCount?: boolean
@@ -9739,20 +10321,23 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type ForumThreadOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "body" | "authorId" | "categoryId" | "pinned" | "locked" | "replyCount" | "lastReplyAt" | "createdAt" | "updatedAt", ExtArgs["result"]["forumThread"]>
+  export type ForumThreadOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "body" | "authorId" | "categoryId" | "sourcePhotoId" | "pinned" | "locked" | "replyCount" | "lastReplyAt" | "createdAt" | "updatedAt", ExtArgs["result"]["forumThread"]>
   export type ForumThreadInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     author?: boolean | UserDefaultArgs<ExtArgs>
     category?: boolean | ForumCategoryDefaultArgs<ExtArgs>
+    sourcePhoto?: boolean | ForumThread$sourcePhotoArgs<ExtArgs>
     replies?: boolean | ForumThread$repliesArgs<ExtArgs>
     _count?: boolean | ForumThreadCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ForumThreadIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     author?: boolean | UserDefaultArgs<ExtArgs>
     category?: boolean | ForumCategoryDefaultArgs<ExtArgs>
+    sourcePhoto?: boolean | ForumThread$sourcePhotoArgs<ExtArgs>
   }
   export type ForumThreadIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     author?: boolean | UserDefaultArgs<ExtArgs>
     category?: boolean | ForumCategoryDefaultArgs<ExtArgs>
+    sourcePhoto?: boolean | ForumThread$sourcePhotoArgs<ExtArgs>
   }
 
   export type $ForumThreadPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -9760,6 +10345,7 @@ export namespace Prisma {
     objects: {
       author: Prisma.$UserPayload<ExtArgs>
       category: Prisma.$ForumCategoryPayload<ExtArgs>
+      sourcePhoto: Prisma.$PhotoPayload<ExtArgs> | null
       replies: Prisma.$ForumReplyPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -9768,6 +10354,7 @@ export namespace Prisma {
       body: string
       authorId: string
       categoryId: string
+      sourcePhotoId: string | null
       pinned: boolean
       locked: boolean
       replyCount: number
@@ -10170,6 +10757,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     author<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     category<T extends ForumCategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ForumCategoryDefaultArgs<ExtArgs>>): Prisma__ForumCategoryClient<$Result.GetResult<Prisma.$ForumCategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    sourcePhoto<T extends ForumThread$sourcePhotoArgs<ExtArgs> = {}>(args?: Subset<T, ForumThread$sourcePhotoArgs<ExtArgs>>): Prisma__PhotoClient<$Result.GetResult<Prisma.$PhotoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     replies<T extends ForumThread$repliesArgs<ExtArgs> = {}>(args?: Subset<T, ForumThread$repliesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumReplyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -10205,6 +10793,7 @@ export namespace Prisma {
     readonly body: FieldRef<"ForumThread", 'String'>
     readonly authorId: FieldRef<"ForumThread", 'String'>
     readonly categoryId: FieldRef<"ForumThread", 'String'>
+    readonly sourcePhotoId: FieldRef<"ForumThread", 'String'>
     readonly pinned: FieldRef<"ForumThread", 'Boolean'>
     readonly locked: FieldRef<"ForumThread", 'Boolean'>
     readonly replyCount: FieldRef<"ForumThread", 'Int'>
@@ -10609,6 +11198,25 @@ export namespace Prisma {
      * Limit how many ForumThreads to delete.
      */
     limit?: number
+  }
+
+  /**
+   * ForumThread.sourcePhoto
+   */
+  export type ForumThread$sourcePhotoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Photo
+     */
+    select?: PhotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Photo
+     */
+    omit?: PhotoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PhotoInclude<ExtArgs> | null
+    where?: PhotoWhereInput
   }
 
   /**
@@ -11793,6 +12401,7 @@ export namespace Prisma {
     name: string | null
     description: string | null
     isPrivate: boolean | null
+    isCollaborative: boolean | null
     coverUrl: string | null
     userId: string | null
     createdAt: Date | null
@@ -11804,6 +12413,7 @@ export namespace Prisma {
     name: string | null
     description: string | null
     isPrivate: boolean | null
+    isCollaborative: boolean | null
     coverUrl: string | null
     userId: string | null
     createdAt: Date | null
@@ -11815,6 +12425,7 @@ export namespace Prisma {
     name: number
     description: number
     isPrivate: number
+    isCollaborative: number
     coverUrl: number
     userId: number
     createdAt: number
@@ -11828,6 +12439,7 @@ export namespace Prisma {
     name?: true
     description?: true
     isPrivate?: true
+    isCollaborative?: true
     coverUrl?: true
     userId?: true
     createdAt?: true
@@ -11839,6 +12451,7 @@ export namespace Prisma {
     name?: true
     description?: true
     isPrivate?: true
+    isCollaborative?: true
     coverUrl?: true
     userId?: true
     createdAt?: true
@@ -11850,6 +12463,7 @@ export namespace Prisma {
     name?: true
     description?: true
     isPrivate?: true
+    isCollaborative?: true
     coverUrl?: true
     userId?: true
     createdAt?: true
@@ -11934,6 +12548,7 @@ export namespace Prisma {
     name: string
     description: string | null
     isPrivate: boolean
+    isCollaborative: boolean
     coverUrl: string | null
     userId: string
     createdAt: Date
@@ -11962,12 +12577,15 @@ export namespace Prisma {
     name?: boolean
     description?: boolean
     isPrivate?: boolean
+    isCollaborative?: boolean
     coverUrl?: boolean
     userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     items?: boolean | Collection$itemsArgs<ExtArgs>
+    sections?: boolean | Collection$sectionsArgs<ExtArgs>
+    collaborators?: boolean | Collection$collaboratorsArgs<ExtArgs>
     _count?: boolean | CollectionCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["collection"]>
 
@@ -11976,6 +12594,7 @@ export namespace Prisma {
     name?: boolean
     description?: boolean
     isPrivate?: boolean
+    isCollaborative?: boolean
     coverUrl?: boolean
     userId?: boolean
     createdAt?: boolean
@@ -11988,6 +12607,7 @@ export namespace Prisma {
     name?: boolean
     description?: boolean
     isPrivate?: boolean
+    isCollaborative?: boolean
     coverUrl?: boolean
     userId?: boolean
     createdAt?: boolean
@@ -12000,16 +12620,19 @@ export namespace Prisma {
     name?: boolean
     description?: boolean
     isPrivate?: boolean
+    isCollaborative?: boolean
     coverUrl?: boolean
     userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type CollectionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "isPrivate" | "coverUrl" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["collection"]>
+  export type CollectionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "isPrivate" | "isCollaborative" | "coverUrl" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["collection"]>
   export type CollectionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     items?: boolean | Collection$itemsArgs<ExtArgs>
+    sections?: boolean | Collection$sectionsArgs<ExtArgs>
+    collaborators?: boolean | Collection$collaboratorsArgs<ExtArgs>
     _count?: boolean | CollectionCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type CollectionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -12024,12 +12647,15 @@ export namespace Prisma {
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
       items: Prisma.$CollectionItemPayload<ExtArgs>[]
+      sections: Prisma.$CollectionSectionPayload<ExtArgs>[]
+      collaborators: Prisma.$CollectionCollaboratorPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
       description: string | null
       isPrivate: boolean
+      isCollaborative: boolean
       coverUrl: string | null
       userId: string
       createdAt: Date
@@ -12430,6 +13056,8 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     items<T extends Collection$itemsArgs<ExtArgs> = {}>(args?: Subset<T, Collection$itemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CollectionItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    sections<T extends Collection$sectionsArgs<ExtArgs> = {}>(args?: Subset<T, Collection$sectionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CollectionSectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    collaborators<T extends Collection$collaboratorsArgs<ExtArgs> = {}>(args?: Subset<T, Collection$collaboratorsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CollectionCollaboratorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -12463,6 +13091,7 @@ export namespace Prisma {
     readonly name: FieldRef<"Collection", 'String'>
     readonly description: FieldRef<"Collection", 'String'>
     readonly isPrivate: FieldRef<"Collection", 'Boolean'>
+    readonly isCollaborative: FieldRef<"Collection", 'Boolean'>
     readonly coverUrl: FieldRef<"Collection", 'String'>
     readonly userId: FieldRef<"Collection", 'String'>
     readonly createdAt: FieldRef<"Collection", 'DateTime'>
@@ -12892,6 +13521,54 @@ export namespace Prisma {
   }
 
   /**
+   * Collection.sections
+   */
+  export type Collection$sectionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionSection
+     */
+    select?: CollectionSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionSection
+     */
+    omit?: CollectionSectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionSectionInclude<ExtArgs> | null
+    where?: CollectionSectionWhereInput
+    orderBy?: CollectionSectionOrderByWithRelationInput | CollectionSectionOrderByWithRelationInput[]
+    cursor?: CollectionSectionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CollectionSectionScalarFieldEnum | CollectionSectionScalarFieldEnum[]
+  }
+
+  /**
+   * Collection.collaborators
+   */
+  export type Collection$collaboratorsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionCollaborator
+     */
+    select?: CollectionCollaboratorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionCollaborator
+     */
+    omit?: CollectionCollaboratorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionCollaboratorInclude<ExtArgs> | null
+    where?: CollectionCollaboratorWhereInput
+    orderBy?: CollectionCollaboratorOrderByWithRelationInput | CollectionCollaboratorOrderByWithRelationInput[]
+    cursor?: CollectionCollaboratorWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CollectionCollaboratorScalarFieldEnum | CollectionCollaboratorScalarFieldEnum[]
+  }
+
+  /**
    * Collection without action
    */
   export type CollectionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -12911,6 +13588,2204 @@ export namespace Prisma {
 
 
   /**
+   * Model CollectionSection
+   */
+
+  export type AggregateCollectionSection = {
+    _count: CollectionSectionCountAggregateOutputType | null
+    _avg: CollectionSectionAvgAggregateOutputType | null
+    _sum: CollectionSectionSumAggregateOutputType | null
+    _min: CollectionSectionMinAggregateOutputType | null
+    _max: CollectionSectionMaxAggregateOutputType | null
+  }
+
+  export type CollectionSectionAvgAggregateOutputType = {
+    sortOrder: number | null
+  }
+
+  export type CollectionSectionSumAggregateOutputType = {
+    sortOrder: number | null
+  }
+
+  export type CollectionSectionMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    collectionId: string | null
+    sortOrder: number | null
+    createdAt: Date | null
+  }
+
+  export type CollectionSectionMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    collectionId: string | null
+    sortOrder: number | null
+    createdAt: Date | null
+  }
+
+  export type CollectionSectionCountAggregateOutputType = {
+    id: number
+    name: number
+    collectionId: number
+    sortOrder: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type CollectionSectionAvgAggregateInputType = {
+    sortOrder?: true
+  }
+
+  export type CollectionSectionSumAggregateInputType = {
+    sortOrder?: true
+  }
+
+  export type CollectionSectionMinAggregateInputType = {
+    id?: true
+    name?: true
+    collectionId?: true
+    sortOrder?: true
+    createdAt?: true
+  }
+
+  export type CollectionSectionMaxAggregateInputType = {
+    id?: true
+    name?: true
+    collectionId?: true
+    sortOrder?: true
+    createdAt?: true
+  }
+
+  export type CollectionSectionCountAggregateInputType = {
+    id?: true
+    name?: true
+    collectionId?: true
+    sortOrder?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type CollectionSectionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CollectionSection to aggregate.
+     */
+    where?: CollectionSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CollectionSections to fetch.
+     */
+    orderBy?: CollectionSectionOrderByWithRelationInput | CollectionSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CollectionSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CollectionSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CollectionSections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CollectionSections
+    **/
+    _count?: true | CollectionSectionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CollectionSectionAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CollectionSectionSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CollectionSectionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CollectionSectionMaxAggregateInputType
+  }
+
+  export type GetCollectionSectionAggregateType<T extends CollectionSectionAggregateArgs> = {
+        [P in keyof T & keyof AggregateCollectionSection]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCollectionSection[P]>
+      : GetScalarType<T[P], AggregateCollectionSection[P]>
+  }
+
+
+
+
+  export type CollectionSectionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CollectionSectionWhereInput
+    orderBy?: CollectionSectionOrderByWithAggregationInput | CollectionSectionOrderByWithAggregationInput[]
+    by: CollectionSectionScalarFieldEnum[] | CollectionSectionScalarFieldEnum
+    having?: CollectionSectionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CollectionSectionCountAggregateInputType | true
+    _avg?: CollectionSectionAvgAggregateInputType
+    _sum?: CollectionSectionSumAggregateInputType
+    _min?: CollectionSectionMinAggregateInputType
+    _max?: CollectionSectionMaxAggregateInputType
+  }
+
+  export type CollectionSectionGroupByOutputType = {
+    id: string
+    name: string
+    collectionId: string
+    sortOrder: number
+    createdAt: Date
+    _count: CollectionSectionCountAggregateOutputType | null
+    _avg: CollectionSectionAvgAggregateOutputType | null
+    _sum: CollectionSectionSumAggregateOutputType | null
+    _min: CollectionSectionMinAggregateOutputType | null
+    _max: CollectionSectionMaxAggregateOutputType | null
+  }
+
+  type GetCollectionSectionGroupByPayload<T extends CollectionSectionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CollectionSectionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CollectionSectionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CollectionSectionGroupByOutputType[P]>
+            : GetScalarType<T[P], CollectionSectionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CollectionSectionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    collectionId?: boolean
+    sortOrder?: boolean
+    createdAt?: boolean
+    collection?: boolean | CollectionDefaultArgs<ExtArgs>
+    items?: boolean | CollectionSection$itemsArgs<ExtArgs>
+    _count?: boolean | CollectionSectionCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["collectionSection"]>
+
+  export type CollectionSectionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    collectionId?: boolean
+    sortOrder?: boolean
+    createdAt?: boolean
+    collection?: boolean | CollectionDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["collectionSection"]>
+
+  export type CollectionSectionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    collectionId?: boolean
+    sortOrder?: boolean
+    createdAt?: boolean
+    collection?: boolean | CollectionDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["collectionSection"]>
+
+  export type CollectionSectionSelectScalar = {
+    id?: boolean
+    name?: boolean
+    collectionId?: boolean
+    sortOrder?: boolean
+    createdAt?: boolean
+  }
+
+  export type CollectionSectionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "collectionId" | "sortOrder" | "createdAt", ExtArgs["result"]["collectionSection"]>
+  export type CollectionSectionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    collection?: boolean | CollectionDefaultArgs<ExtArgs>
+    items?: boolean | CollectionSection$itemsArgs<ExtArgs>
+    _count?: boolean | CollectionSectionCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type CollectionSectionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    collection?: boolean | CollectionDefaultArgs<ExtArgs>
+  }
+  export type CollectionSectionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    collection?: boolean | CollectionDefaultArgs<ExtArgs>
+  }
+
+  export type $CollectionSectionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CollectionSection"
+    objects: {
+      collection: Prisma.$CollectionPayload<ExtArgs>
+      items: Prisma.$CollectionItemPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      collectionId: string
+      sortOrder: number
+      createdAt: Date
+    }, ExtArgs["result"]["collectionSection"]>
+    composites: {}
+  }
+
+  type CollectionSectionGetPayload<S extends boolean | null | undefined | CollectionSectionDefaultArgs> = $Result.GetResult<Prisma.$CollectionSectionPayload, S>
+
+  type CollectionSectionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CollectionSectionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CollectionSectionCountAggregateInputType | true
+    }
+
+  export interface CollectionSectionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CollectionSection'], meta: { name: 'CollectionSection' } }
+    /**
+     * Find zero or one CollectionSection that matches the filter.
+     * @param {CollectionSectionFindUniqueArgs} args - Arguments to find a CollectionSection
+     * @example
+     * // Get one CollectionSection
+     * const collectionSection = await prisma.collectionSection.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CollectionSectionFindUniqueArgs>(args: SelectSubset<T, CollectionSectionFindUniqueArgs<ExtArgs>>): Prisma__CollectionSectionClient<$Result.GetResult<Prisma.$CollectionSectionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CollectionSection that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CollectionSectionFindUniqueOrThrowArgs} args - Arguments to find a CollectionSection
+     * @example
+     * // Get one CollectionSection
+     * const collectionSection = await prisma.collectionSection.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CollectionSectionFindUniqueOrThrowArgs>(args: SelectSubset<T, CollectionSectionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CollectionSectionClient<$Result.GetResult<Prisma.$CollectionSectionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CollectionSection that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CollectionSectionFindFirstArgs} args - Arguments to find a CollectionSection
+     * @example
+     * // Get one CollectionSection
+     * const collectionSection = await prisma.collectionSection.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CollectionSectionFindFirstArgs>(args?: SelectSubset<T, CollectionSectionFindFirstArgs<ExtArgs>>): Prisma__CollectionSectionClient<$Result.GetResult<Prisma.$CollectionSectionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CollectionSection that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CollectionSectionFindFirstOrThrowArgs} args - Arguments to find a CollectionSection
+     * @example
+     * // Get one CollectionSection
+     * const collectionSection = await prisma.collectionSection.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CollectionSectionFindFirstOrThrowArgs>(args?: SelectSubset<T, CollectionSectionFindFirstOrThrowArgs<ExtArgs>>): Prisma__CollectionSectionClient<$Result.GetResult<Prisma.$CollectionSectionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CollectionSections that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CollectionSectionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CollectionSections
+     * const collectionSections = await prisma.collectionSection.findMany()
+     * 
+     * // Get first 10 CollectionSections
+     * const collectionSections = await prisma.collectionSection.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const collectionSectionWithIdOnly = await prisma.collectionSection.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CollectionSectionFindManyArgs>(args?: SelectSubset<T, CollectionSectionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CollectionSectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CollectionSection.
+     * @param {CollectionSectionCreateArgs} args - Arguments to create a CollectionSection.
+     * @example
+     * // Create one CollectionSection
+     * const CollectionSection = await prisma.collectionSection.create({
+     *   data: {
+     *     // ... data to create a CollectionSection
+     *   }
+     * })
+     * 
+     */
+    create<T extends CollectionSectionCreateArgs>(args: SelectSubset<T, CollectionSectionCreateArgs<ExtArgs>>): Prisma__CollectionSectionClient<$Result.GetResult<Prisma.$CollectionSectionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CollectionSections.
+     * @param {CollectionSectionCreateManyArgs} args - Arguments to create many CollectionSections.
+     * @example
+     * // Create many CollectionSections
+     * const collectionSection = await prisma.collectionSection.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CollectionSectionCreateManyArgs>(args?: SelectSubset<T, CollectionSectionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CollectionSections and returns the data saved in the database.
+     * @param {CollectionSectionCreateManyAndReturnArgs} args - Arguments to create many CollectionSections.
+     * @example
+     * // Create many CollectionSections
+     * const collectionSection = await prisma.collectionSection.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CollectionSections and only return the `id`
+     * const collectionSectionWithIdOnly = await prisma.collectionSection.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CollectionSectionCreateManyAndReturnArgs>(args?: SelectSubset<T, CollectionSectionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CollectionSectionPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CollectionSection.
+     * @param {CollectionSectionDeleteArgs} args - Arguments to delete one CollectionSection.
+     * @example
+     * // Delete one CollectionSection
+     * const CollectionSection = await prisma.collectionSection.delete({
+     *   where: {
+     *     // ... filter to delete one CollectionSection
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CollectionSectionDeleteArgs>(args: SelectSubset<T, CollectionSectionDeleteArgs<ExtArgs>>): Prisma__CollectionSectionClient<$Result.GetResult<Prisma.$CollectionSectionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CollectionSection.
+     * @param {CollectionSectionUpdateArgs} args - Arguments to update one CollectionSection.
+     * @example
+     * // Update one CollectionSection
+     * const collectionSection = await prisma.collectionSection.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CollectionSectionUpdateArgs>(args: SelectSubset<T, CollectionSectionUpdateArgs<ExtArgs>>): Prisma__CollectionSectionClient<$Result.GetResult<Prisma.$CollectionSectionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CollectionSections.
+     * @param {CollectionSectionDeleteManyArgs} args - Arguments to filter CollectionSections to delete.
+     * @example
+     * // Delete a few CollectionSections
+     * const { count } = await prisma.collectionSection.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CollectionSectionDeleteManyArgs>(args?: SelectSubset<T, CollectionSectionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CollectionSections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CollectionSectionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CollectionSections
+     * const collectionSection = await prisma.collectionSection.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CollectionSectionUpdateManyArgs>(args: SelectSubset<T, CollectionSectionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CollectionSections and returns the data updated in the database.
+     * @param {CollectionSectionUpdateManyAndReturnArgs} args - Arguments to update many CollectionSections.
+     * @example
+     * // Update many CollectionSections
+     * const collectionSection = await prisma.collectionSection.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CollectionSections and only return the `id`
+     * const collectionSectionWithIdOnly = await prisma.collectionSection.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CollectionSectionUpdateManyAndReturnArgs>(args: SelectSubset<T, CollectionSectionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CollectionSectionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CollectionSection.
+     * @param {CollectionSectionUpsertArgs} args - Arguments to update or create a CollectionSection.
+     * @example
+     * // Update or create a CollectionSection
+     * const collectionSection = await prisma.collectionSection.upsert({
+     *   create: {
+     *     // ... data to create a CollectionSection
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CollectionSection we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CollectionSectionUpsertArgs>(args: SelectSubset<T, CollectionSectionUpsertArgs<ExtArgs>>): Prisma__CollectionSectionClient<$Result.GetResult<Prisma.$CollectionSectionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CollectionSections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CollectionSectionCountArgs} args - Arguments to filter CollectionSections to count.
+     * @example
+     * // Count the number of CollectionSections
+     * const count = await prisma.collectionSection.count({
+     *   where: {
+     *     // ... the filter for the CollectionSections we want to count
+     *   }
+     * })
+    **/
+    count<T extends CollectionSectionCountArgs>(
+      args?: Subset<T, CollectionSectionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CollectionSectionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CollectionSection.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CollectionSectionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CollectionSectionAggregateArgs>(args: Subset<T, CollectionSectionAggregateArgs>): Prisma.PrismaPromise<GetCollectionSectionAggregateType<T>>
+
+    /**
+     * Group by CollectionSection.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CollectionSectionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CollectionSectionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CollectionSectionGroupByArgs['orderBy'] }
+        : { orderBy?: CollectionSectionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CollectionSectionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCollectionSectionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CollectionSection model
+   */
+  readonly fields: CollectionSectionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CollectionSection.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CollectionSectionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    collection<T extends CollectionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CollectionDefaultArgs<ExtArgs>>): Prisma__CollectionClient<$Result.GetResult<Prisma.$CollectionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    items<T extends CollectionSection$itemsArgs<ExtArgs> = {}>(args?: Subset<T, CollectionSection$itemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CollectionItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CollectionSection model
+   */
+  interface CollectionSectionFieldRefs {
+    readonly id: FieldRef<"CollectionSection", 'String'>
+    readonly name: FieldRef<"CollectionSection", 'String'>
+    readonly collectionId: FieldRef<"CollectionSection", 'String'>
+    readonly sortOrder: FieldRef<"CollectionSection", 'Int'>
+    readonly createdAt: FieldRef<"CollectionSection", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CollectionSection findUnique
+   */
+  export type CollectionSectionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionSection
+     */
+    select?: CollectionSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionSection
+     */
+    omit?: CollectionSectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionSectionInclude<ExtArgs> | null
+    /**
+     * Filter, which CollectionSection to fetch.
+     */
+    where: CollectionSectionWhereUniqueInput
+  }
+
+  /**
+   * CollectionSection findUniqueOrThrow
+   */
+  export type CollectionSectionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionSection
+     */
+    select?: CollectionSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionSection
+     */
+    omit?: CollectionSectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionSectionInclude<ExtArgs> | null
+    /**
+     * Filter, which CollectionSection to fetch.
+     */
+    where: CollectionSectionWhereUniqueInput
+  }
+
+  /**
+   * CollectionSection findFirst
+   */
+  export type CollectionSectionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionSection
+     */
+    select?: CollectionSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionSection
+     */
+    omit?: CollectionSectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionSectionInclude<ExtArgs> | null
+    /**
+     * Filter, which CollectionSection to fetch.
+     */
+    where?: CollectionSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CollectionSections to fetch.
+     */
+    orderBy?: CollectionSectionOrderByWithRelationInput | CollectionSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CollectionSections.
+     */
+    cursor?: CollectionSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CollectionSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CollectionSections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CollectionSections.
+     */
+    distinct?: CollectionSectionScalarFieldEnum | CollectionSectionScalarFieldEnum[]
+  }
+
+  /**
+   * CollectionSection findFirstOrThrow
+   */
+  export type CollectionSectionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionSection
+     */
+    select?: CollectionSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionSection
+     */
+    omit?: CollectionSectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionSectionInclude<ExtArgs> | null
+    /**
+     * Filter, which CollectionSection to fetch.
+     */
+    where?: CollectionSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CollectionSections to fetch.
+     */
+    orderBy?: CollectionSectionOrderByWithRelationInput | CollectionSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CollectionSections.
+     */
+    cursor?: CollectionSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CollectionSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CollectionSections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CollectionSections.
+     */
+    distinct?: CollectionSectionScalarFieldEnum | CollectionSectionScalarFieldEnum[]
+  }
+
+  /**
+   * CollectionSection findMany
+   */
+  export type CollectionSectionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionSection
+     */
+    select?: CollectionSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionSection
+     */
+    omit?: CollectionSectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionSectionInclude<ExtArgs> | null
+    /**
+     * Filter, which CollectionSections to fetch.
+     */
+    where?: CollectionSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CollectionSections to fetch.
+     */
+    orderBy?: CollectionSectionOrderByWithRelationInput | CollectionSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CollectionSections.
+     */
+    cursor?: CollectionSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CollectionSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CollectionSections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CollectionSections.
+     */
+    distinct?: CollectionSectionScalarFieldEnum | CollectionSectionScalarFieldEnum[]
+  }
+
+  /**
+   * CollectionSection create
+   */
+  export type CollectionSectionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionSection
+     */
+    select?: CollectionSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionSection
+     */
+    omit?: CollectionSectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionSectionInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CollectionSection.
+     */
+    data: XOR<CollectionSectionCreateInput, CollectionSectionUncheckedCreateInput>
+  }
+
+  /**
+   * CollectionSection createMany
+   */
+  export type CollectionSectionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CollectionSections.
+     */
+    data: CollectionSectionCreateManyInput | CollectionSectionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CollectionSection createManyAndReturn
+   */
+  export type CollectionSectionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionSection
+     */
+    select?: CollectionSectionSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionSection
+     */
+    omit?: CollectionSectionOmit<ExtArgs> | null
+    /**
+     * The data used to create many CollectionSections.
+     */
+    data: CollectionSectionCreateManyInput | CollectionSectionCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionSectionIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CollectionSection update
+   */
+  export type CollectionSectionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionSection
+     */
+    select?: CollectionSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionSection
+     */
+    omit?: CollectionSectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionSectionInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CollectionSection.
+     */
+    data: XOR<CollectionSectionUpdateInput, CollectionSectionUncheckedUpdateInput>
+    /**
+     * Choose, which CollectionSection to update.
+     */
+    where: CollectionSectionWhereUniqueInput
+  }
+
+  /**
+   * CollectionSection updateMany
+   */
+  export type CollectionSectionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CollectionSections.
+     */
+    data: XOR<CollectionSectionUpdateManyMutationInput, CollectionSectionUncheckedUpdateManyInput>
+    /**
+     * Filter which CollectionSections to update
+     */
+    where?: CollectionSectionWhereInput
+    /**
+     * Limit how many CollectionSections to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CollectionSection updateManyAndReturn
+   */
+  export type CollectionSectionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionSection
+     */
+    select?: CollectionSectionSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionSection
+     */
+    omit?: CollectionSectionOmit<ExtArgs> | null
+    /**
+     * The data used to update CollectionSections.
+     */
+    data: XOR<CollectionSectionUpdateManyMutationInput, CollectionSectionUncheckedUpdateManyInput>
+    /**
+     * Filter which CollectionSections to update
+     */
+    where?: CollectionSectionWhereInput
+    /**
+     * Limit how many CollectionSections to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionSectionIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CollectionSection upsert
+   */
+  export type CollectionSectionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionSection
+     */
+    select?: CollectionSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionSection
+     */
+    omit?: CollectionSectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionSectionInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CollectionSection to update in case it exists.
+     */
+    where: CollectionSectionWhereUniqueInput
+    /**
+     * In case the CollectionSection found by the `where` argument doesn't exist, create a new CollectionSection with this data.
+     */
+    create: XOR<CollectionSectionCreateInput, CollectionSectionUncheckedCreateInput>
+    /**
+     * In case the CollectionSection was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CollectionSectionUpdateInput, CollectionSectionUncheckedUpdateInput>
+  }
+
+  /**
+   * CollectionSection delete
+   */
+  export type CollectionSectionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionSection
+     */
+    select?: CollectionSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionSection
+     */
+    omit?: CollectionSectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionSectionInclude<ExtArgs> | null
+    /**
+     * Filter which CollectionSection to delete.
+     */
+    where: CollectionSectionWhereUniqueInput
+  }
+
+  /**
+   * CollectionSection deleteMany
+   */
+  export type CollectionSectionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CollectionSections to delete
+     */
+    where?: CollectionSectionWhereInput
+    /**
+     * Limit how many CollectionSections to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CollectionSection.items
+   */
+  export type CollectionSection$itemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionItem
+     */
+    select?: CollectionItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionItem
+     */
+    omit?: CollectionItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionItemInclude<ExtArgs> | null
+    where?: CollectionItemWhereInput
+    orderBy?: CollectionItemOrderByWithRelationInput | CollectionItemOrderByWithRelationInput[]
+    cursor?: CollectionItemWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CollectionItemScalarFieldEnum | CollectionItemScalarFieldEnum[]
+  }
+
+  /**
+   * CollectionSection without action
+   */
+  export type CollectionSectionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionSection
+     */
+    select?: CollectionSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionSection
+     */
+    omit?: CollectionSectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionSectionInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CollectionCollaborator
+   */
+
+  export type AggregateCollectionCollaborator = {
+    _count: CollectionCollaboratorCountAggregateOutputType | null
+    _min: CollectionCollaboratorMinAggregateOutputType | null
+    _max: CollectionCollaboratorMaxAggregateOutputType | null
+  }
+
+  export type CollectionCollaboratorMinAggregateOutputType = {
+    id: string | null
+    collectionId: string | null
+    userId: string | null
+    canEdit: boolean | null
+    invitedAt: Date | null
+  }
+
+  export type CollectionCollaboratorMaxAggregateOutputType = {
+    id: string | null
+    collectionId: string | null
+    userId: string | null
+    canEdit: boolean | null
+    invitedAt: Date | null
+  }
+
+  export type CollectionCollaboratorCountAggregateOutputType = {
+    id: number
+    collectionId: number
+    userId: number
+    canEdit: number
+    invitedAt: number
+    _all: number
+  }
+
+
+  export type CollectionCollaboratorMinAggregateInputType = {
+    id?: true
+    collectionId?: true
+    userId?: true
+    canEdit?: true
+    invitedAt?: true
+  }
+
+  export type CollectionCollaboratorMaxAggregateInputType = {
+    id?: true
+    collectionId?: true
+    userId?: true
+    canEdit?: true
+    invitedAt?: true
+  }
+
+  export type CollectionCollaboratorCountAggregateInputType = {
+    id?: true
+    collectionId?: true
+    userId?: true
+    canEdit?: true
+    invitedAt?: true
+    _all?: true
+  }
+
+  export type CollectionCollaboratorAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CollectionCollaborator to aggregate.
+     */
+    where?: CollectionCollaboratorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CollectionCollaborators to fetch.
+     */
+    orderBy?: CollectionCollaboratorOrderByWithRelationInput | CollectionCollaboratorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CollectionCollaboratorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CollectionCollaborators from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CollectionCollaborators.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CollectionCollaborators
+    **/
+    _count?: true | CollectionCollaboratorCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CollectionCollaboratorMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CollectionCollaboratorMaxAggregateInputType
+  }
+
+  export type GetCollectionCollaboratorAggregateType<T extends CollectionCollaboratorAggregateArgs> = {
+        [P in keyof T & keyof AggregateCollectionCollaborator]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCollectionCollaborator[P]>
+      : GetScalarType<T[P], AggregateCollectionCollaborator[P]>
+  }
+
+
+
+
+  export type CollectionCollaboratorGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CollectionCollaboratorWhereInput
+    orderBy?: CollectionCollaboratorOrderByWithAggregationInput | CollectionCollaboratorOrderByWithAggregationInput[]
+    by: CollectionCollaboratorScalarFieldEnum[] | CollectionCollaboratorScalarFieldEnum
+    having?: CollectionCollaboratorScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CollectionCollaboratorCountAggregateInputType | true
+    _min?: CollectionCollaboratorMinAggregateInputType
+    _max?: CollectionCollaboratorMaxAggregateInputType
+  }
+
+  export type CollectionCollaboratorGroupByOutputType = {
+    id: string
+    collectionId: string
+    userId: string
+    canEdit: boolean
+    invitedAt: Date
+    _count: CollectionCollaboratorCountAggregateOutputType | null
+    _min: CollectionCollaboratorMinAggregateOutputType | null
+    _max: CollectionCollaboratorMaxAggregateOutputType | null
+  }
+
+  type GetCollectionCollaboratorGroupByPayload<T extends CollectionCollaboratorGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CollectionCollaboratorGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CollectionCollaboratorGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CollectionCollaboratorGroupByOutputType[P]>
+            : GetScalarType<T[P], CollectionCollaboratorGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CollectionCollaboratorSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    collectionId?: boolean
+    userId?: boolean
+    canEdit?: boolean
+    invitedAt?: boolean
+    collection?: boolean | CollectionDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["collectionCollaborator"]>
+
+  export type CollectionCollaboratorSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    collectionId?: boolean
+    userId?: boolean
+    canEdit?: boolean
+    invitedAt?: boolean
+    collection?: boolean | CollectionDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["collectionCollaborator"]>
+
+  export type CollectionCollaboratorSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    collectionId?: boolean
+    userId?: boolean
+    canEdit?: boolean
+    invitedAt?: boolean
+    collection?: boolean | CollectionDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["collectionCollaborator"]>
+
+  export type CollectionCollaboratorSelectScalar = {
+    id?: boolean
+    collectionId?: boolean
+    userId?: boolean
+    canEdit?: boolean
+    invitedAt?: boolean
+  }
+
+  export type CollectionCollaboratorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "collectionId" | "userId" | "canEdit" | "invitedAt", ExtArgs["result"]["collectionCollaborator"]>
+  export type CollectionCollaboratorInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    collection?: boolean | CollectionDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type CollectionCollaboratorIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    collection?: boolean | CollectionDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type CollectionCollaboratorIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    collection?: boolean | CollectionDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $CollectionCollaboratorPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CollectionCollaborator"
+    objects: {
+      collection: Prisma.$CollectionPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      collectionId: string
+      userId: string
+      canEdit: boolean
+      invitedAt: Date
+    }, ExtArgs["result"]["collectionCollaborator"]>
+    composites: {}
+  }
+
+  type CollectionCollaboratorGetPayload<S extends boolean | null | undefined | CollectionCollaboratorDefaultArgs> = $Result.GetResult<Prisma.$CollectionCollaboratorPayload, S>
+
+  type CollectionCollaboratorCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CollectionCollaboratorFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CollectionCollaboratorCountAggregateInputType | true
+    }
+
+  export interface CollectionCollaboratorDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CollectionCollaborator'], meta: { name: 'CollectionCollaborator' } }
+    /**
+     * Find zero or one CollectionCollaborator that matches the filter.
+     * @param {CollectionCollaboratorFindUniqueArgs} args - Arguments to find a CollectionCollaborator
+     * @example
+     * // Get one CollectionCollaborator
+     * const collectionCollaborator = await prisma.collectionCollaborator.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CollectionCollaboratorFindUniqueArgs>(args: SelectSubset<T, CollectionCollaboratorFindUniqueArgs<ExtArgs>>): Prisma__CollectionCollaboratorClient<$Result.GetResult<Prisma.$CollectionCollaboratorPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CollectionCollaborator that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CollectionCollaboratorFindUniqueOrThrowArgs} args - Arguments to find a CollectionCollaborator
+     * @example
+     * // Get one CollectionCollaborator
+     * const collectionCollaborator = await prisma.collectionCollaborator.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CollectionCollaboratorFindUniqueOrThrowArgs>(args: SelectSubset<T, CollectionCollaboratorFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CollectionCollaboratorClient<$Result.GetResult<Prisma.$CollectionCollaboratorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CollectionCollaborator that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CollectionCollaboratorFindFirstArgs} args - Arguments to find a CollectionCollaborator
+     * @example
+     * // Get one CollectionCollaborator
+     * const collectionCollaborator = await prisma.collectionCollaborator.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CollectionCollaboratorFindFirstArgs>(args?: SelectSubset<T, CollectionCollaboratorFindFirstArgs<ExtArgs>>): Prisma__CollectionCollaboratorClient<$Result.GetResult<Prisma.$CollectionCollaboratorPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CollectionCollaborator that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CollectionCollaboratorFindFirstOrThrowArgs} args - Arguments to find a CollectionCollaborator
+     * @example
+     * // Get one CollectionCollaborator
+     * const collectionCollaborator = await prisma.collectionCollaborator.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CollectionCollaboratorFindFirstOrThrowArgs>(args?: SelectSubset<T, CollectionCollaboratorFindFirstOrThrowArgs<ExtArgs>>): Prisma__CollectionCollaboratorClient<$Result.GetResult<Prisma.$CollectionCollaboratorPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CollectionCollaborators that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CollectionCollaboratorFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CollectionCollaborators
+     * const collectionCollaborators = await prisma.collectionCollaborator.findMany()
+     * 
+     * // Get first 10 CollectionCollaborators
+     * const collectionCollaborators = await prisma.collectionCollaborator.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const collectionCollaboratorWithIdOnly = await prisma.collectionCollaborator.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CollectionCollaboratorFindManyArgs>(args?: SelectSubset<T, CollectionCollaboratorFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CollectionCollaboratorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CollectionCollaborator.
+     * @param {CollectionCollaboratorCreateArgs} args - Arguments to create a CollectionCollaborator.
+     * @example
+     * // Create one CollectionCollaborator
+     * const CollectionCollaborator = await prisma.collectionCollaborator.create({
+     *   data: {
+     *     // ... data to create a CollectionCollaborator
+     *   }
+     * })
+     * 
+     */
+    create<T extends CollectionCollaboratorCreateArgs>(args: SelectSubset<T, CollectionCollaboratorCreateArgs<ExtArgs>>): Prisma__CollectionCollaboratorClient<$Result.GetResult<Prisma.$CollectionCollaboratorPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CollectionCollaborators.
+     * @param {CollectionCollaboratorCreateManyArgs} args - Arguments to create many CollectionCollaborators.
+     * @example
+     * // Create many CollectionCollaborators
+     * const collectionCollaborator = await prisma.collectionCollaborator.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CollectionCollaboratorCreateManyArgs>(args?: SelectSubset<T, CollectionCollaboratorCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CollectionCollaborators and returns the data saved in the database.
+     * @param {CollectionCollaboratorCreateManyAndReturnArgs} args - Arguments to create many CollectionCollaborators.
+     * @example
+     * // Create many CollectionCollaborators
+     * const collectionCollaborator = await prisma.collectionCollaborator.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CollectionCollaborators and only return the `id`
+     * const collectionCollaboratorWithIdOnly = await prisma.collectionCollaborator.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CollectionCollaboratorCreateManyAndReturnArgs>(args?: SelectSubset<T, CollectionCollaboratorCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CollectionCollaboratorPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CollectionCollaborator.
+     * @param {CollectionCollaboratorDeleteArgs} args - Arguments to delete one CollectionCollaborator.
+     * @example
+     * // Delete one CollectionCollaborator
+     * const CollectionCollaborator = await prisma.collectionCollaborator.delete({
+     *   where: {
+     *     // ... filter to delete one CollectionCollaborator
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CollectionCollaboratorDeleteArgs>(args: SelectSubset<T, CollectionCollaboratorDeleteArgs<ExtArgs>>): Prisma__CollectionCollaboratorClient<$Result.GetResult<Prisma.$CollectionCollaboratorPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CollectionCollaborator.
+     * @param {CollectionCollaboratorUpdateArgs} args - Arguments to update one CollectionCollaborator.
+     * @example
+     * // Update one CollectionCollaborator
+     * const collectionCollaborator = await prisma.collectionCollaborator.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CollectionCollaboratorUpdateArgs>(args: SelectSubset<T, CollectionCollaboratorUpdateArgs<ExtArgs>>): Prisma__CollectionCollaboratorClient<$Result.GetResult<Prisma.$CollectionCollaboratorPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CollectionCollaborators.
+     * @param {CollectionCollaboratorDeleteManyArgs} args - Arguments to filter CollectionCollaborators to delete.
+     * @example
+     * // Delete a few CollectionCollaborators
+     * const { count } = await prisma.collectionCollaborator.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CollectionCollaboratorDeleteManyArgs>(args?: SelectSubset<T, CollectionCollaboratorDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CollectionCollaborators.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CollectionCollaboratorUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CollectionCollaborators
+     * const collectionCollaborator = await prisma.collectionCollaborator.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CollectionCollaboratorUpdateManyArgs>(args: SelectSubset<T, CollectionCollaboratorUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CollectionCollaborators and returns the data updated in the database.
+     * @param {CollectionCollaboratorUpdateManyAndReturnArgs} args - Arguments to update many CollectionCollaborators.
+     * @example
+     * // Update many CollectionCollaborators
+     * const collectionCollaborator = await prisma.collectionCollaborator.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CollectionCollaborators and only return the `id`
+     * const collectionCollaboratorWithIdOnly = await prisma.collectionCollaborator.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CollectionCollaboratorUpdateManyAndReturnArgs>(args: SelectSubset<T, CollectionCollaboratorUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CollectionCollaboratorPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CollectionCollaborator.
+     * @param {CollectionCollaboratorUpsertArgs} args - Arguments to update or create a CollectionCollaborator.
+     * @example
+     * // Update or create a CollectionCollaborator
+     * const collectionCollaborator = await prisma.collectionCollaborator.upsert({
+     *   create: {
+     *     // ... data to create a CollectionCollaborator
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CollectionCollaborator we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CollectionCollaboratorUpsertArgs>(args: SelectSubset<T, CollectionCollaboratorUpsertArgs<ExtArgs>>): Prisma__CollectionCollaboratorClient<$Result.GetResult<Prisma.$CollectionCollaboratorPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CollectionCollaborators.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CollectionCollaboratorCountArgs} args - Arguments to filter CollectionCollaborators to count.
+     * @example
+     * // Count the number of CollectionCollaborators
+     * const count = await prisma.collectionCollaborator.count({
+     *   where: {
+     *     // ... the filter for the CollectionCollaborators we want to count
+     *   }
+     * })
+    **/
+    count<T extends CollectionCollaboratorCountArgs>(
+      args?: Subset<T, CollectionCollaboratorCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CollectionCollaboratorCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CollectionCollaborator.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CollectionCollaboratorAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CollectionCollaboratorAggregateArgs>(args: Subset<T, CollectionCollaboratorAggregateArgs>): Prisma.PrismaPromise<GetCollectionCollaboratorAggregateType<T>>
+
+    /**
+     * Group by CollectionCollaborator.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CollectionCollaboratorGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CollectionCollaboratorGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CollectionCollaboratorGroupByArgs['orderBy'] }
+        : { orderBy?: CollectionCollaboratorGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CollectionCollaboratorGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCollectionCollaboratorGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CollectionCollaborator model
+   */
+  readonly fields: CollectionCollaboratorFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CollectionCollaborator.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CollectionCollaboratorClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    collection<T extends CollectionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CollectionDefaultArgs<ExtArgs>>): Prisma__CollectionClient<$Result.GetResult<Prisma.$CollectionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CollectionCollaborator model
+   */
+  interface CollectionCollaboratorFieldRefs {
+    readonly id: FieldRef<"CollectionCollaborator", 'String'>
+    readonly collectionId: FieldRef<"CollectionCollaborator", 'String'>
+    readonly userId: FieldRef<"CollectionCollaborator", 'String'>
+    readonly canEdit: FieldRef<"CollectionCollaborator", 'Boolean'>
+    readonly invitedAt: FieldRef<"CollectionCollaborator", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CollectionCollaborator findUnique
+   */
+  export type CollectionCollaboratorFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionCollaborator
+     */
+    select?: CollectionCollaboratorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionCollaborator
+     */
+    omit?: CollectionCollaboratorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionCollaboratorInclude<ExtArgs> | null
+    /**
+     * Filter, which CollectionCollaborator to fetch.
+     */
+    where: CollectionCollaboratorWhereUniqueInput
+  }
+
+  /**
+   * CollectionCollaborator findUniqueOrThrow
+   */
+  export type CollectionCollaboratorFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionCollaborator
+     */
+    select?: CollectionCollaboratorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionCollaborator
+     */
+    omit?: CollectionCollaboratorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionCollaboratorInclude<ExtArgs> | null
+    /**
+     * Filter, which CollectionCollaborator to fetch.
+     */
+    where: CollectionCollaboratorWhereUniqueInput
+  }
+
+  /**
+   * CollectionCollaborator findFirst
+   */
+  export type CollectionCollaboratorFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionCollaborator
+     */
+    select?: CollectionCollaboratorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionCollaborator
+     */
+    omit?: CollectionCollaboratorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionCollaboratorInclude<ExtArgs> | null
+    /**
+     * Filter, which CollectionCollaborator to fetch.
+     */
+    where?: CollectionCollaboratorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CollectionCollaborators to fetch.
+     */
+    orderBy?: CollectionCollaboratorOrderByWithRelationInput | CollectionCollaboratorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CollectionCollaborators.
+     */
+    cursor?: CollectionCollaboratorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CollectionCollaborators from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CollectionCollaborators.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CollectionCollaborators.
+     */
+    distinct?: CollectionCollaboratorScalarFieldEnum | CollectionCollaboratorScalarFieldEnum[]
+  }
+
+  /**
+   * CollectionCollaborator findFirstOrThrow
+   */
+  export type CollectionCollaboratorFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionCollaborator
+     */
+    select?: CollectionCollaboratorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionCollaborator
+     */
+    omit?: CollectionCollaboratorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionCollaboratorInclude<ExtArgs> | null
+    /**
+     * Filter, which CollectionCollaborator to fetch.
+     */
+    where?: CollectionCollaboratorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CollectionCollaborators to fetch.
+     */
+    orderBy?: CollectionCollaboratorOrderByWithRelationInput | CollectionCollaboratorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CollectionCollaborators.
+     */
+    cursor?: CollectionCollaboratorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CollectionCollaborators from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CollectionCollaborators.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CollectionCollaborators.
+     */
+    distinct?: CollectionCollaboratorScalarFieldEnum | CollectionCollaboratorScalarFieldEnum[]
+  }
+
+  /**
+   * CollectionCollaborator findMany
+   */
+  export type CollectionCollaboratorFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionCollaborator
+     */
+    select?: CollectionCollaboratorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionCollaborator
+     */
+    omit?: CollectionCollaboratorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionCollaboratorInclude<ExtArgs> | null
+    /**
+     * Filter, which CollectionCollaborators to fetch.
+     */
+    where?: CollectionCollaboratorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CollectionCollaborators to fetch.
+     */
+    orderBy?: CollectionCollaboratorOrderByWithRelationInput | CollectionCollaboratorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CollectionCollaborators.
+     */
+    cursor?: CollectionCollaboratorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CollectionCollaborators from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CollectionCollaborators.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CollectionCollaborators.
+     */
+    distinct?: CollectionCollaboratorScalarFieldEnum | CollectionCollaboratorScalarFieldEnum[]
+  }
+
+  /**
+   * CollectionCollaborator create
+   */
+  export type CollectionCollaboratorCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionCollaborator
+     */
+    select?: CollectionCollaboratorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionCollaborator
+     */
+    omit?: CollectionCollaboratorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionCollaboratorInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CollectionCollaborator.
+     */
+    data: XOR<CollectionCollaboratorCreateInput, CollectionCollaboratorUncheckedCreateInput>
+  }
+
+  /**
+   * CollectionCollaborator createMany
+   */
+  export type CollectionCollaboratorCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CollectionCollaborators.
+     */
+    data: CollectionCollaboratorCreateManyInput | CollectionCollaboratorCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CollectionCollaborator createManyAndReturn
+   */
+  export type CollectionCollaboratorCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionCollaborator
+     */
+    select?: CollectionCollaboratorSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionCollaborator
+     */
+    omit?: CollectionCollaboratorOmit<ExtArgs> | null
+    /**
+     * The data used to create many CollectionCollaborators.
+     */
+    data: CollectionCollaboratorCreateManyInput | CollectionCollaboratorCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionCollaboratorIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CollectionCollaborator update
+   */
+  export type CollectionCollaboratorUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionCollaborator
+     */
+    select?: CollectionCollaboratorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionCollaborator
+     */
+    omit?: CollectionCollaboratorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionCollaboratorInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CollectionCollaborator.
+     */
+    data: XOR<CollectionCollaboratorUpdateInput, CollectionCollaboratorUncheckedUpdateInput>
+    /**
+     * Choose, which CollectionCollaborator to update.
+     */
+    where: CollectionCollaboratorWhereUniqueInput
+  }
+
+  /**
+   * CollectionCollaborator updateMany
+   */
+  export type CollectionCollaboratorUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CollectionCollaborators.
+     */
+    data: XOR<CollectionCollaboratorUpdateManyMutationInput, CollectionCollaboratorUncheckedUpdateManyInput>
+    /**
+     * Filter which CollectionCollaborators to update
+     */
+    where?: CollectionCollaboratorWhereInput
+    /**
+     * Limit how many CollectionCollaborators to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CollectionCollaborator updateManyAndReturn
+   */
+  export type CollectionCollaboratorUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionCollaborator
+     */
+    select?: CollectionCollaboratorSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionCollaborator
+     */
+    omit?: CollectionCollaboratorOmit<ExtArgs> | null
+    /**
+     * The data used to update CollectionCollaborators.
+     */
+    data: XOR<CollectionCollaboratorUpdateManyMutationInput, CollectionCollaboratorUncheckedUpdateManyInput>
+    /**
+     * Filter which CollectionCollaborators to update
+     */
+    where?: CollectionCollaboratorWhereInput
+    /**
+     * Limit how many CollectionCollaborators to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionCollaboratorIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CollectionCollaborator upsert
+   */
+  export type CollectionCollaboratorUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionCollaborator
+     */
+    select?: CollectionCollaboratorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionCollaborator
+     */
+    omit?: CollectionCollaboratorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionCollaboratorInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CollectionCollaborator to update in case it exists.
+     */
+    where: CollectionCollaboratorWhereUniqueInput
+    /**
+     * In case the CollectionCollaborator found by the `where` argument doesn't exist, create a new CollectionCollaborator with this data.
+     */
+    create: XOR<CollectionCollaboratorCreateInput, CollectionCollaboratorUncheckedCreateInput>
+    /**
+     * In case the CollectionCollaborator was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CollectionCollaboratorUpdateInput, CollectionCollaboratorUncheckedUpdateInput>
+  }
+
+  /**
+   * CollectionCollaborator delete
+   */
+  export type CollectionCollaboratorDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionCollaborator
+     */
+    select?: CollectionCollaboratorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionCollaborator
+     */
+    omit?: CollectionCollaboratorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionCollaboratorInclude<ExtArgs> | null
+    /**
+     * Filter which CollectionCollaborator to delete.
+     */
+    where: CollectionCollaboratorWhereUniqueInput
+  }
+
+  /**
+   * CollectionCollaborator deleteMany
+   */
+  export type CollectionCollaboratorDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CollectionCollaborators to delete
+     */
+    where?: CollectionCollaboratorWhereInput
+    /**
+     * Limit how many CollectionCollaborators to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CollectionCollaborator without action
+   */
+  export type CollectionCollaboratorDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionCollaborator
+     */
+    select?: CollectionCollaboratorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionCollaborator
+     */
+    omit?: CollectionCollaboratorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionCollaboratorInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model CollectionItem
    */
 
@@ -12924,6 +15799,8 @@ export namespace Prisma {
     id: string | null
     collectionId: string | null
     photoId: string | null
+    sectionId: string | null
+    note: string | null
     savedAt: Date | null
   }
 
@@ -12931,6 +15808,8 @@ export namespace Prisma {
     id: string | null
     collectionId: string | null
     photoId: string | null
+    sectionId: string | null
+    note: string | null
     savedAt: Date | null
   }
 
@@ -12938,6 +15817,8 @@ export namespace Prisma {
     id: number
     collectionId: number
     photoId: number
+    sectionId: number
+    note: number
     savedAt: number
     _all: number
   }
@@ -12947,6 +15828,8 @@ export namespace Prisma {
     id?: true
     collectionId?: true
     photoId?: true
+    sectionId?: true
+    note?: true
     savedAt?: true
   }
 
@@ -12954,6 +15837,8 @@ export namespace Prisma {
     id?: true
     collectionId?: true
     photoId?: true
+    sectionId?: true
+    note?: true
     savedAt?: true
   }
 
@@ -12961,6 +15846,8 @@ export namespace Prisma {
     id?: true
     collectionId?: true
     photoId?: true
+    sectionId?: true
+    note?: true
     savedAt?: true
     _all?: true
   }
@@ -13041,6 +15928,8 @@ export namespace Prisma {
     id: string
     collectionId: string
     photoId: string
+    sectionId: string | null
+    note: string | null
     savedAt: Date
     _count: CollectionItemCountAggregateOutputType | null
     _min: CollectionItemMinAggregateOutputType | null
@@ -13065,48 +15954,62 @@ export namespace Prisma {
     id?: boolean
     collectionId?: boolean
     photoId?: boolean
+    sectionId?: boolean
+    note?: boolean
     savedAt?: boolean
     collection?: boolean | CollectionDefaultArgs<ExtArgs>
     photo?: boolean | PhotoDefaultArgs<ExtArgs>
+    section?: boolean | CollectionItem$sectionArgs<ExtArgs>
   }, ExtArgs["result"]["collectionItem"]>
 
   export type CollectionItemSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     collectionId?: boolean
     photoId?: boolean
+    sectionId?: boolean
+    note?: boolean
     savedAt?: boolean
     collection?: boolean | CollectionDefaultArgs<ExtArgs>
     photo?: boolean | PhotoDefaultArgs<ExtArgs>
+    section?: boolean | CollectionItem$sectionArgs<ExtArgs>
   }, ExtArgs["result"]["collectionItem"]>
 
   export type CollectionItemSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     collectionId?: boolean
     photoId?: boolean
+    sectionId?: boolean
+    note?: boolean
     savedAt?: boolean
     collection?: boolean | CollectionDefaultArgs<ExtArgs>
     photo?: boolean | PhotoDefaultArgs<ExtArgs>
+    section?: boolean | CollectionItem$sectionArgs<ExtArgs>
   }, ExtArgs["result"]["collectionItem"]>
 
   export type CollectionItemSelectScalar = {
     id?: boolean
     collectionId?: boolean
     photoId?: boolean
+    sectionId?: boolean
+    note?: boolean
     savedAt?: boolean
   }
 
-  export type CollectionItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "collectionId" | "photoId" | "savedAt", ExtArgs["result"]["collectionItem"]>
+  export type CollectionItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "collectionId" | "photoId" | "sectionId" | "note" | "savedAt", ExtArgs["result"]["collectionItem"]>
   export type CollectionItemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     collection?: boolean | CollectionDefaultArgs<ExtArgs>
     photo?: boolean | PhotoDefaultArgs<ExtArgs>
+    section?: boolean | CollectionItem$sectionArgs<ExtArgs>
   }
   export type CollectionItemIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     collection?: boolean | CollectionDefaultArgs<ExtArgs>
     photo?: boolean | PhotoDefaultArgs<ExtArgs>
+    section?: boolean | CollectionItem$sectionArgs<ExtArgs>
   }
   export type CollectionItemIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     collection?: boolean | CollectionDefaultArgs<ExtArgs>
     photo?: boolean | PhotoDefaultArgs<ExtArgs>
+    section?: boolean | CollectionItem$sectionArgs<ExtArgs>
   }
 
   export type $CollectionItemPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -13114,11 +16017,14 @@ export namespace Prisma {
     objects: {
       collection: Prisma.$CollectionPayload<ExtArgs>
       photo: Prisma.$PhotoPayload<ExtArgs>
+      section: Prisma.$CollectionSectionPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       collectionId: string
       photoId: string
+      sectionId: string | null
+      note: string | null
       savedAt: Date
     }, ExtArgs["result"]["collectionItem"]>
     composites: {}
@@ -13516,6 +16422,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     collection<T extends CollectionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CollectionDefaultArgs<ExtArgs>>): Prisma__CollectionClient<$Result.GetResult<Prisma.$CollectionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     photo<T extends PhotoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PhotoDefaultArgs<ExtArgs>>): Prisma__PhotoClient<$Result.GetResult<Prisma.$PhotoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    section<T extends CollectionItem$sectionArgs<ExtArgs> = {}>(args?: Subset<T, CollectionItem$sectionArgs<ExtArgs>>): Prisma__CollectionSectionClient<$Result.GetResult<Prisma.$CollectionSectionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -13548,6 +16455,8 @@ export namespace Prisma {
     readonly id: FieldRef<"CollectionItem", 'String'>
     readonly collectionId: FieldRef<"CollectionItem", 'String'>
     readonly photoId: FieldRef<"CollectionItem", 'String'>
+    readonly sectionId: FieldRef<"CollectionItem", 'String'>
+    readonly note: FieldRef<"CollectionItem", 'String'>
     readonly savedAt: FieldRef<"CollectionItem", 'DateTime'>
   }
     
@@ -13950,6 +16859,25 @@ export namespace Prisma {
   }
 
   /**
+   * CollectionItem.section
+   */
+  export type CollectionItem$sectionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionSection
+     */
+    select?: CollectionSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CollectionSection
+     */
+    omit?: CollectionSectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CollectionSectionInclude<ExtArgs> | null
+    where?: CollectionSectionWhereInput
+  }
+
+  /**
    * CollectionItem without action
    */
   export type CollectionItemDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -13965,6 +16893,2087 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: CollectionItemInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Tag
+   */
+
+  export type AggregateTag = {
+    _count: TagCountAggregateOutputType | null
+    _min: TagMinAggregateOutputType | null
+    _max: TagMaxAggregateOutputType | null
+  }
+
+  export type TagMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    slug: string | null
+  }
+
+  export type TagMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    slug: string | null
+  }
+
+  export type TagCountAggregateOutputType = {
+    id: number
+    name: number
+    slug: number
+    _all: number
+  }
+
+
+  export type TagMinAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+  }
+
+  export type TagMaxAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+  }
+
+  export type TagCountAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+    _all?: true
+  }
+
+  export type TagAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Tag to aggregate.
+     */
+    where?: TagWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Tags to fetch.
+     */
+    orderBy?: TagOrderByWithRelationInput | TagOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TagWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Tags from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Tags.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Tags
+    **/
+    _count?: true | TagCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TagMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TagMaxAggregateInputType
+  }
+
+  export type GetTagAggregateType<T extends TagAggregateArgs> = {
+        [P in keyof T & keyof AggregateTag]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTag[P]>
+      : GetScalarType<T[P], AggregateTag[P]>
+  }
+
+
+
+
+  export type TagGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TagWhereInput
+    orderBy?: TagOrderByWithAggregationInput | TagOrderByWithAggregationInput[]
+    by: TagScalarFieldEnum[] | TagScalarFieldEnum
+    having?: TagScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TagCountAggregateInputType | true
+    _min?: TagMinAggregateInputType
+    _max?: TagMaxAggregateInputType
+  }
+
+  export type TagGroupByOutputType = {
+    id: string
+    name: string
+    slug: string
+    _count: TagCountAggregateOutputType | null
+    _min: TagMinAggregateOutputType | null
+    _max: TagMaxAggregateOutputType | null
+  }
+
+  type GetTagGroupByPayload<T extends TagGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TagGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TagGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TagGroupByOutputType[P]>
+            : GetScalarType<T[P], TagGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TagSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    photoTags?: boolean | Tag$photoTagsArgs<ExtArgs>
+    _count?: boolean | TagCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tag"]>
+
+  export type TagSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+  }, ExtArgs["result"]["tag"]>
+
+  export type TagSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+  }, ExtArgs["result"]["tag"]>
+
+  export type TagSelectScalar = {
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+  }
+
+  export type TagOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug", ExtArgs["result"]["tag"]>
+  export type TagInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    photoTags?: boolean | Tag$photoTagsArgs<ExtArgs>
+    _count?: boolean | TagCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type TagIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type TagIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $TagPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Tag"
+    objects: {
+      photoTags: Prisma.$PhotoTagPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      slug: string
+    }, ExtArgs["result"]["tag"]>
+    composites: {}
+  }
+
+  type TagGetPayload<S extends boolean | null | undefined | TagDefaultArgs> = $Result.GetResult<Prisma.$TagPayload, S>
+
+  type TagCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TagFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TagCountAggregateInputType | true
+    }
+
+  export interface TagDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Tag'], meta: { name: 'Tag' } }
+    /**
+     * Find zero or one Tag that matches the filter.
+     * @param {TagFindUniqueArgs} args - Arguments to find a Tag
+     * @example
+     * // Get one Tag
+     * const tag = await prisma.tag.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TagFindUniqueArgs>(args: SelectSubset<T, TagFindUniqueArgs<ExtArgs>>): Prisma__TagClient<$Result.GetResult<Prisma.$TagPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Tag that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TagFindUniqueOrThrowArgs} args - Arguments to find a Tag
+     * @example
+     * // Get one Tag
+     * const tag = await prisma.tag.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TagFindUniqueOrThrowArgs>(args: SelectSubset<T, TagFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TagClient<$Result.GetResult<Prisma.$TagPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Tag that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TagFindFirstArgs} args - Arguments to find a Tag
+     * @example
+     * // Get one Tag
+     * const tag = await prisma.tag.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TagFindFirstArgs>(args?: SelectSubset<T, TagFindFirstArgs<ExtArgs>>): Prisma__TagClient<$Result.GetResult<Prisma.$TagPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Tag that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TagFindFirstOrThrowArgs} args - Arguments to find a Tag
+     * @example
+     * // Get one Tag
+     * const tag = await prisma.tag.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TagFindFirstOrThrowArgs>(args?: SelectSubset<T, TagFindFirstOrThrowArgs<ExtArgs>>): Prisma__TagClient<$Result.GetResult<Prisma.$TagPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Tags that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TagFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Tags
+     * const tags = await prisma.tag.findMany()
+     * 
+     * // Get first 10 Tags
+     * const tags = await prisma.tag.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const tagWithIdOnly = await prisma.tag.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TagFindManyArgs>(args?: SelectSubset<T, TagFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TagPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Tag.
+     * @param {TagCreateArgs} args - Arguments to create a Tag.
+     * @example
+     * // Create one Tag
+     * const Tag = await prisma.tag.create({
+     *   data: {
+     *     // ... data to create a Tag
+     *   }
+     * })
+     * 
+     */
+    create<T extends TagCreateArgs>(args: SelectSubset<T, TagCreateArgs<ExtArgs>>): Prisma__TagClient<$Result.GetResult<Prisma.$TagPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Tags.
+     * @param {TagCreateManyArgs} args - Arguments to create many Tags.
+     * @example
+     * // Create many Tags
+     * const tag = await prisma.tag.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TagCreateManyArgs>(args?: SelectSubset<T, TagCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Tags and returns the data saved in the database.
+     * @param {TagCreateManyAndReturnArgs} args - Arguments to create many Tags.
+     * @example
+     * // Create many Tags
+     * const tag = await prisma.tag.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Tags and only return the `id`
+     * const tagWithIdOnly = await prisma.tag.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TagCreateManyAndReturnArgs>(args?: SelectSubset<T, TagCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TagPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Tag.
+     * @param {TagDeleteArgs} args - Arguments to delete one Tag.
+     * @example
+     * // Delete one Tag
+     * const Tag = await prisma.tag.delete({
+     *   where: {
+     *     // ... filter to delete one Tag
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TagDeleteArgs>(args: SelectSubset<T, TagDeleteArgs<ExtArgs>>): Prisma__TagClient<$Result.GetResult<Prisma.$TagPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Tag.
+     * @param {TagUpdateArgs} args - Arguments to update one Tag.
+     * @example
+     * // Update one Tag
+     * const tag = await prisma.tag.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TagUpdateArgs>(args: SelectSubset<T, TagUpdateArgs<ExtArgs>>): Prisma__TagClient<$Result.GetResult<Prisma.$TagPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Tags.
+     * @param {TagDeleteManyArgs} args - Arguments to filter Tags to delete.
+     * @example
+     * // Delete a few Tags
+     * const { count } = await prisma.tag.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TagDeleteManyArgs>(args?: SelectSubset<T, TagDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Tags.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TagUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Tags
+     * const tag = await prisma.tag.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TagUpdateManyArgs>(args: SelectSubset<T, TagUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Tags and returns the data updated in the database.
+     * @param {TagUpdateManyAndReturnArgs} args - Arguments to update many Tags.
+     * @example
+     * // Update many Tags
+     * const tag = await prisma.tag.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Tags and only return the `id`
+     * const tagWithIdOnly = await prisma.tag.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TagUpdateManyAndReturnArgs>(args: SelectSubset<T, TagUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TagPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Tag.
+     * @param {TagUpsertArgs} args - Arguments to update or create a Tag.
+     * @example
+     * // Update or create a Tag
+     * const tag = await prisma.tag.upsert({
+     *   create: {
+     *     // ... data to create a Tag
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Tag we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TagUpsertArgs>(args: SelectSubset<T, TagUpsertArgs<ExtArgs>>): Prisma__TagClient<$Result.GetResult<Prisma.$TagPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Tags.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TagCountArgs} args - Arguments to filter Tags to count.
+     * @example
+     * // Count the number of Tags
+     * const count = await prisma.tag.count({
+     *   where: {
+     *     // ... the filter for the Tags we want to count
+     *   }
+     * })
+    **/
+    count<T extends TagCountArgs>(
+      args?: Subset<T, TagCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TagCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Tag.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TagAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TagAggregateArgs>(args: Subset<T, TagAggregateArgs>): Prisma.PrismaPromise<GetTagAggregateType<T>>
+
+    /**
+     * Group by Tag.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TagGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TagGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TagGroupByArgs['orderBy'] }
+        : { orderBy?: TagGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TagGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTagGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Tag model
+   */
+  readonly fields: TagFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Tag.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TagClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    photoTags<T extends Tag$photoTagsArgs<ExtArgs> = {}>(args?: Subset<T, Tag$photoTagsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PhotoTagPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Tag model
+   */
+  interface TagFieldRefs {
+    readonly id: FieldRef<"Tag", 'String'>
+    readonly name: FieldRef<"Tag", 'String'>
+    readonly slug: FieldRef<"Tag", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Tag findUnique
+   */
+  export type TagFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tag
+     */
+    select?: TagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tag
+     */
+    omit?: TagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TagInclude<ExtArgs> | null
+    /**
+     * Filter, which Tag to fetch.
+     */
+    where: TagWhereUniqueInput
+  }
+
+  /**
+   * Tag findUniqueOrThrow
+   */
+  export type TagFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tag
+     */
+    select?: TagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tag
+     */
+    omit?: TagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TagInclude<ExtArgs> | null
+    /**
+     * Filter, which Tag to fetch.
+     */
+    where: TagWhereUniqueInput
+  }
+
+  /**
+   * Tag findFirst
+   */
+  export type TagFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tag
+     */
+    select?: TagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tag
+     */
+    omit?: TagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TagInclude<ExtArgs> | null
+    /**
+     * Filter, which Tag to fetch.
+     */
+    where?: TagWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Tags to fetch.
+     */
+    orderBy?: TagOrderByWithRelationInput | TagOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Tags.
+     */
+    cursor?: TagWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Tags from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Tags.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Tags.
+     */
+    distinct?: TagScalarFieldEnum | TagScalarFieldEnum[]
+  }
+
+  /**
+   * Tag findFirstOrThrow
+   */
+  export type TagFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tag
+     */
+    select?: TagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tag
+     */
+    omit?: TagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TagInclude<ExtArgs> | null
+    /**
+     * Filter, which Tag to fetch.
+     */
+    where?: TagWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Tags to fetch.
+     */
+    orderBy?: TagOrderByWithRelationInput | TagOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Tags.
+     */
+    cursor?: TagWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Tags from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Tags.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Tags.
+     */
+    distinct?: TagScalarFieldEnum | TagScalarFieldEnum[]
+  }
+
+  /**
+   * Tag findMany
+   */
+  export type TagFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tag
+     */
+    select?: TagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tag
+     */
+    omit?: TagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TagInclude<ExtArgs> | null
+    /**
+     * Filter, which Tags to fetch.
+     */
+    where?: TagWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Tags to fetch.
+     */
+    orderBy?: TagOrderByWithRelationInput | TagOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Tags.
+     */
+    cursor?: TagWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Tags from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Tags.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Tags.
+     */
+    distinct?: TagScalarFieldEnum | TagScalarFieldEnum[]
+  }
+
+  /**
+   * Tag create
+   */
+  export type TagCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tag
+     */
+    select?: TagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tag
+     */
+    omit?: TagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TagInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Tag.
+     */
+    data: XOR<TagCreateInput, TagUncheckedCreateInput>
+  }
+
+  /**
+   * Tag createMany
+   */
+  export type TagCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Tags.
+     */
+    data: TagCreateManyInput | TagCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Tag createManyAndReturn
+   */
+  export type TagCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tag
+     */
+    select?: TagSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tag
+     */
+    omit?: TagOmit<ExtArgs> | null
+    /**
+     * The data used to create many Tags.
+     */
+    data: TagCreateManyInput | TagCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Tag update
+   */
+  export type TagUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tag
+     */
+    select?: TagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tag
+     */
+    omit?: TagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TagInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Tag.
+     */
+    data: XOR<TagUpdateInput, TagUncheckedUpdateInput>
+    /**
+     * Choose, which Tag to update.
+     */
+    where: TagWhereUniqueInput
+  }
+
+  /**
+   * Tag updateMany
+   */
+  export type TagUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Tags.
+     */
+    data: XOR<TagUpdateManyMutationInput, TagUncheckedUpdateManyInput>
+    /**
+     * Filter which Tags to update
+     */
+    where?: TagWhereInput
+    /**
+     * Limit how many Tags to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Tag updateManyAndReturn
+   */
+  export type TagUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tag
+     */
+    select?: TagSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tag
+     */
+    omit?: TagOmit<ExtArgs> | null
+    /**
+     * The data used to update Tags.
+     */
+    data: XOR<TagUpdateManyMutationInput, TagUncheckedUpdateManyInput>
+    /**
+     * Filter which Tags to update
+     */
+    where?: TagWhereInput
+    /**
+     * Limit how many Tags to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Tag upsert
+   */
+  export type TagUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tag
+     */
+    select?: TagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tag
+     */
+    omit?: TagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TagInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Tag to update in case it exists.
+     */
+    where: TagWhereUniqueInput
+    /**
+     * In case the Tag found by the `where` argument doesn't exist, create a new Tag with this data.
+     */
+    create: XOR<TagCreateInput, TagUncheckedCreateInput>
+    /**
+     * In case the Tag was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TagUpdateInput, TagUncheckedUpdateInput>
+  }
+
+  /**
+   * Tag delete
+   */
+  export type TagDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tag
+     */
+    select?: TagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tag
+     */
+    omit?: TagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TagInclude<ExtArgs> | null
+    /**
+     * Filter which Tag to delete.
+     */
+    where: TagWhereUniqueInput
+  }
+
+  /**
+   * Tag deleteMany
+   */
+  export type TagDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Tags to delete
+     */
+    where?: TagWhereInput
+    /**
+     * Limit how many Tags to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Tag.photoTags
+   */
+  export type Tag$photoTagsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PhotoTag
+     */
+    select?: PhotoTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PhotoTag
+     */
+    omit?: PhotoTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PhotoTagInclude<ExtArgs> | null
+    where?: PhotoTagWhereInput
+    orderBy?: PhotoTagOrderByWithRelationInput | PhotoTagOrderByWithRelationInput[]
+    cursor?: PhotoTagWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PhotoTagScalarFieldEnum | PhotoTagScalarFieldEnum[]
+  }
+
+  /**
+   * Tag without action
+   */
+  export type TagDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tag
+     */
+    select?: TagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tag
+     */
+    omit?: TagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TagInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model PhotoTag
+   */
+
+  export type AggregatePhotoTag = {
+    _count: PhotoTagCountAggregateOutputType | null
+    _min: PhotoTagMinAggregateOutputType | null
+    _max: PhotoTagMaxAggregateOutputType | null
+  }
+
+  export type PhotoTagMinAggregateOutputType = {
+    photoId: string | null
+    tagId: string | null
+  }
+
+  export type PhotoTagMaxAggregateOutputType = {
+    photoId: string | null
+    tagId: string | null
+  }
+
+  export type PhotoTagCountAggregateOutputType = {
+    photoId: number
+    tagId: number
+    _all: number
+  }
+
+
+  export type PhotoTagMinAggregateInputType = {
+    photoId?: true
+    tagId?: true
+  }
+
+  export type PhotoTagMaxAggregateInputType = {
+    photoId?: true
+    tagId?: true
+  }
+
+  export type PhotoTagCountAggregateInputType = {
+    photoId?: true
+    tagId?: true
+    _all?: true
+  }
+
+  export type PhotoTagAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PhotoTag to aggregate.
+     */
+    where?: PhotoTagWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PhotoTags to fetch.
+     */
+    orderBy?: PhotoTagOrderByWithRelationInput | PhotoTagOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PhotoTagWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PhotoTags from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PhotoTags.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PhotoTags
+    **/
+    _count?: true | PhotoTagCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PhotoTagMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PhotoTagMaxAggregateInputType
+  }
+
+  export type GetPhotoTagAggregateType<T extends PhotoTagAggregateArgs> = {
+        [P in keyof T & keyof AggregatePhotoTag]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePhotoTag[P]>
+      : GetScalarType<T[P], AggregatePhotoTag[P]>
+  }
+
+
+
+
+  export type PhotoTagGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PhotoTagWhereInput
+    orderBy?: PhotoTagOrderByWithAggregationInput | PhotoTagOrderByWithAggregationInput[]
+    by: PhotoTagScalarFieldEnum[] | PhotoTagScalarFieldEnum
+    having?: PhotoTagScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PhotoTagCountAggregateInputType | true
+    _min?: PhotoTagMinAggregateInputType
+    _max?: PhotoTagMaxAggregateInputType
+  }
+
+  export type PhotoTagGroupByOutputType = {
+    photoId: string
+    tagId: string
+    _count: PhotoTagCountAggregateOutputType | null
+    _min: PhotoTagMinAggregateOutputType | null
+    _max: PhotoTagMaxAggregateOutputType | null
+  }
+
+  type GetPhotoTagGroupByPayload<T extends PhotoTagGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PhotoTagGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PhotoTagGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PhotoTagGroupByOutputType[P]>
+            : GetScalarType<T[P], PhotoTagGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PhotoTagSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    photoId?: boolean
+    tagId?: boolean
+    photo?: boolean | PhotoDefaultArgs<ExtArgs>
+    tag?: boolean | TagDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["photoTag"]>
+
+  export type PhotoTagSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    photoId?: boolean
+    tagId?: boolean
+    photo?: boolean | PhotoDefaultArgs<ExtArgs>
+    tag?: boolean | TagDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["photoTag"]>
+
+  export type PhotoTagSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    photoId?: boolean
+    tagId?: boolean
+    photo?: boolean | PhotoDefaultArgs<ExtArgs>
+    tag?: boolean | TagDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["photoTag"]>
+
+  export type PhotoTagSelectScalar = {
+    photoId?: boolean
+    tagId?: boolean
+  }
+
+  export type PhotoTagOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"photoId" | "tagId", ExtArgs["result"]["photoTag"]>
+  export type PhotoTagInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    photo?: boolean | PhotoDefaultArgs<ExtArgs>
+    tag?: boolean | TagDefaultArgs<ExtArgs>
+  }
+  export type PhotoTagIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    photo?: boolean | PhotoDefaultArgs<ExtArgs>
+    tag?: boolean | TagDefaultArgs<ExtArgs>
+  }
+  export type PhotoTagIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    photo?: boolean | PhotoDefaultArgs<ExtArgs>
+    tag?: boolean | TagDefaultArgs<ExtArgs>
+  }
+
+  export type $PhotoTagPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PhotoTag"
+    objects: {
+      photo: Prisma.$PhotoPayload<ExtArgs>
+      tag: Prisma.$TagPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      photoId: string
+      tagId: string
+    }, ExtArgs["result"]["photoTag"]>
+    composites: {}
+  }
+
+  type PhotoTagGetPayload<S extends boolean | null | undefined | PhotoTagDefaultArgs> = $Result.GetResult<Prisma.$PhotoTagPayload, S>
+
+  type PhotoTagCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PhotoTagFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PhotoTagCountAggregateInputType | true
+    }
+
+  export interface PhotoTagDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PhotoTag'], meta: { name: 'PhotoTag' } }
+    /**
+     * Find zero or one PhotoTag that matches the filter.
+     * @param {PhotoTagFindUniqueArgs} args - Arguments to find a PhotoTag
+     * @example
+     * // Get one PhotoTag
+     * const photoTag = await prisma.photoTag.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PhotoTagFindUniqueArgs>(args: SelectSubset<T, PhotoTagFindUniqueArgs<ExtArgs>>): Prisma__PhotoTagClient<$Result.GetResult<Prisma.$PhotoTagPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one PhotoTag that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PhotoTagFindUniqueOrThrowArgs} args - Arguments to find a PhotoTag
+     * @example
+     * // Get one PhotoTag
+     * const photoTag = await prisma.photoTag.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PhotoTagFindUniqueOrThrowArgs>(args: SelectSubset<T, PhotoTagFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PhotoTagClient<$Result.GetResult<Prisma.$PhotoTagPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PhotoTag that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PhotoTagFindFirstArgs} args - Arguments to find a PhotoTag
+     * @example
+     * // Get one PhotoTag
+     * const photoTag = await prisma.photoTag.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PhotoTagFindFirstArgs>(args?: SelectSubset<T, PhotoTagFindFirstArgs<ExtArgs>>): Prisma__PhotoTagClient<$Result.GetResult<Prisma.$PhotoTagPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PhotoTag that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PhotoTagFindFirstOrThrowArgs} args - Arguments to find a PhotoTag
+     * @example
+     * // Get one PhotoTag
+     * const photoTag = await prisma.photoTag.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PhotoTagFindFirstOrThrowArgs>(args?: SelectSubset<T, PhotoTagFindFirstOrThrowArgs<ExtArgs>>): Prisma__PhotoTagClient<$Result.GetResult<Prisma.$PhotoTagPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more PhotoTags that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PhotoTagFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PhotoTags
+     * const photoTags = await prisma.photoTag.findMany()
+     * 
+     * // Get first 10 PhotoTags
+     * const photoTags = await prisma.photoTag.findMany({ take: 10 })
+     * 
+     * // Only select the `photoId`
+     * const photoTagWithPhotoIdOnly = await prisma.photoTag.findMany({ select: { photoId: true } })
+     * 
+     */
+    findMany<T extends PhotoTagFindManyArgs>(args?: SelectSubset<T, PhotoTagFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PhotoTagPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a PhotoTag.
+     * @param {PhotoTagCreateArgs} args - Arguments to create a PhotoTag.
+     * @example
+     * // Create one PhotoTag
+     * const PhotoTag = await prisma.photoTag.create({
+     *   data: {
+     *     // ... data to create a PhotoTag
+     *   }
+     * })
+     * 
+     */
+    create<T extends PhotoTagCreateArgs>(args: SelectSubset<T, PhotoTagCreateArgs<ExtArgs>>): Prisma__PhotoTagClient<$Result.GetResult<Prisma.$PhotoTagPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many PhotoTags.
+     * @param {PhotoTagCreateManyArgs} args - Arguments to create many PhotoTags.
+     * @example
+     * // Create many PhotoTags
+     * const photoTag = await prisma.photoTag.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PhotoTagCreateManyArgs>(args?: SelectSubset<T, PhotoTagCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many PhotoTags and returns the data saved in the database.
+     * @param {PhotoTagCreateManyAndReturnArgs} args - Arguments to create many PhotoTags.
+     * @example
+     * // Create many PhotoTags
+     * const photoTag = await prisma.photoTag.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many PhotoTags and only return the `photoId`
+     * const photoTagWithPhotoIdOnly = await prisma.photoTag.createManyAndReturn({
+     *   select: { photoId: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PhotoTagCreateManyAndReturnArgs>(args?: SelectSubset<T, PhotoTagCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PhotoTagPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a PhotoTag.
+     * @param {PhotoTagDeleteArgs} args - Arguments to delete one PhotoTag.
+     * @example
+     * // Delete one PhotoTag
+     * const PhotoTag = await prisma.photoTag.delete({
+     *   where: {
+     *     // ... filter to delete one PhotoTag
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PhotoTagDeleteArgs>(args: SelectSubset<T, PhotoTagDeleteArgs<ExtArgs>>): Prisma__PhotoTagClient<$Result.GetResult<Prisma.$PhotoTagPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one PhotoTag.
+     * @param {PhotoTagUpdateArgs} args - Arguments to update one PhotoTag.
+     * @example
+     * // Update one PhotoTag
+     * const photoTag = await prisma.photoTag.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PhotoTagUpdateArgs>(args: SelectSubset<T, PhotoTagUpdateArgs<ExtArgs>>): Prisma__PhotoTagClient<$Result.GetResult<Prisma.$PhotoTagPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more PhotoTags.
+     * @param {PhotoTagDeleteManyArgs} args - Arguments to filter PhotoTags to delete.
+     * @example
+     * // Delete a few PhotoTags
+     * const { count } = await prisma.photoTag.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PhotoTagDeleteManyArgs>(args?: SelectSubset<T, PhotoTagDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PhotoTags.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PhotoTagUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PhotoTags
+     * const photoTag = await prisma.photoTag.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PhotoTagUpdateManyArgs>(args: SelectSubset<T, PhotoTagUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PhotoTags and returns the data updated in the database.
+     * @param {PhotoTagUpdateManyAndReturnArgs} args - Arguments to update many PhotoTags.
+     * @example
+     * // Update many PhotoTags
+     * const photoTag = await prisma.photoTag.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more PhotoTags and only return the `photoId`
+     * const photoTagWithPhotoIdOnly = await prisma.photoTag.updateManyAndReturn({
+     *   select: { photoId: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends PhotoTagUpdateManyAndReturnArgs>(args: SelectSubset<T, PhotoTagUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PhotoTagPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one PhotoTag.
+     * @param {PhotoTagUpsertArgs} args - Arguments to update or create a PhotoTag.
+     * @example
+     * // Update or create a PhotoTag
+     * const photoTag = await prisma.photoTag.upsert({
+     *   create: {
+     *     // ... data to create a PhotoTag
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PhotoTag we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PhotoTagUpsertArgs>(args: SelectSubset<T, PhotoTagUpsertArgs<ExtArgs>>): Prisma__PhotoTagClient<$Result.GetResult<Prisma.$PhotoTagPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of PhotoTags.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PhotoTagCountArgs} args - Arguments to filter PhotoTags to count.
+     * @example
+     * // Count the number of PhotoTags
+     * const count = await prisma.photoTag.count({
+     *   where: {
+     *     // ... the filter for the PhotoTags we want to count
+     *   }
+     * })
+    **/
+    count<T extends PhotoTagCountArgs>(
+      args?: Subset<T, PhotoTagCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PhotoTagCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PhotoTag.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PhotoTagAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PhotoTagAggregateArgs>(args: Subset<T, PhotoTagAggregateArgs>): Prisma.PrismaPromise<GetPhotoTagAggregateType<T>>
+
+    /**
+     * Group by PhotoTag.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PhotoTagGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PhotoTagGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PhotoTagGroupByArgs['orderBy'] }
+        : { orderBy?: PhotoTagGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PhotoTagGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPhotoTagGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PhotoTag model
+   */
+  readonly fields: PhotoTagFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PhotoTag.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PhotoTagClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    photo<T extends PhotoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PhotoDefaultArgs<ExtArgs>>): Prisma__PhotoClient<$Result.GetResult<Prisma.$PhotoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    tag<T extends TagDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TagDefaultArgs<ExtArgs>>): Prisma__TagClient<$Result.GetResult<Prisma.$TagPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the PhotoTag model
+   */
+  interface PhotoTagFieldRefs {
+    readonly photoId: FieldRef<"PhotoTag", 'String'>
+    readonly tagId: FieldRef<"PhotoTag", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * PhotoTag findUnique
+   */
+  export type PhotoTagFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PhotoTag
+     */
+    select?: PhotoTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PhotoTag
+     */
+    omit?: PhotoTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PhotoTagInclude<ExtArgs> | null
+    /**
+     * Filter, which PhotoTag to fetch.
+     */
+    where: PhotoTagWhereUniqueInput
+  }
+
+  /**
+   * PhotoTag findUniqueOrThrow
+   */
+  export type PhotoTagFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PhotoTag
+     */
+    select?: PhotoTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PhotoTag
+     */
+    omit?: PhotoTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PhotoTagInclude<ExtArgs> | null
+    /**
+     * Filter, which PhotoTag to fetch.
+     */
+    where: PhotoTagWhereUniqueInput
+  }
+
+  /**
+   * PhotoTag findFirst
+   */
+  export type PhotoTagFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PhotoTag
+     */
+    select?: PhotoTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PhotoTag
+     */
+    omit?: PhotoTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PhotoTagInclude<ExtArgs> | null
+    /**
+     * Filter, which PhotoTag to fetch.
+     */
+    where?: PhotoTagWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PhotoTags to fetch.
+     */
+    orderBy?: PhotoTagOrderByWithRelationInput | PhotoTagOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PhotoTags.
+     */
+    cursor?: PhotoTagWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PhotoTags from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PhotoTags.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PhotoTags.
+     */
+    distinct?: PhotoTagScalarFieldEnum | PhotoTagScalarFieldEnum[]
+  }
+
+  /**
+   * PhotoTag findFirstOrThrow
+   */
+  export type PhotoTagFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PhotoTag
+     */
+    select?: PhotoTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PhotoTag
+     */
+    omit?: PhotoTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PhotoTagInclude<ExtArgs> | null
+    /**
+     * Filter, which PhotoTag to fetch.
+     */
+    where?: PhotoTagWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PhotoTags to fetch.
+     */
+    orderBy?: PhotoTagOrderByWithRelationInput | PhotoTagOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PhotoTags.
+     */
+    cursor?: PhotoTagWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PhotoTags from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PhotoTags.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PhotoTags.
+     */
+    distinct?: PhotoTagScalarFieldEnum | PhotoTagScalarFieldEnum[]
+  }
+
+  /**
+   * PhotoTag findMany
+   */
+  export type PhotoTagFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PhotoTag
+     */
+    select?: PhotoTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PhotoTag
+     */
+    omit?: PhotoTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PhotoTagInclude<ExtArgs> | null
+    /**
+     * Filter, which PhotoTags to fetch.
+     */
+    where?: PhotoTagWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PhotoTags to fetch.
+     */
+    orderBy?: PhotoTagOrderByWithRelationInput | PhotoTagOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PhotoTags.
+     */
+    cursor?: PhotoTagWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PhotoTags from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PhotoTags.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PhotoTags.
+     */
+    distinct?: PhotoTagScalarFieldEnum | PhotoTagScalarFieldEnum[]
+  }
+
+  /**
+   * PhotoTag create
+   */
+  export type PhotoTagCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PhotoTag
+     */
+    select?: PhotoTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PhotoTag
+     */
+    omit?: PhotoTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PhotoTagInclude<ExtArgs> | null
+    /**
+     * The data needed to create a PhotoTag.
+     */
+    data: XOR<PhotoTagCreateInput, PhotoTagUncheckedCreateInput>
+  }
+
+  /**
+   * PhotoTag createMany
+   */
+  export type PhotoTagCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PhotoTags.
+     */
+    data: PhotoTagCreateManyInput | PhotoTagCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PhotoTag createManyAndReturn
+   */
+  export type PhotoTagCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PhotoTag
+     */
+    select?: PhotoTagSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PhotoTag
+     */
+    omit?: PhotoTagOmit<ExtArgs> | null
+    /**
+     * The data used to create many PhotoTags.
+     */
+    data: PhotoTagCreateManyInput | PhotoTagCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PhotoTagIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * PhotoTag update
+   */
+  export type PhotoTagUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PhotoTag
+     */
+    select?: PhotoTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PhotoTag
+     */
+    omit?: PhotoTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PhotoTagInclude<ExtArgs> | null
+    /**
+     * The data needed to update a PhotoTag.
+     */
+    data: XOR<PhotoTagUpdateInput, PhotoTagUncheckedUpdateInput>
+    /**
+     * Choose, which PhotoTag to update.
+     */
+    where: PhotoTagWhereUniqueInput
+  }
+
+  /**
+   * PhotoTag updateMany
+   */
+  export type PhotoTagUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PhotoTags.
+     */
+    data: XOR<PhotoTagUpdateManyMutationInput, PhotoTagUncheckedUpdateManyInput>
+    /**
+     * Filter which PhotoTags to update
+     */
+    where?: PhotoTagWhereInput
+    /**
+     * Limit how many PhotoTags to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PhotoTag updateManyAndReturn
+   */
+  export type PhotoTagUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PhotoTag
+     */
+    select?: PhotoTagSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PhotoTag
+     */
+    omit?: PhotoTagOmit<ExtArgs> | null
+    /**
+     * The data used to update PhotoTags.
+     */
+    data: XOR<PhotoTagUpdateManyMutationInput, PhotoTagUncheckedUpdateManyInput>
+    /**
+     * Filter which PhotoTags to update
+     */
+    where?: PhotoTagWhereInput
+    /**
+     * Limit how many PhotoTags to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PhotoTagIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * PhotoTag upsert
+   */
+  export type PhotoTagUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PhotoTag
+     */
+    select?: PhotoTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PhotoTag
+     */
+    omit?: PhotoTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PhotoTagInclude<ExtArgs> | null
+    /**
+     * The filter to search for the PhotoTag to update in case it exists.
+     */
+    where: PhotoTagWhereUniqueInput
+    /**
+     * In case the PhotoTag found by the `where` argument doesn't exist, create a new PhotoTag with this data.
+     */
+    create: XOR<PhotoTagCreateInput, PhotoTagUncheckedCreateInput>
+    /**
+     * In case the PhotoTag was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PhotoTagUpdateInput, PhotoTagUncheckedUpdateInput>
+  }
+
+  /**
+   * PhotoTag delete
+   */
+  export type PhotoTagDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PhotoTag
+     */
+    select?: PhotoTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PhotoTag
+     */
+    omit?: PhotoTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PhotoTagInclude<ExtArgs> | null
+    /**
+     * Filter which PhotoTag to delete.
+     */
+    where: PhotoTagWhereUniqueInput
+  }
+
+  /**
+   * PhotoTag deleteMany
+   */
+  export type PhotoTagDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PhotoTags to delete
+     */
+    where?: PhotoTagWhereInput
+    /**
+     * Limit how many PhotoTags to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * PhotoTag without action
+   */
+  export type PhotoTagDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PhotoTag
+     */
+    select?: PhotoTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PhotoTag
+     */
+    omit?: PhotoTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PhotoTagInclude<ExtArgs> | null
   }
 
 
@@ -15066,6 +20075,7 @@ export namespace Prisma {
     description: 'description',
     imageUrl: 'imageUrl',
     thumbnailUrl: 'thumbnailUrl',
+    previewUrl: 'previewUrl',
     width: 'width',
     height: 'height',
     fileSize: 'fileSize',
@@ -15143,6 +20153,7 @@ export namespace Prisma {
     body: 'body',
     authorId: 'authorId',
     categoryId: 'categoryId',
+    sourcePhotoId: 'sourcePhotoId',
     pinned: 'pinned',
     locked: 'locked',
     replyCount: 'replyCount',
@@ -15172,6 +20183,7 @@ export namespace Prisma {
     name: 'name',
     description: 'description',
     isPrivate: 'isPrivate',
+    isCollaborative: 'isCollaborative',
     coverUrl: 'coverUrl',
     userId: 'userId',
     createdAt: 'createdAt',
@@ -15181,14 +20193,55 @@ export namespace Prisma {
   export type CollectionScalarFieldEnum = (typeof CollectionScalarFieldEnum)[keyof typeof CollectionScalarFieldEnum]
 
 
+  export const CollectionSectionScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    collectionId: 'collectionId',
+    sortOrder: 'sortOrder',
+    createdAt: 'createdAt'
+  };
+
+  export type CollectionSectionScalarFieldEnum = (typeof CollectionSectionScalarFieldEnum)[keyof typeof CollectionSectionScalarFieldEnum]
+
+
+  export const CollectionCollaboratorScalarFieldEnum: {
+    id: 'id',
+    collectionId: 'collectionId',
+    userId: 'userId',
+    canEdit: 'canEdit',
+    invitedAt: 'invitedAt'
+  };
+
+  export type CollectionCollaboratorScalarFieldEnum = (typeof CollectionCollaboratorScalarFieldEnum)[keyof typeof CollectionCollaboratorScalarFieldEnum]
+
+
   export const CollectionItemScalarFieldEnum: {
     id: 'id',
     collectionId: 'collectionId',
     photoId: 'photoId',
+    sectionId: 'sectionId',
+    note: 'note',
     savedAt: 'savedAt'
   };
 
   export type CollectionItemScalarFieldEnum = (typeof CollectionItemScalarFieldEnum)[keyof typeof CollectionItemScalarFieldEnum]
+
+
+  export const TagScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    slug: 'slug'
+  };
+
+  export type TagScalarFieldEnum = (typeof TagScalarFieldEnum)[keyof typeof TagScalarFieldEnum]
+
+
+  export const PhotoTagScalarFieldEnum: {
+    photoId: 'photoId',
+    tagId: 'tagId'
+  };
+
+  export type PhotoTagScalarFieldEnum = (typeof PhotoTagScalarFieldEnum)[keyof typeof PhotoTagScalarFieldEnum]
 
 
   export const FollowScalarFieldEnum: {
@@ -15405,6 +20458,7 @@ export namespace Prisma {
     forumThreads?: ForumThreadListRelationFilter
     forumReplies?: ForumReplyListRelationFilter
     collections?: CollectionListRelationFilter
+    collectionCollabs?: CollectionCollaboratorListRelationFilter
     followers?: FollowListRelationFilter
     following?: FollowListRelationFilter
   }
@@ -15431,6 +20485,7 @@ export namespace Prisma {
     forumThreads?: ForumThreadOrderByRelationAggregateInput
     forumReplies?: ForumReplyOrderByRelationAggregateInput
     collections?: CollectionOrderByRelationAggregateInput
+    collectionCollabs?: CollectionCollaboratorOrderByRelationAggregateInput
     followers?: FollowOrderByRelationAggregateInput
     following?: FollowOrderByRelationAggregateInput
   }
@@ -15460,6 +20515,7 @@ export namespace Prisma {
     forumThreads?: ForumThreadListRelationFilter
     forumReplies?: ForumReplyListRelationFilter
     collections?: CollectionListRelationFilter
+    collectionCollabs?: CollectionCollaboratorListRelationFilter
     followers?: FollowListRelationFilter
     following?: FollowListRelationFilter
   }, "id" | "email" | "username">
@@ -15513,6 +20569,7 @@ export namespace Prisma {
     description?: StringNullableFilter<"Photo"> | string | null
     imageUrl?: StringFilter<"Photo"> | string
     thumbnailUrl?: StringNullableFilter<"Photo"> | string | null
+    previewUrl?: StringNullableFilter<"Photo"> | string | null
     width?: IntFilter<"Photo"> | number
     height?: IntFilter<"Photo"> | number
     fileSize?: IntFilter<"Photo"> | number
@@ -15537,7 +20594,9 @@ export namespace Prisma {
     comments?: CommentListRelationFilter
     awards?: AwardListRelationFilter
     forumReplies?: ForumReplyListRelationFilter
+    forumThreads?: ForumThreadListRelationFilter
     collectionItems?: CollectionItemListRelationFilter
+    tags?: PhotoTagListRelationFilter
   }
 
   export type PhotoOrderByWithRelationInput = {
@@ -15546,6 +20605,7 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     imageUrl?: SortOrder
     thumbnailUrl?: SortOrderInput | SortOrder
+    previewUrl?: SortOrderInput | SortOrder
     width?: SortOrder
     height?: SortOrder
     fileSize?: SortOrder
@@ -15570,7 +20630,9 @@ export namespace Prisma {
     comments?: CommentOrderByRelationAggregateInput
     awards?: AwardOrderByRelationAggregateInput
     forumReplies?: ForumReplyOrderByRelationAggregateInput
+    forumThreads?: ForumThreadOrderByRelationAggregateInput
     collectionItems?: CollectionItemOrderByRelationAggregateInput
+    tags?: PhotoTagOrderByRelationAggregateInput
   }
 
   export type PhotoWhereUniqueInput = Prisma.AtLeast<{
@@ -15582,6 +20644,7 @@ export namespace Prisma {
     description?: StringNullableFilter<"Photo"> | string | null
     imageUrl?: StringFilter<"Photo"> | string
     thumbnailUrl?: StringNullableFilter<"Photo"> | string | null
+    previewUrl?: StringNullableFilter<"Photo"> | string | null
     width?: IntFilter<"Photo"> | number
     height?: IntFilter<"Photo"> | number
     fileSize?: IntFilter<"Photo"> | number
@@ -15606,7 +20669,9 @@ export namespace Prisma {
     comments?: CommentListRelationFilter
     awards?: AwardListRelationFilter
     forumReplies?: ForumReplyListRelationFilter
+    forumThreads?: ForumThreadListRelationFilter
     collectionItems?: CollectionItemListRelationFilter
+    tags?: PhotoTagListRelationFilter
   }, "id">
 
   export type PhotoOrderByWithAggregationInput = {
@@ -15615,6 +20680,7 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     imageUrl?: SortOrder
     thumbnailUrl?: SortOrderInput | SortOrder
+    previewUrl?: SortOrderInput | SortOrder
     width?: SortOrder
     height?: SortOrder
     fileSize?: SortOrder
@@ -15650,6 +20716,7 @@ export namespace Prisma {
     description?: StringNullableWithAggregatesFilter<"Photo"> | string | null
     imageUrl?: StringWithAggregatesFilter<"Photo"> | string
     thumbnailUrl?: StringNullableWithAggregatesFilter<"Photo"> | string | null
+    previewUrl?: StringNullableWithAggregatesFilter<"Photo"> | string | null
     width?: IntWithAggregatesFilter<"Photo"> | number
     height?: IntWithAggregatesFilter<"Photo"> | number
     fileSize?: IntWithAggregatesFilter<"Photo"> | number
@@ -15930,6 +20997,7 @@ export namespace Prisma {
     body?: StringFilter<"ForumThread"> | string
     authorId?: StringFilter<"ForumThread"> | string
     categoryId?: StringFilter<"ForumThread"> | string
+    sourcePhotoId?: StringNullableFilter<"ForumThread"> | string | null
     pinned?: BoolFilter<"ForumThread"> | boolean
     locked?: BoolFilter<"ForumThread"> | boolean
     replyCount?: IntFilter<"ForumThread"> | number
@@ -15938,6 +21006,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"ForumThread"> | Date | string
     author?: XOR<UserScalarRelationFilter, UserWhereInput>
     category?: XOR<ForumCategoryScalarRelationFilter, ForumCategoryWhereInput>
+    sourcePhoto?: XOR<PhotoNullableScalarRelationFilter, PhotoWhereInput> | null
     replies?: ForumReplyListRelationFilter
   }
 
@@ -15947,6 +21016,7 @@ export namespace Prisma {
     body?: SortOrder
     authorId?: SortOrder
     categoryId?: SortOrder
+    sourcePhotoId?: SortOrderInput | SortOrder
     pinned?: SortOrder
     locked?: SortOrder
     replyCount?: SortOrder
@@ -15955,6 +21025,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     author?: UserOrderByWithRelationInput
     category?: ForumCategoryOrderByWithRelationInput
+    sourcePhoto?: PhotoOrderByWithRelationInput
     replies?: ForumReplyOrderByRelationAggregateInput
   }
 
@@ -15967,6 +21038,7 @@ export namespace Prisma {
     body?: StringFilter<"ForumThread"> | string
     authorId?: StringFilter<"ForumThread"> | string
     categoryId?: StringFilter<"ForumThread"> | string
+    sourcePhotoId?: StringNullableFilter<"ForumThread"> | string | null
     pinned?: BoolFilter<"ForumThread"> | boolean
     locked?: BoolFilter<"ForumThread"> | boolean
     replyCount?: IntFilter<"ForumThread"> | number
@@ -15975,6 +21047,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"ForumThread"> | Date | string
     author?: XOR<UserScalarRelationFilter, UserWhereInput>
     category?: XOR<ForumCategoryScalarRelationFilter, ForumCategoryWhereInput>
+    sourcePhoto?: XOR<PhotoNullableScalarRelationFilter, PhotoWhereInput> | null
     replies?: ForumReplyListRelationFilter
   }, "id">
 
@@ -15984,6 +21057,7 @@ export namespace Prisma {
     body?: SortOrder
     authorId?: SortOrder
     categoryId?: SortOrder
+    sourcePhotoId?: SortOrderInput | SortOrder
     pinned?: SortOrder
     locked?: SortOrder
     replyCount?: SortOrder
@@ -16006,6 +21080,7 @@ export namespace Prisma {
     body?: StringWithAggregatesFilter<"ForumThread"> | string
     authorId?: StringWithAggregatesFilter<"ForumThread"> | string
     categoryId?: StringWithAggregatesFilter<"ForumThread"> | string
+    sourcePhotoId?: StringNullableWithAggregatesFilter<"ForumThread"> | string | null
     pinned?: BoolWithAggregatesFilter<"ForumThread"> | boolean
     locked?: BoolWithAggregatesFilter<"ForumThread"> | boolean
     replyCount?: IntWithAggregatesFilter<"ForumThread"> | number
@@ -16093,12 +21168,15 @@ export namespace Prisma {
     name?: StringFilter<"Collection"> | string
     description?: StringNullableFilter<"Collection"> | string | null
     isPrivate?: BoolFilter<"Collection"> | boolean
+    isCollaborative?: BoolFilter<"Collection"> | boolean
     coverUrl?: StringNullableFilter<"Collection"> | string | null
     userId?: StringFilter<"Collection"> | string
     createdAt?: DateTimeFilter<"Collection"> | Date | string
     updatedAt?: DateTimeFilter<"Collection"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     items?: CollectionItemListRelationFilter
+    sections?: CollectionSectionListRelationFilter
+    collaborators?: CollectionCollaboratorListRelationFilter
   }
 
   export type CollectionOrderByWithRelationInput = {
@@ -16106,12 +21184,15 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrderInput | SortOrder
     isPrivate?: SortOrder
+    isCollaborative?: SortOrder
     coverUrl?: SortOrderInput | SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     user?: UserOrderByWithRelationInput
     items?: CollectionItemOrderByRelationAggregateInput
+    sections?: CollectionSectionOrderByRelationAggregateInput
+    collaborators?: CollectionCollaboratorOrderByRelationAggregateInput
   }
 
   export type CollectionWhereUniqueInput = Prisma.AtLeast<{
@@ -16122,12 +21203,15 @@ export namespace Prisma {
     name?: StringFilter<"Collection"> | string
     description?: StringNullableFilter<"Collection"> | string | null
     isPrivate?: BoolFilter<"Collection"> | boolean
+    isCollaborative?: BoolFilter<"Collection"> | boolean
     coverUrl?: StringNullableFilter<"Collection"> | string | null
     userId?: StringFilter<"Collection"> | string
     createdAt?: DateTimeFilter<"Collection"> | Date | string
     updatedAt?: DateTimeFilter<"Collection"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     items?: CollectionItemListRelationFilter
+    sections?: CollectionSectionListRelationFilter
+    collaborators?: CollectionCollaboratorListRelationFilter
   }, "id">
 
   export type CollectionOrderByWithAggregationInput = {
@@ -16135,6 +21219,7 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrderInput | SortOrder
     isPrivate?: SortOrder
+    isCollaborative?: SortOrder
     coverUrl?: SortOrderInput | SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
@@ -16152,10 +21237,130 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"Collection"> | string
     description?: StringNullableWithAggregatesFilter<"Collection"> | string | null
     isPrivate?: BoolWithAggregatesFilter<"Collection"> | boolean
+    isCollaborative?: BoolWithAggregatesFilter<"Collection"> | boolean
     coverUrl?: StringNullableWithAggregatesFilter<"Collection"> | string | null
     userId?: StringWithAggregatesFilter<"Collection"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Collection"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Collection"> | Date | string
+  }
+
+  export type CollectionSectionWhereInput = {
+    AND?: CollectionSectionWhereInput | CollectionSectionWhereInput[]
+    OR?: CollectionSectionWhereInput[]
+    NOT?: CollectionSectionWhereInput | CollectionSectionWhereInput[]
+    id?: StringFilter<"CollectionSection"> | string
+    name?: StringFilter<"CollectionSection"> | string
+    collectionId?: StringFilter<"CollectionSection"> | string
+    sortOrder?: IntFilter<"CollectionSection"> | number
+    createdAt?: DateTimeFilter<"CollectionSection"> | Date | string
+    collection?: XOR<CollectionScalarRelationFilter, CollectionWhereInput>
+    items?: CollectionItemListRelationFilter
+  }
+
+  export type CollectionSectionOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    collectionId?: SortOrder
+    sortOrder?: SortOrder
+    createdAt?: SortOrder
+    collection?: CollectionOrderByWithRelationInput
+    items?: CollectionItemOrderByRelationAggregateInput
+  }
+
+  export type CollectionSectionWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: CollectionSectionWhereInput | CollectionSectionWhereInput[]
+    OR?: CollectionSectionWhereInput[]
+    NOT?: CollectionSectionWhereInput | CollectionSectionWhereInput[]
+    name?: StringFilter<"CollectionSection"> | string
+    collectionId?: StringFilter<"CollectionSection"> | string
+    sortOrder?: IntFilter<"CollectionSection"> | number
+    createdAt?: DateTimeFilter<"CollectionSection"> | Date | string
+    collection?: XOR<CollectionScalarRelationFilter, CollectionWhereInput>
+    items?: CollectionItemListRelationFilter
+  }, "id">
+
+  export type CollectionSectionOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    collectionId?: SortOrder
+    sortOrder?: SortOrder
+    createdAt?: SortOrder
+    _count?: CollectionSectionCountOrderByAggregateInput
+    _avg?: CollectionSectionAvgOrderByAggregateInput
+    _max?: CollectionSectionMaxOrderByAggregateInput
+    _min?: CollectionSectionMinOrderByAggregateInput
+    _sum?: CollectionSectionSumOrderByAggregateInput
+  }
+
+  export type CollectionSectionScalarWhereWithAggregatesInput = {
+    AND?: CollectionSectionScalarWhereWithAggregatesInput | CollectionSectionScalarWhereWithAggregatesInput[]
+    OR?: CollectionSectionScalarWhereWithAggregatesInput[]
+    NOT?: CollectionSectionScalarWhereWithAggregatesInput | CollectionSectionScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CollectionSection"> | string
+    name?: StringWithAggregatesFilter<"CollectionSection"> | string
+    collectionId?: StringWithAggregatesFilter<"CollectionSection"> | string
+    sortOrder?: IntWithAggregatesFilter<"CollectionSection"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"CollectionSection"> | Date | string
+  }
+
+  export type CollectionCollaboratorWhereInput = {
+    AND?: CollectionCollaboratorWhereInput | CollectionCollaboratorWhereInput[]
+    OR?: CollectionCollaboratorWhereInput[]
+    NOT?: CollectionCollaboratorWhereInput | CollectionCollaboratorWhereInput[]
+    id?: StringFilter<"CollectionCollaborator"> | string
+    collectionId?: StringFilter<"CollectionCollaborator"> | string
+    userId?: StringFilter<"CollectionCollaborator"> | string
+    canEdit?: BoolFilter<"CollectionCollaborator"> | boolean
+    invitedAt?: DateTimeFilter<"CollectionCollaborator"> | Date | string
+    collection?: XOR<CollectionScalarRelationFilter, CollectionWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type CollectionCollaboratorOrderByWithRelationInput = {
+    id?: SortOrder
+    collectionId?: SortOrder
+    userId?: SortOrder
+    canEdit?: SortOrder
+    invitedAt?: SortOrder
+    collection?: CollectionOrderByWithRelationInput
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type CollectionCollaboratorWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    collectionId_userId?: CollectionCollaboratorCollectionIdUserIdCompoundUniqueInput
+    AND?: CollectionCollaboratorWhereInput | CollectionCollaboratorWhereInput[]
+    OR?: CollectionCollaboratorWhereInput[]
+    NOT?: CollectionCollaboratorWhereInput | CollectionCollaboratorWhereInput[]
+    collectionId?: StringFilter<"CollectionCollaborator"> | string
+    userId?: StringFilter<"CollectionCollaborator"> | string
+    canEdit?: BoolFilter<"CollectionCollaborator"> | boolean
+    invitedAt?: DateTimeFilter<"CollectionCollaborator"> | Date | string
+    collection?: XOR<CollectionScalarRelationFilter, CollectionWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id" | "collectionId_userId">
+
+  export type CollectionCollaboratorOrderByWithAggregationInput = {
+    id?: SortOrder
+    collectionId?: SortOrder
+    userId?: SortOrder
+    canEdit?: SortOrder
+    invitedAt?: SortOrder
+    _count?: CollectionCollaboratorCountOrderByAggregateInput
+    _max?: CollectionCollaboratorMaxOrderByAggregateInput
+    _min?: CollectionCollaboratorMinOrderByAggregateInput
+  }
+
+  export type CollectionCollaboratorScalarWhereWithAggregatesInput = {
+    AND?: CollectionCollaboratorScalarWhereWithAggregatesInput | CollectionCollaboratorScalarWhereWithAggregatesInput[]
+    OR?: CollectionCollaboratorScalarWhereWithAggregatesInput[]
+    NOT?: CollectionCollaboratorScalarWhereWithAggregatesInput | CollectionCollaboratorScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CollectionCollaborator"> | string
+    collectionId?: StringWithAggregatesFilter<"CollectionCollaborator"> | string
+    userId?: StringWithAggregatesFilter<"CollectionCollaborator"> | string
+    canEdit?: BoolWithAggregatesFilter<"CollectionCollaborator"> | boolean
+    invitedAt?: DateTimeWithAggregatesFilter<"CollectionCollaborator"> | Date | string
   }
 
   export type CollectionItemWhereInput = {
@@ -16165,18 +21370,24 @@ export namespace Prisma {
     id?: StringFilter<"CollectionItem"> | string
     collectionId?: StringFilter<"CollectionItem"> | string
     photoId?: StringFilter<"CollectionItem"> | string
+    sectionId?: StringNullableFilter<"CollectionItem"> | string | null
+    note?: StringNullableFilter<"CollectionItem"> | string | null
     savedAt?: DateTimeFilter<"CollectionItem"> | Date | string
     collection?: XOR<CollectionScalarRelationFilter, CollectionWhereInput>
     photo?: XOR<PhotoScalarRelationFilter, PhotoWhereInput>
+    section?: XOR<CollectionSectionNullableScalarRelationFilter, CollectionSectionWhereInput> | null
   }
 
   export type CollectionItemOrderByWithRelationInput = {
     id?: SortOrder
     collectionId?: SortOrder
     photoId?: SortOrder
+    sectionId?: SortOrderInput | SortOrder
+    note?: SortOrderInput | SortOrder
     savedAt?: SortOrder
     collection?: CollectionOrderByWithRelationInput
     photo?: PhotoOrderByWithRelationInput
+    section?: CollectionSectionOrderByWithRelationInput
   }
 
   export type CollectionItemWhereUniqueInput = Prisma.AtLeast<{
@@ -16187,15 +21398,20 @@ export namespace Prisma {
     NOT?: CollectionItemWhereInput | CollectionItemWhereInput[]
     collectionId?: StringFilter<"CollectionItem"> | string
     photoId?: StringFilter<"CollectionItem"> | string
+    sectionId?: StringNullableFilter<"CollectionItem"> | string | null
+    note?: StringNullableFilter<"CollectionItem"> | string | null
     savedAt?: DateTimeFilter<"CollectionItem"> | Date | string
     collection?: XOR<CollectionScalarRelationFilter, CollectionWhereInput>
     photo?: XOR<PhotoScalarRelationFilter, PhotoWhereInput>
+    section?: XOR<CollectionSectionNullableScalarRelationFilter, CollectionSectionWhereInput> | null
   }, "id" | "collectionId_photoId">
 
   export type CollectionItemOrderByWithAggregationInput = {
     id?: SortOrder
     collectionId?: SortOrder
     photoId?: SortOrder
+    sectionId?: SortOrderInput | SortOrder
+    note?: SortOrderInput | SortOrder
     savedAt?: SortOrder
     _count?: CollectionItemCountOrderByAggregateInput
     _max?: CollectionItemMaxOrderByAggregateInput
@@ -16209,7 +21425,98 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"CollectionItem"> | string
     collectionId?: StringWithAggregatesFilter<"CollectionItem"> | string
     photoId?: StringWithAggregatesFilter<"CollectionItem"> | string
+    sectionId?: StringNullableWithAggregatesFilter<"CollectionItem"> | string | null
+    note?: StringNullableWithAggregatesFilter<"CollectionItem"> | string | null
     savedAt?: DateTimeWithAggregatesFilter<"CollectionItem"> | Date | string
+  }
+
+  export type TagWhereInput = {
+    AND?: TagWhereInput | TagWhereInput[]
+    OR?: TagWhereInput[]
+    NOT?: TagWhereInput | TagWhereInput[]
+    id?: StringFilter<"Tag"> | string
+    name?: StringFilter<"Tag"> | string
+    slug?: StringFilter<"Tag"> | string
+    photoTags?: PhotoTagListRelationFilter
+  }
+
+  export type TagOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    photoTags?: PhotoTagOrderByRelationAggregateInput
+  }
+
+  export type TagWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    name?: string
+    slug?: string
+    AND?: TagWhereInput | TagWhereInput[]
+    OR?: TagWhereInput[]
+    NOT?: TagWhereInput | TagWhereInput[]
+    photoTags?: PhotoTagListRelationFilter
+  }, "id" | "name" | "slug">
+
+  export type TagOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    _count?: TagCountOrderByAggregateInput
+    _max?: TagMaxOrderByAggregateInput
+    _min?: TagMinOrderByAggregateInput
+  }
+
+  export type TagScalarWhereWithAggregatesInput = {
+    AND?: TagScalarWhereWithAggregatesInput | TagScalarWhereWithAggregatesInput[]
+    OR?: TagScalarWhereWithAggregatesInput[]
+    NOT?: TagScalarWhereWithAggregatesInput | TagScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Tag"> | string
+    name?: StringWithAggregatesFilter<"Tag"> | string
+    slug?: StringWithAggregatesFilter<"Tag"> | string
+  }
+
+  export type PhotoTagWhereInput = {
+    AND?: PhotoTagWhereInput | PhotoTagWhereInput[]
+    OR?: PhotoTagWhereInput[]
+    NOT?: PhotoTagWhereInput | PhotoTagWhereInput[]
+    photoId?: StringFilter<"PhotoTag"> | string
+    tagId?: StringFilter<"PhotoTag"> | string
+    photo?: XOR<PhotoScalarRelationFilter, PhotoWhereInput>
+    tag?: XOR<TagScalarRelationFilter, TagWhereInput>
+  }
+
+  export type PhotoTagOrderByWithRelationInput = {
+    photoId?: SortOrder
+    tagId?: SortOrder
+    photo?: PhotoOrderByWithRelationInput
+    tag?: TagOrderByWithRelationInput
+  }
+
+  export type PhotoTagWhereUniqueInput = Prisma.AtLeast<{
+    photoId_tagId?: PhotoTagPhotoIdTagIdCompoundUniqueInput
+    AND?: PhotoTagWhereInput | PhotoTagWhereInput[]
+    OR?: PhotoTagWhereInput[]
+    NOT?: PhotoTagWhereInput | PhotoTagWhereInput[]
+    photoId?: StringFilter<"PhotoTag"> | string
+    tagId?: StringFilter<"PhotoTag"> | string
+    photo?: XOR<PhotoScalarRelationFilter, PhotoWhereInput>
+    tag?: XOR<TagScalarRelationFilter, TagWhereInput>
+  }, "photoId_tagId">
+
+  export type PhotoTagOrderByWithAggregationInput = {
+    photoId?: SortOrder
+    tagId?: SortOrder
+    _count?: PhotoTagCountOrderByAggregateInput
+    _max?: PhotoTagMaxOrderByAggregateInput
+    _min?: PhotoTagMinOrderByAggregateInput
+  }
+
+  export type PhotoTagScalarWhereWithAggregatesInput = {
+    AND?: PhotoTagScalarWhereWithAggregatesInput | PhotoTagScalarWhereWithAggregatesInput[]
+    OR?: PhotoTagScalarWhereWithAggregatesInput[]
+    NOT?: PhotoTagScalarWhereWithAggregatesInput | PhotoTagScalarWhereWithAggregatesInput[]
+    photoId?: StringWithAggregatesFilter<"PhotoTag"> | string
+    tagId?: StringWithAggregatesFilter<"PhotoTag"> | string
   }
 
   export type FollowWhereInput = {
@@ -16288,6 +21595,7 @@ export namespace Prisma {
     forumThreads?: ForumThreadCreateNestedManyWithoutAuthorInput
     forumReplies?: ForumReplyCreateNestedManyWithoutAuthorInput
     collections?: CollectionCreateNestedManyWithoutUserInput
+    collectionCollabs?: CollectionCollaboratorCreateNestedManyWithoutUserInput
     followers?: FollowCreateNestedManyWithoutFollowingInput
     following?: FollowCreateNestedManyWithoutFollowerInput
   }
@@ -16314,6 +21622,7 @@ export namespace Prisma {
     forumThreads?: ForumThreadUncheckedCreateNestedManyWithoutAuthorInput
     forumReplies?: ForumReplyUncheckedCreateNestedManyWithoutAuthorInput
     collections?: CollectionUncheckedCreateNestedManyWithoutUserInput
+    collectionCollabs?: CollectionCollaboratorUncheckedCreateNestedManyWithoutUserInput
     followers?: FollowUncheckedCreateNestedManyWithoutFollowingInput
     following?: FollowUncheckedCreateNestedManyWithoutFollowerInput
   }
@@ -16340,6 +21649,7 @@ export namespace Prisma {
     forumThreads?: ForumThreadUpdateManyWithoutAuthorNestedInput
     forumReplies?: ForumReplyUpdateManyWithoutAuthorNestedInput
     collections?: CollectionUpdateManyWithoutUserNestedInput
+    collectionCollabs?: CollectionCollaboratorUpdateManyWithoutUserNestedInput
     followers?: FollowUpdateManyWithoutFollowingNestedInput
     following?: FollowUpdateManyWithoutFollowerNestedInput
   }
@@ -16366,6 +21676,7 @@ export namespace Prisma {
     forumThreads?: ForumThreadUncheckedUpdateManyWithoutAuthorNestedInput
     forumReplies?: ForumReplyUncheckedUpdateManyWithoutAuthorNestedInput
     collections?: CollectionUncheckedUpdateManyWithoutUserNestedInput
+    collectionCollabs?: CollectionCollaboratorUncheckedUpdateManyWithoutUserNestedInput
     followers?: FollowUncheckedUpdateManyWithoutFollowingNestedInput
     following?: FollowUncheckedUpdateManyWithoutFollowerNestedInput
   }
@@ -16427,6 +21738,7 @@ export namespace Prisma {
     description?: string | null
     imageUrl: string
     thumbnailUrl?: string | null
+    previewUrl?: string | null
     width?: number
     height?: number
     fileSize?: number
@@ -16450,7 +21762,9 @@ export namespace Prisma {
     comments?: CommentCreateNestedManyWithoutPhotoInput
     awards?: AwardCreateNestedManyWithoutPhotoInput
     forumReplies?: ForumReplyCreateNestedManyWithoutEmbeddedPhotoInput
+    forumThreads?: ForumThreadCreateNestedManyWithoutSourcePhotoInput
     collectionItems?: CollectionItemCreateNestedManyWithoutPhotoInput
+    tags?: PhotoTagCreateNestedManyWithoutPhotoInput
   }
 
   export type PhotoUncheckedCreateInput = {
@@ -16459,6 +21773,7 @@ export namespace Prisma {
     description?: string | null
     imageUrl: string
     thumbnailUrl?: string | null
+    previewUrl?: string | null
     width?: number
     height?: number
     fileSize?: number
@@ -16482,7 +21797,9 @@ export namespace Prisma {
     comments?: CommentUncheckedCreateNestedManyWithoutPhotoInput
     awards?: AwardUncheckedCreateNestedManyWithoutPhotoInput
     forumReplies?: ForumReplyUncheckedCreateNestedManyWithoutEmbeddedPhotoInput
+    forumThreads?: ForumThreadUncheckedCreateNestedManyWithoutSourcePhotoInput
     collectionItems?: CollectionItemUncheckedCreateNestedManyWithoutPhotoInput
+    tags?: PhotoTagUncheckedCreateNestedManyWithoutPhotoInput
   }
 
   export type PhotoUpdateInput = {
@@ -16491,6 +21808,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    previewUrl?: NullableStringFieldUpdateOperationsInput | string | null
     width?: IntFieldUpdateOperationsInput | number
     height?: IntFieldUpdateOperationsInput | number
     fileSize?: IntFieldUpdateOperationsInput | number
@@ -16514,7 +21832,9 @@ export namespace Prisma {
     comments?: CommentUpdateManyWithoutPhotoNestedInput
     awards?: AwardUpdateManyWithoutPhotoNestedInput
     forumReplies?: ForumReplyUpdateManyWithoutEmbeddedPhotoNestedInput
+    forumThreads?: ForumThreadUpdateManyWithoutSourcePhotoNestedInput
     collectionItems?: CollectionItemUpdateManyWithoutPhotoNestedInput
+    tags?: PhotoTagUpdateManyWithoutPhotoNestedInput
   }
 
   export type PhotoUncheckedUpdateInput = {
@@ -16523,6 +21843,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    previewUrl?: NullableStringFieldUpdateOperationsInput | string | null
     width?: IntFieldUpdateOperationsInput | number
     height?: IntFieldUpdateOperationsInput | number
     fileSize?: IntFieldUpdateOperationsInput | number
@@ -16546,7 +21867,9 @@ export namespace Prisma {
     comments?: CommentUncheckedUpdateManyWithoutPhotoNestedInput
     awards?: AwardUncheckedUpdateManyWithoutPhotoNestedInput
     forumReplies?: ForumReplyUncheckedUpdateManyWithoutEmbeddedPhotoNestedInput
+    forumThreads?: ForumThreadUncheckedUpdateManyWithoutSourcePhotoNestedInput
     collectionItems?: CollectionItemUncheckedUpdateManyWithoutPhotoNestedInput
+    tags?: PhotoTagUncheckedUpdateManyWithoutPhotoNestedInput
   }
 
   export type PhotoCreateManyInput = {
@@ -16555,6 +21878,7 @@ export namespace Prisma {
     description?: string | null
     imageUrl: string
     thumbnailUrl?: string | null
+    previewUrl?: string | null
     width?: number
     height?: number
     fileSize?: number
@@ -16582,6 +21906,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    previewUrl?: NullableStringFieldUpdateOperationsInput | string | null
     width?: IntFieldUpdateOperationsInput | number
     height?: IntFieldUpdateOperationsInput | number
     fileSize?: IntFieldUpdateOperationsInput | number
@@ -16608,6 +21933,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    previewUrl?: NullableStringFieldUpdateOperationsInput | string | null
     width?: IntFieldUpdateOperationsInput | number
     height?: IntFieldUpdateOperationsInput | number
     fileSize?: IntFieldUpdateOperationsInput | number
@@ -16884,6 +22210,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     author: UserCreateNestedOneWithoutForumThreadsInput
     category: ForumCategoryCreateNestedOneWithoutThreadsInput
+    sourcePhoto?: PhotoCreateNestedOneWithoutForumThreadsInput
     replies?: ForumReplyCreateNestedManyWithoutThreadInput
   }
 
@@ -16893,6 +22220,7 @@ export namespace Prisma {
     body: string
     authorId: string
     categoryId: string
+    sourcePhotoId?: string | null
     pinned?: boolean
     locked?: boolean
     replyCount?: number
@@ -16914,6 +22242,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     author?: UserUpdateOneRequiredWithoutForumThreadsNestedInput
     category?: ForumCategoryUpdateOneRequiredWithoutThreadsNestedInput
+    sourcePhoto?: PhotoUpdateOneWithoutForumThreadsNestedInput
     replies?: ForumReplyUpdateManyWithoutThreadNestedInput
   }
 
@@ -16923,6 +22252,7 @@ export namespace Prisma {
     body?: StringFieldUpdateOperationsInput | string
     authorId?: StringFieldUpdateOperationsInput | string
     categoryId?: StringFieldUpdateOperationsInput | string
+    sourcePhotoId?: NullableStringFieldUpdateOperationsInput | string | null
     pinned?: BoolFieldUpdateOperationsInput | boolean
     locked?: BoolFieldUpdateOperationsInput | boolean
     replyCount?: IntFieldUpdateOperationsInput | number
@@ -16938,6 +22268,7 @@ export namespace Prisma {
     body: string
     authorId: string
     categoryId: string
+    sourcePhotoId?: string | null
     pinned?: boolean
     locked?: boolean
     replyCount?: number
@@ -16964,6 +22295,7 @@ export namespace Prisma {
     body?: StringFieldUpdateOperationsInput | string
     authorId?: StringFieldUpdateOperationsInput | string
     categoryId?: StringFieldUpdateOperationsInput | string
+    sourcePhotoId?: NullableStringFieldUpdateOperationsInput | string | null
     pinned?: BoolFieldUpdateOperationsInput | boolean
     locked?: BoolFieldUpdateOperationsInput | boolean
     replyCount?: IntFieldUpdateOperationsInput | number
@@ -17044,11 +22376,14 @@ export namespace Prisma {
     name: string
     description?: string | null
     isPrivate?: boolean
+    isCollaborative?: boolean
     coverUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutCollectionsInput
     items?: CollectionItemCreateNestedManyWithoutCollectionInput
+    sections?: CollectionSectionCreateNestedManyWithoutCollectionInput
+    collaborators?: CollectionCollaboratorCreateNestedManyWithoutCollectionInput
   }
 
   export type CollectionUncheckedCreateInput = {
@@ -17056,11 +22391,14 @@ export namespace Prisma {
     name: string
     description?: string | null
     isPrivate?: boolean
+    isCollaborative?: boolean
     coverUrl?: string | null
     userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
     items?: CollectionItemUncheckedCreateNestedManyWithoutCollectionInput
+    sections?: CollectionSectionUncheckedCreateNestedManyWithoutCollectionInput
+    collaborators?: CollectionCollaboratorUncheckedCreateNestedManyWithoutCollectionInput
   }
 
   export type CollectionUpdateInput = {
@@ -17068,11 +22406,14 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     isPrivate?: BoolFieldUpdateOperationsInput | boolean
+    isCollaborative?: BoolFieldUpdateOperationsInput | boolean
     coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutCollectionsNestedInput
     items?: CollectionItemUpdateManyWithoutCollectionNestedInput
+    sections?: CollectionSectionUpdateManyWithoutCollectionNestedInput
+    collaborators?: CollectionCollaboratorUpdateManyWithoutCollectionNestedInput
   }
 
   export type CollectionUncheckedUpdateInput = {
@@ -17080,11 +22421,14 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     isPrivate?: BoolFieldUpdateOperationsInput | boolean
+    isCollaborative?: BoolFieldUpdateOperationsInput | boolean
     coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     items?: CollectionItemUncheckedUpdateManyWithoutCollectionNestedInput
+    sections?: CollectionSectionUncheckedUpdateManyWithoutCollectionNestedInput
+    collaborators?: CollectionCollaboratorUncheckedUpdateManyWithoutCollectionNestedInput
   }
 
   export type CollectionCreateManyInput = {
@@ -17092,6 +22436,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     isPrivate?: boolean
+    isCollaborative?: boolean
     coverUrl?: string | null
     userId: string
     createdAt?: Date | string
@@ -17103,6 +22448,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     isPrivate?: BoolFieldUpdateOperationsInput | boolean
+    isCollaborative?: BoolFieldUpdateOperationsInput | boolean
     coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17113,37 +22459,159 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     isPrivate?: BoolFieldUpdateOperationsInput | boolean
+    isCollaborative?: BoolFieldUpdateOperationsInput | boolean
     coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type CollectionSectionCreateInput = {
+    id?: string
+    name: string
+    sortOrder?: number
+    createdAt?: Date | string
+    collection: CollectionCreateNestedOneWithoutSectionsInput
+    items?: CollectionItemCreateNestedManyWithoutSectionInput
+  }
+
+  export type CollectionSectionUncheckedCreateInput = {
+    id?: string
+    name: string
+    collectionId: string
+    sortOrder?: number
+    createdAt?: Date | string
+    items?: CollectionItemUncheckedCreateNestedManyWithoutSectionInput
+  }
+
+  export type CollectionSectionUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    collection?: CollectionUpdateOneRequiredWithoutSectionsNestedInput
+    items?: CollectionItemUpdateManyWithoutSectionNestedInput
+  }
+
+  export type CollectionSectionUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    collectionId?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    items?: CollectionItemUncheckedUpdateManyWithoutSectionNestedInput
+  }
+
+  export type CollectionSectionCreateManyInput = {
+    id?: string
+    name: string
+    collectionId: string
+    sortOrder?: number
+    createdAt?: Date | string
+  }
+
+  export type CollectionSectionUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CollectionSectionUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    collectionId?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CollectionCollaboratorCreateInput = {
+    id?: string
+    canEdit?: boolean
+    invitedAt?: Date | string
+    collection: CollectionCreateNestedOneWithoutCollaboratorsInput
+    user: UserCreateNestedOneWithoutCollectionCollabsInput
+  }
+
+  export type CollectionCollaboratorUncheckedCreateInput = {
+    id?: string
+    collectionId: string
+    userId: string
+    canEdit?: boolean
+    invitedAt?: Date | string
+  }
+
+  export type CollectionCollaboratorUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    canEdit?: BoolFieldUpdateOperationsInput | boolean
+    invitedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    collection?: CollectionUpdateOneRequiredWithoutCollaboratorsNestedInput
+    user?: UserUpdateOneRequiredWithoutCollectionCollabsNestedInput
+  }
+
+  export type CollectionCollaboratorUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    collectionId?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    canEdit?: BoolFieldUpdateOperationsInput | boolean
+    invitedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CollectionCollaboratorCreateManyInput = {
+    id?: string
+    collectionId: string
+    userId: string
+    canEdit?: boolean
+    invitedAt?: Date | string
+  }
+
+  export type CollectionCollaboratorUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    canEdit?: BoolFieldUpdateOperationsInput | boolean
+    invitedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CollectionCollaboratorUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    collectionId?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    canEdit?: BoolFieldUpdateOperationsInput | boolean
+    invitedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type CollectionItemCreateInput = {
     id?: string
+    note?: string | null
     savedAt?: Date | string
     collection: CollectionCreateNestedOneWithoutItemsInput
     photo: PhotoCreateNestedOneWithoutCollectionItemsInput
+    section?: CollectionSectionCreateNestedOneWithoutItemsInput
   }
 
   export type CollectionItemUncheckedCreateInput = {
     id?: string
     collectionId: string
     photoId: string
+    sectionId?: string | null
+    note?: string | null
     savedAt?: Date | string
   }
 
   export type CollectionItemUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
     savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     collection?: CollectionUpdateOneRequiredWithoutItemsNestedInput
     photo?: PhotoUpdateOneRequiredWithoutCollectionItemsNestedInput
+    section?: CollectionSectionUpdateOneWithoutItemsNestedInput
   }
 
   export type CollectionItemUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     collectionId?: StringFieldUpdateOperationsInput | string
     photoId?: StringFieldUpdateOperationsInput | string
+    sectionId?: NullableStringFieldUpdateOperationsInput | string | null
+    note?: NullableStringFieldUpdateOperationsInput | string | null
     savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -17151,11 +22619,14 @@ export namespace Prisma {
     id?: string
     collectionId: string
     photoId: string
+    sectionId?: string | null
+    note?: string | null
     savedAt?: Date | string
   }
 
   export type CollectionItemUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
     savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -17163,7 +22634,89 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     collectionId?: StringFieldUpdateOperationsInput | string
     photoId?: StringFieldUpdateOperationsInput | string
+    sectionId?: NullableStringFieldUpdateOperationsInput | string | null
+    note?: NullableStringFieldUpdateOperationsInput | string | null
     savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TagCreateInput = {
+    id?: string
+    name: string
+    slug: string
+    photoTags?: PhotoTagCreateNestedManyWithoutTagInput
+  }
+
+  export type TagUncheckedCreateInput = {
+    id?: string
+    name: string
+    slug: string
+    photoTags?: PhotoTagUncheckedCreateNestedManyWithoutTagInput
+  }
+
+  export type TagUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    photoTags?: PhotoTagUpdateManyWithoutTagNestedInput
+  }
+
+  export type TagUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    photoTags?: PhotoTagUncheckedUpdateManyWithoutTagNestedInput
+  }
+
+  export type TagCreateManyInput = {
+    id?: string
+    name: string
+    slug: string
+  }
+
+  export type TagUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TagUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PhotoTagCreateInput = {
+    photo: PhotoCreateNestedOneWithoutTagsInput
+    tag: TagCreateNestedOneWithoutPhotoTagsInput
+  }
+
+  export type PhotoTagUncheckedCreateInput = {
+    photoId: string
+    tagId: string
+  }
+
+  export type PhotoTagUpdateInput = {
+    photo?: PhotoUpdateOneRequiredWithoutTagsNestedInput
+    tag?: TagUpdateOneRequiredWithoutPhotoTagsNestedInput
+  }
+
+  export type PhotoTagUncheckedUpdateInput = {
+    photoId?: StringFieldUpdateOperationsInput | string
+    tagId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PhotoTagCreateManyInput = {
+    photoId: string
+    tagId: string
+  }
+
+  export type PhotoTagUpdateManyMutationInput = {
+
+  }
+
+  export type PhotoTagUncheckedUpdateManyInput = {
+    photoId?: StringFieldUpdateOperationsInput | string
+    tagId?: StringFieldUpdateOperationsInput | string
   }
 
   export type FollowCreateInput = {
@@ -17310,6 +22863,12 @@ export namespace Prisma {
     none?: CollectionWhereInput
   }
 
+  export type CollectionCollaboratorListRelationFilter = {
+    every?: CollectionCollaboratorWhereInput
+    some?: CollectionCollaboratorWhereInput
+    none?: CollectionCollaboratorWhereInput
+  }
+
   export type FollowListRelationFilter = {
     every?: FollowWhereInput
     some?: FollowWhereInput
@@ -17346,6 +22905,10 @@ export namespace Prisma {
   }
 
   export type CollectionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CollectionCollaboratorOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -17532,7 +23095,17 @@ export namespace Prisma {
     none?: CollectionItemWhereInput
   }
 
+  export type PhotoTagListRelationFilter = {
+    every?: PhotoTagWhereInput
+    some?: PhotoTagWhereInput
+    none?: PhotoTagWhereInput
+  }
+
   export type CollectionItemOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type PhotoTagOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -17542,6 +23115,7 @@ export namespace Prisma {
     description?: SortOrder
     imageUrl?: SortOrder
     thumbnailUrl?: SortOrder
+    previewUrl?: SortOrder
     width?: SortOrder
     height?: SortOrder
     fileSize?: SortOrder
@@ -17577,6 +23151,7 @@ export namespace Prisma {
     description?: SortOrder
     imageUrl?: SortOrder
     thumbnailUrl?: SortOrder
+    previewUrl?: SortOrder
     width?: SortOrder
     height?: SortOrder
     fileSize?: SortOrder
@@ -17604,6 +23179,7 @@ export namespace Prisma {
     description?: SortOrder
     imageUrl?: SortOrder
     thumbnailUrl?: SortOrder
+    previewUrl?: SortOrder
     width?: SortOrder
     height?: SortOrder
     fileSize?: SortOrder
@@ -17879,12 +23455,18 @@ export namespace Prisma {
     isNot?: ForumCategoryWhereInput
   }
 
+  export type PhotoNullableScalarRelationFilter = {
+    is?: PhotoWhereInput | null
+    isNot?: PhotoWhereInput | null
+  }
+
   export type ForumThreadCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
     body?: SortOrder
     authorId?: SortOrder
     categoryId?: SortOrder
+    sourcePhotoId?: SortOrder
     pinned?: SortOrder
     locked?: SortOrder
     replyCount?: SortOrder
@@ -17903,6 +23485,7 @@ export namespace Prisma {
     body?: SortOrder
     authorId?: SortOrder
     categoryId?: SortOrder
+    sourcePhotoId?: SortOrder
     pinned?: SortOrder
     locked?: SortOrder
     replyCount?: SortOrder
@@ -17917,6 +23500,7 @@ export namespace Prisma {
     body?: SortOrder
     authorId?: SortOrder
     categoryId?: SortOrder
+    sourcePhotoId?: SortOrder
     pinned?: SortOrder
     locked?: SortOrder
     replyCount?: SortOrder
@@ -17940,11 +23524,6 @@ export namespace Prisma {
   export type ForumThreadScalarRelationFilter = {
     is?: ForumThreadWhereInput
     isNot?: ForumThreadWhereInput
-  }
-
-  export type PhotoNullableScalarRelationFilter = {
-    is?: PhotoWhereInput | null
-    isNot?: PhotoWhereInput | null
   }
 
   export type ForumReplyCountOrderByAggregateInput = {
@@ -17977,11 +23556,22 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type CollectionSectionListRelationFilter = {
+    every?: CollectionSectionWhereInput
+    some?: CollectionSectionWhereInput
+    none?: CollectionSectionWhereInput
+  }
+
+  export type CollectionSectionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type CollectionCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     description?: SortOrder
     isPrivate?: SortOrder
+    isCollaborative?: SortOrder
     coverUrl?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
@@ -17993,6 +23583,7 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     isPrivate?: SortOrder
+    isCollaborative?: SortOrder
     coverUrl?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
@@ -18004,6 +23595,7 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     isPrivate?: SortOrder
+    isCollaborative?: SortOrder
     coverUrl?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
@@ -18015,6 +23607,72 @@ export namespace Prisma {
     isNot?: CollectionWhereInput
   }
 
+  export type CollectionSectionCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    collectionId?: SortOrder
+    sortOrder?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CollectionSectionAvgOrderByAggregateInput = {
+    sortOrder?: SortOrder
+  }
+
+  export type CollectionSectionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    collectionId?: SortOrder
+    sortOrder?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CollectionSectionMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    collectionId?: SortOrder
+    sortOrder?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CollectionSectionSumOrderByAggregateInput = {
+    sortOrder?: SortOrder
+  }
+
+  export type CollectionCollaboratorCollectionIdUserIdCompoundUniqueInput = {
+    collectionId: string
+    userId: string
+  }
+
+  export type CollectionCollaboratorCountOrderByAggregateInput = {
+    id?: SortOrder
+    collectionId?: SortOrder
+    userId?: SortOrder
+    canEdit?: SortOrder
+    invitedAt?: SortOrder
+  }
+
+  export type CollectionCollaboratorMaxOrderByAggregateInput = {
+    id?: SortOrder
+    collectionId?: SortOrder
+    userId?: SortOrder
+    canEdit?: SortOrder
+    invitedAt?: SortOrder
+  }
+
+  export type CollectionCollaboratorMinOrderByAggregateInput = {
+    id?: SortOrder
+    collectionId?: SortOrder
+    userId?: SortOrder
+    canEdit?: SortOrder
+    invitedAt?: SortOrder
+  }
+
+  export type CollectionSectionNullableScalarRelationFilter = {
+    is?: CollectionSectionWhereInput | null
+    isNot?: CollectionSectionWhereInput | null
+  }
+
   export type CollectionItemCollectionIdPhotoIdCompoundUniqueInput = {
     collectionId: string
     photoId: string
@@ -18024,6 +23682,8 @@ export namespace Prisma {
     id?: SortOrder
     collectionId?: SortOrder
     photoId?: SortOrder
+    sectionId?: SortOrder
+    note?: SortOrder
     savedAt?: SortOrder
   }
 
@@ -18031,6 +23691,8 @@ export namespace Prisma {
     id?: SortOrder
     collectionId?: SortOrder
     photoId?: SortOrder
+    sectionId?: SortOrder
+    note?: SortOrder
     savedAt?: SortOrder
   }
 
@@ -18038,7 +23700,52 @@ export namespace Prisma {
     id?: SortOrder
     collectionId?: SortOrder
     photoId?: SortOrder
+    sectionId?: SortOrder
+    note?: SortOrder
     savedAt?: SortOrder
+  }
+
+  export type TagCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+  }
+
+  export type TagMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+  }
+
+  export type TagMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+  }
+
+  export type TagScalarRelationFilter = {
+    is?: TagWhereInput
+    isNot?: TagWhereInput
+  }
+
+  export type PhotoTagPhotoIdTagIdCompoundUniqueInput = {
+    photoId: string
+    tagId: string
+  }
+
+  export type PhotoTagCountOrderByAggregateInput = {
+    photoId?: SortOrder
+    tagId?: SortOrder
+  }
+
+  export type PhotoTagMaxOrderByAggregateInput = {
+    photoId?: SortOrder
+    tagId?: SortOrder
+  }
+
+  export type PhotoTagMinOrderByAggregateInput = {
+    photoId?: SortOrder
+    tagId?: SortOrder
   }
 
   export type FollowFollowerIdFollowingIdCompoundUniqueInput = {
@@ -18116,6 +23823,13 @@ export namespace Prisma {
     connect?: CollectionWhereUniqueInput | CollectionWhereUniqueInput[]
   }
 
+  export type CollectionCollaboratorCreateNestedManyWithoutUserInput = {
+    create?: XOR<CollectionCollaboratorCreateWithoutUserInput, CollectionCollaboratorUncheckedCreateWithoutUserInput> | CollectionCollaboratorCreateWithoutUserInput[] | CollectionCollaboratorUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CollectionCollaboratorCreateOrConnectWithoutUserInput | CollectionCollaboratorCreateOrConnectWithoutUserInput[]
+    createMany?: CollectionCollaboratorCreateManyUserInputEnvelope
+    connect?: CollectionCollaboratorWhereUniqueInput | CollectionCollaboratorWhereUniqueInput[]
+  }
+
   export type FollowCreateNestedManyWithoutFollowingInput = {
     create?: XOR<FollowCreateWithoutFollowingInput, FollowUncheckedCreateWithoutFollowingInput> | FollowCreateWithoutFollowingInput[] | FollowUncheckedCreateWithoutFollowingInput[]
     connectOrCreate?: FollowCreateOrConnectWithoutFollowingInput | FollowCreateOrConnectWithoutFollowingInput[]
@@ -18177,6 +23891,13 @@ export namespace Prisma {
     connectOrCreate?: CollectionCreateOrConnectWithoutUserInput | CollectionCreateOrConnectWithoutUserInput[]
     createMany?: CollectionCreateManyUserInputEnvelope
     connect?: CollectionWhereUniqueInput | CollectionWhereUniqueInput[]
+  }
+
+  export type CollectionCollaboratorUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<CollectionCollaboratorCreateWithoutUserInput, CollectionCollaboratorUncheckedCreateWithoutUserInput> | CollectionCollaboratorCreateWithoutUserInput[] | CollectionCollaboratorUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CollectionCollaboratorCreateOrConnectWithoutUserInput | CollectionCollaboratorCreateOrConnectWithoutUserInput[]
+    createMany?: CollectionCollaboratorCreateManyUserInputEnvelope
+    connect?: CollectionCollaboratorWhereUniqueInput | CollectionCollaboratorWhereUniqueInput[]
   }
 
   export type FollowUncheckedCreateNestedManyWithoutFollowingInput = {
@@ -18311,6 +24032,20 @@ export namespace Prisma {
     deleteMany?: CollectionScalarWhereInput | CollectionScalarWhereInput[]
   }
 
+  export type CollectionCollaboratorUpdateManyWithoutUserNestedInput = {
+    create?: XOR<CollectionCollaboratorCreateWithoutUserInput, CollectionCollaboratorUncheckedCreateWithoutUserInput> | CollectionCollaboratorCreateWithoutUserInput[] | CollectionCollaboratorUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CollectionCollaboratorCreateOrConnectWithoutUserInput | CollectionCollaboratorCreateOrConnectWithoutUserInput[]
+    upsert?: CollectionCollaboratorUpsertWithWhereUniqueWithoutUserInput | CollectionCollaboratorUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: CollectionCollaboratorCreateManyUserInputEnvelope
+    set?: CollectionCollaboratorWhereUniqueInput | CollectionCollaboratorWhereUniqueInput[]
+    disconnect?: CollectionCollaboratorWhereUniqueInput | CollectionCollaboratorWhereUniqueInput[]
+    delete?: CollectionCollaboratorWhereUniqueInput | CollectionCollaboratorWhereUniqueInput[]
+    connect?: CollectionCollaboratorWhereUniqueInput | CollectionCollaboratorWhereUniqueInput[]
+    update?: CollectionCollaboratorUpdateWithWhereUniqueWithoutUserInput | CollectionCollaboratorUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: CollectionCollaboratorUpdateManyWithWhereWithoutUserInput | CollectionCollaboratorUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: CollectionCollaboratorScalarWhereInput | CollectionCollaboratorScalarWhereInput[]
+  }
+
   export type FollowUpdateManyWithoutFollowingNestedInput = {
     create?: XOR<FollowCreateWithoutFollowingInput, FollowUncheckedCreateWithoutFollowingInput> | FollowCreateWithoutFollowingInput[] | FollowUncheckedCreateWithoutFollowingInput[]
     connectOrCreate?: FollowCreateOrConnectWithoutFollowingInput | FollowCreateOrConnectWithoutFollowingInput[]
@@ -18437,6 +24172,20 @@ export namespace Prisma {
     deleteMany?: CollectionScalarWhereInput | CollectionScalarWhereInput[]
   }
 
+  export type CollectionCollaboratorUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<CollectionCollaboratorCreateWithoutUserInput, CollectionCollaboratorUncheckedCreateWithoutUserInput> | CollectionCollaboratorCreateWithoutUserInput[] | CollectionCollaboratorUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CollectionCollaboratorCreateOrConnectWithoutUserInput | CollectionCollaboratorCreateOrConnectWithoutUserInput[]
+    upsert?: CollectionCollaboratorUpsertWithWhereUniqueWithoutUserInput | CollectionCollaboratorUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: CollectionCollaboratorCreateManyUserInputEnvelope
+    set?: CollectionCollaboratorWhereUniqueInput | CollectionCollaboratorWhereUniqueInput[]
+    disconnect?: CollectionCollaboratorWhereUniqueInput | CollectionCollaboratorWhereUniqueInput[]
+    delete?: CollectionCollaboratorWhereUniqueInput | CollectionCollaboratorWhereUniqueInput[]
+    connect?: CollectionCollaboratorWhereUniqueInput | CollectionCollaboratorWhereUniqueInput[]
+    update?: CollectionCollaboratorUpdateWithWhereUniqueWithoutUserInput | CollectionCollaboratorUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: CollectionCollaboratorUpdateManyWithWhereWithoutUserInput | CollectionCollaboratorUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: CollectionCollaboratorScalarWhereInput | CollectionCollaboratorScalarWhereInput[]
+  }
+
   export type FollowUncheckedUpdateManyWithoutFollowingNestedInput = {
     create?: XOR<FollowCreateWithoutFollowingInput, FollowUncheckedCreateWithoutFollowingInput> | FollowCreateWithoutFollowingInput[] | FollowUncheckedCreateWithoutFollowingInput[]
     connectOrCreate?: FollowCreateOrConnectWithoutFollowingInput | FollowCreateOrConnectWithoutFollowingInput[]
@@ -18499,11 +24248,25 @@ export namespace Prisma {
     connect?: ForumReplyWhereUniqueInput | ForumReplyWhereUniqueInput[]
   }
 
+  export type ForumThreadCreateNestedManyWithoutSourcePhotoInput = {
+    create?: XOR<ForumThreadCreateWithoutSourcePhotoInput, ForumThreadUncheckedCreateWithoutSourcePhotoInput> | ForumThreadCreateWithoutSourcePhotoInput[] | ForumThreadUncheckedCreateWithoutSourcePhotoInput[]
+    connectOrCreate?: ForumThreadCreateOrConnectWithoutSourcePhotoInput | ForumThreadCreateOrConnectWithoutSourcePhotoInput[]
+    createMany?: ForumThreadCreateManySourcePhotoInputEnvelope
+    connect?: ForumThreadWhereUniqueInput | ForumThreadWhereUniqueInput[]
+  }
+
   export type CollectionItemCreateNestedManyWithoutPhotoInput = {
     create?: XOR<CollectionItemCreateWithoutPhotoInput, CollectionItemUncheckedCreateWithoutPhotoInput> | CollectionItemCreateWithoutPhotoInput[] | CollectionItemUncheckedCreateWithoutPhotoInput[]
     connectOrCreate?: CollectionItemCreateOrConnectWithoutPhotoInput | CollectionItemCreateOrConnectWithoutPhotoInput[]
     createMany?: CollectionItemCreateManyPhotoInputEnvelope
     connect?: CollectionItemWhereUniqueInput | CollectionItemWhereUniqueInput[]
+  }
+
+  export type PhotoTagCreateNestedManyWithoutPhotoInput = {
+    create?: XOR<PhotoTagCreateWithoutPhotoInput, PhotoTagUncheckedCreateWithoutPhotoInput> | PhotoTagCreateWithoutPhotoInput[] | PhotoTagUncheckedCreateWithoutPhotoInput[]
+    connectOrCreate?: PhotoTagCreateOrConnectWithoutPhotoInput | PhotoTagCreateOrConnectWithoutPhotoInput[]
+    createMany?: PhotoTagCreateManyPhotoInputEnvelope
+    connect?: PhotoTagWhereUniqueInput | PhotoTagWhereUniqueInput[]
   }
 
   export type VoteUncheckedCreateNestedManyWithoutPhotoInput = {
@@ -18534,11 +24297,25 @@ export namespace Prisma {
     connect?: ForumReplyWhereUniqueInput | ForumReplyWhereUniqueInput[]
   }
 
+  export type ForumThreadUncheckedCreateNestedManyWithoutSourcePhotoInput = {
+    create?: XOR<ForumThreadCreateWithoutSourcePhotoInput, ForumThreadUncheckedCreateWithoutSourcePhotoInput> | ForumThreadCreateWithoutSourcePhotoInput[] | ForumThreadUncheckedCreateWithoutSourcePhotoInput[]
+    connectOrCreate?: ForumThreadCreateOrConnectWithoutSourcePhotoInput | ForumThreadCreateOrConnectWithoutSourcePhotoInput[]
+    createMany?: ForumThreadCreateManySourcePhotoInputEnvelope
+    connect?: ForumThreadWhereUniqueInput | ForumThreadWhereUniqueInput[]
+  }
+
   export type CollectionItemUncheckedCreateNestedManyWithoutPhotoInput = {
     create?: XOR<CollectionItemCreateWithoutPhotoInput, CollectionItemUncheckedCreateWithoutPhotoInput> | CollectionItemCreateWithoutPhotoInput[] | CollectionItemUncheckedCreateWithoutPhotoInput[]
     connectOrCreate?: CollectionItemCreateOrConnectWithoutPhotoInput | CollectionItemCreateOrConnectWithoutPhotoInput[]
     createMany?: CollectionItemCreateManyPhotoInputEnvelope
     connect?: CollectionItemWhereUniqueInput | CollectionItemWhereUniqueInput[]
+  }
+
+  export type PhotoTagUncheckedCreateNestedManyWithoutPhotoInput = {
+    create?: XOR<PhotoTagCreateWithoutPhotoInput, PhotoTagUncheckedCreateWithoutPhotoInput> | PhotoTagCreateWithoutPhotoInput[] | PhotoTagUncheckedCreateWithoutPhotoInput[]
+    connectOrCreate?: PhotoTagCreateOrConnectWithoutPhotoInput | PhotoTagCreateOrConnectWithoutPhotoInput[]
+    createMany?: PhotoTagCreateManyPhotoInputEnvelope
+    connect?: PhotoTagWhereUniqueInput | PhotoTagWhereUniqueInput[]
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -18633,6 +24410,20 @@ export namespace Prisma {
     deleteMany?: ForumReplyScalarWhereInput | ForumReplyScalarWhereInput[]
   }
 
+  export type ForumThreadUpdateManyWithoutSourcePhotoNestedInput = {
+    create?: XOR<ForumThreadCreateWithoutSourcePhotoInput, ForumThreadUncheckedCreateWithoutSourcePhotoInput> | ForumThreadCreateWithoutSourcePhotoInput[] | ForumThreadUncheckedCreateWithoutSourcePhotoInput[]
+    connectOrCreate?: ForumThreadCreateOrConnectWithoutSourcePhotoInput | ForumThreadCreateOrConnectWithoutSourcePhotoInput[]
+    upsert?: ForumThreadUpsertWithWhereUniqueWithoutSourcePhotoInput | ForumThreadUpsertWithWhereUniqueWithoutSourcePhotoInput[]
+    createMany?: ForumThreadCreateManySourcePhotoInputEnvelope
+    set?: ForumThreadWhereUniqueInput | ForumThreadWhereUniqueInput[]
+    disconnect?: ForumThreadWhereUniqueInput | ForumThreadWhereUniqueInput[]
+    delete?: ForumThreadWhereUniqueInput | ForumThreadWhereUniqueInput[]
+    connect?: ForumThreadWhereUniqueInput | ForumThreadWhereUniqueInput[]
+    update?: ForumThreadUpdateWithWhereUniqueWithoutSourcePhotoInput | ForumThreadUpdateWithWhereUniqueWithoutSourcePhotoInput[]
+    updateMany?: ForumThreadUpdateManyWithWhereWithoutSourcePhotoInput | ForumThreadUpdateManyWithWhereWithoutSourcePhotoInput[]
+    deleteMany?: ForumThreadScalarWhereInput | ForumThreadScalarWhereInput[]
+  }
+
   export type CollectionItemUpdateManyWithoutPhotoNestedInput = {
     create?: XOR<CollectionItemCreateWithoutPhotoInput, CollectionItemUncheckedCreateWithoutPhotoInput> | CollectionItemCreateWithoutPhotoInput[] | CollectionItemUncheckedCreateWithoutPhotoInput[]
     connectOrCreate?: CollectionItemCreateOrConnectWithoutPhotoInput | CollectionItemCreateOrConnectWithoutPhotoInput[]
@@ -18645,6 +24436,20 @@ export namespace Prisma {
     update?: CollectionItemUpdateWithWhereUniqueWithoutPhotoInput | CollectionItemUpdateWithWhereUniqueWithoutPhotoInput[]
     updateMany?: CollectionItemUpdateManyWithWhereWithoutPhotoInput | CollectionItemUpdateManyWithWhereWithoutPhotoInput[]
     deleteMany?: CollectionItemScalarWhereInput | CollectionItemScalarWhereInput[]
+  }
+
+  export type PhotoTagUpdateManyWithoutPhotoNestedInput = {
+    create?: XOR<PhotoTagCreateWithoutPhotoInput, PhotoTagUncheckedCreateWithoutPhotoInput> | PhotoTagCreateWithoutPhotoInput[] | PhotoTagUncheckedCreateWithoutPhotoInput[]
+    connectOrCreate?: PhotoTagCreateOrConnectWithoutPhotoInput | PhotoTagCreateOrConnectWithoutPhotoInput[]
+    upsert?: PhotoTagUpsertWithWhereUniqueWithoutPhotoInput | PhotoTagUpsertWithWhereUniqueWithoutPhotoInput[]
+    createMany?: PhotoTagCreateManyPhotoInputEnvelope
+    set?: PhotoTagWhereUniqueInput | PhotoTagWhereUniqueInput[]
+    disconnect?: PhotoTagWhereUniqueInput | PhotoTagWhereUniqueInput[]
+    delete?: PhotoTagWhereUniqueInput | PhotoTagWhereUniqueInput[]
+    connect?: PhotoTagWhereUniqueInput | PhotoTagWhereUniqueInput[]
+    update?: PhotoTagUpdateWithWhereUniqueWithoutPhotoInput | PhotoTagUpdateWithWhereUniqueWithoutPhotoInput[]
+    updateMany?: PhotoTagUpdateManyWithWhereWithoutPhotoInput | PhotoTagUpdateManyWithWhereWithoutPhotoInput[]
+    deleteMany?: PhotoTagScalarWhereInput | PhotoTagScalarWhereInput[]
   }
 
   export type VoteUncheckedUpdateManyWithoutPhotoNestedInput = {
@@ -18703,6 +24508,20 @@ export namespace Prisma {
     deleteMany?: ForumReplyScalarWhereInput | ForumReplyScalarWhereInput[]
   }
 
+  export type ForumThreadUncheckedUpdateManyWithoutSourcePhotoNestedInput = {
+    create?: XOR<ForumThreadCreateWithoutSourcePhotoInput, ForumThreadUncheckedCreateWithoutSourcePhotoInput> | ForumThreadCreateWithoutSourcePhotoInput[] | ForumThreadUncheckedCreateWithoutSourcePhotoInput[]
+    connectOrCreate?: ForumThreadCreateOrConnectWithoutSourcePhotoInput | ForumThreadCreateOrConnectWithoutSourcePhotoInput[]
+    upsert?: ForumThreadUpsertWithWhereUniqueWithoutSourcePhotoInput | ForumThreadUpsertWithWhereUniqueWithoutSourcePhotoInput[]
+    createMany?: ForumThreadCreateManySourcePhotoInputEnvelope
+    set?: ForumThreadWhereUniqueInput | ForumThreadWhereUniqueInput[]
+    disconnect?: ForumThreadWhereUniqueInput | ForumThreadWhereUniqueInput[]
+    delete?: ForumThreadWhereUniqueInput | ForumThreadWhereUniqueInput[]
+    connect?: ForumThreadWhereUniqueInput | ForumThreadWhereUniqueInput[]
+    update?: ForumThreadUpdateWithWhereUniqueWithoutSourcePhotoInput | ForumThreadUpdateWithWhereUniqueWithoutSourcePhotoInput[]
+    updateMany?: ForumThreadUpdateManyWithWhereWithoutSourcePhotoInput | ForumThreadUpdateManyWithWhereWithoutSourcePhotoInput[]
+    deleteMany?: ForumThreadScalarWhereInput | ForumThreadScalarWhereInput[]
+  }
+
   export type CollectionItemUncheckedUpdateManyWithoutPhotoNestedInput = {
     create?: XOR<CollectionItemCreateWithoutPhotoInput, CollectionItemUncheckedCreateWithoutPhotoInput> | CollectionItemCreateWithoutPhotoInput[] | CollectionItemUncheckedCreateWithoutPhotoInput[]
     connectOrCreate?: CollectionItemCreateOrConnectWithoutPhotoInput | CollectionItemCreateOrConnectWithoutPhotoInput[]
@@ -18715,6 +24534,20 @@ export namespace Prisma {
     update?: CollectionItemUpdateWithWhereUniqueWithoutPhotoInput | CollectionItemUpdateWithWhereUniqueWithoutPhotoInput[]
     updateMany?: CollectionItemUpdateManyWithWhereWithoutPhotoInput | CollectionItemUpdateManyWithWhereWithoutPhotoInput[]
     deleteMany?: CollectionItemScalarWhereInput | CollectionItemScalarWhereInput[]
+  }
+
+  export type PhotoTagUncheckedUpdateManyWithoutPhotoNestedInput = {
+    create?: XOR<PhotoTagCreateWithoutPhotoInput, PhotoTagUncheckedCreateWithoutPhotoInput> | PhotoTagCreateWithoutPhotoInput[] | PhotoTagUncheckedCreateWithoutPhotoInput[]
+    connectOrCreate?: PhotoTagCreateOrConnectWithoutPhotoInput | PhotoTagCreateOrConnectWithoutPhotoInput[]
+    upsert?: PhotoTagUpsertWithWhereUniqueWithoutPhotoInput | PhotoTagUpsertWithWhereUniqueWithoutPhotoInput[]
+    createMany?: PhotoTagCreateManyPhotoInputEnvelope
+    set?: PhotoTagWhereUniqueInput | PhotoTagWhereUniqueInput[]
+    disconnect?: PhotoTagWhereUniqueInput | PhotoTagWhereUniqueInput[]
+    delete?: PhotoTagWhereUniqueInput | PhotoTagWhereUniqueInput[]
+    connect?: PhotoTagWhereUniqueInput | PhotoTagWhereUniqueInput[]
+    update?: PhotoTagUpdateWithWhereUniqueWithoutPhotoInput | PhotoTagUpdateWithWhereUniqueWithoutPhotoInput[]
+    updateMany?: PhotoTagUpdateManyWithWhereWithoutPhotoInput | PhotoTagUpdateManyWithWhereWithoutPhotoInput[]
+    deleteMany?: PhotoTagScalarWhereInput | PhotoTagScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutVotesInput = {
@@ -18863,6 +24696,12 @@ export namespace Prisma {
     connect?: ForumCategoryWhereUniqueInput
   }
 
+  export type PhotoCreateNestedOneWithoutForumThreadsInput = {
+    create?: XOR<PhotoCreateWithoutForumThreadsInput, PhotoUncheckedCreateWithoutForumThreadsInput>
+    connectOrCreate?: PhotoCreateOrConnectWithoutForumThreadsInput
+    connect?: PhotoWhereUniqueInput
+  }
+
   export type ForumReplyCreateNestedManyWithoutThreadInput = {
     create?: XOR<ForumReplyCreateWithoutThreadInput, ForumReplyUncheckedCreateWithoutThreadInput> | ForumReplyCreateWithoutThreadInput[] | ForumReplyUncheckedCreateWithoutThreadInput[]
     connectOrCreate?: ForumReplyCreateOrConnectWithoutThreadInput | ForumReplyCreateOrConnectWithoutThreadInput[]
@@ -18895,6 +24734,16 @@ export namespace Prisma {
     upsert?: ForumCategoryUpsertWithoutThreadsInput
     connect?: ForumCategoryWhereUniqueInput
     update?: XOR<XOR<ForumCategoryUpdateToOneWithWhereWithoutThreadsInput, ForumCategoryUpdateWithoutThreadsInput>, ForumCategoryUncheckedUpdateWithoutThreadsInput>
+  }
+
+  export type PhotoUpdateOneWithoutForumThreadsNestedInput = {
+    create?: XOR<PhotoCreateWithoutForumThreadsInput, PhotoUncheckedCreateWithoutForumThreadsInput>
+    connectOrCreate?: PhotoCreateOrConnectWithoutForumThreadsInput
+    upsert?: PhotoUpsertWithoutForumThreadsInput
+    disconnect?: PhotoWhereInput | boolean
+    delete?: PhotoWhereInput | boolean
+    connect?: PhotoWhereUniqueInput
+    update?: XOR<XOR<PhotoUpdateToOneWithWhereWithoutForumThreadsInput, PhotoUpdateWithoutForumThreadsInput>, PhotoUncheckedUpdateWithoutForumThreadsInput>
   }
 
   export type ForumReplyUpdateManyWithoutThreadNestedInput = {
@@ -18982,11 +24831,39 @@ export namespace Prisma {
     connect?: CollectionItemWhereUniqueInput | CollectionItemWhereUniqueInput[]
   }
 
+  export type CollectionSectionCreateNestedManyWithoutCollectionInput = {
+    create?: XOR<CollectionSectionCreateWithoutCollectionInput, CollectionSectionUncheckedCreateWithoutCollectionInput> | CollectionSectionCreateWithoutCollectionInput[] | CollectionSectionUncheckedCreateWithoutCollectionInput[]
+    connectOrCreate?: CollectionSectionCreateOrConnectWithoutCollectionInput | CollectionSectionCreateOrConnectWithoutCollectionInput[]
+    createMany?: CollectionSectionCreateManyCollectionInputEnvelope
+    connect?: CollectionSectionWhereUniqueInput | CollectionSectionWhereUniqueInput[]
+  }
+
+  export type CollectionCollaboratorCreateNestedManyWithoutCollectionInput = {
+    create?: XOR<CollectionCollaboratorCreateWithoutCollectionInput, CollectionCollaboratorUncheckedCreateWithoutCollectionInput> | CollectionCollaboratorCreateWithoutCollectionInput[] | CollectionCollaboratorUncheckedCreateWithoutCollectionInput[]
+    connectOrCreate?: CollectionCollaboratorCreateOrConnectWithoutCollectionInput | CollectionCollaboratorCreateOrConnectWithoutCollectionInput[]
+    createMany?: CollectionCollaboratorCreateManyCollectionInputEnvelope
+    connect?: CollectionCollaboratorWhereUniqueInput | CollectionCollaboratorWhereUniqueInput[]
+  }
+
   export type CollectionItemUncheckedCreateNestedManyWithoutCollectionInput = {
     create?: XOR<CollectionItemCreateWithoutCollectionInput, CollectionItemUncheckedCreateWithoutCollectionInput> | CollectionItemCreateWithoutCollectionInput[] | CollectionItemUncheckedCreateWithoutCollectionInput[]
     connectOrCreate?: CollectionItemCreateOrConnectWithoutCollectionInput | CollectionItemCreateOrConnectWithoutCollectionInput[]
     createMany?: CollectionItemCreateManyCollectionInputEnvelope
     connect?: CollectionItemWhereUniqueInput | CollectionItemWhereUniqueInput[]
+  }
+
+  export type CollectionSectionUncheckedCreateNestedManyWithoutCollectionInput = {
+    create?: XOR<CollectionSectionCreateWithoutCollectionInput, CollectionSectionUncheckedCreateWithoutCollectionInput> | CollectionSectionCreateWithoutCollectionInput[] | CollectionSectionUncheckedCreateWithoutCollectionInput[]
+    connectOrCreate?: CollectionSectionCreateOrConnectWithoutCollectionInput | CollectionSectionCreateOrConnectWithoutCollectionInput[]
+    createMany?: CollectionSectionCreateManyCollectionInputEnvelope
+    connect?: CollectionSectionWhereUniqueInput | CollectionSectionWhereUniqueInput[]
+  }
+
+  export type CollectionCollaboratorUncheckedCreateNestedManyWithoutCollectionInput = {
+    create?: XOR<CollectionCollaboratorCreateWithoutCollectionInput, CollectionCollaboratorUncheckedCreateWithoutCollectionInput> | CollectionCollaboratorCreateWithoutCollectionInput[] | CollectionCollaboratorUncheckedCreateWithoutCollectionInput[]
+    connectOrCreate?: CollectionCollaboratorCreateOrConnectWithoutCollectionInput | CollectionCollaboratorCreateOrConnectWithoutCollectionInput[]
+    createMany?: CollectionCollaboratorCreateManyCollectionInputEnvelope
+    connect?: CollectionCollaboratorWhereUniqueInput | CollectionCollaboratorWhereUniqueInput[]
   }
 
   export type UserUpdateOneRequiredWithoutCollectionsNestedInput = {
@@ -19011,6 +24888,34 @@ export namespace Prisma {
     deleteMany?: CollectionItemScalarWhereInput | CollectionItemScalarWhereInput[]
   }
 
+  export type CollectionSectionUpdateManyWithoutCollectionNestedInput = {
+    create?: XOR<CollectionSectionCreateWithoutCollectionInput, CollectionSectionUncheckedCreateWithoutCollectionInput> | CollectionSectionCreateWithoutCollectionInput[] | CollectionSectionUncheckedCreateWithoutCollectionInput[]
+    connectOrCreate?: CollectionSectionCreateOrConnectWithoutCollectionInput | CollectionSectionCreateOrConnectWithoutCollectionInput[]
+    upsert?: CollectionSectionUpsertWithWhereUniqueWithoutCollectionInput | CollectionSectionUpsertWithWhereUniqueWithoutCollectionInput[]
+    createMany?: CollectionSectionCreateManyCollectionInputEnvelope
+    set?: CollectionSectionWhereUniqueInput | CollectionSectionWhereUniqueInput[]
+    disconnect?: CollectionSectionWhereUniqueInput | CollectionSectionWhereUniqueInput[]
+    delete?: CollectionSectionWhereUniqueInput | CollectionSectionWhereUniqueInput[]
+    connect?: CollectionSectionWhereUniqueInput | CollectionSectionWhereUniqueInput[]
+    update?: CollectionSectionUpdateWithWhereUniqueWithoutCollectionInput | CollectionSectionUpdateWithWhereUniqueWithoutCollectionInput[]
+    updateMany?: CollectionSectionUpdateManyWithWhereWithoutCollectionInput | CollectionSectionUpdateManyWithWhereWithoutCollectionInput[]
+    deleteMany?: CollectionSectionScalarWhereInput | CollectionSectionScalarWhereInput[]
+  }
+
+  export type CollectionCollaboratorUpdateManyWithoutCollectionNestedInput = {
+    create?: XOR<CollectionCollaboratorCreateWithoutCollectionInput, CollectionCollaboratorUncheckedCreateWithoutCollectionInput> | CollectionCollaboratorCreateWithoutCollectionInput[] | CollectionCollaboratorUncheckedCreateWithoutCollectionInput[]
+    connectOrCreate?: CollectionCollaboratorCreateOrConnectWithoutCollectionInput | CollectionCollaboratorCreateOrConnectWithoutCollectionInput[]
+    upsert?: CollectionCollaboratorUpsertWithWhereUniqueWithoutCollectionInput | CollectionCollaboratorUpsertWithWhereUniqueWithoutCollectionInput[]
+    createMany?: CollectionCollaboratorCreateManyCollectionInputEnvelope
+    set?: CollectionCollaboratorWhereUniqueInput | CollectionCollaboratorWhereUniqueInput[]
+    disconnect?: CollectionCollaboratorWhereUniqueInput | CollectionCollaboratorWhereUniqueInput[]
+    delete?: CollectionCollaboratorWhereUniqueInput | CollectionCollaboratorWhereUniqueInput[]
+    connect?: CollectionCollaboratorWhereUniqueInput | CollectionCollaboratorWhereUniqueInput[]
+    update?: CollectionCollaboratorUpdateWithWhereUniqueWithoutCollectionInput | CollectionCollaboratorUpdateWithWhereUniqueWithoutCollectionInput[]
+    updateMany?: CollectionCollaboratorUpdateManyWithWhereWithoutCollectionInput | CollectionCollaboratorUpdateManyWithWhereWithoutCollectionInput[]
+    deleteMany?: CollectionCollaboratorScalarWhereInput | CollectionCollaboratorScalarWhereInput[]
+  }
+
   export type CollectionItemUncheckedUpdateManyWithoutCollectionNestedInput = {
     create?: XOR<CollectionItemCreateWithoutCollectionInput, CollectionItemUncheckedCreateWithoutCollectionInput> | CollectionItemCreateWithoutCollectionInput[] | CollectionItemUncheckedCreateWithoutCollectionInput[]
     connectOrCreate?: CollectionItemCreateOrConnectWithoutCollectionInput | CollectionItemCreateOrConnectWithoutCollectionInput[]
@@ -19025,6 +24930,118 @@ export namespace Prisma {
     deleteMany?: CollectionItemScalarWhereInput | CollectionItemScalarWhereInput[]
   }
 
+  export type CollectionSectionUncheckedUpdateManyWithoutCollectionNestedInput = {
+    create?: XOR<CollectionSectionCreateWithoutCollectionInput, CollectionSectionUncheckedCreateWithoutCollectionInput> | CollectionSectionCreateWithoutCollectionInput[] | CollectionSectionUncheckedCreateWithoutCollectionInput[]
+    connectOrCreate?: CollectionSectionCreateOrConnectWithoutCollectionInput | CollectionSectionCreateOrConnectWithoutCollectionInput[]
+    upsert?: CollectionSectionUpsertWithWhereUniqueWithoutCollectionInput | CollectionSectionUpsertWithWhereUniqueWithoutCollectionInput[]
+    createMany?: CollectionSectionCreateManyCollectionInputEnvelope
+    set?: CollectionSectionWhereUniqueInput | CollectionSectionWhereUniqueInput[]
+    disconnect?: CollectionSectionWhereUniqueInput | CollectionSectionWhereUniqueInput[]
+    delete?: CollectionSectionWhereUniqueInput | CollectionSectionWhereUniqueInput[]
+    connect?: CollectionSectionWhereUniqueInput | CollectionSectionWhereUniqueInput[]
+    update?: CollectionSectionUpdateWithWhereUniqueWithoutCollectionInput | CollectionSectionUpdateWithWhereUniqueWithoutCollectionInput[]
+    updateMany?: CollectionSectionUpdateManyWithWhereWithoutCollectionInput | CollectionSectionUpdateManyWithWhereWithoutCollectionInput[]
+    deleteMany?: CollectionSectionScalarWhereInput | CollectionSectionScalarWhereInput[]
+  }
+
+  export type CollectionCollaboratorUncheckedUpdateManyWithoutCollectionNestedInput = {
+    create?: XOR<CollectionCollaboratorCreateWithoutCollectionInput, CollectionCollaboratorUncheckedCreateWithoutCollectionInput> | CollectionCollaboratorCreateWithoutCollectionInput[] | CollectionCollaboratorUncheckedCreateWithoutCollectionInput[]
+    connectOrCreate?: CollectionCollaboratorCreateOrConnectWithoutCollectionInput | CollectionCollaboratorCreateOrConnectWithoutCollectionInput[]
+    upsert?: CollectionCollaboratorUpsertWithWhereUniqueWithoutCollectionInput | CollectionCollaboratorUpsertWithWhereUniqueWithoutCollectionInput[]
+    createMany?: CollectionCollaboratorCreateManyCollectionInputEnvelope
+    set?: CollectionCollaboratorWhereUniqueInput | CollectionCollaboratorWhereUniqueInput[]
+    disconnect?: CollectionCollaboratorWhereUniqueInput | CollectionCollaboratorWhereUniqueInput[]
+    delete?: CollectionCollaboratorWhereUniqueInput | CollectionCollaboratorWhereUniqueInput[]
+    connect?: CollectionCollaboratorWhereUniqueInput | CollectionCollaboratorWhereUniqueInput[]
+    update?: CollectionCollaboratorUpdateWithWhereUniqueWithoutCollectionInput | CollectionCollaboratorUpdateWithWhereUniqueWithoutCollectionInput[]
+    updateMany?: CollectionCollaboratorUpdateManyWithWhereWithoutCollectionInput | CollectionCollaboratorUpdateManyWithWhereWithoutCollectionInput[]
+    deleteMany?: CollectionCollaboratorScalarWhereInput | CollectionCollaboratorScalarWhereInput[]
+  }
+
+  export type CollectionCreateNestedOneWithoutSectionsInput = {
+    create?: XOR<CollectionCreateWithoutSectionsInput, CollectionUncheckedCreateWithoutSectionsInput>
+    connectOrCreate?: CollectionCreateOrConnectWithoutSectionsInput
+    connect?: CollectionWhereUniqueInput
+  }
+
+  export type CollectionItemCreateNestedManyWithoutSectionInput = {
+    create?: XOR<CollectionItemCreateWithoutSectionInput, CollectionItemUncheckedCreateWithoutSectionInput> | CollectionItemCreateWithoutSectionInput[] | CollectionItemUncheckedCreateWithoutSectionInput[]
+    connectOrCreate?: CollectionItemCreateOrConnectWithoutSectionInput | CollectionItemCreateOrConnectWithoutSectionInput[]
+    createMany?: CollectionItemCreateManySectionInputEnvelope
+    connect?: CollectionItemWhereUniqueInput | CollectionItemWhereUniqueInput[]
+  }
+
+  export type CollectionItemUncheckedCreateNestedManyWithoutSectionInput = {
+    create?: XOR<CollectionItemCreateWithoutSectionInput, CollectionItemUncheckedCreateWithoutSectionInput> | CollectionItemCreateWithoutSectionInput[] | CollectionItemUncheckedCreateWithoutSectionInput[]
+    connectOrCreate?: CollectionItemCreateOrConnectWithoutSectionInput | CollectionItemCreateOrConnectWithoutSectionInput[]
+    createMany?: CollectionItemCreateManySectionInputEnvelope
+    connect?: CollectionItemWhereUniqueInput | CollectionItemWhereUniqueInput[]
+  }
+
+  export type CollectionUpdateOneRequiredWithoutSectionsNestedInput = {
+    create?: XOR<CollectionCreateWithoutSectionsInput, CollectionUncheckedCreateWithoutSectionsInput>
+    connectOrCreate?: CollectionCreateOrConnectWithoutSectionsInput
+    upsert?: CollectionUpsertWithoutSectionsInput
+    connect?: CollectionWhereUniqueInput
+    update?: XOR<XOR<CollectionUpdateToOneWithWhereWithoutSectionsInput, CollectionUpdateWithoutSectionsInput>, CollectionUncheckedUpdateWithoutSectionsInput>
+  }
+
+  export type CollectionItemUpdateManyWithoutSectionNestedInput = {
+    create?: XOR<CollectionItemCreateWithoutSectionInput, CollectionItemUncheckedCreateWithoutSectionInput> | CollectionItemCreateWithoutSectionInput[] | CollectionItemUncheckedCreateWithoutSectionInput[]
+    connectOrCreate?: CollectionItemCreateOrConnectWithoutSectionInput | CollectionItemCreateOrConnectWithoutSectionInput[]
+    upsert?: CollectionItemUpsertWithWhereUniqueWithoutSectionInput | CollectionItemUpsertWithWhereUniqueWithoutSectionInput[]
+    createMany?: CollectionItemCreateManySectionInputEnvelope
+    set?: CollectionItemWhereUniqueInput | CollectionItemWhereUniqueInput[]
+    disconnect?: CollectionItemWhereUniqueInput | CollectionItemWhereUniqueInput[]
+    delete?: CollectionItemWhereUniqueInput | CollectionItemWhereUniqueInput[]
+    connect?: CollectionItemWhereUniqueInput | CollectionItemWhereUniqueInput[]
+    update?: CollectionItemUpdateWithWhereUniqueWithoutSectionInput | CollectionItemUpdateWithWhereUniqueWithoutSectionInput[]
+    updateMany?: CollectionItemUpdateManyWithWhereWithoutSectionInput | CollectionItemUpdateManyWithWhereWithoutSectionInput[]
+    deleteMany?: CollectionItemScalarWhereInput | CollectionItemScalarWhereInput[]
+  }
+
+  export type CollectionItemUncheckedUpdateManyWithoutSectionNestedInput = {
+    create?: XOR<CollectionItemCreateWithoutSectionInput, CollectionItemUncheckedCreateWithoutSectionInput> | CollectionItemCreateWithoutSectionInput[] | CollectionItemUncheckedCreateWithoutSectionInput[]
+    connectOrCreate?: CollectionItemCreateOrConnectWithoutSectionInput | CollectionItemCreateOrConnectWithoutSectionInput[]
+    upsert?: CollectionItemUpsertWithWhereUniqueWithoutSectionInput | CollectionItemUpsertWithWhereUniqueWithoutSectionInput[]
+    createMany?: CollectionItemCreateManySectionInputEnvelope
+    set?: CollectionItemWhereUniqueInput | CollectionItemWhereUniqueInput[]
+    disconnect?: CollectionItemWhereUniqueInput | CollectionItemWhereUniqueInput[]
+    delete?: CollectionItemWhereUniqueInput | CollectionItemWhereUniqueInput[]
+    connect?: CollectionItemWhereUniqueInput | CollectionItemWhereUniqueInput[]
+    update?: CollectionItemUpdateWithWhereUniqueWithoutSectionInput | CollectionItemUpdateWithWhereUniqueWithoutSectionInput[]
+    updateMany?: CollectionItemUpdateManyWithWhereWithoutSectionInput | CollectionItemUpdateManyWithWhereWithoutSectionInput[]
+    deleteMany?: CollectionItemScalarWhereInput | CollectionItemScalarWhereInput[]
+  }
+
+  export type CollectionCreateNestedOneWithoutCollaboratorsInput = {
+    create?: XOR<CollectionCreateWithoutCollaboratorsInput, CollectionUncheckedCreateWithoutCollaboratorsInput>
+    connectOrCreate?: CollectionCreateOrConnectWithoutCollaboratorsInput
+    connect?: CollectionWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutCollectionCollabsInput = {
+    create?: XOR<UserCreateWithoutCollectionCollabsInput, UserUncheckedCreateWithoutCollectionCollabsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCollectionCollabsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type CollectionUpdateOneRequiredWithoutCollaboratorsNestedInput = {
+    create?: XOR<CollectionCreateWithoutCollaboratorsInput, CollectionUncheckedCreateWithoutCollaboratorsInput>
+    connectOrCreate?: CollectionCreateOrConnectWithoutCollaboratorsInput
+    upsert?: CollectionUpsertWithoutCollaboratorsInput
+    connect?: CollectionWhereUniqueInput
+    update?: XOR<XOR<CollectionUpdateToOneWithWhereWithoutCollaboratorsInput, CollectionUpdateWithoutCollaboratorsInput>, CollectionUncheckedUpdateWithoutCollaboratorsInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutCollectionCollabsNestedInput = {
+    create?: XOR<UserCreateWithoutCollectionCollabsInput, UserUncheckedCreateWithoutCollectionCollabsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCollectionCollabsInput
+    upsert?: UserUpsertWithoutCollectionCollabsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCollectionCollabsInput, UserUpdateWithoutCollectionCollabsInput>, UserUncheckedUpdateWithoutCollectionCollabsInput>
+  }
+
   export type CollectionCreateNestedOneWithoutItemsInput = {
     create?: XOR<CollectionCreateWithoutItemsInput, CollectionUncheckedCreateWithoutItemsInput>
     connectOrCreate?: CollectionCreateOrConnectWithoutItemsInput
@@ -19035,6 +25052,12 @@ export namespace Prisma {
     create?: XOR<PhotoCreateWithoutCollectionItemsInput, PhotoUncheckedCreateWithoutCollectionItemsInput>
     connectOrCreate?: PhotoCreateOrConnectWithoutCollectionItemsInput
     connect?: PhotoWhereUniqueInput
+  }
+
+  export type CollectionSectionCreateNestedOneWithoutItemsInput = {
+    create?: XOR<CollectionSectionCreateWithoutItemsInput, CollectionSectionUncheckedCreateWithoutItemsInput>
+    connectOrCreate?: CollectionSectionCreateOrConnectWithoutItemsInput
+    connect?: CollectionSectionWhereUniqueInput
   }
 
   export type CollectionUpdateOneRequiredWithoutItemsNestedInput = {
@@ -19051,6 +25074,86 @@ export namespace Prisma {
     upsert?: PhotoUpsertWithoutCollectionItemsInput
     connect?: PhotoWhereUniqueInput
     update?: XOR<XOR<PhotoUpdateToOneWithWhereWithoutCollectionItemsInput, PhotoUpdateWithoutCollectionItemsInput>, PhotoUncheckedUpdateWithoutCollectionItemsInput>
+  }
+
+  export type CollectionSectionUpdateOneWithoutItemsNestedInput = {
+    create?: XOR<CollectionSectionCreateWithoutItemsInput, CollectionSectionUncheckedCreateWithoutItemsInput>
+    connectOrCreate?: CollectionSectionCreateOrConnectWithoutItemsInput
+    upsert?: CollectionSectionUpsertWithoutItemsInput
+    disconnect?: CollectionSectionWhereInput | boolean
+    delete?: CollectionSectionWhereInput | boolean
+    connect?: CollectionSectionWhereUniqueInput
+    update?: XOR<XOR<CollectionSectionUpdateToOneWithWhereWithoutItemsInput, CollectionSectionUpdateWithoutItemsInput>, CollectionSectionUncheckedUpdateWithoutItemsInput>
+  }
+
+  export type PhotoTagCreateNestedManyWithoutTagInput = {
+    create?: XOR<PhotoTagCreateWithoutTagInput, PhotoTagUncheckedCreateWithoutTagInput> | PhotoTagCreateWithoutTagInput[] | PhotoTagUncheckedCreateWithoutTagInput[]
+    connectOrCreate?: PhotoTagCreateOrConnectWithoutTagInput | PhotoTagCreateOrConnectWithoutTagInput[]
+    createMany?: PhotoTagCreateManyTagInputEnvelope
+    connect?: PhotoTagWhereUniqueInput | PhotoTagWhereUniqueInput[]
+  }
+
+  export type PhotoTagUncheckedCreateNestedManyWithoutTagInput = {
+    create?: XOR<PhotoTagCreateWithoutTagInput, PhotoTagUncheckedCreateWithoutTagInput> | PhotoTagCreateWithoutTagInput[] | PhotoTagUncheckedCreateWithoutTagInput[]
+    connectOrCreate?: PhotoTagCreateOrConnectWithoutTagInput | PhotoTagCreateOrConnectWithoutTagInput[]
+    createMany?: PhotoTagCreateManyTagInputEnvelope
+    connect?: PhotoTagWhereUniqueInput | PhotoTagWhereUniqueInput[]
+  }
+
+  export type PhotoTagUpdateManyWithoutTagNestedInput = {
+    create?: XOR<PhotoTagCreateWithoutTagInput, PhotoTagUncheckedCreateWithoutTagInput> | PhotoTagCreateWithoutTagInput[] | PhotoTagUncheckedCreateWithoutTagInput[]
+    connectOrCreate?: PhotoTagCreateOrConnectWithoutTagInput | PhotoTagCreateOrConnectWithoutTagInput[]
+    upsert?: PhotoTagUpsertWithWhereUniqueWithoutTagInput | PhotoTagUpsertWithWhereUniqueWithoutTagInput[]
+    createMany?: PhotoTagCreateManyTagInputEnvelope
+    set?: PhotoTagWhereUniqueInput | PhotoTagWhereUniqueInput[]
+    disconnect?: PhotoTagWhereUniqueInput | PhotoTagWhereUniqueInput[]
+    delete?: PhotoTagWhereUniqueInput | PhotoTagWhereUniqueInput[]
+    connect?: PhotoTagWhereUniqueInput | PhotoTagWhereUniqueInput[]
+    update?: PhotoTagUpdateWithWhereUniqueWithoutTagInput | PhotoTagUpdateWithWhereUniqueWithoutTagInput[]
+    updateMany?: PhotoTagUpdateManyWithWhereWithoutTagInput | PhotoTagUpdateManyWithWhereWithoutTagInput[]
+    deleteMany?: PhotoTagScalarWhereInput | PhotoTagScalarWhereInput[]
+  }
+
+  export type PhotoTagUncheckedUpdateManyWithoutTagNestedInput = {
+    create?: XOR<PhotoTagCreateWithoutTagInput, PhotoTagUncheckedCreateWithoutTagInput> | PhotoTagCreateWithoutTagInput[] | PhotoTagUncheckedCreateWithoutTagInput[]
+    connectOrCreate?: PhotoTagCreateOrConnectWithoutTagInput | PhotoTagCreateOrConnectWithoutTagInput[]
+    upsert?: PhotoTagUpsertWithWhereUniqueWithoutTagInput | PhotoTagUpsertWithWhereUniqueWithoutTagInput[]
+    createMany?: PhotoTagCreateManyTagInputEnvelope
+    set?: PhotoTagWhereUniqueInput | PhotoTagWhereUniqueInput[]
+    disconnect?: PhotoTagWhereUniqueInput | PhotoTagWhereUniqueInput[]
+    delete?: PhotoTagWhereUniqueInput | PhotoTagWhereUniqueInput[]
+    connect?: PhotoTagWhereUniqueInput | PhotoTagWhereUniqueInput[]
+    update?: PhotoTagUpdateWithWhereUniqueWithoutTagInput | PhotoTagUpdateWithWhereUniqueWithoutTagInput[]
+    updateMany?: PhotoTagUpdateManyWithWhereWithoutTagInput | PhotoTagUpdateManyWithWhereWithoutTagInput[]
+    deleteMany?: PhotoTagScalarWhereInput | PhotoTagScalarWhereInput[]
+  }
+
+  export type PhotoCreateNestedOneWithoutTagsInput = {
+    create?: XOR<PhotoCreateWithoutTagsInput, PhotoUncheckedCreateWithoutTagsInput>
+    connectOrCreate?: PhotoCreateOrConnectWithoutTagsInput
+    connect?: PhotoWhereUniqueInput
+  }
+
+  export type TagCreateNestedOneWithoutPhotoTagsInput = {
+    create?: XOR<TagCreateWithoutPhotoTagsInput, TagUncheckedCreateWithoutPhotoTagsInput>
+    connectOrCreate?: TagCreateOrConnectWithoutPhotoTagsInput
+    connect?: TagWhereUniqueInput
+  }
+
+  export type PhotoUpdateOneRequiredWithoutTagsNestedInput = {
+    create?: XOR<PhotoCreateWithoutTagsInput, PhotoUncheckedCreateWithoutTagsInput>
+    connectOrCreate?: PhotoCreateOrConnectWithoutTagsInput
+    upsert?: PhotoUpsertWithoutTagsInput
+    connect?: PhotoWhereUniqueInput
+    update?: XOR<XOR<PhotoUpdateToOneWithWhereWithoutTagsInput, PhotoUpdateWithoutTagsInput>, PhotoUncheckedUpdateWithoutTagsInput>
+  }
+
+  export type TagUpdateOneRequiredWithoutPhotoTagsNestedInput = {
+    create?: XOR<TagCreateWithoutPhotoTagsInput, TagUncheckedCreateWithoutPhotoTagsInput>
+    connectOrCreate?: TagCreateOrConnectWithoutPhotoTagsInput
+    upsert?: TagUpsertWithoutPhotoTagsInput
+    connect?: TagWhereUniqueInput
+    update?: XOR<XOR<TagUpdateToOneWithWhereWithoutPhotoTagsInput, TagUpdateWithoutPhotoTagsInput>, TagUncheckedUpdateWithoutPhotoTagsInput>
   }
 
   export type UserCreateNestedOneWithoutFollowingInput = {
@@ -19390,6 +25493,7 @@ export namespace Prisma {
     description?: string | null
     imageUrl: string
     thumbnailUrl?: string | null
+    previewUrl?: string | null
     width?: number
     height?: number
     fileSize?: number
@@ -19412,7 +25516,9 @@ export namespace Prisma {
     comments?: CommentCreateNestedManyWithoutPhotoInput
     awards?: AwardCreateNestedManyWithoutPhotoInput
     forumReplies?: ForumReplyCreateNestedManyWithoutEmbeddedPhotoInput
+    forumThreads?: ForumThreadCreateNestedManyWithoutSourcePhotoInput
     collectionItems?: CollectionItemCreateNestedManyWithoutPhotoInput
+    tags?: PhotoTagCreateNestedManyWithoutPhotoInput
   }
 
   export type PhotoUncheckedCreateWithoutAuthorInput = {
@@ -19421,6 +25527,7 @@ export namespace Prisma {
     description?: string | null
     imageUrl: string
     thumbnailUrl?: string | null
+    previewUrl?: string | null
     width?: number
     height?: number
     fileSize?: number
@@ -19443,7 +25550,9 @@ export namespace Prisma {
     comments?: CommentUncheckedCreateNestedManyWithoutPhotoInput
     awards?: AwardUncheckedCreateNestedManyWithoutPhotoInput
     forumReplies?: ForumReplyUncheckedCreateNestedManyWithoutEmbeddedPhotoInput
+    forumThreads?: ForumThreadUncheckedCreateNestedManyWithoutSourcePhotoInput
     collectionItems?: CollectionItemUncheckedCreateNestedManyWithoutPhotoInput
+    tags?: PhotoTagUncheckedCreateNestedManyWithoutPhotoInput
   }
 
   export type PhotoCreateOrConnectWithoutAuthorInput = {
@@ -19545,6 +25654,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     category: ForumCategoryCreateNestedOneWithoutThreadsInput
+    sourcePhoto?: PhotoCreateNestedOneWithoutForumThreadsInput
     replies?: ForumReplyCreateNestedManyWithoutThreadInput
   }
 
@@ -19553,6 +25663,7 @@ export namespace Prisma {
     title: string
     body: string
     categoryId: string
+    sourcePhotoId?: string | null
     pinned?: boolean
     locked?: boolean
     replyCount?: number
@@ -19605,10 +25716,13 @@ export namespace Prisma {
     name: string
     description?: string | null
     isPrivate?: boolean
+    isCollaborative?: boolean
     coverUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     items?: CollectionItemCreateNestedManyWithoutCollectionInput
+    sections?: CollectionSectionCreateNestedManyWithoutCollectionInput
+    collaborators?: CollectionCollaboratorCreateNestedManyWithoutCollectionInput
   }
 
   export type CollectionUncheckedCreateWithoutUserInput = {
@@ -19616,10 +25730,13 @@ export namespace Prisma {
     name: string
     description?: string | null
     isPrivate?: boolean
+    isCollaborative?: boolean
     coverUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     items?: CollectionItemUncheckedCreateNestedManyWithoutCollectionInput
+    sections?: CollectionSectionUncheckedCreateNestedManyWithoutCollectionInput
+    collaborators?: CollectionCollaboratorUncheckedCreateNestedManyWithoutCollectionInput
   }
 
   export type CollectionCreateOrConnectWithoutUserInput = {
@@ -19629,6 +25746,30 @@ export namespace Prisma {
 
   export type CollectionCreateManyUserInputEnvelope = {
     data: CollectionCreateManyUserInput | CollectionCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CollectionCollaboratorCreateWithoutUserInput = {
+    id?: string
+    canEdit?: boolean
+    invitedAt?: Date | string
+    collection: CollectionCreateNestedOneWithoutCollaboratorsInput
+  }
+
+  export type CollectionCollaboratorUncheckedCreateWithoutUserInput = {
+    id?: string
+    collectionId: string
+    canEdit?: boolean
+    invitedAt?: Date | string
+  }
+
+  export type CollectionCollaboratorCreateOrConnectWithoutUserInput = {
+    where: CollectionCollaboratorWhereUniqueInput
+    create: XOR<CollectionCollaboratorCreateWithoutUserInput, CollectionCollaboratorUncheckedCreateWithoutUserInput>
+  }
+
+  export type CollectionCollaboratorCreateManyUserInputEnvelope = {
+    data: CollectionCollaboratorCreateManyUserInput | CollectionCollaboratorCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -19701,6 +25842,7 @@ export namespace Prisma {
     description?: StringNullableFilter<"Photo"> | string | null
     imageUrl?: StringFilter<"Photo"> | string
     thumbnailUrl?: StringNullableFilter<"Photo"> | string | null
+    previewUrl?: StringNullableFilter<"Photo"> | string | null
     width?: IntFilter<"Photo"> | number
     height?: IntFilter<"Photo"> | number
     fileSize?: IntFilter<"Photo"> | number
@@ -19831,6 +25973,7 @@ export namespace Prisma {
     body?: StringFilter<"ForumThread"> | string
     authorId?: StringFilter<"ForumThread"> | string
     categoryId?: StringFilter<"ForumThread"> | string
+    sourcePhotoId?: StringNullableFilter<"ForumThread"> | string | null
     pinned?: BoolFilter<"ForumThread"> | boolean
     locked?: BoolFilter<"ForumThread"> | boolean
     replyCount?: IntFilter<"ForumThread"> | number
@@ -19892,10 +26035,38 @@ export namespace Prisma {
     name?: StringFilter<"Collection"> | string
     description?: StringNullableFilter<"Collection"> | string | null
     isPrivate?: BoolFilter<"Collection"> | boolean
+    isCollaborative?: BoolFilter<"Collection"> | boolean
     coverUrl?: StringNullableFilter<"Collection"> | string | null
     userId?: StringFilter<"Collection"> | string
     createdAt?: DateTimeFilter<"Collection"> | Date | string
     updatedAt?: DateTimeFilter<"Collection"> | Date | string
+  }
+
+  export type CollectionCollaboratorUpsertWithWhereUniqueWithoutUserInput = {
+    where: CollectionCollaboratorWhereUniqueInput
+    update: XOR<CollectionCollaboratorUpdateWithoutUserInput, CollectionCollaboratorUncheckedUpdateWithoutUserInput>
+    create: XOR<CollectionCollaboratorCreateWithoutUserInput, CollectionCollaboratorUncheckedCreateWithoutUserInput>
+  }
+
+  export type CollectionCollaboratorUpdateWithWhereUniqueWithoutUserInput = {
+    where: CollectionCollaboratorWhereUniqueInput
+    data: XOR<CollectionCollaboratorUpdateWithoutUserInput, CollectionCollaboratorUncheckedUpdateWithoutUserInput>
+  }
+
+  export type CollectionCollaboratorUpdateManyWithWhereWithoutUserInput = {
+    where: CollectionCollaboratorScalarWhereInput
+    data: XOR<CollectionCollaboratorUpdateManyMutationInput, CollectionCollaboratorUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type CollectionCollaboratorScalarWhereInput = {
+    AND?: CollectionCollaboratorScalarWhereInput | CollectionCollaboratorScalarWhereInput[]
+    OR?: CollectionCollaboratorScalarWhereInput[]
+    NOT?: CollectionCollaboratorScalarWhereInput | CollectionCollaboratorScalarWhereInput[]
+    id?: StringFilter<"CollectionCollaborator"> | string
+    collectionId?: StringFilter<"CollectionCollaborator"> | string
+    userId?: StringFilter<"CollectionCollaborator"> | string
+    canEdit?: BoolFilter<"CollectionCollaborator"> | boolean
+    invitedAt?: DateTimeFilter<"CollectionCollaborator"> | Date | string
   }
 
   export type FollowUpsertWithWhereUniqueWithoutFollowingInput = {
@@ -19961,6 +26132,7 @@ export namespace Prisma {
     forumThreads?: ForumThreadCreateNestedManyWithoutAuthorInput
     forumReplies?: ForumReplyCreateNestedManyWithoutAuthorInput
     collections?: CollectionCreateNestedManyWithoutUserInput
+    collectionCollabs?: CollectionCollaboratorCreateNestedManyWithoutUserInput
     followers?: FollowCreateNestedManyWithoutFollowingInput
     following?: FollowCreateNestedManyWithoutFollowerInput
   }
@@ -19986,6 +26158,7 @@ export namespace Prisma {
     forumThreads?: ForumThreadUncheckedCreateNestedManyWithoutAuthorInput
     forumReplies?: ForumReplyUncheckedCreateNestedManyWithoutAuthorInput
     collections?: CollectionUncheckedCreateNestedManyWithoutUserInput
+    collectionCollabs?: CollectionCollaboratorUncheckedCreateNestedManyWithoutUserInput
     followers?: FollowUncheckedCreateNestedManyWithoutFollowingInput
     following?: FollowUncheckedCreateNestedManyWithoutFollowerInput
   }
@@ -20101,15 +26274,59 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type ForumThreadCreateWithoutSourcePhotoInput = {
+    id?: string
+    title: string
+    body: string
+    pinned?: boolean
+    locked?: boolean
+    replyCount?: number
+    lastReplyAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    author: UserCreateNestedOneWithoutForumThreadsInput
+    category: ForumCategoryCreateNestedOneWithoutThreadsInput
+    replies?: ForumReplyCreateNestedManyWithoutThreadInput
+  }
+
+  export type ForumThreadUncheckedCreateWithoutSourcePhotoInput = {
+    id?: string
+    title: string
+    body: string
+    authorId: string
+    categoryId: string
+    pinned?: boolean
+    locked?: boolean
+    replyCount?: number
+    lastReplyAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    replies?: ForumReplyUncheckedCreateNestedManyWithoutThreadInput
+  }
+
+  export type ForumThreadCreateOrConnectWithoutSourcePhotoInput = {
+    where: ForumThreadWhereUniqueInput
+    create: XOR<ForumThreadCreateWithoutSourcePhotoInput, ForumThreadUncheckedCreateWithoutSourcePhotoInput>
+  }
+
+  export type ForumThreadCreateManySourcePhotoInputEnvelope = {
+    data: ForumThreadCreateManySourcePhotoInput | ForumThreadCreateManySourcePhotoInput[]
+    skipDuplicates?: boolean
+  }
+
   export type CollectionItemCreateWithoutPhotoInput = {
     id?: string
+    note?: string | null
     savedAt?: Date | string
     collection: CollectionCreateNestedOneWithoutItemsInput
+    section?: CollectionSectionCreateNestedOneWithoutItemsInput
   }
 
   export type CollectionItemUncheckedCreateWithoutPhotoInput = {
     id?: string
     collectionId: string
+    sectionId?: string | null
+    note?: string | null
     savedAt?: Date | string
   }
 
@@ -20120,6 +26337,24 @@ export namespace Prisma {
 
   export type CollectionItemCreateManyPhotoInputEnvelope = {
     data: CollectionItemCreateManyPhotoInput | CollectionItemCreateManyPhotoInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PhotoTagCreateWithoutPhotoInput = {
+    tag: TagCreateNestedOneWithoutPhotoTagsInput
+  }
+
+  export type PhotoTagUncheckedCreateWithoutPhotoInput = {
+    tagId: string
+  }
+
+  export type PhotoTagCreateOrConnectWithoutPhotoInput = {
+    where: PhotoTagWhereUniqueInput
+    create: XOR<PhotoTagCreateWithoutPhotoInput, PhotoTagUncheckedCreateWithoutPhotoInput>
+  }
+
+  export type PhotoTagCreateManyPhotoInputEnvelope = {
+    data: PhotoTagCreateManyPhotoInput | PhotoTagCreateManyPhotoInput[]
     skipDuplicates?: boolean
   }
 
@@ -20155,6 +26390,7 @@ export namespace Prisma {
     forumThreads?: ForumThreadUpdateManyWithoutAuthorNestedInput
     forumReplies?: ForumReplyUpdateManyWithoutAuthorNestedInput
     collections?: CollectionUpdateManyWithoutUserNestedInput
+    collectionCollabs?: CollectionCollaboratorUpdateManyWithoutUserNestedInput
     followers?: FollowUpdateManyWithoutFollowingNestedInput
     following?: FollowUpdateManyWithoutFollowerNestedInput
   }
@@ -20180,6 +26416,7 @@ export namespace Prisma {
     forumThreads?: ForumThreadUncheckedUpdateManyWithoutAuthorNestedInput
     forumReplies?: ForumReplyUncheckedUpdateManyWithoutAuthorNestedInput
     collections?: CollectionUncheckedUpdateManyWithoutUserNestedInput
+    collectionCollabs?: CollectionCollaboratorUncheckedUpdateManyWithoutUserNestedInput
     followers?: FollowUncheckedUpdateManyWithoutFollowingNestedInput
     following?: FollowUncheckedUpdateManyWithoutFollowerNestedInput
   }
@@ -20248,6 +26485,22 @@ export namespace Prisma {
     data: XOR<ForumReplyUpdateManyMutationInput, ForumReplyUncheckedUpdateManyWithoutEmbeddedPhotoInput>
   }
 
+  export type ForumThreadUpsertWithWhereUniqueWithoutSourcePhotoInput = {
+    where: ForumThreadWhereUniqueInput
+    update: XOR<ForumThreadUpdateWithoutSourcePhotoInput, ForumThreadUncheckedUpdateWithoutSourcePhotoInput>
+    create: XOR<ForumThreadCreateWithoutSourcePhotoInput, ForumThreadUncheckedCreateWithoutSourcePhotoInput>
+  }
+
+  export type ForumThreadUpdateWithWhereUniqueWithoutSourcePhotoInput = {
+    where: ForumThreadWhereUniqueInput
+    data: XOR<ForumThreadUpdateWithoutSourcePhotoInput, ForumThreadUncheckedUpdateWithoutSourcePhotoInput>
+  }
+
+  export type ForumThreadUpdateManyWithWhereWithoutSourcePhotoInput = {
+    where: ForumThreadScalarWhereInput
+    data: XOR<ForumThreadUpdateManyMutationInput, ForumThreadUncheckedUpdateManyWithoutSourcePhotoInput>
+  }
+
   export type CollectionItemUpsertWithWhereUniqueWithoutPhotoInput = {
     where: CollectionItemWhereUniqueInput
     update: XOR<CollectionItemUpdateWithoutPhotoInput, CollectionItemUncheckedUpdateWithoutPhotoInput>
@@ -20271,7 +26524,33 @@ export namespace Prisma {
     id?: StringFilter<"CollectionItem"> | string
     collectionId?: StringFilter<"CollectionItem"> | string
     photoId?: StringFilter<"CollectionItem"> | string
+    sectionId?: StringNullableFilter<"CollectionItem"> | string | null
+    note?: StringNullableFilter<"CollectionItem"> | string | null
     savedAt?: DateTimeFilter<"CollectionItem"> | Date | string
+  }
+
+  export type PhotoTagUpsertWithWhereUniqueWithoutPhotoInput = {
+    where: PhotoTagWhereUniqueInput
+    update: XOR<PhotoTagUpdateWithoutPhotoInput, PhotoTagUncheckedUpdateWithoutPhotoInput>
+    create: XOR<PhotoTagCreateWithoutPhotoInput, PhotoTagUncheckedCreateWithoutPhotoInput>
+  }
+
+  export type PhotoTagUpdateWithWhereUniqueWithoutPhotoInput = {
+    where: PhotoTagWhereUniqueInput
+    data: XOR<PhotoTagUpdateWithoutPhotoInput, PhotoTagUncheckedUpdateWithoutPhotoInput>
+  }
+
+  export type PhotoTagUpdateManyWithWhereWithoutPhotoInput = {
+    where: PhotoTagScalarWhereInput
+    data: XOR<PhotoTagUpdateManyMutationInput, PhotoTagUncheckedUpdateManyWithoutPhotoInput>
+  }
+
+  export type PhotoTagScalarWhereInput = {
+    AND?: PhotoTagScalarWhereInput | PhotoTagScalarWhereInput[]
+    OR?: PhotoTagScalarWhereInput[]
+    NOT?: PhotoTagScalarWhereInput | PhotoTagScalarWhereInput[]
+    photoId?: StringFilter<"PhotoTag"> | string
+    tagId?: StringFilter<"PhotoTag"> | string
   }
 
   export type UserCreateWithoutVotesInput = {
@@ -20295,6 +26574,7 @@ export namespace Prisma {
     forumThreads?: ForumThreadCreateNestedManyWithoutAuthorInput
     forumReplies?: ForumReplyCreateNestedManyWithoutAuthorInput
     collections?: CollectionCreateNestedManyWithoutUserInput
+    collectionCollabs?: CollectionCollaboratorCreateNestedManyWithoutUserInput
     followers?: FollowCreateNestedManyWithoutFollowingInput
     following?: FollowCreateNestedManyWithoutFollowerInput
   }
@@ -20320,6 +26600,7 @@ export namespace Prisma {
     forumThreads?: ForumThreadUncheckedCreateNestedManyWithoutAuthorInput
     forumReplies?: ForumReplyUncheckedCreateNestedManyWithoutAuthorInput
     collections?: CollectionUncheckedCreateNestedManyWithoutUserInput
+    collectionCollabs?: CollectionCollaboratorUncheckedCreateNestedManyWithoutUserInput
     followers?: FollowUncheckedCreateNestedManyWithoutFollowingInput
     following?: FollowUncheckedCreateNestedManyWithoutFollowerInput
   }
@@ -20335,6 +26616,7 @@ export namespace Prisma {
     description?: string | null
     imageUrl: string
     thumbnailUrl?: string | null
+    previewUrl?: string | null
     width?: number
     height?: number
     fileSize?: number
@@ -20357,7 +26639,9 @@ export namespace Prisma {
     comments?: CommentCreateNestedManyWithoutPhotoInput
     awards?: AwardCreateNestedManyWithoutPhotoInput
     forumReplies?: ForumReplyCreateNestedManyWithoutEmbeddedPhotoInput
+    forumThreads?: ForumThreadCreateNestedManyWithoutSourcePhotoInput
     collectionItems?: CollectionItemCreateNestedManyWithoutPhotoInput
+    tags?: PhotoTagCreateNestedManyWithoutPhotoInput
   }
 
   export type PhotoUncheckedCreateWithoutVotesInput = {
@@ -20366,6 +26650,7 @@ export namespace Prisma {
     description?: string | null
     imageUrl: string
     thumbnailUrl?: string | null
+    previewUrl?: string | null
     width?: number
     height?: number
     fileSize?: number
@@ -20388,7 +26673,9 @@ export namespace Prisma {
     comments?: CommentUncheckedCreateNestedManyWithoutPhotoInput
     awards?: AwardUncheckedCreateNestedManyWithoutPhotoInput
     forumReplies?: ForumReplyUncheckedCreateNestedManyWithoutEmbeddedPhotoInput
+    forumThreads?: ForumThreadUncheckedCreateNestedManyWithoutSourcePhotoInput
     collectionItems?: CollectionItemUncheckedCreateNestedManyWithoutPhotoInput
+    tags?: PhotoTagUncheckedCreateNestedManyWithoutPhotoInput
   }
 
   export type PhotoCreateOrConnectWithoutVotesInput = {
@@ -20428,6 +26715,7 @@ export namespace Prisma {
     forumThreads?: ForumThreadUpdateManyWithoutAuthorNestedInput
     forumReplies?: ForumReplyUpdateManyWithoutAuthorNestedInput
     collections?: CollectionUpdateManyWithoutUserNestedInput
+    collectionCollabs?: CollectionCollaboratorUpdateManyWithoutUserNestedInput
     followers?: FollowUpdateManyWithoutFollowingNestedInput
     following?: FollowUpdateManyWithoutFollowerNestedInput
   }
@@ -20453,6 +26741,7 @@ export namespace Prisma {
     forumThreads?: ForumThreadUncheckedUpdateManyWithoutAuthorNestedInput
     forumReplies?: ForumReplyUncheckedUpdateManyWithoutAuthorNestedInput
     collections?: CollectionUncheckedUpdateManyWithoutUserNestedInput
+    collectionCollabs?: CollectionCollaboratorUncheckedUpdateManyWithoutUserNestedInput
     followers?: FollowUncheckedUpdateManyWithoutFollowingNestedInput
     following?: FollowUncheckedUpdateManyWithoutFollowerNestedInput
   }
@@ -20474,6 +26763,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    previewUrl?: NullableStringFieldUpdateOperationsInput | string | null
     width?: IntFieldUpdateOperationsInput | number
     height?: IntFieldUpdateOperationsInput | number
     fileSize?: IntFieldUpdateOperationsInput | number
@@ -20496,7 +26786,9 @@ export namespace Prisma {
     comments?: CommentUpdateManyWithoutPhotoNestedInput
     awards?: AwardUpdateManyWithoutPhotoNestedInput
     forumReplies?: ForumReplyUpdateManyWithoutEmbeddedPhotoNestedInput
+    forumThreads?: ForumThreadUpdateManyWithoutSourcePhotoNestedInput
     collectionItems?: CollectionItemUpdateManyWithoutPhotoNestedInput
+    tags?: PhotoTagUpdateManyWithoutPhotoNestedInput
   }
 
   export type PhotoUncheckedUpdateWithoutVotesInput = {
@@ -20505,6 +26797,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    previewUrl?: NullableStringFieldUpdateOperationsInput | string | null
     width?: IntFieldUpdateOperationsInput | number
     height?: IntFieldUpdateOperationsInput | number
     fileSize?: IntFieldUpdateOperationsInput | number
@@ -20527,7 +26820,9 @@ export namespace Prisma {
     comments?: CommentUncheckedUpdateManyWithoutPhotoNestedInput
     awards?: AwardUncheckedUpdateManyWithoutPhotoNestedInput
     forumReplies?: ForumReplyUncheckedUpdateManyWithoutEmbeddedPhotoNestedInput
+    forumThreads?: ForumThreadUncheckedUpdateManyWithoutSourcePhotoNestedInput
     collectionItems?: CollectionItemUncheckedUpdateManyWithoutPhotoNestedInput
+    tags?: PhotoTagUncheckedUpdateManyWithoutPhotoNestedInput
   }
 
   export type UserCreateWithoutCommentsInput = {
@@ -20551,6 +26846,7 @@ export namespace Prisma {
     forumThreads?: ForumThreadCreateNestedManyWithoutAuthorInput
     forumReplies?: ForumReplyCreateNestedManyWithoutAuthorInput
     collections?: CollectionCreateNestedManyWithoutUserInput
+    collectionCollabs?: CollectionCollaboratorCreateNestedManyWithoutUserInput
     followers?: FollowCreateNestedManyWithoutFollowingInput
     following?: FollowCreateNestedManyWithoutFollowerInput
   }
@@ -20576,6 +26872,7 @@ export namespace Prisma {
     forumThreads?: ForumThreadUncheckedCreateNestedManyWithoutAuthorInput
     forumReplies?: ForumReplyUncheckedCreateNestedManyWithoutAuthorInput
     collections?: CollectionUncheckedCreateNestedManyWithoutUserInput
+    collectionCollabs?: CollectionCollaboratorUncheckedCreateNestedManyWithoutUserInput
     followers?: FollowUncheckedCreateNestedManyWithoutFollowingInput
     following?: FollowUncheckedCreateNestedManyWithoutFollowerInput
   }
@@ -20591,6 +26888,7 @@ export namespace Prisma {
     description?: string | null
     imageUrl: string
     thumbnailUrl?: string | null
+    previewUrl?: string | null
     width?: number
     height?: number
     fileSize?: number
@@ -20613,7 +26911,9 @@ export namespace Prisma {
     votes?: VoteCreateNestedManyWithoutPhotoInput
     awards?: AwardCreateNestedManyWithoutPhotoInput
     forumReplies?: ForumReplyCreateNestedManyWithoutEmbeddedPhotoInput
+    forumThreads?: ForumThreadCreateNestedManyWithoutSourcePhotoInput
     collectionItems?: CollectionItemCreateNestedManyWithoutPhotoInput
+    tags?: PhotoTagCreateNestedManyWithoutPhotoInput
   }
 
   export type PhotoUncheckedCreateWithoutCommentsInput = {
@@ -20622,6 +26922,7 @@ export namespace Prisma {
     description?: string | null
     imageUrl: string
     thumbnailUrl?: string | null
+    previewUrl?: string | null
     width?: number
     height?: number
     fileSize?: number
@@ -20644,7 +26945,9 @@ export namespace Prisma {
     votes?: VoteUncheckedCreateNestedManyWithoutPhotoInput
     awards?: AwardUncheckedCreateNestedManyWithoutPhotoInput
     forumReplies?: ForumReplyUncheckedCreateNestedManyWithoutEmbeddedPhotoInput
+    forumThreads?: ForumThreadUncheckedCreateNestedManyWithoutSourcePhotoInput
     collectionItems?: CollectionItemUncheckedCreateNestedManyWithoutPhotoInput
+    tags?: PhotoTagUncheckedCreateNestedManyWithoutPhotoInput
   }
 
   export type PhotoCreateOrConnectWithoutCommentsInput = {
@@ -20684,6 +26987,7 @@ export namespace Prisma {
     forumThreads?: ForumThreadUpdateManyWithoutAuthorNestedInput
     forumReplies?: ForumReplyUpdateManyWithoutAuthorNestedInput
     collections?: CollectionUpdateManyWithoutUserNestedInput
+    collectionCollabs?: CollectionCollaboratorUpdateManyWithoutUserNestedInput
     followers?: FollowUpdateManyWithoutFollowingNestedInput
     following?: FollowUpdateManyWithoutFollowerNestedInput
   }
@@ -20709,6 +27013,7 @@ export namespace Prisma {
     forumThreads?: ForumThreadUncheckedUpdateManyWithoutAuthorNestedInput
     forumReplies?: ForumReplyUncheckedUpdateManyWithoutAuthorNestedInput
     collections?: CollectionUncheckedUpdateManyWithoutUserNestedInput
+    collectionCollabs?: CollectionCollaboratorUncheckedUpdateManyWithoutUserNestedInput
     followers?: FollowUncheckedUpdateManyWithoutFollowingNestedInput
     following?: FollowUncheckedUpdateManyWithoutFollowerNestedInput
   }
@@ -20730,6 +27035,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    previewUrl?: NullableStringFieldUpdateOperationsInput | string | null
     width?: IntFieldUpdateOperationsInput | number
     height?: IntFieldUpdateOperationsInput | number
     fileSize?: IntFieldUpdateOperationsInput | number
@@ -20752,7 +27058,9 @@ export namespace Prisma {
     votes?: VoteUpdateManyWithoutPhotoNestedInput
     awards?: AwardUpdateManyWithoutPhotoNestedInput
     forumReplies?: ForumReplyUpdateManyWithoutEmbeddedPhotoNestedInput
+    forumThreads?: ForumThreadUpdateManyWithoutSourcePhotoNestedInput
     collectionItems?: CollectionItemUpdateManyWithoutPhotoNestedInput
+    tags?: PhotoTagUpdateManyWithoutPhotoNestedInput
   }
 
   export type PhotoUncheckedUpdateWithoutCommentsInput = {
@@ -20761,6 +27069,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    previewUrl?: NullableStringFieldUpdateOperationsInput | string | null
     width?: IntFieldUpdateOperationsInput | number
     height?: IntFieldUpdateOperationsInput | number
     fileSize?: IntFieldUpdateOperationsInput | number
@@ -20783,7 +27092,9 @@ export namespace Prisma {
     votes?: VoteUncheckedUpdateManyWithoutPhotoNestedInput
     awards?: AwardUncheckedUpdateManyWithoutPhotoNestedInput
     forumReplies?: ForumReplyUncheckedUpdateManyWithoutEmbeddedPhotoNestedInput
+    forumThreads?: ForumThreadUncheckedUpdateManyWithoutSourcePhotoNestedInput
     collectionItems?: CollectionItemUncheckedUpdateManyWithoutPhotoNestedInput
+    tags?: PhotoTagUncheckedUpdateManyWithoutPhotoNestedInput
   }
 
   export type PhotoCreateWithoutAwardsInput = {
@@ -20792,6 +27103,7 @@ export namespace Prisma {
     description?: string | null
     imageUrl: string
     thumbnailUrl?: string | null
+    previewUrl?: string | null
     width?: number
     height?: number
     fileSize?: number
@@ -20814,7 +27126,9 @@ export namespace Prisma {
     votes?: VoteCreateNestedManyWithoutPhotoInput
     comments?: CommentCreateNestedManyWithoutPhotoInput
     forumReplies?: ForumReplyCreateNestedManyWithoutEmbeddedPhotoInput
+    forumThreads?: ForumThreadCreateNestedManyWithoutSourcePhotoInput
     collectionItems?: CollectionItemCreateNestedManyWithoutPhotoInput
+    tags?: PhotoTagCreateNestedManyWithoutPhotoInput
   }
 
   export type PhotoUncheckedCreateWithoutAwardsInput = {
@@ -20823,6 +27137,7 @@ export namespace Prisma {
     description?: string | null
     imageUrl: string
     thumbnailUrl?: string | null
+    previewUrl?: string | null
     width?: number
     height?: number
     fileSize?: number
@@ -20845,7 +27160,9 @@ export namespace Prisma {
     votes?: VoteUncheckedCreateNestedManyWithoutPhotoInput
     comments?: CommentUncheckedCreateNestedManyWithoutPhotoInput
     forumReplies?: ForumReplyUncheckedCreateNestedManyWithoutEmbeddedPhotoInput
+    forumThreads?: ForumThreadUncheckedCreateNestedManyWithoutSourcePhotoInput
     collectionItems?: CollectionItemUncheckedCreateNestedManyWithoutPhotoInput
+    tags?: PhotoTagUncheckedCreateNestedManyWithoutPhotoInput
   }
 
   export type PhotoCreateOrConnectWithoutAwardsInput = {
@@ -20874,6 +27191,7 @@ export namespace Prisma {
     forumThreads?: ForumThreadCreateNestedManyWithoutAuthorInput
     forumReplies?: ForumReplyCreateNestedManyWithoutAuthorInput
     collections?: CollectionCreateNestedManyWithoutUserInput
+    collectionCollabs?: CollectionCollaboratorCreateNestedManyWithoutUserInput
     followers?: FollowCreateNestedManyWithoutFollowingInput
     following?: FollowCreateNestedManyWithoutFollowerInput
   }
@@ -20899,6 +27217,7 @@ export namespace Prisma {
     forumThreads?: ForumThreadUncheckedCreateNestedManyWithoutAuthorInput
     forumReplies?: ForumReplyUncheckedCreateNestedManyWithoutAuthorInput
     collections?: CollectionUncheckedCreateNestedManyWithoutUserInput
+    collectionCollabs?: CollectionCollaboratorUncheckedCreateNestedManyWithoutUserInput
     followers?: FollowUncheckedCreateNestedManyWithoutFollowingInput
     following?: FollowUncheckedCreateNestedManyWithoutFollowerInput
   }
@@ -20925,6 +27244,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    previewUrl?: NullableStringFieldUpdateOperationsInput | string | null
     width?: IntFieldUpdateOperationsInput | number
     height?: IntFieldUpdateOperationsInput | number
     fileSize?: IntFieldUpdateOperationsInput | number
@@ -20947,7 +27267,9 @@ export namespace Prisma {
     votes?: VoteUpdateManyWithoutPhotoNestedInput
     comments?: CommentUpdateManyWithoutPhotoNestedInput
     forumReplies?: ForumReplyUpdateManyWithoutEmbeddedPhotoNestedInput
+    forumThreads?: ForumThreadUpdateManyWithoutSourcePhotoNestedInput
     collectionItems?: CollectionItemUpdateManyWithoutPhotoNestedInput
+    tags?: PhotoTagUpdateManyWithoutPhotoNestedInput
   }
 
   export type PhotoUncheckedUpdateWithoutAwardsInput = {
@@ -20956,6 +27278,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    previewUrl?: NullableStringFieldUpdateOperationsInput | string | null
     width?: IntFieldUpdateOperationsInput | number
     height?: IntFieldUpdateOperationsInput | number
     fileSize?: IntFieldUpdateOperationsInput | number
@@ -20978,7 +27301,9 @@ export namespace Prisma {
     votes?: VoteUncheckedUpdateManyWithoutPhotoNestedInput
     comments?: CommentUncheckedUpdateManyWithoutPhotoNestedInput
     forumReplies?: ForumReplyUncheckedUpdateManyWithoutEmbeddedPhotoNestedInput
+    forumThreads?: ForumThreadUncheckedUpdateManyWithoutSourcePhotoNestedInput
     collectionItems?: CollectionItemUncheckedUpdateManyWithoutPhotoNestedInput
+    tags?: PhotoTagUncheckedUpdateManyWithoutPhotoNestedInput
   }
 
   export type UserUpsertWithoutAwardsInput = {
@@ -21013,6 +27338,7 @@ export namespace Prisma {
     forumThreads?: ForumThreadUpdateManyWithoutAuthorNestedInput
     forumReplies?: ForumReplyUpdateManyWithoutAuthorNestedInput
     collections?: CollectionUpdateManyWithoutUserNestedInput
+    collectionCollabs?: CollectionCollaboratorUpdateManyWithoutUserNestedInput
     followers?: FollowUpdateManyWithoutFollowingNestedInput
     following?: FollowUpdateManyWithoutFollowerNestedInput
   }
@@ -21038,6 +27364,7 @@ export namespace Prisma {
     forumThreads?: ForumThreadUncheckedUpdateManyWithoutAuthorNestedInput
     forumReplies?: ForumReplyUncheckedUpdateManyWithoutAuthorNestedInput
     collections?: CollectionUncheckedUpdateManyWithoutUserNestedInput
+    collectionCollabs?: CollectionCollaboratorUncheckedUpdateManyWithoutUserNestedInput
     followers?: FollowUncheckedUpdateManyWithoutFollowingNestedInput
     following?: FollowUncheckedUpdateManyWithoutFollowerNestedInput
   }
@@ -21053,6 +27380,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     author: UserCreateNestedOneWithoutForumThreadsInput
+    sourcePhoto?: PhotoCreateNestedOneWithoutForumThreadsInput
     replies?: ForumReplyCreateNestedManyWithoutThreadInput
   }
 
@@ -21061,6 +27389,7 @@ export namespace Prisma {
     title: string
     body: string
     authorId: string
+    sourcePhotoId?: string | null
     pinned?: boolean
     locked?: boolean
     replyCount?: number
@@ -21117,6 +27446,7 @@ export namespace Prisma {
     awards?: AwardCreateNestedManyWithoutUserInput
     forumReplies?: ForumReplyCreateNestedManyWithoutAuthorInput
     collections?: CollectionCreateNestedManyWithoutUserInput
+    collectionCollabs?: CollectionCollaboratorCreateNestedManyWithoutUserInput
     followers?: FollowCreateNestedManyWithoutFollowingInput
     following?: FollowCreateNestedManyWithoutFollowerInput
   }
@@ -21142,6 +27472,7 @@ export namespace Prisma {
     awards?: AwardUncheckedCreateNestedManyWithoutUserInput
     forumReplies?: ForumReplyUncheckedCreateNestedManyWithoutAuthorInput
     collections?: CollectionUncheckedCreateNestedManyWithoutUserInput
+    collectionCollabs?: CollectionCollaboratorUncheckedCreateNestedManyWithoutUserInput
     followers?: FollowUncheckedCreateNestedManyWithoutFollowingInput
     following?: FollowUncheckedCreateNestedManyWithoutFollowerInput
   }
@@ -21170,6 +27501,79 @@ export namespace Prisma {
   export type ForumCategoryCreateOrConnectWithoutThreadsInput = {
     where: ForumCategoryWhereUniqueInput
     create: XOR<ForumCategoryCreateWithoutThreadsInput, ForumCategoryUncheckedCreateWithoutThreadsInput>
+  }
+
+  export type PhotoCreateWithoutForumThreadsInput = {
+    id?: string
+    title: string
+    description?: string | null
+    imageUrl: string
+    thumbnailUrl?: string | null
+    previewUrl?: string | null
+    width?: number
+    height?: number
+    fileSize?: number
+    neighborhood: string
+    category: $Enums.PhotoCategory
+    status?: $Enums.PhotoStatus
+    cameraMake?: string | null
+    cameraModel?: string | null
+    lens?: string | null
+    iso?: number | null
+    aperture?: string | null
+    shutterSpeed?: string | null
+    focalLength?: string | null
+    takenAt?: Date | string | null
+    voteCount?: number
+    approvedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    author: UserCreateNestedOneWithoutPhotosInput
+    votes?: VoteCreateNestedManyWithoutPhotoInput
+    comments?: CommentCreateNestedManyWithoutPhotoInput
+    awards?: AwardCreateNestedManyWithoutPhotoInput
+    forumReplies?: ForumReplyCreateNestedManyWithoutEmbeddedPhotoInput
+    collectionItems?: CollectionItemCreateNestedManyWithoutPhotoInput
+    tags?: PhotoTagCreateNestedManyWithoutPhotoInput
+  }
+
+  export type PhotoUncheckedCreateWithoutForumThreadsInput = {
+    id?: string
+    title: string
+    description?: string | null
+    imageUrl: string
+    thumbnailUrl?: string | null
+    previewUrl?: string | null
+    width?: number
+    height?: number
+    fileSize?: number
+    neighborhood: string
+    category: $Enums.PhotoCategory
+    status?: $Enums.PhotoStatus
+    cameraMake?: string | null
+    cameraModel?: string | null
+    lens?: string | null
+    iso?: number | null
+    aperture?: string | null
+    shutterSpeed?: string | null
+    focalLength?: string | null
+    takenAt?: Date | string | null
+    authorId: string
+    voteCount?: number
+    approvedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    votes?: VoteUncheckedCreateNestedManyWithoutPhotoInput
+    comments?: CommentUncheckedCreateNestedManyWithoutPhotoInput
+    awards?: AwardUncheckedCreateNestedManyWithoutPhotoInput
+    forumReplies?: ForumReplyUncheckedCreateNestedManyWithoutEmbeddedPhotoInput
+    collectionItems?: CollectionItemUncheckedCreateNestedManyWithoutPhotoInput
+    tags?: PhotoTagUncheckedCreateNestedManyWithoutPhotoInput
+  }
+
+  export type PhotoCreateOrConnectWithoutForumThreadsInput = {
+    where: PhotoWhereUniqueInput
+    create: XOR<PhotoCreateWithoutForumThreadsInput, PhotoUncheckedCreateWithoutForumThreadsInput>
   }
 
   export type ForumReplyCreateWithoutThreadInput = {
@@ -21232,6 +27636,7 @@ export namespace Prisma {
     awards?: AwardUpdateManyWithoutUserNestedInput
     forumReplies?: ForumReplyUpdateManyWithoutAuthorNestedInput
     collections?: CollectionUpdateManyWithoutUserNestedInput
+    collectionCollabs?: CollectionCollaboratorUpdateManyWithoutUserNestedInput
     followers?: FollowUpdateManyWithoutFollowingNestedInput
     following?: FollowUpdateManyWithoutFollowerNestedInput
   }
@@ -21257,6 +27662,7 @@ export namespace Prisma {
     awards?: AwardUncheckedUpdateManyWithoutUserNestedInput
     forumReplies?: ForumReplyUncheckedUpdateManyWithoutAuthorNestedInput
     collections?: CollectionUncheckedUpdateManyWithoutUserNestedInput
+    collectionCollabs?: CollectionCollaboratorUncheckedUpdateManyWithoutUserNestedInput
     followers?: FollowUncheckedUpdateManyWithoutFollowingNestedInput
     following?: FollowUncheckedUpdateManyWithoutFollowerNestedInput
   }
@@ -21286,6 +27692,85 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     sortOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type PhotoUpsertWithoutForumThreadsInput = {
+    update: XOR<PhotoUpdateWithoutForumThreadsInput, PhotoUncheckedUpdateWithoutForumThreadsInput>
+    create: XOR<PhotoCreateWithoutForumThreadsInput, PhotoUncheckedCreateWithoutForumThreadsInput>
+    where?: PhotoWhereInput
+  }
+
+  export type PhotoUpdateToOneWithWhereWithoutForumThreadsInput = {
+    where?: PhotoWhereInput
+    data: XOR<PhotoUpdateWithoutForumThreadsInput, PhotoUncheckedUpdateWithoutForumThreadsInput>
+  }
+
+  export type PhotoUpdateWithoutForumThreadsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    previewUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    width?: IntFieldUpdateOperationsInput | number
+    height?: IntFieldUpdateOperationsInput | number
+    fileSize?: IntFieldUpdateOperationsInput | number
+    neighborhood?: StringFieldUpdateOperationsInput | string
+    category?: EnumPhotoCategoryFieldUpdateOperationsInput | $Enums.PhotoCategory
+    status?: EnumPhotoStatusFieldUpdateOperationsInput | $Enums.PhotoStatus
+    cameraMake?: NullableStringFieldUpdateOperationsInput | string | null
+    cameraModel?: NullableStringFieldUpdateOperationsInput | string | null
+    lens?: NullableStringFieldUpdateOperationsInput | string | null
+    iso?: NullableIntFieldUpdateOperationsInput | number | null
+    aperture?: NullableStringFieldUpdateOperationsInput | string | null
+    shutterSpeed?: NullableStringFieldUpdateOperationsInput | string | null
+    focalLength?: NullableStringFieldUpdateOperationsInput | string | null
+    takenAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    voteCount?: IntFieldUpdateOperationsInput | number
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    author?: UserUpdateOneRequiredWithoutPhotosNestedInput
+    votes?: VoteUpdateManyWithoutPhotoNestedInput
+    comments?: CommentUpdateManyWithoutPhotoNestedInput
+    awards?: AwardUpdateManyWithoutPhotoNestedInput
+    forumReplies?: ForumReplyUpdateManyWithoutEmbeddedPhotoNestedInput
+    collectionItems?: CollectionItemUpdateManyWithoutPhotoNestedInput
+    tags?: PhotoTagUpdateManyWithoutPhotoNestedInput
+  }
+
+  export type PhotoUncheckedUpdateWithoutForumThreadsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    previewUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    width?: IntFieldUpdateOperationsInput | number
+    height?: IntFieldUpdateOperationsInput | number
+    fileSize?: IntFieldUpdateOperationsInput | number
+    neighborhood?: StringFieldUpdateOperationsInput | string
+    category?: EnumPhotoCategoryFieldUpdateOperationsInput | $Enums.PhotoCategory
+    status?: EnumPhotoStatusFieldUpdateOperationsInput | $Enums.PhotoStatus
+    cameraMake?: NullableStringFieldUpdateOperationsInput | string | null
+    cameraModel?: NullableStringFieldUpdateOperationsInput | string | null
+    lens?: NullableStringFieldUpdateOperationsInput | string | null
+    iso?: NullableIntFieldUpdateOperationsInput | number | null
+    aperture?: NullableStringFieldUpdateOperationsInput | string | null
+    shutterSpeed?: NullableStringFieldUpdateOperationsInput | string | null
+    focalLength?: NullableStringFieldUpdateOperationsInput | string | null
+    takenAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    authorId?: StringFieldUpdateOperationsInput | string
+    voteCount?: IntFieldUpdateOperationsInput | number
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    votes?: VoteUncheckedUpdateManyWithoutPhotoNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutPhotoNestedInput
+    awards?: AwardUncheckedUpdateManyWithoutPhotoNestedInput
+    forumReplies?: ForumReplyUncheckedUpdateManyWithoutEmbeddedPhotoNestedInput
+    collectionItems?: CollectionItemUncheckedUpdateManyWithoutPhotoNestedInput
+    tags?: PhotoTagUncheckedUpdateManyWithoutPhotoNestedInput
   }
 
   export type ForumReplyUpsertWithWhereUniqueWithoutThreadInput = {
@@ -21325,6 +27810,7 @@ export namespace Prisma {
     awards?: AwardCreateNestedManyWithoutUserInput
     forumThreads?: ForumThreadCreateNestedManyWithoutAuthorInput
     collections?: CollectionCreateNestedManyWithoutUserInput
+    collectionCollabs?: CollectionCollaboratorCreateNestedManyWithoutUserInput
     followers?: FollowCreateNestedManyWithoutFollowingInput
     following?: FollowCreateNestedManyWithoutFollowerInput
   }
@@ -21350,6 +27836,7 @@ export namespace Prisma {
     awards?: AwardUncheckedCreateNestedManyWithoutUserInput
     forumThreads?: ForumThreadUncheckedCreateNestedManyWithoutAuthorInput
     collections?: CollectionUncheckedCreateNestedManyWithoutUserInput
+    collectionCollabs?: CollectionCollaboratorUncheckedCreateNestedManyWithoutUserInput
     followers?: FollowUncheckedCreateNestedManyWithoutFollowingInput
     following?: FollowUncheckedCreateNestedManyWithoutFollowerInput
   }
@@ -21371,6 +27858,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     author: UserCreateNestedOneWithoutForumThreadsInput
     category: ForumCategoryCreateNestedOneWithoutThreadsInput
+    sourcePhoto?: PhotoCreateNestedOneWithoutForumThreadsInput
   }
 
   export type ForumThreadUncheckedCreateWithoutRepliesInput = {
@@ -21379,6 +27867,7 @@ export namespace Prisma {
     body: string
     authorId: string
     categoryId: string
+    sourcePhotoId?: string | null
     pinned?: boolean
     locked?: boolean
     replyCount?: number
@@ -21398,6 +27887,7 @@ export namespace Prisma {
     description?: string | null
     imageUrl: string
     thumbnailUrl?: string | null
+    previewUrl?: string | null
     width?: number
     height?: number
     fileSize?: number
@@ -21420,7 +27910,9 @@ export namespace Prisma {
     votes?: VoteCreateNestedManyWithoutPhotoInput
     comments?: CommentCreateNestedManyWithoutPhotoInput
     awards?: AwardCreateNestedManyWithoutPhotoInput
+    forumThreads?: ForumThreadCreateNestedManyWithoutSourcePhotoInput
     collectionItems?: CollectionItemCreateNestedManyWithoutPhotoInput
+    tags?: PhotoTagCreateNestedManyWithoutPhotoInput
   }
 
   export type PhotoUncheckedCreateWithoutForumRepliesInput = {
@@ -21429,6 +27921,7 @@ export namespace Prisma {
     description?: string | null
     imageUrl: string
     thumbnailUrl?: string | null
+    previewUrl?: string | null
     width?: number
     height?: number
     fileSize?: number
@@ -21451,7 +27944,9 @@ export namespace Prisma {
     votes?: VoteUncheckedCreateNestedManyWithoutPhotoInput
     comments?: CommentUncheckedCreateNestedManyWithoutPhotoInput
     awards?: AwardUncheckedCreateNestedManyWithoutPhotoInput
+    forumThreads?: ForumThreadUncheckedCreateNestedManyWithoutSourcePhotoInput
     collectionItems?: CollectionItemUncheckedCreateNestedManyWithoutPhotoInput
+    tags?: PhotoTagUncheckedCreateNestedManyWithoutPhotoInput
   }
 
   export type PhotoCreateOrConnectWithoutForumRepliesInput = {
@@ -21491,6 +27986,7 @@ export namespace Prisma {
     awards?: AwardUpdateManyWithoutUserNestedInput
     forumThreads?: ForumThreadUpdateManyWithoutAuthorNestedInput
     collections?: CollectionUpdateManyWithoutUserNestedInput
+    collectionCollabs?: CollectionCollaboratorUpdateManyWithoutUserNestedInput
     followers?: FollowUpdateManyWithoutFollowingNestedInput
     following?: FollowUpdateManyWithoutFollowerNestedInput
   }
@@ -21516,6 +28012,7 @@ export namespace Prisma {
     awards?: AwardUncheckedUpdateManyWithoutUserNestedInput
     forumThreads?: ForumThreadUncheckedUpdateManyWithoutAuthorNestedInput
     collections?: CollectionUncheckedUpdateManyWithoutUserNestedInput
+    collectionCollabs?: CollectionCollaboratorUncheckedUpdateManyWithoutUserNestedInput
     followers?: FollowUncheckedUpdateManyWithoutFollowingNestedInput
     following?: FollowUncheckedUpdateManyWithoutFollowerNestedInput
   }
@@ -21543,6 +28040,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     author?: UserUpdateOneRequiredWithoutForumThreadsNestedInput
     category?: ForumCategoryUpdateOneRequiredWithoutThreadsNestedInput
+    sourcePhoto?: PhotoUpdateOneWithoutForumThreadsNestedInput
   }
 
   export type ForumThreadUncheckedUpdateWithoutRepliesInput = {
@@ -21551,6 +28049,7 @@ export namespace Prisma {
     body?: StringFieldUpdateOperationsInput | string
     authorId?: StringFieldUpdateOperationsInput | string
     categoryId?: StringFieldUpdateOperationsInput | string
+    sourcePhotoId?: NullableStringFieldUpdateOperationsInput | string | null
     pinned?: BoolFieldUpdateOperationsInput | boolean
     locked?: BoolFieldUpdateOperationsInput | boolean
     replyCount?: IntFieldUpdateOperationsInput | number
@@ -21576,6 +28075,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    previewUrl?: NullableStringFieldUpdateOperationsInput | string | null
     width?: IntFieldUpdateOperationsInput | number
     height?: IntFieldUpdateOperationsInput | number
     fileSize?: IntFieldUpdateOperationsInput | number
@@ -21598,7 +28098,9 @@ export namespace Prisma {
     votes?: VoteUpdateManyWithoutPhotoNestedInput
     comments?: CommentUpdateManyWithoutPhotoNestedInput
     awards?: AwardUpdateManyWithoutPhotoNestedInput
+    forumThreads?: ForumThreadUpdateManyWithoutSourcePhotoNestedInput
     collectionItems?: CollectionItemUpdateManyWithoutPhotoNestedInput
+    tags?: PhotoTagUpdateManyWithoutPhotoNestedInput
   }
 
   export type PhotoUncheckedUpdateWithoutForumRepliesInput = {
@@ -21607,6 +28109,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    previewUrl?: NullableStringFieldUpdateOperationsInput | string | null
     width?: IntFieldUpdateOperationsInput | number
     height?: IntFieldUpdateOperationsInput | number
     fileSize?: IntFieldUpdateOperationsInput | number
@@ -21629,7 +28132,9 @@ export namespace Prisma {
     votes?: VoteUncheckedUpdateManyWithoutPhotoNestedInput
     comments?: CommentUncheckedUpdateManyWithoutPhotoNestedInput
     awards?: AwardUncheckedUpdateManyWithoutPhotoNestedInput
+    forumThreads?: ForumThreadUncheckedUpdateManyWithoutSourcePhotoNestedInput
     collectionItems?: CollectionItemUncheckedUpdateManyWithoutPhotoNestedInput
+    tags?: PhotoTagUncheckedUpdateManyWithoutPhotoNestedInput
   }
 
   export type UserCreateWithoutCollectionsInput = {
@@ -21653,6 +28158,7 @@ export namespace Prisma {
     awards?: AwardCreateNestedManyWithoutUserInput
     forumThreads?: ForumThreadCreateNestedManyWithoutAuthorInput
     forumReplies?: ForumReplyCreateNestedManyWithoutAuthorInput
+    collectionCollabs?: CollectionCollaboratorCreateNestedManyWithoutUserInput
     followers?: FollowCreateNestedManyWithoutFollowingInput
     following?: FollowCreateNestedManyWithoutFollowerInput
   }
@@ -21678,6 +28184,7 @@ export namespace Prisma {
     awards?: AwardUncheckedCreateNestedManyWithoutUserInput
     forumThreads?: ForumThreadUncheckedCreateNestedManyWithoutAuthorInput
     forumReplies?: ForumReplyUncheckedCreateNestedManyWithoutAuthorInput
+    collectionCollabs?: CollectionCollaboratorUncheckedCreateNestedManyWithoutUserInput
     followers?: FollowUncheckedCreateNestedManyWithoutFollowingInput
     following?: FollowUncheckedCreateNestedManyWithoutFollowerInput
   }
@@ -21689,13 +28196,17 @@ export namespace Prisma {
 
   export type CollectionItemCreateWithoutCollectionInput = {
     id?: string
+    note?: string | null
     savedAt?: Date | string
     photo: PhotoCreateNestedOneWithoutCollectionItemsInput
+    section?: CollectionSectionCreateNestedOneWithoutItemsInput
   }
 
   export type CollectionItemUncheckedCreateWithoutCollectionInput = {
     id?: string
     photoId: string
+    sectionId?: string | null
+    note?: string | null
     savedAt?: Date | string
   }
 
@@ -21706,6 +28217,56 @@ export namespace Prisma {
 
   export type CollectionItemCreateManyCollectionInputEnvelope = {
     data: CollectionItemCreateManyCollectionInput | CollectionItemCreateManyCollectionInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CollectionSectionCreateWithoutCollectionInput = {
+    id?: string
+    name: string
+    sortOrder?: number
+    createdAt?: Date | string
+    items?: CollectionItemCreateNestedManyWithoutSectionInput
+  }
+
+  export type CollectionSectionUncheckedCreateWithoutCollectionInput = {
+    id?: string
+    name: string
+    sortOrder?: number
+    createdAt?: Date | string
+    items?: CollectionItemUncheckedCreateNestedManyWithoutSectionInput
+  }
+
+  export type CollectionSectionCreateOrConnectWithoutCollectionInput = {
+    where: CollectionSectionWhereUniqueInput
+    create: XOR<CollectionSectionCreateWithoutCollectionInput, CollectionSectionUncheckedCreateWithoutCollectionInput>
+  }
+
+  export type CollectionSectionCreateManyCollectionInputEnvelope = {
+    data: CollectionSectionCreateManyCollectionInput | CollectionSectionCreateManyCollectionInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CollectionCollaboratorCreateWithoutCollectionInput = {
+    id?: string
+    canEdit?: boolean
+    invitedAt?: Date | string
+    user: UserCreateNestedOneWithoutCollectionCollabsInput
+  }
+
+  export type CollectionCollaboratorUncheckedCreateWithoutCollectionInput = {
+    id?: string
+    userId: string
+    canEdit?: boolean
+    invitedAt?: Date | string
+  }
+
+  export type CollectionCollaboratorCreateOrConnectWithoutCollectionInput = {
+    where: CollectionCollaboratorWhereUniqueInput
+    create: XOR<CollectionCollaboratorCreateWithoutCollectionInput, CollectionCollaboratorUncheckedCreateWithoutCollectionInput>
+  }
+
+  export type CollectionCollaboratorCreateManyCollectionInputEnvelope = {
+    data: CollectionCollaboratorCreateManyCollectionInput | CollectionCollaboratorCreateManyCollectionInput[]
     skipDuplicates?: boolean
   }
 
@@ -21741,6 +28302,7 @@ export namespace Prisma {
     awards?: AwardUpdateManyWithoutUserNestedInput
     forumThreads?: ForumThreadUpdateManyWithoutAuthorNestedInput
     forumReplies?: ForumReplyUpdateManyWithoutAuthorNestedInput
+    collectionCollabs?: CollectionCollaboratorUpdateManyWithoutUserNestedInput
     followers?: FollowUpdateManyWithoutFollowingNestedInput
     following?: FollowUpdateManyWithoutFollowerNestedInput
   }
@@ -21766,6 +28328,7 @@ export namespace Prisma {
     awards?: AwardUncheckedUpdateManyWithoutUserNestedInput
     forumThreads?: ForumThreadUncheckedUpdateManyWithoutAuthorNestedInput
     forumReplies?: ForumReplyUncheckedUpdateManyWithoutAuthorNestedInput
+    collectionCollabs?: CollectionCollaboratorUncheckedUpdateManyWithoutUserNestedInput
     followers?: FollowUncheckedUpdateManyWithoutFollowingNestedInput
     following?: FollowUncheckedUpdateManyWithoutFollowerNestedInput
   }
@@ -21786,15 +28349,367 @@ export namespace Prisma {
     data: XOR<CollectionItemUpdateManyMutationInput, CollectionItemUncheckedUpdateManyWithoutCollectionInput>
   }
 
+  export type CollectionSectionUpsertWithWhereUniqueWithoutCollectionInput = {
+    where: CollectionSectionWhereUniqueInput
+    update: XOR<CollectionSectionUpdateWithoutCollectionInput, CollectionSectionUncheckedUpdateWithoutCollectionInput>
+    create: XOR<CollectionSectionCreateWithoutCollectionInput, CollectionSectionUncheckedCreateWithoutCollectionInput>
+  }
+
+  export type CollectionSectionUpdateWithWhereUniqueWithoutCollectionInput = {
+    where: CollectionSectionWhereUniqueInput
+    data: XOR<CollectionSectionUpdateWithoutCollectionInput, CollectionSectionUncheckedUpdateWithoutCollectionInput>
+  }
+
+  export type CollectionSectionUpdateManyWithWhereWithoutCollectionInput = {
+    where: CollectionSectionScalarWhereInput
+    data: XOR<CollectionSectionUpdateManyMutationInput, CollectionSectionUncheckedUpdateManyWithoutCollectionInput>
+  }
+
+  export type CollectionSectionScalarWhereInput = {
+    AND?: CollectionSectionScalarWhereInput | CollectionSectionScalarWhereInput[]
+    OR?: CollectionSectionScalarWhereInput[]
+    NOT?: CollectionSectionScalarWhereInput | CollectionSectionScalarWhereInput[]
+    id?: StringFilter<"CollectionSection"> | string
+    name?: StringFilter<"CollectionSection"> | string
+    collectionId?: StringFilter<"CollectionSection"> | string
+    sortOrder?: IntFilter<"CollectionSection"> | number
+    createdAt?: DateTimeFilter<"CollectionSection"> | Date | string
+  }
+
+  export type CollectionCollaboratorUpsertWithWhereUniqueWithoutCollectionInput = {
+    where: CollectionCollaboratorWhereUniqueInput
+    update: XOR<CollectionCollaboratorUpdateWithoutCollectionInput, CollectionCollaboratorUncheckedUpdateWithoutCollectionInput>
+    create: XOR<CollectionCollaboratorCreateWithoutCollectionInput, CollectionCollaboratorUncheckedCreateWithoutCollectionInput>
+  }
+
+  export type CollectionCollaboratorUpdateWithWhereUniqueWithoutCollectionInput = {
+    where: CollectionCollaboratorWhereUniqueInput
+    data: XOR<CollectionCollaboratorUpdateWithoutCollectionInput, CollectionCollaboratorUncheckedUpdateWithoutCollectionInput>
+  }
+
+  export type CollectionCollaboratorUpdateManyWithWhereWithoutCollectionInput = {
+    where: CollectionCollaboratorScalarWhereInput
+    data: XOR<CollectionCollaboratorUpdateManyMutationInput, CollectionCollaboratorUncheckedUpdateManyWithoutCollectionInput>
+  }
+
+  export type CollectionCreateWithoutSectionsInput = {
+    id?: string
+    name: string
+    description?: string | null
+    isPrivate?: boolean
+    isCollaborative?: boolean
+    coverUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutCollectionsInput
+    items?: CollectionItemCreateNestedManyWithoutCollectionInput
+    collaborators?: CollectionCollaboratorCreateNestedManyWithoutCollectionInput
+  }
+
+  export type CollectionUncheckedCreateWithoutSectionsInput = {
+    id?: string
+    name: string
+    description?: string | null
+    isPrivate?: boolean
+    isCollaborative?: boolean
+    coverUrl?: string | null
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    items?: CollectionItemUncheckedCreateNestedManyWithoutCollectionInput
+    collaborators?: CollectionCollaboratorUncheckedCreateNestedManyWithoutCollectionInput
+  }
+
+  export type CollectionCreateOrConnectWithoutSectionsInput = {
+    where: CollectionWhereUniqueInput
+    create: XOR<CollectionCreateWithoutSectionsInput, CollectionUncheckedCreateWithoutSectionsInput>
+  }
+
+  export type CollectionItemCreateWithoutSectionInput = {
+    id?: string
+    note?: string | null
+    savedAt?: Date | string
+    collection: CollectionCreateNestedOneWithoutItemsInput
+    photo: PhotoCreateNestedOneWithoutCollectionItemsInput
+  }
+
+  export type CollectionItemUncheckedCreateWithoutSectionInput = {
+    id?: string
+    collectionId: string
+    photoId: string
+    note?: string | null
+    savedAt?: Date | string
+  }
+
+  export type CollectionItemCreateOrConnectWithoutSectionInput = {
+    where: CollectionItemWhereUniqueInput
+    create: XOR<CollectionItemCreateWithoutSectionInput, CollectionItemUncheckedCreateWithoutSectionInput>
+  }
+
+  export type CollectionItemCreateManySectionInputEnvelope = {
+    data: CollectionItemCreateManySectionInput | CollectionItemCreateManySectionInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CollectionUpsertWithoutSectionsInput = {
+    update: XOR<CollectionUpdateWithoutSectionsInput, CollectionUncheckedUpdateWithoutSectionsInput>
+    create: XOR<CollectionCreateWithoutSectionsInput, CollectionUncheckedCreateWithoutSectionsInput>
+    where?: CollectionWhereInput
+  }
+
+  export type CollectionUpdateToOneWithWhereWithoutSectionsInput = {
+    where?: CollectionWhereInput
+    data: XOR<CollectionUpdateWithoutSectionsInput, CollectionUncheckedUpdateWithoutSectionsInput>
+  }
+
+  export type CollectionUpdateWithoutSectionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isPrivate?: BoolFieldUpdateOperationsInput | boolean
+    isCollaborative?: BoolFieldUpdateOperationsInput | boolean
+    coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutCollectionsNestedInput
+    items?: CollectionItemUpdateManyWithoutCollectionNestedInput
+    collaborators?: CollectionCollaboratorUpdateManyWithoutCollectionNestedInput
+  }
+
+  export type CollectionUncheckedUpdateWithoutSectionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isPrivate?: BoolFieldUpdateOperationsInput | boolean
+    isCollaborative?: BoolFieldUpdateOperationsInput | boolean
+    coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    items?: CollectionItemUncheckedUpdateManyWithoutCollectionNestedInput
+    collaborators?: CollectionCollaboratorUncheckedUpdateManyWithoutCollectionNestedInput
+  }
+
+  export type CollectionItemUpsertWithWhereUniqueWithoutSectionInput = {
+    where: CollectionItemWhereUniqueInput
+    update: XOR<CollectionItemUpdateWithoutSectionInput, CollectionItemUncheckedUpdateWithoutSectionInput>
+    create: XOR<CollectionItemCreateWithoutSectionInput, CollectionItemUncheckedCreateWithoutSectionInput>
+  }
+
+  export type CollectionItemUpdateWithWhereUniqueWithoutSectionInput = {
+    where: CollectionItemWhereUniqueInput
+    data: XOR<CollectionItemUpdateWithoutSectionInput, CollectionItemUncheckedUpdateWithoutSectionInput>
+  }
+
+  export type CollectionItemUpdateManyWithWhereWithoutSectionInput = {
+    where: CollectionItemScalarWhereInput
+    data: XOR<CollectionItemUpdateManyMutationInput, CollectionItemUncheckedUpdateManyWithoutSectionInput>
+  }
+
+  export type CollectionCreateWithoutCollaboratorsInput = {
+    id?: string
+    name: string
+    description?: string | null
+    isPrivate?: boolean
+    isCollaborative?: boolean
+    coverUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutCollectionsInput
+    items?: CollectionItemCreateNestedManyWithoutCollectionInput
+    sections?: CollectionSectionCreateNestedManyWithoutCollectionInput
+  }
+
+  export type CollectionUncheckedCreateWithoutCollaboratorsInput = {
+    id?: string
+    name: string
+    description?: string | null
+    isPrivate?: boolean
+    isCollaborative?: boolean
+    coverUrl?: string | null
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    items?: CollectionItemUncheckedCreateNestedManyWithoutCollectionInput
+    sections?: CollectionSectionUncheckedCreateNestedManyWithoutCollectionInput
+  }
+
+  export type CollectionCreateOrConnectWithoutCollaboratorsInput = {
+    where: CollectionWhereUniqueInput
+    create: XOR<CollectionCreateWithoutCollaboratorsInput, CollectionUncheckedCreateWithoutCollaboratorsInput>
+  }
+
+  export type UserCreateWithoutCollectionCollabsInput = {
+    id?: string
+    email: string
+    username: string
+    name: string
+    password: string
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    avatarUrl?: string | null
+    bio?: string | null
+    location?: string | null
+    websiteUrl?: string | null
+    instagramUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    photos?: PhotoCreateNestedManyWithoutAuthorInput
+    votes?: VoteCreateNestedManyWithoutUserInput
+    comments?: CommentCreateNestedManyWithoutAuthorInput
+    awards?: AwardCreateNestedManyWithoutUserInput
+    forumThreads?: ForumThreadCreateNestedManyWithoutAuthorInput
+    forumReplies?: ForumReplyCreateNestedManyWithoutAuthorInput
+    collections?: CollectionCreateNestedManyWithoutUserInput
+    followers?: FollowCreateNestedManyWithoutFollowingInput
+    following?: FollowCreateNestedManyWithoutFollowerInput
+  }
+
+  export type UserUncheckedCreateWithoutCollectionCollabsInput = {
+    id?: string
+    email: string
+    username: string
+    name: string
+    password: string
+    role?: $Enums.UserRole
+    status?: $Enums.UserStatus
+    avatarUrl?: string | null
+    bio?: string | null
+    location?: string | null
+    websiteUrl?: string | null
+    instagramUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    photos?: PhotoUncheckedCreateNestedManyWithoutAuthorInput
+    votes?: VoteUncheckedCreateNestedManyWithoutUserInput
+    comments?: CommentUncheckedCreateNestedManyWithoutAuthorInput
+    awards?: AwardUncheckedCreateNestedManyWithoutUserInput
+    forumThreads?: ForumThreadUncheckedCreateNestedManyWithoutAuthorInput
+    forumReplies?: ForumReplyUncheckedCreateNestedManyWithoutAuthorInput
+    collections?: CollectionUncheckedCreateNestedManyWithoutUserInput
+    followers?: FollowUncheckedCreateNestedManyWithoutFollowingInput
+    following?: FollowUncheckedCreateNestedManyWithoutFollowerInput
+  }
+
+  export type UserCreateOrConnectWithoutCollectionCollabsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutCollectionCollabsInput, UserUncheckedCreateWithoutCollectionCollabsInput>
+  }
+
+  export type CollectionUpsertWithoutCollaboratorsInput = {
+    update: XOR<CollectionUpdateWithoutCollaboratorsInput, CollectionUncheckedUpdateWithoutCollaboratorsInput>
+    create: XOR<CollectionCreateWithoutCollaboratorsInput, CollectionUncheckedCreateWithoutCollaboratorsInput>
+    where?: CollectionWhereInput
+  }
+
+  export type CollectionUpdateToOneWithWhereWithoutCollaboratorsInput = {
+    where?: CollectionWhereInput
+    data: XOR<CollectionUpdateWithoutCollaboratorsInput, CollectionUncheckedUpdateWithoutCollaboratorsInput>
+  }
+
+  export type CollectionUpdateWithoutCollaboratorsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isPrivate?: BoolFieldUpdateOperationsInput | boolean
+    isCollaborative?: BoolFieldUpdateOperationsInput | boolean
+    coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutCollectionsNestedInput
+    items?: CollectionItemUpdateManyWithoutCollectionNestedInput
+    sections?: CollectionSectionUpdateManyWithoutCollectionNestedInput
+  }
+
+  export type CollectionUncheckedUpdateWithoutCollaboratorsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isPrivate?: BoolFieldUpdateOperationsInput | boolean
+    isCollaborative?: BoolFieldUpdateOperationsInput | boolean
+    coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    items?: CollectionItemUncheckedUpdateManyWithoutCollectionNestedInput
+    sections?: CollectionSectionUncheckedUpdateManyWithoutCollectionNestedInput
+  }
+
+  export type UserUpsertWithoutCollectionCollabsInput = {
+    update: XOR<UserUpdateWithoutCollectionCollabsInput, UserUncheckedUpdateWithoutCollectionCollabsInput>
+    create: XOR<UserCreateWithoutCollectionCollabsInput, UserUncheckedCreateWithoutCollectionCollabsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutCollectionCollabsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutCollectionCollabsInput, UserUncheckedUpdateWithoutCollectionCollabsInput>
+  }
+
+  export type UserUpdateWithoutCollectionCollabsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    instagramUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    photos?: PhotoUpdateManyWithoutAuthorNestedInput
+    votes?: VoteUpdateManyWithoutUserNestedInput
+    comments?: CommentUpdateManyWithoutAuthorNestedInput
+    awards?: AwardUpdateManyWithoutUserNestedInput
+    forumThreads?: ForumThreadUpdateManyWithoutAuthorNestedInput
+    forumReplies?: ForumReplyUpdateManyWithoutAuthorNestedInput
+    collections?: CollectionUpdateManyWithoutUserNestedInput
+    followers?: FollowUpdateManyWithoutFollowingNestedInput
+    following?: FollowUpdateManyWithoutFollowerNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutCollectionCollabsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    instagramUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    photos?: PhotoUncheckedUpdateManyWithoutAuthorNestedInput
+    votes?: VoteUncheckedUpdateManyWithoutUserNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutAuthorNestedInput
+    awards?: AwardUncheckedUpdateManyWithoutUserNestedInput
+    forumThreads?: ForumThreadUncheckedUpdateManyWithoutAuthorNestedInput
+    forumReplies?: ForumReplyUncheckedUpdateManyWithoutAuthorNestedInput
+    collections?: CollectionUncheckedUpdateManyWithoutUserNestedInput
+    followers?: FollowUncheckedUpdateManyWithoutFollowingNestedInput
+    following?: FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  }
+
   export type CollectionCreateWithoutItemsInput = {
     id?: string
     name: string
     description?: string | null
     isPrivate?: boolean
+    isCollaborative?: boolean
     coverUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutCollectionsInput
+    sections?: CollectionSectionCreateNestedManyWithoutCollectionInput
+    collaborators?: CollectionCollaboratorCreateNestedManyWithoutCollectionInput
   }
 
   export type CollectionUncheckedCreateWithoutItemsInput = {
@@ -21802,10 +28717,13 @@ export namespace Prisma {
     name: string
     description?: string | null
     isPrivate?: boolean
+    isCollaborative?: boolean
     coverUrl?: string | null
     userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    sections?: CollectionSectionUncheckedCreateNestedManyWithoutCollectionInput
+    collaborators?: CollectionCollaboratorUncheckedCreateNestedManyWithoutCollectionInput
   }
 
   export type CollectionCreateOrConnectWithoutItemsInput = {
@@ -21819,6 +28737,7 @@ export namespace Prisma {
     description?: string | null
     imageUrl: string
     thumbnailUrl?: string | null
+    previewUrl?: string | null
     width?: number
     height?: number
     fileSize?: number
@@ -21842,6 +28761,8 @@ export namespace Prisma {
     comments?: CommentCreateNestedManyWithoutPhotoInput
     awards?: AwardCreateNestedManyWithoutPhotoInput
     forumReplies?: ForumReplyCreateNestedManyWithoutEmbeddedPhotoInput
+    forumThreads?: ForumThreadCreateNestedManyWithoutSourcePhotoInput
+    tags?: PhotoTagCreateNestedManyWithoutPhotoInput
   }
 
   export type PhotoUncheckedCreateWithoutCollectionItemsInput = {
@@ -21850,6 +28771,7 @@ export namespace Prisma {
     description?: string | null
     imageUrl: string
     thumbnailUrl?: string | null
+    previewUrl?: string | null
     width?: number
     height?: number
     fileSize?: number
@@ -21873,11 +28795,34 @@ export namespace Prisma {
     comments?: CommentUncheckedCreateNestedManyWithoutPhotoInput
     awards?: AwardUncheckedCreateNestedManyWithoutPhotoInput
     forumReplies?: ForumReplyUncheckedCreateNestedManyWithoutEmbeddedPhotoInput
+    forumThreads?: ForumThreadUncheckedCreateNestedManyWithoutSourcePhotoInput
+    tags?: PhotoTagUncheckedCreateNestedManyWithoutPhotoInput
   }
 
   export type PhotoCreateOrConnectWithoutCollectionItemsInput = {
     where: PhotoWhereUniqueInput
     create: XOR<PhotoCreateWithoutCollectionItemsInput, PhotoUncheckedCreateWithoutCollectionItemsInput>
+  }
+
+  export type CollectionSectionCreateWithoutItemsInput = {
+    id?: string
+    name: string
+    sortOrder?: number
+    createdAt?: Date | string
+    collection: CollectionCreateNestedOneWithoutSectionsInput
+  }
+
+  export type CollectionSectionUncheckedCreateWithoutItemsInput = {
+    id?: string
+    name: string
+    collectionId: string
+    sortOrder?: number
+    createdAt?: Date | string
+  }
+
+  export type CollectionSectionCreateOrConnectWithoutItemsInput = {
+    where: CollectionSectionWhereUniqueInput
+    create: XOR<CollectionSectionCreateWithoutItemsInput, CollectionSectionUncheckedCreateWithoutItemsInput>
   }
 
   export type CollectionUpsertWithoutItemsInput = {
@@ -21896,10 +28841,13 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     isPrivate?: BoolFieldUpdateOperationsInput | boolean
+    isCollaborative?: BoolFieldUpdateOperationsInput | boolean
     coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutCollectionsNestedInput
+    sections?: CollectionSectionUpdateManyWithoutCollectionNestedInput
+    collaborators?: CollectionCollaboratorUpdateManyWithoutCollectionNestedInput
   }
 
   export type CollectionUncheckedUpdateWithoutItemsInput = {
@@ -21907,10 +28855,13 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     isPrivate?: BoolFieldUpdateOperationsInput | boolean
+    isCollaborative?: BoolFieldUpdateOperationsInput | boolean
     coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sections?: CollectionSectionUncheckedUpdateManyWithoutCollectionNestedInput
+    collaborators?: CollectionCollaboratorUncheckedUpdateManyWithoutCollectionNestedInput
   }
 
   export type PhotoUpsertWithoutCollectionItemsInput = {
@@ -21930,6 +28881,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    previewUrl?: NullableStringFieldUpdateOperationsInput | string | null
     width?: IntFieldUpdateOperationsInput | number
     height?: IntFieldUpdateOperationsInput | number
     fileSize?: IntFieldUpdateOperationsInput | number
@@ -21953,6 +28905,8 @@ export namespace Prisma {
     comments?: CommentUpdateManyWithoutPhotoNestedInput
     awards?: AwardUpdateManyWithoutPhotoNestedInput
     forumReplies?: ForumReplyUpdateManyWithoutEmbeddedPhotoNestedInput
+    forumThreads?: ForumThreadUpdateManyWithoutSourcePhotoNestedInput
+    tags?: PhotoTagUpdateManyWithoutPhotoNestedInput
   }
 
   export type PhotoUncheckedUpdateWithoutCollectionItemsInput = {
@@ -21961,6 +28915,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    previewUrl?: NullableStringFieldUpdateOperationsInput | string | null
     width?: IntFieldUpdateOperationsInput | number
     height?: IntFieldUpdateOperationsInput | number
     fileSize?: IntFieldUpdateOperationsInput | number
@@ -21984,6 +28939,261 @@ export namespace Prisma {
     comments?: CommentUncheckedUpdateManyWithoutPhotoNestedInput
     awards?: AwardUncheckedUpdateManyWithoutPhotoNestedInput
     forumReplies?: ForumReplyUncheckedUpdateManyWithoutEmbeddedPhotoNestedInput
+    forumThreads?: ForumThreadUncheckedUpdateManyWithoutSourcePhotoNestedInput
+    tags?: PhotoTagUncheckedUpdateManyWithoutPhotoNestedInput
+  }
+
+  export type CollectionSectionUpsertWithoutItemsInput = {
+    update: XOR<CollectionSectionUpdateWithoutItemsInput, CollectionSectionUncheckedUpdateWithoutItemsInput>
+    create: XOR<CollectionSectionCreateWithoutItemsInput, CollectionSectionUncheckedCreateWithoutItemsInput>
+    where?: CollectionSectionWhereInput
+  }
+
+  export type CollectionSectionUpdateToOneWithWhereWithoutItemsInput = {
+    where?: CollectionSectionWhereInput
+    data: XOR<CollectionSectionUpdateWithoutItemsInput, CollectionSectionUncheckedUpdateWithoutItemsInput>
+  }
+
+  export type CollectionSectionUpdateWithoutItemsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    collection?: CollectionUpdateOneRequiredWithoutSectionsNestedInput
+  }
+
+  export type CollectionSectionUncheckedUpdateWithoutItemsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    collectionId?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PhotoTagCreateWithoutTagInput = {
+    photo: PhotoCreateNestedOneWithoutTagsInput
+  }
+
+  export type PhotoTagUncheckedCreateWithoutTagInput = {
+    photoId: string
+  }
+
+  export type PhotoTagCreateOrConnectWithoutTagInput = {
+    where: PhotoTagWhereUniqueInput
+    create: XOR<PhotoTagCreateWithoutTagInput, PhotoTagUncheckedCreateWithoutTagInput>
+  }
+
+  export type PhotoTagCreateManyTagInputEnvelope = {
+    data: PhotoTagCreateManyTagInput | PhotoTagCreateManyTagInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PhotoTagUpsertWithWhereUniqueWithoutTagInput = {
+    where: PhotoTagWhereUniqueInput
+    update: XOR<PhotoTagUpdateWithoutTagInput, PhotoTagUncheckedUpdateWithoutTagInput>
+    create: XOR<PhotoTagCreateWithoutTagInput, PhotoTagUncheckedCreateWithoutTagInput>
+  }
+
+  export type PhotoTagUpdateWithWhereUniqueWithoutTagInput = {
+    where: PhotoTagWhereUniqueInput
+    data: XOR<PhotoTagUpdateWithoutTagInput, PhotoTagUncheckedUpdateWithoutTagInput>
+  }
+
+  export type PhotoTagUpdateManyWithWhereWithoutTagInput = {
+    where: PhotoTagScalarWhereInput
+    data: XOR<PhotoTagUpdateManyMutationInput, PhotoTagUncheckedUpdateManyWithoutTagInput>
+  }
+
+  export type PhotoCreateWithoutTagsInput = {
+    id?: string
+    title: string
+    description?: string | null
+    imageUrl: string
+    thumbnailUrl?: string | null
+    previewUrl?: string | null
+    width?: number
+    height?: number
+    fileSize?: number
+    neighborhood: string
+    category: $Enums.PhotoCategory
+    status?: $Enums.PhotoStatus
+    cameraMake?: string | null
+    cameraModel?: string | null
+    lens?: string | null
+    iso?: number | null
+    aperture?: string | null
+    shutterSpeed?: string | null
+    focalLength?: string | null
+    takenAt?: Date | string | null
+    voteCount?: number
+    approvedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    author: UserCreateNestedOneWithoutPhotosInput
+    votes?: VoteCreateNestedManyWithoutPhotoInput
+    comments?: CommentCreateNestedManyWithoutPhotoInput
+    awards?: AwardCreateNestedManyWithoutPhotoInput
+    forumReplies?: ForumReplyCreateNestedManyWithoutEmbeddedPhotoInput
+    forumThreads?: ForumThreadCreateNestedManyWithoutSourcePhotoInput
+    collectionItems?: CollectionItemCreateNestedManyWithoutPhotoInput
+  }
+
+  export type PhotoUncheckedCreateWithoutTagsInput = {
+    id?: string
+    title: string
+    description?: string | null
+    imageUrl: string
+    thumbnailUrl?: string | null
+    previewUrl?: string | null
+    width?: number
+    height?: number
+    fileSize?: number
+    neighborhood: string
+    category: $Enums.PhotoCategory
+    status?: $Enums.PhotoStatus
+    cameraMake?: string | null
+    cameraModel?: string | null
+    lens?: string | null
+    iso?: number | null
+    aperture?: string | null
+    shutterSpeed?: string | null
+    focalLength?: string | null
+    takenAt?: Date | string | null
+    authorId: string
+    voteCount?: number
+    approvedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    votes?: VoteUncheckedCreateNestedManyWithoutPhotoInput
+    comments?: CommentUncheckedCreateNestedManyWithoutPhotoInput
+    awards?: AwardUncheckedCreateNestedManyWithoutPhotoInput
+    forumReplies?: ForumReplyUncheckedCreateNestedManyWithoutEmbeddedPhotoInput
+    forumThreads?: ForumThreadUncheckedCreateNestedManyWithoutSourcePhotoInput
+    collectionItems?: CollectionItemUncheckedCreateNestedManyWithoutPhotoInput
+  }
+
+  export type PhotoCreateOrConnectWithoutTagsInput = {
+    where: PhotoWhereUniqueInput
+    create: XOR<PhotoCreateWithoutTagsInput, PhotoUncheckedCreateWithoutTagsInput>
+  }
+
+  export type TagCreateWithoutPhotoTagsInput = {
+    id?: string
+    name: string
+    slug: string
+  }
+
+  export type TagUncheckedCreateWithoutPhotoTagsInput = {
+    id?: string
+    name: string
+    slug: string
+  }
+
+  export type TagCreateOrConnectWithoutPhotoTagsInput = {
+    where: TagWhereUniqueInput
+    create: XOR<TagCreateWithoutPhotoTagsInput, TagUncheckedCreateWithoutPhotoTagsInput>
+  }
+
+  export type PhotoUpsertWithoutTagsInput = {
+    update: XOR<PhotoUpdateWithoutTagsInput, PhotoUncheckedUpdateWithoutTagsInput>
+    create: XOR<PhotoCreateWithoutTagsInput, PhotoUncheckedCreateWithoutTagsInput>
+    where?: PhotoWhereInput
+  }
+
+  export type PhotoUpdateToOneWithWhereWithoutTagsInput = {
+    where?: PhotoWhereInput
+    data: XOR<PhotoUpdateWithoutTagsInput, PhotoUncheckedUpdateWithoutTagsInput>
+  }
+
+  export type PhotoUpdateWithoutTagsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    previewUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    width?: IntFieldUpdateOperationsInput | number
+    height?: IntFieldUpdateOperationsInput | number
+    fileSize?: IntFieldUpdateOperationsInput | number
+    neighborhood?: StringFieldUpdateOperationsInput | string
+    category?: EnumPhotoCategoryFieldUpdateOperationsInput | $Enums.PhotoCategory
+    status?: EnumPhotoStatusFieldUpdateOperationsInput | $Enums.PhotoStatus
+    cameraMake?: NullableStringFieldUpdateOperationsInput | string | null
+    cameraModel?: NullableStringFieldUpdateOperationsInput | string | null
+    lens?: NullableStringFieldUpdateOperationsInput | string | null
+    iso?: NullableIntFieldUpdateOperationsInput | number | null
+    aperture?: NullableStringFieldUpdateOperationsInput | string | null
+    shutterSpeed?: NullableStringFieldUpdateOperationsInput | string | null
+    focalLength?: NullableStringFieldUpdateOperationsInput | string | null
+    takenAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    voteCount?: IntFieldUpdateOperationsInput | number
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    author?: UserUpdateOneRequiredWithoutPhotosNestedInput
+    votes?: VoteUpdateManyWithoutPhotoNestedInput
+    comments?: CommentUpdateManyWithoutPhotoNestedInput
+    awards?: AwardUpdateManyWithoutPhotoNestedInput
+    forumReplies?: ForumReplyUpdateManyWithoutEmbeddedPhotoNestedInput
+    forumThreads?: ForumThreadUpdateManyWithoutSourcePhotoNestedInput
+    collectionItems?: CollectionItemUpdateManyWithoutPhotoNestedInput
+  }
+
+  export type PhotoUncheckedUpdateWithoutTagsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    previewUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    width?: IntFieldUpdateOperationsInput | number
+    height?: IntFieldUpdateOperationsInput | number
+    fileSize?: IntFieldUpdateOperationsInput | number
+    neighborhood?: StringFieldUpdateOperationsInput | string
+    category?: EnumPhotoCategoryFieldUpdateOperationsInput | $Enums.PhotoCategory
+    status?: EnumPhotoStatusFieldUpdateOperationsInput | $Enums.PhotoStatus
+    cameraMake?: NullableStringFieldUpdateOperationsInput | string | null
+    cameraModel?: NullableStringFieldUpdateOperationsInput | string | null
+    lens?: NullableStringFieldUpdateOperationsInput | string | null
+    iso?: NullableIntFieldUpdateOperationsInput | number | null
+    aperture?: NullableStringFieldUpdateOperationsInput | string | null
+    shutterSpeed?: NullableStringFieldUpdateOperationsInput | string | null
+    focalLength?: NullableStringFieldUpdateOperationsInput | string | null
+    takenAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    authorId?: StringFieldUpdateOperationsInput | string
+    voteCount?: IntFieldUpdateOperationsInput | number
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    votes?: VoteUncheckedUpdateManyWithoutPhotoNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutPhotoNestedInput
+    awards?: AwardUncheckedUpdateManyWithoutPhotoNestedInput
+    forumReplies?: ForumReplyUncheckedUpdateManyWithoutEmbeddedPhotoNestedInput
+    forumThreads?: ForumThreadUncheckedUpdateManyWithoutSourcePhotoNestedInput
+    collectionItems?: CollectionItemUncheckedUpdateManyWithoutPhotoNestedInput
+  }
+
+  export type TagUpsertWithoutPhotoTagsInput = {
+    update: XOR<TagUpdateWithoutPhotoTagsInput, TagUncheckedUpdateWithoutPhotoTagsInput>
+    create: XOR<TagCreateWithoutPhotoTagsInput, TagUncheckedCreateWithoutPhotoTagsInput>
+    where?: TagWhereInput
+  }
+
+  export type TagUpdateToOneWithWhereWithoutPhotoTagsInput = {
+    where?: TagWhereInput
+    data: XOR<TagUpdateWithoutPhotoTagsInput, TagUncheckedUpdateWithoutPhotoTagsInput>
+  }
+
+  export type TagUpdateWithoutPhotoTagsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TagUncheckedUpdateWithoutPhotoTagsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserCreateWithoutFollowingInput = {
@@ -22008,6 +29218,7 @@ export namespace Prisma {
     forumThreads?: ForumThreadCreateNestedManyWithoutAuthorInput
     forumReplies?: ForumReplyCreateNestedManyWithoutAuthorInput
     collections?: CollectionCreateNestedManyWithoutUserInput
+    collectionCollabs?: CollectionCollaboratorCreateNestedManyWithoutUserInput
     followers?: FollowCreateNestedManyWithoutFollowingInput
   }
 
@@ -22033,6 +29244,7 @@ export namespace Prisma {
     forumThreads?: ForumThreadUncheckedCreateNestedManyWithoutAuthorInput
     forumReplies?: ForumReplyUncheckedCreateNestedManyWithoutAuthorInput
     collections?: CollectionUncheckedCreateNestedManyWithoutUserInput
+    collectionCollabs?: CollectionCollaboratorUncheckedCreateNestedManyWithoutUserInput
     followers?: FollowUncheckedCreateNestedManyWithoutFollowingInput
   }
 
@@ -22063,6 +29275,7 @@ export namespace Prisma {
     forumThreads?: ForumThreadCreateNestedManyWithoutAuthorInput
     forumReplies?: ForumReplyCreateNestedManyWithoutAuthorInput
     collections?: CollectionCreateNestedManyWithoutUserInput
+    collectionCollabs?: CollectionCollaboratorCreateNestedManyWithoutUserInput
     following?: FollowCreateNestedManyWithoutFollowerInput
   }
 
@@ -22088,6 +29301,7 @@ export namespace Prisma {
     forumThreads?: ForumThreadUncheckedCreateNestedManyWithoutAuthorInput
     forumReplies?: ForumReplyUncheckedCreateNestedManyWithoutAuthorInput
     collections?: CollectionUncheckedCreateNestedManyWithoutUserInput
+    collectionCollabs?: CollectionCollaboratorUncheckedCreateNestedManyWithoutUserInput
     following?: FollowUncheckedCreateNestedManyWithoutFollowerInput
   }
 
@@ -22129,6 +29343,7 @@ export namespace Prisma {
     forumThreads?: ForumThreadUpdateManyWithoutAuthorNestedInput
     forumReplies?: ForumReplyUpdateManyWithoutAuthorNestedInput
     collections?: CollectionUpdateManyWithoutUserNestedInput
+    collectionCollabs?: CollectionCollaboratorUpdateManyWithoutUserNestedInput
     followers?: FollowUpdateManyWithoutFollowingNestedInput
   }
 
@@ -22154,6 +29369,7 @@ export namespace Prisma {
     forumThreads?: ForumThreadUncheckedUpdateManyWithoutAuthorNestedInput
     forumReplies?: ForumReplyUncheckedUpdateManyWithoutAuthorNestedInput
     collections?: CollectionUncheckedUpdateManyWithoutUserNestedInput
+    collectionCollabs?: CollectionCollaboratorUncheckedUpdateManyWithoutUserNestedInput
     followers?: FollowUncheckedUpdateManyWithoutFollowingNestedInput
   }
 
@@ -22190,6 +29406,7 @@ export namespace Prisma {
     forumThreads?: ForumThreadUpdateManyWithoutAuthorNestedInput
     forumReplies?: ForumReplyUpdateManyWithoutAuthorNestedInput
     collections?: CollectionUpdateManyWithoutUserNestedInput
+    collectionCollabs?: CollectionCollaboratorUpdateManyWithoutUserNestedInput
     following?: FollowUpdateManyWithoutFollowerNestedInput
   }
 
@@ -22215,6 +29432,7 @@ export namespace Prisma {
     forumThreads?: ForumThreadUncheckedUpdateManyWithoutAuthorNestedInput
     forumReplies?: ForumReplyUncheckedUpdateManyWithoutAuthorNestedInput
     collections?: CollectionUncheckedUpdateManyWithoutUserNestedInput
+    collectionCollabs?: CollectionCollaboratorUncheckedUpdateManyWithoutUserNestedInput
     following?: FollowUncheckedUpdateManyWithoutFollowerNestedInput
   }
 
@@ -22224,6 +29442,7 @@ export namespace Prisma {
     description?: string | null
     imageUrl: string
     thumbnailUrl?: string | null
+    previewUrl?: string | null
     width?: number
     height?: number
     fileSize?: number
@@ -22273,6 +29492,7 @@ export namespace Prisma {
     title: string
     body: string
     categoryId: string
+    sourcePhotoId?: string | null
     pinned?: boolean
     locked?: boolean
     replyCount?: number
@@ -22295,9 +29515,17 @@ export namespace Prisma {
     name: string
     description?: string | null
     isPrivate?: boolean
+    isCollaborative?: boolean
     coverUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+  }
+
+  export type CollectionCollaboratorCreateManyUserInput = {
+    id?: string
+    collectionId: string
+    canEdit?: boolean
+    invitedAt?: Date | string
   }
 
   export type FollowCreateManyFollowingInput = {
@@ -22318,6 +29546,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    previewUrl?: NullableStringFieldUpdateOperationsInput | string | null
     width?: IntFieldUpdateOperationsInput | number
     height?: IntFieldUpdateOperationsInput | number
     fileSize?: IntFieldUpdateOperationsInput | number
@@ -22340,7 +29569,9 @@ export namespace Prisma {
     comments?: CommentUpdateManyWithoutPhotoNestedInput
     awards?: AwardUpdateManyWithoutPhotoNestedInput
     forumReplies?: ForumReplyUpdateManyWithoutEmbeddedPhotoNestedInput
+    forumThreads?: ForumThreadUpdateManyWithoutSourcePhotoNestedInput
     collectionItems?: CollectionItemUpdateManyWithoutPhotoNestedInput
+    tags?: PhotoTagUpdateManyWithoutPhotoNestedInput
   }
 
   export type PhotoUncheckedUpdateWithoutAuthorInput = {
@@ -22349,6 +29580,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    previewUrl?: NullableStringFieldUpdateOperationsInput | string | null
     width?: IntFieldUpdateOperationsInput | number
     height?: IntFieldUpdateOperationsInput | number
     fileSize?: IntFieldUpdateOperationsInput | number
@@ -22371,7 +29603,9 @@ export namespace Prisma {
     comments?: CommentUncheckedUpdateManyWithoutPhotoNestedInput
     awards?: AwardUncheckedUpdateManyWithoutPhotoNestedInput
     forumReplies?: ForumReplyUncheckedUpdateManyWithoutEmbeddedPhotoNestedInput
+    forumThreads?: ForumThreadUncheckedUpdateManyWithoutSourcePhotoNestedInput
     collectionItems?: CollectionItemUncheckedUpdateManyWithoutPhotoNestedInput
+    tags?: PhotoTagUncheckedUpdateManyWithoutPhotoNestedInput
   }
 
   export type PhotoUncheckedUpdateManyWithoutAuthorInput = {
@@ -22380,6 +29614,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    previewUrl?: NullableStringFieldUpdateOperationsInput | string | null
     width?: IntFieldUpdateOperationsInput | number
     height?: IntFieldUpdateOperationsInput | number
     fileSize?: IntFieldUpdateOperationsInput | number
@@ -22483,6 +29718,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     category?: ForumCategoryUpdateOneRequiredWithoutThreadsNestedInput
+    sourcePhoto?: PhotoUpdateOneWithoutForumThreadsNestedInput
     replies?: ForumReplyUpdateManyWithoutThreadNestedInput
   }
 
@@ -22491,6 +29727,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     body?: StringFieldUpdateOperationsInput | string
     categoryId?: StringFieldUpdateOperationsInput | string
+    sourcePhotoId?: NullableStringFieldUpdateOperationsInput | string | null
     pinned?: BoolFieldUpdateOperationsInput | boolean
     locked?: BoolFieldUpdateOperationsInput | boolean
     replyCount?: IntFieldUpdateOperationsInput | number
@@ -22505,6 +29742,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     body?: StringFieldUpdateOperationsInput | string
     categoryId?: StringFieldUpdateOperationsInput | string
+    sourcePhotoId?: NullableStringFieldUpdateOperationsInput | string | null
     pinned?: BoolFieldUpdateOperationsInput | boolean
     locked?: BoolFieldUpdateOperationsInput | boolean
     replyCount?: IntFieldUpdateOperationsInput | number
@@ -22545,10 +29783,13 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     isPrivate?: BoolFieldUpdateOperationsInput | boolean
+    isCollaborative?: BoolFieldUpdateOperationsInput | boolean
     coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     items?: CollectionItemUpdateManyWithoutCollectionNestedInput
+    sections?: CollectionSectionUpdateManyWithoutCollectionNestedInput
+    collaborators?: CollectionCollaboratorUpdateManyWithoutCollectionNestedInput
   }
 
   export type CollectionUncheckedUpdateWithoutUserInput = {
@@ -22556,10 +29797,13 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     isPrivate?: BoolFieldUpdateOperationsInput | boolean
+    isCollaborative?: BoolFieldUpdateOperationsInput | boolean
     coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     items?: CollectionItemUncheckedUpdateManyWithoutCollectionNestedInput
+    sections?: CollectionSectionUncheckedUpdateManyWithoutCollectionNestedInput
+    collaborators?: CollectionCollaboratorUncheckedUpdateManyWithoutCollectionNestedInput
   }
 
   export type CollectionUncheckedUpdateManyWithoutUserInput = {
@@ -22567,9 +29811,31 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     isPrivate?: BoolFieldUpdateOperationsInput | boolean
+    isCollaborative?: BoolFieldUpdateOperationsInput | boolean
     coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CollectionCollaboratorUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    canEdit?: BoolFieldUpdateOperationsInput | boolean
+    invitedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    collection?: CollectionUpdateOneRequiredWithoutCollaboratorsNestedInput
+  }
+
+  export type CollectionCollaboratorUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    collectionId?: StringFieldUpdateOperationsInput | string
+    canEdit?: BoolFieldUpdateOperationsInput | boolean
+    invitedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CollectionCollaboratorUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    collectionId?: StringFieldUpdateOperationsInput | string
+    canEdit?: BoolFieldUpdateOperationsInput | boolean
+    invitedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type FollowUpdateWithoutFollowingInput = {
@@ -22641,10 +29907,30 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type ForumThreadCreateManySourcePhotoInput = {
+    id?: string
+    title: string
+    body: string
+    authorId: string
+    categoryId: string
+    pinned?: boolean
+    locked?: boolean
+    replyCount?: number
+    lastReplyAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type CollectionItemCreateManyPhotoInput = {
     id?: string
     collectionId: string
+    sectionId?: string | null
+    note?: string | null
     savedAt?: Date | string
+  }
+
+  export type PhotoTagCreateManyPhotoInput = {
+    tagId: string
   }
 
   export type VoteUpdateWithoutPhotoInput = {
@@ -22746,22 +30032,84 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type ForumThreadUpdateWithoutSourcePhotoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    pinned?: BoolFieldUpdateOperationsInput | boolean
+    locked?: BoolFieldUpdateOperationsInput | boolean
+    replyCount?: IntFieldUpdateOperationsInput | number
+    lastReplyAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    author?: UserUpdateOneRequiredWithoutForumThreadsNestedInput
+    category?: ForumCategoryUpdateOneRequiredWithoutThreadsNestedInput
+    replies?: ForumReplyUpdateManyWithoutThreadNestedInput
+  }
+
+  export type ForumThreadUncheckedUpdateWithoutSourcePhotoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    authorId?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
+    pinned?: BoolFieldUpdateOperationsInput | boolean
+    locked?: BoolFieldUpdateOperationsInput | boolean
+    replyCount?: IntFieldUpdateOperationsInput | number
+    lastReplyAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    replies?: ForumReplyUncheckedUpdateManyWithoutThreadNestedInput
+  }
+
+  export type ForumThreadUncheckedUpdateManyWithoutSourcePhotoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    authorId?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
+    pinned?: BoolFieldUpdateOperationsInput | boolean
+    locked?: BoolFieldUpdateOperationsInput | boolean
+    replyCount?: IntFieldUpdateOperationsInput | number
+    lastReplyAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type CollectionItemUpdateWithoutPhotoInput = {
     id?: StringFieldUpdateOperationsInput | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
     savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     collection?: CollectionUpdateOneRequiredWithoutItemsNestedInput
+    section?: CollectionSectionUpdateOneWithoutItemsNestedInput
   }
 
   export type CollectionItemUncheckedUpdateWithoutPhotoInput = {
     id?: StringFieldUpdateOperationsInput | string
     collectionId?: StringFieldUpdateOperationsInput | string
+    sectionId?: NullableStringFieldUpdateOperationsInput | string | null
+    note?: NullableStringFieldUpdateOperationsInput | string | null
     savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CollectionItemUncheckedUpdateManyWithoutPhotoInput = {
     id?: StringFieldUpdateOperationsInput | string
     collectionId?: StringFieldUpdateOperationsInput | string
+    sectionId?: NullableStringFieldUpdateOperationsInput | string | null
+    note?: NullableStringFieldUpdateOperationsInput | string | null
     savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PhotoTagUpdateWithoutPhotoInput = {
+    tag?: TagUpdateOneRequiredWithoutPhotoTagsNestedInput
+  }
+
+  export type PhotoTagUncheckedUpdateWithoutPhotoInput = {
+    tagId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PhotoTagUncheckedUpdateManyWithoutPhotoInput = {
+    tagId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ForumThreadCreateManyCategoryInput = {
@@ -22769,6 +30117,7 @@ export namespace Prisma {
     title: string
     body: string
     authorId: string
+    sourcePhotoId?: string | null
     pinned?: boolean
     locked?: boolean
     replyCount?: number
@@ -22788,6 +30137,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     author?: UserUpdateOneRequiredWithoutForumThreadsNestedInput
+    sourcePhoto?: PhotoUpdateOneWithoutForumThreadsNestedInput
     replies?: ForumReplyUpdateManyWithoutThreadNestedInput
   }
 
@@ -22796,6 +30146,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     body?: StringFieldUpdateOperationsInput | string
     authorId?: StringFieldUpdateOperationsInput | string
+    sourcePhotoId?: NullableStringFieldUpdateOperationsInput | string | null
     pinned?: BoolFieldUpdateOperationsInput | boolean
     locked?: BoolFieldUpdateOperationsInput | boolean
     replyCount?: IntFieldUpdateOperationsInput | number
@@ -22810,6 +30161,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     body?: StringFieldUpdateOperationsInput | string
     authorId?: StringFieldUpdateOperationsInput | string
+    sourcePhotoId?: NullableStringFieldUpdateOperationsInput | string | null
     pinned?: BoolFieldUpdateOperationsInput | boolean
     locked?: BoolFieldUpdateOperationsInput | boolean
     replyCount?: IntFieldUpdateOperationsInput | number
@@ -22857,25 +30209,139 @@ export namespace Prisma {
   export type CollectionItemCreateManyCollectionInput = {
     id?: string
     photoId: string
+    sectionId?: string | null
+    note?: string | null
     savedAt?: Date | string
+  }
+
+  export type CollectionSectionCreateManyCollectionInput = {
+    id?: string
+    name: string
+    sortOrder?: number
+    createdAt?: Date | string
+  }
+
+  export type CollectionCollaboratorCreateManyCollectionInput = {
+    id?: string
+    userId: string
+    canEdit?: boolean
+    invitedAt?: Date | string
   }
 
   export type CollectionItemUpdateWithoutCollectionInput = {
     id?: StringFieldUpdateOperationsInput | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
     savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     photo?: PhotoUpdateOneRequiredWithoutCollectionItemsNestedInput
+    section?: CollectionSectionUpdateOneWithoutItemsNestedInput
   }
 
   export type CollectionItemUncheckedUpdateWithoutCollectionInput = {
     id?: StringFieldUpdateOperationsInput | string
     photoId?: StringFieldUpdateOperationsInput | string
+    sectionId?: NullableStringFieldUpdateOperationsInput | string | null
+    note?: NullableStringFieldUpdateOperationsInput | string | null
     savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CollectionItemUncheckedUpdateManyWithoutCollectionInput = {
     id?: StringFieldUpdateOperationsInput | string
     photoId?: StringFieldUpdateOperationsInput | string
+    sectionId?: NullableStringFieldUpdateOperationsInput | string | null
+    note?: NullableStringFieldUpdateOperationsInput | string | null
     savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CollectionSectionUpdateWithoutCollectionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    items?: CollectionItemUpdateManyWithoutSectionNestedInput
+  }
+
+  export type CollectionSectionUncheckedUpdateWithoutCollectionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    items?: CollectionItemUncheckedUpdateManyWithoutSectionNestedInput
+  }
+
+  export type CollectionSectionUncheckedUpdateManyWithoutCollectionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CollectionCollaboratorUpdateWithoutCollectionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    canEdit?: BoolFieldUpdateOperationsInput | boolean
+    invitedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutCollectionCollabsNestedInput
+  }
+
+  export type CollectionCollaboratorUncheckedUpdateWithoutCollectionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    canEdit?: BoolFieldUpdateOperationsInput | boolean
+    invitedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CollectionCollaboratorUncheckedUpdateManyWithoutCollectionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    canEdit?: BoolFieldUpdateOperationsInput | boolean
+    invitedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CollectionItemCreateManySectionInput = {
+    id?: string
+    collectionId: string
+    photoId: string
+    note?: string | null
+    savedAt?: Date | string
+  }
+
+  export type CollectionItemUpdateWithoutSectionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    collection?: CollectionUpdateOneRequiredWithoutItemsNestedInput
+    photo?: PhotoUpdateOneRequiredWithoutCollectionItemsNestedInput
+  }
+
+  export type CollectionItemUncheckedUpdateWithoutSectionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    collectionId?: StringFieldUpdateOperationsInput | string
+    photoId?: StringFieldUpdateOperationsInput | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CollectionItemUncheckedUpdateManyWithoutSectionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    collectionId?: StringFieldUpdateOperationsInput | string
+    photoId?: StringFieldUpdateOperationsInput | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PhotoTagCreateManyTagInput = {
+    photoId: string
+  }
+
+  export type PhotoTagUpdateWithoutTagInput = {
+    photo?: PhotoUpdateOneRequiredWithoutTagsNestedInput
+  }
+
+  export type PhotoTagUncheckedUpdateWithoutTagInput = {
+    photoId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PhotoTagUncheckedUpdateManyWithoutTagInput = {
+    photoId?: StringFieldUpdateOperationsInput | string
   }
 
 

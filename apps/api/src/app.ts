@@ -10,6 +10,8 @@ import { userRouter } from './presentation/routes/user.routes.js'
 import { postRouter } from './presentation/routes/post.routes.js'
 import { collectionRouter } from './presentation/routes/collection.routes.js'
 import { awardRouter, adminRouter, forumRouter } from './presentation/routes/award.routes.js'
+import { searchRouter } from './presentation/routes/search.routes.js'
+import { feedRouter } from './presentation/routes/feed.routes.js'
 import { errorHandler, notFoundHandler } from './presentation/middleware/error.middleware.js'
 
 const app: Express = express()
@@ -54,6 +56,8 @@ app.use('/api/collections', collectionRouter)
 app.use('/api/awards', awardRouter)
 app.use('/api/admin', adminRouter)
 app.use('/api/forum', forumRouter)
+app.use('/api/search', searchRouter)
+app.use('/api/feed', feedRouter)
 
 app.use(notFoundHandler)
 app.use(errorHandler)

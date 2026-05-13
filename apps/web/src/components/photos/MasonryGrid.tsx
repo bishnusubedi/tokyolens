@@ -43,15 +43,17 @@ export function MasonryGrid({ params }: MasonryGridProps) {
 
   return (
     <>
-      <div className="masonry">
+      <div className="columns-2 sm:columns-3 lg:columns-4 xl:columns-5 gap-2">
         {photos.map((photo, i) => (
-          <PhotoCard key={photo.id} photo={photo} priority={i < 4} />
+          <div key={photo.id} className="break-inside-avoid mb-2">
+            <PhotoCard photo={photo} priority={i < 6} />
+          </div>
         ))}
       </div>
       <div ref={sentinel} className="h-8 mt-4" />
       {isFetchingNextPage && (
         <div className="flex justify-center py-4">
-          <div className="h-6 w-6 rounded-full border-2 border-primary border-t-transparent animate-spin" />
+          <div className="h-6 w-6 rounded-full border-2 border-[#e60023] border-t-transparent animate-spin" />
         </div>
       )}
     </>

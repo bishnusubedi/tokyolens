@@ -101,4 +101,46 @@ export class PrismaCollectionRepository implements ICollectionRepository {
     })
     return items.map((i) => i.collectionId)
   }
+
+  async createSection(collectionId: string, name: string, sortOrder: number) {
+    return this.db.collectionSection.create({ data: { collectionId, name, sortOrder } })
+  }
+
+  async deleteSection(sectionId: string): Promise<void> {
+    await this.db.collectionItem.updateMany({ where: { sectionId }, data: { sectionId: null } })
+    await this.db.collectionSection.delete({ where: { id: sectionId } })
+  }
+
+  async addCollaborator(collectionId: string, username: string, canEdit: boolean) {
+    const user = await this.db.user.findUnique({ where: { username }, select: { id: true, username: true, name: true, avatarUrl: true } })
+    if (!user) throw new Error('User not found')
+    return this.db.collectionCollaborator.upsert({
+      where: { collectionId_userId: { collectionId, userId: user.id } },
+      create: { collectionId, userId: user.id, canEdit },
+      update: { canEdit },
+      include: { user: { select: { id: true, username: true, name: true, avatarUrl: true } } },
+    })
+  }
+
+  async removeCollaborator(collectionId: string, userId: string): Promise<void> {
+    await this.db.collectionCollaborator.deleteMany({ where: { collectionId, userId } })
+  }
+
+  async findWithSections(id: string) {
+    return this.db.collection.findUnique({
+      where: { id },
+      include: {
+        sections: { orderBy: { sortOrder: 'asc' } },
+        collaborators: { include: { user: { select: { id: true, username: true, name: true, avatarUrl: true } } } },
+        _count: { select: { items: true } },
+      },
+    })
+  }
+
+  async moveItemToSection(collectionId: string, photoId: string, sectionId: string | null) {
+    return this.db.collectionItem.update({
+      where: { collectionId_photoId: { collectionId, photoId } },
+      data: { sectionId },
+    })
+  }
 }

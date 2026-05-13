@@ -5,6 +5,7 @@ export interface CreatePhotoData {
   description?: string | undefined
   imageUrl: string
   thumbnailUrl?: string | undefined
+  previewUrl?: string | undefined
   width: number
   height: number
   fileSize: number

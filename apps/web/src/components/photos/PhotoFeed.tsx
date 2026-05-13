@@ -23,15 +23,15 @@ export function PhotoFeed() {
         <div className="flex-1 min-w-0">
           <CategoryFilter value={category} onChange={setCategory} />
         </div>
-        <div className="flex gap-1 flex-shrink-0">
+        <div className="flex gap-1.5 flex-shrink-0">
           {SORT_OPTIONS.map((opt) => (
             <button
               key={opt.value}
               onClick={() => setSortBy(opt.value)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+              className={`px-4 py-2 rounded-full text-sm font-bold transition-all ${
                 sortBy === opt.value
-                  ? 'bg-primary text-primary-foreground'
-                  : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                  ? 'bg-black text-white'
+                  : 'bg-[#f6f6f3] text-black hover:bg-[#e5e5e0]'
               }`}
             >
               {opt.label}

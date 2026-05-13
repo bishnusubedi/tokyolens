@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -64,5 +66,19 @@
   /* Display heading tight tracking (Pin Sans -1.2px substitute) */
   .tracking-display {
     letter-spacing: -0.075rem;
+  }
+
+  /* Manrope for display/hero headings */
+  .font-display {
+    font-family: 'Manrope', var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  }
+
+  /* Hide scrollbar but allow scrolling */
+  .scrollbar-none {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
   }
 }
