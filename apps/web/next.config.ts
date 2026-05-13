@@ -32,6 +32,16 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'fastly.picsum.photos',
       },
+      // Cloudflare R2 — public bucket subdomain
+      {
+        protocol: 'https',
+        hostname: '*.r2.dev',
+      },
+      // Cloudflare R2 — custom domain (e.g. cdn.tokyolens.jp)
+      {
+        protocol: 'https',
+        hostname: 'cdn.tokyolens.jp',
+      },
     ],
   },
 };

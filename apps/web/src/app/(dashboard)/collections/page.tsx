@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { Plus, Trash2, Lock, Unlock, BookmarkCheck } from 'lucide-react'
 import { Button } from '@repo/ui'
 import { useMyCollections, useCreateCollection, useDeleteCollection } from '@/hooks/use-collections'
+import { Header } from '@/components/layout/Header'
 
 const API_URL = process.env['NEXT_PUBLIC_API_URL'] ?? 'http://localhost:3001'
 function imgUrl(url: string) { return url.startsWith('http') ? url : `${API_URL}${url}` }
@@ -35,7 +36,9 @@ export default function CollectionsPage() {
   }
 
   return (
-    <div className="p-6 max-w-5xl">
+    <>
+      <Header />
+      <div className="container mx-auto px-4 py-8 max-w-5xl">
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-2xl font-bold">My Boards</h1>
@@ -123,5 +126,6 @@ export default function CollectionsPage() {
         </div>
       )}
     </div>
+    </>
   )
 }

@@ -62,7 +62,8 @@
       "Bash(cp /tmp/gh_install/gh_2.63.2_macOS_arm64/bin/gh /tmp/gh)",
       "Bash(chmod +x /tmp/gh)",
       "Bash(/tmp/gh --version)",
-      "Bash(/tmp/gh auth *)"
+      "Bash(/tmp/gh auth *)",
+      "Bash(DATABASE_URL=\"postgresql://postgres:postgres@localhost:5432/appdb?schema=public\" pnpm tsx prisma/seed.ts)"
     ]
   }
 }
